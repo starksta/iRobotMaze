@@ -1438,15 +1438,72 @@ extern __bit __timeout;
 # 12 "main.h"
 #pragma config BOREN = OFF, CPD = OFF, WRT = OFF, FOSC = HS, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
 
-# 21
+# 24
+volatile unsigned int time_count;
+
+unsigned char PB8Counter = 0;
+
 unsigned char highByte = 0;
 unsigned char lowByte = 0;
+unsigned char left = 0;
+unsigned char right = 0;
+unsigned char up = 0;
+unsigned char down = 0;
+unsigned char x_origin = 0;
+unsigned char y_origin = 0;
+unsigned char x_path = 0;
+unsigned char y_path = 0;
+unsigned char x_target = 0;
+unsigned char y_target = 0;
+unsigned char orientation_path = 0;
 
-volatile char mazeWalls[4][3] = {
+unsigned char pathCount = 0;
+unsigned char pathCountShortest = 20;
+
+unsigned char x_test = 0;
+unsigned char y_test = 0;
+unsigned char intersection_Orientation = 0;
+
+volatile char path[3][16];
+volatile char shortest_path[3][16];
+volatile char mazeGrid[4][5];
+volatile char mazeGridDefault[4][5];
+
+
+volatile char path[3][16] = {
+{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+};
+
+volatile char shortest_path[3][16] = {
+{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+};
+
+
+volatile char mazeGrid[4][5] = {
 {0b00001100,0b00000111,0b00001110,0b00001101,0b00000110},
 {0b00000111,0b00000101,0b00000000,0b00000101,0b00000010},
 {0b00001100,0b00000110,0b00001010,0b00001110,0b00001010},
-{0b00001011,0b00001001,0b00000001,0b00000001,0b00000011},
+{0b00001011,0b00001001,0b00000001,0b00000001,0b00000011}
+};
+
+volatile char mazeGridDefault[4][5] = {
+{0b00001100,0b00000111,0b00001110,0b00001101,0b00000110},
+{0b00000111,0b00000101,0b00000000,0b00000101,0b00000010},
+{0b00001100,0b00000110,0b00001010,0b00001110,0b00001010},
+{0b00001011,0b00001001,0b00000001,0b00000001,0b00000011}
+};
+
+
+volatile char squareWalls[5][16] = {
+{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16},
+{0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
+{0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
+{0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
+{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1}
 };
 
 # 11 "motor.h"
@@ -1516,8 +1573,7 @@ void DriveDirect(signed int VelocityRight, signed int VelocityLeft);
 
 signed int getSensorData(unsigned char packetID, unsigned char bytes);
 
-# 8 "main.c"
-volatile char mazeWalls[4][3];
+# 9 "main.c"
 volatile char x = 1;
 volatile char y = 0;
 volatile char orientation = 0;
@@ -1525,15 +1581,22 @@ volatile char orientation = 0;
 signed int distance = 0;
 signed int angle = 0;
 
+char r = 0;
+char c = 0;
+
 void Drive1m(void){
 
 
 
 switch(orientation){
 case 0: y--;
+break;
 case 1: x++;
+break;
 case 2: y++;
+break;
 case 3: x--;
+break;
 }
 
 distance = 0;
@@ -1569,11 +1632,174 @@ while (angle > -90){
 angle = angle + getSensorData(20,2);
 }
 }
-
 }
 
-void interrupt isr(void){
+void PathTo(char x_target, char y_target){
 
+
+
+for (r = 0; r <= 3; r++){
+for (c = 0; c <= 4; c++){
+mazeGrid[r][c] = mazeGridDefault[r][c];
+}
+}
+
+x_origin = x;
+y_origin = y;
+x_path = x;
+y_path = y;
+orientation_path = orientation;
+pathCount = 0;
+
+for (int loop = 0; loop <= 1000; loop++){
+
+
+path[1][pathCount] = x_path;
+path[2][pathCount] = y_path;
+
+if ((x_path == x_target) && (y_path == y_target)){
+
+if(pathCount < pathCountShortest){
+pathCountShortest = pathCount;
+for (r = 0; r <= 2; r++){
+for (c = 0; c <= 15; c++){
+shortest_path[r][c] = path[r][c];
+}
+}
+}
+
+char n = 15;
+x_test = path[1][n];
+y_test = path[2][n];
+
+for (n = 15; mazeGrid[y_test][x_test] < 32; n--){
+x_test = path[1][n];
+y_test = path[2][n];
+}
+
+
+switch(intersection_Orientation){
+case 0: mazeGrid[y_test][x_test] = 0b00000100 || mazeGrid[y_test][x_test];
+break;
+case 1: mazeGrid[y_test][x_test] = 0b00000010 || mazeGrid[y_test][x_test];
+break;
+case 2: mazeGrid[y_test][x_test] = 0b00000001 || mazeGrid[y_test][x_test];
+break;
+case 3: mazeGrid[y_test][x_test] = 0b00001000 || mazeGrid[y_test][x_test];
+break;
+}
+
+
+x_path = x_origin;
+y_path = y_origin;
+orientation_path = orientation;
+pathCount = 0;
+}
+
+
+left = squareWalls[1][((mazeGrid[y_path][x_path]) + 1)];
+right = squareWalls[2][((mazeGrid[y_path][x_path]) + 1)];
+up = squareWalls[3][((mazeGrid[y_path][x_path]) + 1)];
+down = squareWalls[4][((mazeGrid[y_path][x_path]) + 1)];
+
+
+switch(orientation_path){
+case 0: down = 1;
+break;
+case 1: left = 1;
+break;
+case 2: up = 1;
+break;
+case 3: right = 1;
+break;
+}
+
+
+char sum = (left + up + down + right);
+if(sum <= 2)
+(mazeGrid[y_path][x_path]) = ((0b00100000) || (mazeGrid[y_path][x_path]));
+
+
+
+if(left == 0){
+if(mazeGrid[y_path][x_path] >= 32)
+intersection_Orientation = 3;
+x_path--;
+orientation_path = 3;
+pathCount++;
+}
+else if(up == 0){
+if(mazeGrid[y_path][x_path] >= 32)
+intersection_Orientation = 0;
+y_path--;
+orientation_path = 0;
+pathCount++;
+}
+else if(right == 0){
+if(mazeGrid[y_path][x_path] >= 32)
+intersection_Orientation = 1;
+x_path++;
+orientation_path = 1;
+pathCount++;
+}
+else if(down == 0){
+if(mazeGrid[y_path][x_path] >= 32)
+intersection_Orientation = 2;
+y_path++;
+orientation_path = 2;
+pathCount++;
+}
+
+
+if((left == up == right == down == 1) || (pathCount > 50)){
+
+char n = 15;
+x_test = path[1][n];
+y_test = path[2][n];
+
+for (n = 15; mazeGrid[y_test][x_test] < 32; n--){
+x_test = path[1][n];
+y_test = path[2][n];
+}
+
+
+switch(intersection_Orientation){
+case 0: mazeGrid[y_test][x_test] = 0b00000100 || mazeGrid[y_test][x_test];
+break;
+case 1: mazeGrid[y_test][x_test] = 0b00000010 || mazeGrid[y_test][x_test];
+break;
+case 2: mazeGrid[y_test][x_test] = 0b00000001 || mazeGrid[y_test][x_test];
+break;
+case 3: mazeGrid[y_test][x_test] = 0b00001000 || mazeGrid[y_test][x_test];
+break;
+}
+
+
+x_path = x_origin;
+y_path = y_origin;
+orientation_path = orientation;
+pathCount = 0;
+
+}
+}
+}
+
+
+
+
+void interrupt isr(void){
+if(TMR0IF){
+TMR0IF = 0;
+TMR0 = 100;
+time_count++;
+
+if (!RB0 == 1)
+PB8Counter++;
+
+
+
+
+}
 }
 
 
@@ -1584,42 +1810,36 @@ setupSPI();
 setupLCD();
 setupADC();
 
-Drive1m();
-Turn90(1);
-Drive1m();
-Turn90(1);
-Drive1m();
-Drive1m();
+x = 1;
+y = 0;
 
 
-if (getSensorData(13,1) == 1){
-Turn90(0);
+char a = 1;
+while (a == 1){
 
+PathTo(3,2);
+
+lcdSetCursor(0b10000000);
+for (char n = 0; n < 10; n++){
+lcdWriteData((shortest_path[1][n]) + 48);
+_delay((unsigned long)((15)*(20000000/4000.0)));
+}
+lcdWriteString(" ");
+lcdWriteToDigitBCD(pathCount);
+
+lcdSetCursor(0b11000000);
+for (char n = 0; n < 10; n++){
+lcdWriteData((shortest_path[2][n]) + 48);
+_delay((unsigned long)((15)*(20000000/4000.0)));
+}
+lcdWriteString(" ");
+lcdWriteToDigitBCD(pathCountShortest);
+
+
+
+a = 0;
 }
 
-Drive1m();
-Drive1m();
-Turn90(1);
-Drive1m();
 
-Turn90(1);
-Turn90(1);
-Drive1m();
-Drive1m();
-Drive1m();
-Turn90(0);
-Drive1m();
-
-Drive1m();
-Drive1m();
-Turn90(0);
-Drive1m();
-Turn90(1);
-Drive1m();
-
-# 115
-while(1){
-
-}
 
 }

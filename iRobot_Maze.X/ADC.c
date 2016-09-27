@@ -1,5 +1,6 @@
 #include "main.h"
 #include "ADC.h"
+#include "LCD.h"
 
 void setupADC(void){
     PORTA = 0;              //Clears portA pins
