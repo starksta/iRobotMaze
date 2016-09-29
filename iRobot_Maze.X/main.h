@@ -38,27 +38,27 @@ char orientation = 3;
 char r = 0;
 char c = 0;
 
-unsigned char x = 1;
+unsigned char x = 1;    //Bots actual coordinates
 unsigned char y = 0;
-unsigned char x_origin = 0;
+unsigned char x_origin = 0; //Coordinates at the start of PathTo()
 unsigned char y_origin = 0;
-unsigned char x_path = 0;
+unsigned char x_path = 0;   //Tracking coordinates for the PathTo()
 unsigned char y_path = 0;
-unsigned char x_target = 0;
+unsigned char x_target = 0; //Target coordinates for PathTo()
 unsigned char y_target = 0;
-unsigned char x_int = 0;
+unsigned char x_int = 0;    //Coordinates of most recent intersection
 unsigned char y_int = 0;
-unsigned char orientation_path = 0;
+unsigned char orientation_path = 0; //Tracking orientation for PathTo()
 
 unsigned char pathCount = 0;
 unsigned char pathCountShortest = 20;
 
-unsigned char intersection_Orientation = 0;
+unsigned char intersection_Orientation = 0; //Orientation at most recent intersection
 
-volatile char path[2][16];
-volatile char shortest_path[2][16];
-volatile char mazeGrid[4][5];
-volatile char mazeGridDefault[4][5];
+volatile char path[2][16];  //Array storing current path
+volatile char shortest_path[2][16]; //Array storing shortest path
+volatile char mazeGrid[4][5];   //Dictates the wall configuration for each grid, subject to change with fake walls etc
+volatile char mazeGridDefault[4][5];    //Same thing, always the same for resetting
 
 
 volatile char path[2][16] = {
