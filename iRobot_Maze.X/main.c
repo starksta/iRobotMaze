@@ -5,23 +5,12 @@
 #include "SPI.h"
 #include "ser.h"
 
-char a = 1;
-char reset_flag = 0;
 
-char x = 1;
-char y = 0;
-
-char intFound = 0;
-
-
-
-char orientation = 3;
 
 signed int distance = 0;
 signed int angle = 0;
 
-char r = 0;
-char c = 0;
+
 
 void Drive1m(void){   
    
@@ -90,47 +79,26 @@ void PathTo(char x_target, char y_target){
     orientation_path = orientation;
     pathCount = 0;
     
+    lcdSetCursor(0b10000000);
+    lcdWriteString("Working...");
+    
     for (int loop = 0; loop <= 1000; loop++){
         
         reset_flag = 0;
         
-        path[1][pathCount] = x_path;
-        path[2][pathCount] = y_path;
-        
-
-        
-        lcdWriteControl(0b00000001);
-        lcdSetCursor(0b10001110);
-        lcdWriteToDigitBCD(loop);
-/*        
-        lcdSetCursor(0b11001100);
-        char gridWalls = (mazeGrid[1][2]);
-        left    = squareWalls[1][gridWalls];
-        up      = squareWalls[2][gridWalls];
-        right   = squareWalls[3][gridWalls];
-        down    = squareWalls[4][gridWalls];
-        
-        lcdWriteData(left + 48);
-        lcdWriteData(up + 48);
-        lcdWriteData(right + 48);
-        lcdWriteData(down + 48);
-        
-       
-        for (char n = 0; n <= pathCount; n++){       
-            lcdSetCursor(0b10000000 + n);
-            lcdWriteData(path[1][n] + 48);      
-            lcdSetCursor(0b11000000 + n);
-            lcdWriteData(path[2][n] + 48);          
-        }
-*/               
+        path[0][pathCount] = x_path;
+        path[1][pathCount] = y_path;
+                   
     //Gets wall details about current grid
-       
+        //mazeGrid[][] gives a number from 0-16 that corresponds with a particular wall pattern
+        //squareWalls[][] takes that number and converts it into either a wall or no wall for each side.
         left    = squareWalls[1][(mazeGrid[y_path][x_path])];
         up      = squareWalls[2][(mazeGrid[y_path][x_path])];
         right   = squareWalls[3][(mazeGrid[y_path][x_path])];
         down    = squareWalls[4][(mazeGrid[y_path][x_path])];
          
     //Ignores the direction the robot came from using a fake wall
+        //eg. if it entered the grid from the right, ie facing left (orientation = 3), then sets the right side as a wall
         switch(orientation_path){
             case 0: down = 1;
                 break;
@@ -143,11 +111,16 @@ void PathTo(char x_target, char y_target){
         }
         
         //Check if intersection
+           //if sum is less than or equal to 2 then there is at most 2 walls, including the fake wall from above.
         char sum = (left + up + down + right);
         if(sum <= 2){
-            x_int = x_path;
-            y_int = y_path;
+            x_int = x_path; //Stores the grid reference of the intersection
+            y_int = y_path; //Will only ever be the most reset intersection because it overwrites.
             
+            //When it moves to the next grid it prioritises left > up > right > down
+            //Therefore, it will move into the first of those directions that isn't a wall
+            //So it notes the direction it went(will go) at the intersection for 
+            //when/if it comes back to put a fake wall if it was a dead end
             if (left == 0)
                 intersection_Orientation = 3;
             else if (up == 0)
@@ -163,27 +136,24 @@ void PathTo(char x_target, char y_target){
         
         
     //Target Found      
-        if ((x_path == x_target) && (y_path == y_target)){
-        
-/*            for (char n = 0; n <= pathCount; n++){       
-                lcdSetCursor(0b10000000 + n);
-                lcdWriteData(path[1][n] + 48);      
-                lcdSetCursor(0b11000000 + n);
-                lcdWriteData(path[2][n] + 48);
-            }
-*/   
-                      
+        if ((x_path == x_target) && (y_path == y_target)){ 
+            
+            //If the pathCounts less than the previous count it replaces/stores the new path
+            //Nested for loop because you cant set an array equal to another array
+            //It needs to be done individually for each element
             if(pathCount < pathCountShortest){
                 pathCountShortest = pathCount;
-                for (r = 1; r <= 2; r++){        
+                for (r = 0; r <= 1; r++){        
                     for (c = 0; c <= 15; c++){
                         shortest_path[r][c] = path[r][c];
                     }
                 }                       
             }    
      
-        //Sets a fake wall to block off the path at the intersection
-
+        //Its found one path, now its going to fake wall that path so it wont repeat it when
+        //it's looking for a shorter one
+            //Heres where it checks that stored orientation, the number added to the end
+            //is the same thing as setting the bit corresponding to that wall side.
             switch(intersection_Orientation){
                 case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);                     
                     break;
@@ -195,14 +165,15 @@ void PathTo(char x_target, char y_target){
                     break;
             }
                              
-            //Reset back to origin
+            //Reset back to origin to start looking for a new path
             x_path = x_origin;
             y_path = y_origin;
             orientation_path = orientation;
             pathCount = 0;
             reset_flag = 1;
             
-            for (r = 1; r <= 2; r++){        
+            //Clearing the path array
+            for (r = 0; r <= 1; r++){        
                 for (c = 0; c <= 15; c++){
                     path[r][c] = 0;
                 }
@@ -211,10 +182,11 @@ void PathTo(char x_target, char y_target){
        
 
     
-    //If dead end or too many steps then find most recent intersection and fake wall it
+        
+    //If dead end or too many steps, sum is from above where it added the wall sides
         if((sum == 4) || (pathCount >= 15)){      
             
-            //Sets a fake wall to block off the path at the intersection
+            //Same thing as when it found the target, probably could put it all into one bit of code really.
             switch(intersection_Orientation){
                 case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);                             
                     break;
@@ -233,7 +205,7 @@ void PathTo(char x_target, char y_target){
             pathCount = 0;
             reset_flag = 1; 
             
-            for (r = 1; r <= 2; r++){        
+            for (r = 0; r <= 1; r++){        
                 for (c = 0; c <= 15; c++){
                     path[r][c] = 0;
                 }
@@ -241,10 +213,15 @@ void PathTo(char x_target, char y_target){
         }
         
         
-    //Adjusts path coordinates to next adjacent grid
         
-        if (reset_flag != 1){
+        
+        
+    //Adjusts path coordinates to next adjacent grid
+    //As mentioned above, it prioritises left > up > right > down
+        
+        if (reset_flag != 1){   //So it wont take a step if its resetting back to origin
             
+            //These statements should be pretty self explanitory
             if(left == 0){
                 x_path--;
                 orientation_path = 3;
@@ -279,8 +256,7 @@ void interrupt isr(void){
         TMR0 = TMR0_VAL;
         time_count++;
         
-        if (PB8 == 1)
-            PB8Counter++;
+    
         
             
         
@@ -296,9 +272,9 @@ void main(void){
     setupLCD();
     setupADC();
     TRISB = 0b00000000;
-   
+    RB0 = 0;
     
-    x = 1;
+    x = 11;
     y = 0;
     orientation = 3;
     
@@ -306,11 +282,11 @@ void main(void){
     
         
     
-       
-        PathTo(0,3);
-        __delay_ms(3000);
-        lcdWriteControl(0b00000001);
         
+        PathTo(3,2);
+        __delay_ms(3000);
+        
+        lcdWriteControl(0b00000001);       
         lcdSetCursor(0b10000000);
         lcdWriteString("X:");
         lcdSetCursor(0b11000000);
@@ -318,9 +294,9 @@ void main(void){
         
         for (char n = 0; n <= pathCountShortest; n++){       
                 lcdSetCursor(0b10000000 + n + 2);
-                lcdWriteData(shortest_path[1][n] + 48);      
+                lcdWriteData(shortest_path[0][n] + 48);      
                 lcdSetCursor(0b11000000 + n + 2);
-                lcdWriteData(shortest_path[2][n] + 48);                
+                lcdWriteData(shortest_path[1][n] + 48);                
         }
         lcdSetCursor(0b10001110);
         lcdWriteToDigitBCD(pathCountShortest);

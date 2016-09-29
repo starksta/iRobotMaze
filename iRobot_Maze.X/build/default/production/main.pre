@@ -1445,10 +1445,19 @@ unsigned char PB8Counter = 0;
 
 unsigned char highByte = 0;
 unsigned char lowByte = 0;
-unsigned char left = 0;
-unsigned char right = 0;
-unsigned char up = 0;
-unsigned char down = 0;
+
+bit left = 0;
+bit right = 0;
+bit up = 0;
+bit down = 0;
+bit reset_flag = 0;
+
+char orientation = 3;
+char r = 0;
+char c = 0;
+
+unsigned char x = 1;
+unsigned char y = 0;
 unsigned char x_origin = 0;
 unsigned char y_origin = 0;
 unsigned char x_path = 0;
@@ -1457,31 +1466,25 @@ unsigned char x_target = 0;
 unsigned char y_target = 0;
 unsigned char x_int = 0;
 unsigned char y_int = 0;
-
 unsigned char orientation_path = 0;
-
 
 unsigned char pathCount = 0;
 unsigned char pathCountShortest = 20;
 
-unsigned char x_test = 0;
-unsigned char y_test = 0;
 unsigned char intersection_Orientation = 0;
 
-volatile char path[3][16];
-volatile char shortest_path[3][16];
+volatile char path[2][16];
+volatile char shortest_path[2][16];
 volatile char mazeGrid[4][5];
 volatile char mazeGridDefault[4][5];
 
 
-volatile char path[3][16] = {
-{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
+volatile char path[2][16] = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 };
 
-volatile char shortest_path[3][16] = {
-{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
+volatile char shortest_path[2][16] = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 };
@@ -1577,24 +1580,11 @@ void DriveDirect(signed int VelocityRight, signed int VelocityLeft);
 
 signed int getSensorData(unsigned char packetID, unsigned char bytes);
 
-# 8 "main.c"
-char a = 1;
-char reset_flag = 0;
-
-char x = 1;
-char y = 0;
-
-char intFound = 0;
-
-
-
-char orientation = 3;
-
+# 10 "main.c"
 signed int distance = 0;
 signed int angle = 0;
 
-char r = 0;
-char c = 0;
+
 
 void Drive1m(void){
 
@@ -1663,20 +1653,18 @@ y_path = y;
 orientation_path = orientation;
 pathCount = 0;
 
+lcdSetCursor(0b10000000);
+lcdWriteString("Working...");
+
 for (int loop = 0; loop <= 1000; loop++){
 
 reset_flag = 0;
 
-path[1][pathCount] = x_path;
-path[2][pathCount] = y_path;
+path[0][pathCount] = x_path;
+path[1][pathCount] = y_path;
 
 
 
-lcdWriteControl(0b00000001);
-lcdSetCursor(0b10001110);
-lcdWriteToDigitBCD(loop);
-
-# 128
 left = squareWalls[1][(mazeGrid[y_path][x_path])];
 up = squareWalls[2][(mazeGrid[y_path][x_path])];
 right = squareWalls[3][(mazeGrid[y_path][x_path])];
@@ -1710,13 +1698,12 @@ else if (down == 0)
 intersection_Orientation = 2;
 }
 
-# 166
+# 132
 if ((x_path == x_target) && (y_path == y_target)){
 
-# 176
 if(pathCount < pathCountShortest){
 pathCountShortest = pathCount;
-for (r = 1; r <= 2; r++){
+for (r = 0; r <= 1; r++){
 for (c = 0; c <= 15; c++){
 shortest_path[r][c] = path[r][c];
 }
@@ -1743,16 +1730,14 @@ orientation_path = orientation;
 pathCount = 0;
 reset_flag = 1;
 
-for (r = 1; r <= 2; r++){
+for (r = 0; r <= 1; r++){
 for (c = 0; c <= 15; c++){
 path[r][c] = 0;
 }
 }
 }
 
-
-
-
+# 174
 if((sum == 4) || (pathCount >= 15)){
 
 
@@ -1774,16 +1759,14 @@ orientation_path = orientation;
 pathCount = 0;
 reset_flag = 1;
 
-for (r = 1; r <= 2; r++){
+for (r = 0; r <= 1; r++){
 for (c = 0; c <= 15; c++){
 path[r][c] = 0;
 }
 }
 }
 
-
-
-
+# 208
 if (reset_flag != 1){
 
 if(left == 0){
@@ -1810,19 +1793,14 @@ pathCount++;
 }
 }
 
-# 276
+# 238
 void interrupt isr(void){
 if(TMR0IF){
 TMR0IF = 0;
 TMR0 = 100;
 time_count++;
 
-if (!RB0 == 1)
-PB8Counter++;
-
-
-
-
+# 249
 }
 }
 
@@ -1834,17 +1812,17 @@ setupSPI();
 setupLCD();
 setupADC();
 TRISB = 0b00000000;
+RB0 = 0;
 
+x = 0;
+y = 3;
+orientation = 0;
 
-x = 1;
-y = 0;
-orientation = 3;
-
-# 310
-PathTo(0,3);
+# 271
+PathTo(2,0);
 _delay((unsigned long)((3000)*(20000000/4000.0)));
-lcdWriteControl(0b00000001);
 
+lcdWriteControl(0b00000001);
 lcdSetCursor(0b10000000);
 lcdWriteString("X:");
 lcdSetCursor(0b11000000);
@@ -1852,9 +1830,9 @@ lcdWriteString("Y:");
 
 for (char n = 0; n <= pathCountShortest; n++){
 lcdSetCursor(0b10000000 + n + 2);
-lcdWriteData(shortest_path[1][n] + 48);
+lcdWriteData(shortest_path[0][n] + 48);
 lcdSetCursor(0b11000000 + n + 2);
-lcdWriteData(shortest_path[2][n] + 48);
+lcdWriteData(shortest_path[1][n] + 48);
 }
 lcdSetCursor(0b10001110);
 lcdWriteToDigitBCD(pathCountShortest);
@@ -1865,7 +1843,5 @@ _delay((unsigned long)((500)*(20000000/4000.0)));
 RB0 = 0;
 _delay((unsigned long)((500)*(20000000/4000.0)));
 }
-
-# 341
 }
 

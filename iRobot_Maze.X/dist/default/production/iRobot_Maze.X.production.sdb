@@ -29,11 +29,11 @@
 [v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
 "86
 [v _setupLCD setupLCD `(v  1 e 1 0 ]
-"76 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+"65 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
 [v _PathTo PathTo `(v  1 e 1 0 ]
-"276
+"238
 [v _isr isr `II(v  1 e 1 0 ]
-"292
+"253
 [v _main main `(v  1 e 1 0 ]
 "5 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
 [v _ser_init ser_init `(v  1 e 1 0 ]
@@ -119,67 +119,65 @@
 [v _TMR0IF TMR0IF `VEb  1 e 0 @90 ]
 "2741
 [v _TRMT TRMT `VEb  1 e 0 @1217 ]
-"9 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-[v _reset_flag reset_flag `uc  1 e 1 0 ]
-"11
-[v _x x `uc  1 e 1 0 ]
-"12
-[v _y y `uc  1 e 1 0 ]
-"18
-[v _orientation orientation `uc  1 e 1 0 ]
-"20
+"10 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
 [v _distance distance `i  1 e 2 0 ]
-"21
+"11
 [v _angle angle `i  1 e 2 0 ]
-"23
-[v _r r `uc  1 e 1 0 ]
-"24
-[v _c c `uc  1 e 1 0 ]
 "24 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.h
 [v _time_count time_count `VEui  1 e 2 0 ]
-"26
-[v _PB8Counter PB8Counter `uc  1 e 1 0 ]
 "28
 [v _highByte highByte `uc  1 e 1 0 ]
 "29
 [v _lowByte lowByte `uc  1 e 1 0 ]
-"30
-[v _left left `uc  1 e 1 0 ]
 "31
-[v _right right `uc  1 e 1 0 ]
+[v _left left `b  1 e 0 0 ]
 "32
-[v _up up `uc  1 e 1 0 ]
+[v _right right `b  1 e 0 0 ]
 "33
-[v _down down `uc  1 e 1 0 ]
+[v _up up `b  1 e 0 0 ]
 "34
-[v _x_origin x_origin `uc  1 e 1 0 ]
+[v _down down `b  1 e 0 0 ]
 "35
-[v _y_origin y_origin `uc  1 e 1 0 ]
-"36
-[v _x_path x_path `uc  1 e 1 0 ]
+[v _reset_flag reset_flag `b  1 e 0 0 ]
 "37
-[v _y_path y_path `uc  1 e 1 0 ]
-"40
-[v _x_int x_int `uc  1 e 1 0 ]
+[v _orientation orientation `uc  1 e 1 0 ]
+"38
+[v _r r `uc  1 e 1 0 ]
+"39
+[v _c c `uc  1 e 1 0 ]
 "41
-[v _y_int y_int `uc  1 e 1 0 ]
+[v _x x `uc  1 e 1 0 ]
+"42
+[v _y y `uc  1 e 1 0 ]
 "43
-[v _orientation_path orientation_path `uc  1 e 1 0 ]
+[v _x_origin x_origin `uc  1 e 1 0 ]
+"44
+[v _y_origin y_origin `uc  1 e 1 0 ]
+"45
+[v _x_path x_path `uc  1 e 1 0 ]
 "46
-[v _pathCount pathCount `uc  1 e 1 0 ]
-"47
-[v _pathCountShortest pathCountShortest `uc  1 e 1 0 ]
+[v _y_path y_path `uc  1 e 1 0 ]
+"49
+[v _x_int x_int `uc  1 e 1 0 ]
+"50
+[v _y_int y_int `uc  1 e 1 0 ]
 "51
-[v _intersection_Orientation intersection_Orientation `uc  1 e 1 0 ]
+[v _orientation_path orientation_path `uc  1 e 1 0 ]
 "53
-[v _path path `VE[3][16]uc  1 e 48 0 ]
+[v _pathCount pathCount `uc  1 e 1 0 ]
 "54
-[v _shortest_path shortest_path `VE[3][16]uc  1 e 48 0 ]
-"55
-[v _mazeGrid mazeGrid `VE[4][5]uc  1 e 20 0 ]
+[v _pathCountShortest pathCountShortest `uc  1 e 1 0 ]
 "56
+[v _intersection_Orientation intersection_Orientation `uc  1 e 1 0 ]
+"58
+[v _path path `VE[2][16]uc  1 e 32 0 ]
+"59
+[v _shortest_path shortest_path `VE[2][16]uc  1 e 32 0 ]
+"60
+[v _mazeGrid mazeGrid `VE[4][5]uc  1 e 20 0 ]
+"61
 [v _mazeGridDefault mazeGridDefault `VE[4][5]uc  1 e 20 0 ]
-"87
+"90
 [v _squareWalls squareWalls `VE[5][16]uc  1 e 80 0 ]
 "18 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.h
 [v _RightSpeedH RightSpeedH `uc  1 e 1 0 ]
@@ -189,12 +187,12 @@
 [v _LeftSpeedH LeftSpeedH `uc  1 e 1 0 ]
 "21
 [v _LeftSpeedL LeftSpeedL `uc  1 e 1 0 ]
-"292 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+"253 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"319
-[v main@n n `uc  1 a 1 30 ]
-"341
+"280
+[v main@n n `uc  1 a 1 18 ]
+"295
 } 0
 "4 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
 [v _setupSPI setupSPI `(v  1 e 1 0 ]
@@ -216,48 +214,48 @@
 {
 "28
 } 0
+"38 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+[v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
+{
+"39
+[v lcdWriteToDigitBCD@OnesDigit OnesDigit `ui  1 a 2 11 ]
+[v lcdWriteToDigitBCD@TenThouDigit TenThouDigit `ui  1 a 2 9 ]
+[v lcdWriteToDigitBCD@ThouDigit ThouDigit `ui  1 a 2 7 ]
+[v lcdWriteToDigitBCD@HunsDigit HunsDigit `ui  1 a 2 5 ]
+[v lcdWriteToDigitBCD@TensDigit TensDigit `ui  1 a 2 3 ]
+"38
+[v lcdWriteToDigitBCD@data data `ui  1 p 2 1 ]
+"83
+} 0
+"65 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+[v _PathTo PathTo `(v  1 e 1 0 ]
+{
+[v PathTo@x_target x_target `uc  1 a 1 wreg ]
+"112
+[v PathTo@sum sum `uc  1 a 1 12 ]
+"85
+[v PathTo@loop loop `i  1 a 2 13 ]
+"65
+[v PathTo@x_target x_target `uc  1 a 1 wreg ]
+[v PathTo@y_target y_target `uc  1 p 1 3 ]
+"69
+[v PathTo@x_target x_target `uc  1 a 1 11 ]
+"232
+} 0
 "32 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
 [v _lcdWriteString lcdWriteString `(v  1 e 1 0 ]
 {
 [v lcdWriteString@s s `*.24uc  1 a 1 wreg ]
 [v lcdWriteString@s s `*.24uc  1 a 1 wreg ]
-[v lcdWriteString@s s `*.24uc  1 a 1 4 ]
+[v lcdWriteString@s s `*.24uc  1 a 1 2 ]
 "35
-} 0
-"76 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-[v _PathTo PathTo `(v  1 e 1 0 ]
-{
-[v PathTo@x_target x_target `uc  1 a 1 wreg ]
-"146
-[v PathTo@sum sum `uc  1 a 1 24 ]
-"93
-[v PathTo@loop loop `i  1 a 2 25 ]
-"76
-[v PathTo@x_target x_target `uc  1 a 1 wreg ]
-[v PathTo@y_target y_target `uc  1 p 1 15 ]
-"80
-[v PathTo@x_target x_target `uc  1 a 1 23 ]
-"270
-} 0
-"38 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-[v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
-{
-"39
-[v lcdWriteToDigitBCD@OnesDigit OnesDigit `ui  1 a 2 13 ]
-[v lcdWriteToDigitBCD@TenThouDigit TenThouDigit `ui  1 a 2 11 ]
-[v lcdWriteToDigitBCD@ThouDigit ThouDigit `ui  1 a 2 9 ]
-[v lcdWriteToDigitBCD@HunsDigit HunsDigit `ui  1 a 2 7 ]
-[v lcdWriteToDigitBCD@TensDigit TensDigit `ui  1 a 2 5 ]
-"38
-[v lcdWriteToDigitBCD@data data `ui  1 p 2 3 ]
-"83
 } 0
 "16
 [v _lcdWriteData lcdWriteData `(v  1 e 1 0 ]
 {
 [v lcdWriteData@databyte databyte `uc  1 a 1 wreg ]
 [v lcdWriteData@databyte databyte `uc  1 a 1 wreg ]
-[v lcdWriteData@databyte databyte `uc  1 a 1 2 ]
+[v lcdWriteData@databyte databyte `uc  1 a 1 0 ]
 "24
 } 0
 "27
@@ -265,7 +263,7 @@
 {
 [v lcdSetCursor@address address `uc  1 a 1 wreg ]
 [v lcdSetCursor@address address `uc  1 a 1 wreg ]
-[v lcdSetCursor@address address `uc  1 a 1 3 ]
+[v lcdSetCursor@address address `uc  1 a 1 1 ]
 "30
 } 0
 "5
@@ -273,7 +271,7 @@
 {
 [v lcdWriteControl@databyte databyte `uc  1 a 1 wreg ]
 [v lcdWriteControl@databyte databyte `uc  1 a 1 wreg ]
-[v lcdWriteControl@databyte databyte `uc  1 a 1 2 ]
+[v lcdWriteControl@databyte databyte `uc  1 a 1 0 ]
 "13
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
@@ -281,16 +279,16 @@
 {
 [v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
 "6
-[v ___bmul@product product `uc  1 a 1 2 ]
+[v ___bmul@product product `uc  1 a 1 0 ]
 "4
 [v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
-[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 4 ]
 "6
-[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
+[v ___bmul@multiplier multiplier `uc  1 a 1 1 ]
 "51
 } 0
-"276 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+"238 C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"289
+"250
 } 0

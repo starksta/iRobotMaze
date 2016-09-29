@@ -3,18 +3,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _DriveDirect `(v ~T0 @X0 0 ef2`i`i ]
 "38
 [v _getSensorData `(i ~T0 @X0 0 ef2`uc`uc ]
-"21 LCD.h
-[v _lcdWriteControl `(v ~T0 @X0 0 ef1`uc ]
-"27
+"27 LCD.h
 [v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
-"33
-[v _lcdWriteToDigitBCD `(v ~T0 @X0 0 ef1`ui ]
+"30
+[v _lcdWriteString `(v ~T0 @X0 0 ef1`*uc ]
 "2651 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f877a.h
 [v _TMR0IF `Vb ~T0 @X0 0 e@90 ]
 "55
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
-"2513
-[v _RB0 `Vb ~T0 @X0 0 e@48 ]
 [p mainexit ]
 "24 ser.h
 [v _ser_init `(v ~T0 @X0 0 ef ]
@@ -26,14 +22,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setupADC `(v ~T0 @X0 0 ef ]
 "1337 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f877a.h
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"2513
+[v _RB0 `Vb ~T0 @X0 0 e@48 ]
 [v F1091 `(v ~T0 @X0 1 tf1`ul ]
 "152 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic.h
 [v __delay `JF1091 ~T0 @X0 0 e ]
 [p i __delay ]
-"30 LCD.h
-[v _lcdWriteString `(v ~T0 @X0 0 ef1`*uc ]
+"21 LCD.h
+[v _lcdWriteControl `(v ~T0 @X0 0 ef1`uc ]
 "24
 [v _lcdWriteData `(v ~T0 @X0 0 ef1`uc ]
+"33
+[v _lcdWriteToDigitBCD `(v ~T0 @X0 0 ef1`ui ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1081,154 +1081,159 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;main.h: 29: unsigned char lowByte = 0;
-"30
-[v _left `uc ~T0 @X0 1 e ]
-[i _left
--> -> 0 `i `uc
-]
-[; ;main.h: 30: unsigned char left = 0;
 "31
-[v _right `uc ~T0 @X0 1 e ]
-[i _right
--> -> 0 `i `uc
+[v _left `b ~T0 @X0 1 e ]
+[i _left
+-> 0 `i
 ]
-[; ;main.h: 31: unsigned char right = 0;
+[; ;main.h: 31: bit left = 0;
 "32
-[v _up `uc ~T0 @X0 1 e ]
-[i _up
--> -> 0 `i `uc
+[v _right `b ~T0 @X0 1 e ]
+[i _right
+-> 0 `i
 ]
-[; ;main.h: 32: unsigned char up = 0;
+[; ;main.h: 32: bit right = 0;
 "33
-[v _down `uc ~T0 @X0 1 e ]
+[v _up `b ~T0 @X0 1 e ]
+[i _up
+-> 0 `i
+]
+[; ;main.h: 33: bit up = 0;
+"34
+[v _down `b ~T0 @X0 1 e ]
 [i _down
+-> 0 `i
+]
+[; ;main.h: 34: bit down = 0;
+"35
+[v _reset_flag `b ~T0 @X0 1 e ]
+[i _reset_flag
+-> 0 `i
+]
+[; ;main.h: 35: bit reset_flag = 0;
+"37
+[v _orientation `uc ~T0 @X0 1 e ]
+[i _orientation
+-> -> 3 `i `uc
+]
+[; ;main.h: 37: char orientation = 3;
+"38
+[v _r `uc ~T0 @X0 1 e ]
+[i _r
 -> -> 0 `i `uc
 ]
-[; ;main.h: 33: unsigned char down = 0;
-"34
+[; ;main.h: 38: char r = 0;
+"39
+[v _c `uc ~T0 @X0 1 e ]
+[i _c
+-> -> 0 `i `uc
+]
+[; ;main.h: 39: char c = 0;
+"41
+[v _x `uc ~T0 @X0 1 e ]
+[i _x
+-> -> 1 `i `uc
+]
+[; ;main.h: 41: unsigned char x = 1;
+"42
+[v _y `uc ~T0 @X0 1 e ]
+[i _y
+-> -> 0 `i `uc
+]
+[; ;main.h: 42: unsigned char y = 0;
+"43
 [v _x_origin `uc ~T0 @X0 1 e ]
 [i _x_origin
 -> -> 0 `i `uc
 ]
-[; ;main.h: 34: unsigned char x_origin = 0;
-"35
+[; ;main.h: 43: unsigned char x_origin = 0;
+"44
 [v _y_origin `uc ~T0 @X0 1 e ]
 [i _y_origin
 -> -> 0 `i `uc
 ]
-[; ;main.h: 35: unsigned char y_origin = 0;
-"36
+[; ;main.h: 44: unsigned char y_origin = 0;
+"45
 [v _x_path `uc ~T0 @X0 1 e ]
 [i _x_path
 -> -> 0 `i `uc
 ]
-[; ;main.h: 36: unsigned char x_path = 0;
-"37
+[; ;main.h: 45: unsigned char x_path = 0;
+"46
 [v _y_path `uc ~T0 @X0 1 e ]
 [i _y_path
 -> -> 0 `i `uc
 ]
-[; ;main.h: 37: unsigned char y_path = 0;
-"38
+[; ;main.h: 46: unsigned char y_path = 0;
+"47
 [v _x_target `uc ~T0 @X0 1 e ]
 [i _x_target
 -> -> 0 `i `uc
 ]
-[; ;main.h: 38: unsigned char x_target = 0;
-"39
+[; ;main.h: 47: unsigned char x_target = 0;
+"48
 [v _y_target `uc ~T0 @X0 1 e ]
 [i _y_target
 -> -> 0 `i `uc
 ]
-[; ;main.h: 39: unsigned char y_target = 0;
-"40
+[; ;main.h: 48: unsigned char y_target = 0;
+"49
 [v _x_int `uc ~T0 @X0 1 e ]
 [i _x_int
 -> -> 0 `i `uc
 ]
-[; ;main.h: 40: unsigned char x_int = 0;
-"41
+[; ;main.h: 49: unsigned char x_int = 0;
+"50
 [v _y_int `uc ~T0 @X0 1 e ]
 [i _y_int
 -> -> 0 `i `uc
 ]
-[; ;main.h: 41: unsigned char y_int = 0;
-"43
+[; ;main.h: 50: unsigned char y_int = 0;
+"51
 [v _orientation_path `uc ~T0 @X0 1 e ]
 [i _orientation_path
 -> -> 0 `i `uc
 ]
-[; ;main.h: 43: unsigned char orientation_path = 0;
-"46
+[; ;main.h: 51: unsigned char orientation_path = 0;
+"53
 [v _pathCount `uc ~T0 @X0 1 e ]
 [i _pathCount
 -> -> 0 `i `uc
 ]
-[; ;main.h: 46: unsigned char pathCount = 0;
-"47
+[; ;main.h: 53: unsigned char pathCount = 0;
+"54
 [v _pathCountShortest `uc ~T0 @X0 1 e ]
 [i _pathCountShortest
 -> -> 20 `i `uc
 ]
-[; ;main.h: 47: unsigned char pathCountShortest = 20;
-"49
-[v _x_test `uc ~T0 @X0 1 e ]
-[i _x_test
--> -> 0 `i `uc
-]
-[; ;main.h: 49: unsigned char x_test = 0;
-"50
-[v _y_test `uc ~T0 @X0 1 e ]
-[i _y_test
--> -> 0 `i `uc
-]
-[; ;main.h: 50: unsigned char y_test = 0;
-"51
+[; ;main.h: 54: unsigned char pathCountShortest = 20;
+"56
 [v _intersection_Orientation `uc ~T0 @X0 1 e ]
 [i _intersection_Orientation
 -> -> 0 `i `uc
 ]
-[; ;main.h: 51: unsigned char intersection_Orientation = 0;
-[v F1118 `Vuc ~T0 @X0 -> 16 `i t ]
-"53
-[v _path `F1118 ~T0 @X0 -> 3 `i e ]
-[; ;main.h: 53: volatile char path[3][16];
-[v F1120 `Vuc ~T0 @X0 -> 16 `i t ]
-"54
-[v _shortest_path `F1120 ~T0 @X0 -> 3 `i e ]
-[; ;main.h: 54: volatile char shortest_path[3][16];
-[v F1122 `Vuc ~T0 @X0 -> 5 `i t ]
-"55
-[v _mazeGrid `F1122 ~T0 @X0 -> 4 `i e ]
-[; ;main.h: 55: volatile char mazeGrid[4][5];
-[v F1124 `Vuc ~T0 @X0 -> 5 `i t ]
-"56
-[v _mazeGridDefault `F1124 ~T0 @X0 -> 4 `i e ]
-[; ;main.h: 56: volatile char mazeGridDefault[4][5];
-"53
+[; ;main.h: 56: unsigned char intersection_Orientation = 0;
+[v F1122 `Vuc ~T0 @X0 -> 16 `i t ]
+"58
+[v _path `F1122 ~T0 @X0 -> 2 `i e ]
+[; ;main.h: 58: volatile char path[2][16];
+[v F1124 `Vuc ~T0 @X0 -> 16 `i t ]
+"59
+[v _shortest_path `F1124 ~T0 @X0 -> 2 `i e ]
+[; ;main.h: 59: volatile char shortest_path[2][16];
+[v F1126 `Vuc ~T0 @X0 -> 5 `i t ]
+"60
+[v _mazeGrid `F1126 ~T0 @X0 -> 4 `i e ]
+[; ;main.h: 60: volatile char mazeGrid[4][5];
+[v F1128 `Vuc ~T0 @X0 -> 5 `i t ]
+"61
+[v _mazeGridDefault `F1128 ~T0 @X0 -> 4 `i e ]
+[; ;main.h: 61: volatile char mazeGridDefault[4][5];
+"58
 [i _path
 :U ..
 :U ..
-"60
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 2 `i `uc
--> -> 3 `i `uc
--> -> 4 `i `uc
--> -> 5 `i `uc
--> -> 6 `i `uc
--> -> 7 `i `uc
--> -> 8 `i `uc
--> -> 9 `i `uc
--> -> 10 `i `uc
--> -> 11 `i `uc
--> -> 12 `i `uc
--> -> 13 `i `uc
--> -> 14 `i `uc
--> -> 15 `i `uc
-..
-:U ..
-"61
+"65
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1246,57 +1251,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 ..
-:U ..
-"62
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-..
-]
-[; ;main.h: 59: volatile char path[3][16] = {
-[; ;main.h: 60: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
-[; ;main.h: 61: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-[; ;main.h: 62: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-[; ;main.h: 63: };
-"54
-[i _shortest_path
-:U ..
 :U ..
 "66
 -> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 2 `i `uc
--> -> 3 `i `uc
--> -> 4 `i `uc
--> -> 5 `i `uc
--> -> 6 `i `uc
--> -> 7 `i `uc
--> -> 8 `i `uc
--> -> 9 `i `uc
--> -> 10 `i `uc
--> -> 11 `i `uc
--> -> 12 `i `uc
--> -> 13 `i `uc
--> -> 14 `i `uc
--> -> 15 `i `uc
-..
-:U ..
-"67
--> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1313,8 +1270,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 ..
+..
+]
+[; ;main.h: 64: volatile char path[2][16] = {
+[; ;main.h: 65: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+[; ;main.h: 66: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+[; ;main.h: 67: };
+"59
+[i _shortest_path
 :U ..
-"68
+:U ..
+"70
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"71
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1334,16 +1319,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.h: 65: volatile char shortest_path[3][16] = {
-[; ;main.h: 66: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
-[; ;main.h: 67: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-[; ;main.h: 68: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-[; ;main.h: 69: };
-"55
+[; ;main.h: 69: volatile char shortest_path[2][16] = {
+[; ;main.h: 70: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+[; ;main.h: 71: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+[; ;main.h: 72: };
+"60
 [i _mazeGrid
 :U ..
 :U ..
-"73
+"76
 -> -> 12 `i `uc
 -> -> 7 `i `uc
 -> -> 14 `i `uc
@@ -1351,7 +1335,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 6 `i `uc
 ..
 :U ..
-"74
+"77
 -> -> 9 `i `uc
 -> -> 5 `i `uc
 -> -> 0 `i `uc
@@ -1359,7 +1343,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 2 `i `uc
 ..
 :U ..
-"75
+"78
 -> -> 12 `i `uc
 -> -> 6 `i `uc
 -> -> 10 `i `uc
@@ -1367,7 +1351,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 10 `i `uc
 ..
 :U ..
-"76
+"79
 -> -> 11 `i `uc
 -> -> 9 `i `uc
 -> -> 1 `i `uc
@@ -1376,17 +1360,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.h: 72: volatile char mazeGrid[4][5] = {
-[; ;main.h: 73: {12,7,14,13,6},
-[; ;main.h: 74: {9,5,0,5,2},
-[; ;main.h: 75: {12,6,10,14,10},
-[; ;main.h: 76: {11,9,1,1,3}
-[; ;main.h: 77: };
-"56
+[; ;main.h: 75: volatile char mazeGrid[4][5] = {
+[; ;main.h: 76: {12,7,14,13,6},
+[; ;main.h: 77: {9,5,0,5,2},
+[; ;main.h: 78: {12,6,10,14,10},
+[; ;main.h: 79: {11,9,1,1,3}
+[; ;main.h: 80: };
+"61
 [i _mazeGridDefault
 :U ..
 :U ..
-"80
+"83
 -> -> 12 `i `uc
 -> -> 7 `i `uc
 -> -> 14 `i `uc
@@ -1394,7 +1378,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 6 `i `uc
 ..
 :U ..
-"81
+"84
 -> -> 9 `i `uc
 -> -> 5 `i `uc
 -> -> 0 `i `uc
@@ -1402,7 +1386,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 2 `i `uc
 ..
 :U ..
-"82
+"85
 -> -> 12 `i `uc
 -> -> 6 `i `uc
 -> -> 10 `i `uc
@@ -1410,7 +1394,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 10 `i `uc
 ..
 :U ..
-"83
+"86
 -> -> 11 `i `uc
 -> -> 9 `i `uc
 -> -> 1 `i `uc
@@ -1419,19 +1403,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.h: 79: volatile char mazeGridDefault[4][5] = {
-[; ;main.h: 80: {12,7,14,13,6},
-[; ;main.h: 81: {9,5,0,5,2},
-[; ;main.h: 82: {12,6,10,14,10},
-[; ;main.h: 83: {11,9,1,1,3}
-[; ;main.h: 84: };
-[v F1130 `Vuc ~T0 @X0 -> 16 `i t ]
-"87
-[v _squareWalls `F1130 ~T0 @X0 -> 5 `i e ]
+[; ;main.h: 82: volatile char mazeGridDefault[4][5] = {
+[; ;main.h: 83: {12,7,14,13,6},
+[; ;main.h: 84: {9,5,0,5,2},
+[; ;main.h: 85: {12,6,10,14,10},
+[; ;main.h: 86: {11,9,1,1,3}
+[; ;main.h: 87: };
+[v F1134 `Vuc ~T0 @X0 -> 16 `i t ]
+"90
+[v _squareWalls `F1134 ~T0 @X0 -> 5 `i e ]
 [i _squareWalls
 :U ..
 :U ..
-"88
+"91
 -> -> 0 `i `uc
 -> -> 1 `i `uc
 -> -> 2 `i `uc
@@ -1448,67 +1432,67 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 13 `i `uc
 -> -> 14 `i `uc
 -> -> 15 `i `uc
-..
-:U ..
-"89
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-:U ..
-"90
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-:U ..
-"91
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
 ..
 :U ..
 "92
 -> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+"93
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+"94
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+"95
+-> -> 0 `i `uc
 -> -> 1 `i `uc
 -> -> 0 `i `uc
 -> -> 1 `i `uc
@@ -1527,13 +1511,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.h: 87: volatile char squareWalls[5][16] = {
-[; ;main.h: 88: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
-[; ;main.h: 89: {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
-[; ;main.h: 90: {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
-[; ;main.h: 91: {0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
-[; ;main.h: 92: {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1}
-[; ;main.h: 93: };
+[; ;main.h: 90: volatile char squareWalls[5][16] = {
+[; ;main.h: 91: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
+[; ;main.h: 92: {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
+[; ;main.h: 93: {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
+[; ;main.h: 94: {0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
+[; ;main.h: 95: {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1}
+[; ;main.h: 96: };
 [; ;motor.h: 11: void setCW();
 [; ;motor.h: 12: void setCCW();
 [; ;LCD.h: 18: void lcdWriteStepCount(unsigned char stepCountLCD);
@@ -1621,297 +1605,255 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ser.h: 33: void Drive(unsigned char speedH, unsigned char speedL, unsigned char radH, unsigned char radL);
 [; ;ser.h: 35: void DriveDirect(signed int VelocityRight, signed int VelocityLeft);
 [; ;ser.h: 38: signed int getSensorData(unsigned char packetID, unsigned char bytes);
-"8 main.c
-[v _a `uc ~T0 @X0 1 e ]
-[i _a
--> -> 1 `i `uc
-]
-[; ;main.c: 8: char a = 1;
-"9
-[v _reset_flag `uc ~T0 @X0 1 e ]
-[i _reset_flag
--> -> 0 `i `uc
-]
-[; ;main.c: 9: char reset_flag = 0;
-"11
-[v _x `uc ~T0 @X0 1 e ]
-[i _x
--> -> 1 `i `uc
-]
-[; ;main.c: 11: char x = 1;
-"12
-[v _y `uc ~T0 @X0 1 e ]
-[i _y
--> -> 0 `i `uc
-]
-[; ;main.c: 12: char y = 0;
-"14
-[v _intFound `uc ~T0 @X0 1 e ]
-[i _intFound
--> -> 0 `i `uc
-]
-[; ;main.c: 14: char intFound = 0;
-"18
-[v _orientation `uc ~T0 @X0 1 e ]
-[i _orientation
--> -> 3 `i `uc
-]
-[; ;main.c: 18: char orientation = 3;
-"20
+"10 main.c
 [v _distance `i ~T0 @X0 1 e ]
 [i _distance
 -> 0 `i
 ]
-[; ;main.c: 20: signed int distance = 0;
-"21
+[; ;main.c: 10: signed int distance = 0;
+"11
 [v _angle `i ~T0 @X0 1 e ]
 [i _angle
 -> 0 `i
 ]
-[; ;main.c: 21: signed int angle = 0;
-"23
-[v _r `uc ~T0 @X0 1 e ]
-[i _r
--> -> 0 `i `uc
-]
-[; ;main.c: 23: char r = 0;
-"24
-[v _c `uc ~T0 @X0 1 e ]
-[i _c
--> -> 0 `i `uc
-]
-[; ;main.c: 24: char c = 0;
-"26
+[; ;main.c: 11: signed int angle = 0;
+"15
 [v _Drive1m `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 26: void Drive1m(void){
+[; ;main.c: 15: void Drive1m(void){
 [e :U _Drive1m ]
 [f ]
-[; ;main.c: 30: switch(orientation){
-"30
+[; ;main.c: 19: switch(orientation){
+"19
 [e $U 98  ]
 {
-[; ;main.c: 31: case 0: y--;
-"31
+[; ;main.c: 20: case 0: y--;
+"20
 [e :U 99 ]
 [e -- _y -> -> 1 `i `uc ]
-[; ;main.c: 32: break;
-"32
+[; ;main.c: 21: break;
+"21
 [e $U 97  ]
-[; ;main.c: 33: case 1: x++;
-"33
+[; ;main.c: 22: case 1: x++;
+"22
 [e :U 100 ]
 [e ++ _x -> -> 1 `i `uc ]
-[; ;main.c: 34: break;
-"34
+[; ;main.c: 23: break;
+"23
 [e $U 97  ]
-[; ;main.c: 35: case 2: y++;
-"35
+[; ;main.c: 24: case 2: y++;
+"24
 [e :U 101 ]
 [e ++ _y -> -> 1 `i `uc ]
-[; ;main.c: 36: break;
-"36
+[; ;main.c: 25: break;
+"25
 [e $U 97  ]
-[; ;main.c: 37: case 3: x--;
-"37
+[; ;main.c: 26: case 3: x--;
+"26
 [e :U 102 ]
 [e -- _x -> -> 1 `i `uc ]
-[; ;main.c: 38: break;
-"38
+[; ;main.c: 27: break;
+"27
 [e $U 97  ]
-"39
+"28
 }
-[; ;main.c: 39: }
+[; ;main.c: 28: }
 [e $U 97  ]
-"30
+"19
 [e :U 98 ]
 [e [\ _orientation , $ -> -> 0 `i `uc 99
  , $ -> -> 1 `i `uc 100
  , $ -> -> 2 `i `uc 101
  , $ -> -> 3 `i `uc 102
  97 ]
-"39
+"28
 [e :U 97 ]
-[; ;main.c: 41: distance = 0;
-"41
+[; ;main.c: 30: distance = 0;
+"30
 [e = _distance -> 0 `i ]
-[; ;main.c: 42: DriveDirect(250,250);
-"42
+[; ;main.c: 31: DriveDirect(250,250);
+"31
 [e ( _DriveDirect (2 , -> 250 `i -> 250 `i ]
-[; ;main.c: 43: while (distance < 1000){
-"43
+[; ;main.c: 32: while (distance < 1000){
+"32
 [e $U 103  ]
 [e :U 104 ]
 {
-[; ;main.c: 44: distance = distance + getSensorData(19,2);
-"44
+[; ;main.c: 33: distance = distance + getSensorData(19,2);
+"33
 [e = _distance + _distance ( _getSensorData (2 , -> -> 19 `i `uc -> -> 2 `i `uc ]
-"45
+"34
 }
 [e :U 103 ]
-"43
+"32
 [e $ < _distance -> 1000 `i 104  ]
 [e :U 105 ]
-[; ;main.c: 45: }
-[; ;main.c: 46: }
-"46
+[; ;main.c: 34: }
+[; ;main.c: 35: }
+"35
 [e :UE 96 ]
 }
-"49
+"38
 [v _Turn90 `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 49: void Turn90(char direction){
+[; ;main.c: 38: void Turn90(char direction){
 [e :U _Turn90 ]
 [v _direction `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;main.c: 50: angle = 0;
-"50
+[; ;main.c: 39: angle = 0;
+"39
 [e = _angle -> 0 `i ]
-[; ;main.c: 51: if (direction == 1){
-"51
+[; ;main.c: 40: if (direction == 1){
+"40
 [e $ ! == -> _direction `i -> 1 `i 107  ]
 {
-[; ;main.c: 53: if (orientation == 0)
-"53
+[; ;main.c: 42: if (orientation == 0)
+"42
 [e $ ! == -> _orientation `i -> 0 `i 108  ]
-[; ;main.c: 54: orientation = 3;
-"54
+[; ;main.c: 43: orientation = 3;
+"43
 [e = _orientation -> -> 3 `i `uc ]
 [e $U 109  ]
-"55
+"44
 [e :U 108 ]
-[; ;main.c: 55: else orientation--;
+[; ;main.c: 44: else orientation--;
 [e -- _orientation -> -> 1 `i `uc ]
 [e :U 109 ]
-[; ;main.c: 57: DriveDirect(150,0);
-"57
+[; ;main.c: 46: DriveDirect(150,0);
+"46
 [e ( _DriveDirect (2 , -> 150 `i -> 0 `i ]
-[; ;main.c: 58: while (angle < 90){
-"58
+[; ;main.c: 47: while (angle < 90){
+"47
 [e $U 110  ]
 [e :U 111 ]
 {
-[; ;main.c: 59: angle = angle + getSensorData(20,2);
-"59
+[; ;main.c: 48: angle = angle + getSensorData(20,2);
+"48
 [e = _angle + _angle ( _getSensorData (2 , -> -> 20 `i `uc -> -> 2 `i `uc ]
-"60
+"49
 }
 [e :U 110 ]
-"58
+"47
 [e $ < _angle -> 90 `i 111  ]
 [e :U 112 ]
-"61
+"50
 }
 [e :U 107 ]
-[; ;main.c: 60: }
-[; ;main.c: 61: }
-[; ;main.c: 63: if (direction == 0){
-"63
+[; ;main.c: 49: }
+[; ;main.c: 50: }
+[; ;main.c: 52: if (direction == 0){
+"52
 [e $ ! == -> _direction `i -> 0 `i 113  ]
 {
-[; ;main.c: 65: if (orientation == 3)
-"65
+[; ;main.c: 54: if (orientation == 3)
+"54
 [e $ ! == -> _orientation `i -> 3 `i 114  ]
-[; ;main.c: 66: orientation = 0;
-"66
+[; ;main.c: 55: orientation = 0;
+"55
 [e = _orientation -> -> 0 `i `uc ]
 [e $U 115  ]
-"67
+"56
 [e :U 114 ]
-[; ;main.c: 67: else orientation++;
+[; ;main.c: 56: else orientation++;
 [e ++ _orientation -> -> 1 `i `uc ]
 [e :U 115 ]
-[; ;main.c: 69: DriveDirect(0,150);
-"69
+[; ;main.c: 58: DriveDirect(0,150);
+"58
 [e ( _DriveDirect (2 , -> 0 `i -> 150 `i ]
-[; ;main.c: 70: while (angle > -90){
-"70
+[; ;main.c: 59: while (angle > -90){
+"59
 [e $U 116  ]
 [e :U 117 ]
 {
-[; ;main.c: 71: angle = angle + getSensorData(20,2);
-"71
+[; ;main.c: 60: angle = angle + getSensorData(20,2);
+"60
 [e = _angle + _angle ( _getSensorData (2 , -> -> 20 `i `uc -> -> 2 `i `uc ]
-"72
+"61
 }
 [e :U 116 ]
-"70
+"59
 [e $ > _angle -U -> 90 `i 117  ]
 [e :U 118 ]
-"73
+"62
 }
 [e :U 113 ]
-[; ;main.c: 72: }
-[; ;main.c: 73: }
-[; ;main.c: 74: }
-"74
+[; ;main.c: 61: }
+[; ;main.c: 62: }
+[; ;main.c: 63: }
+"63
 [e :UE 106 ]
 }
-"76
+"65
 [v _PathTo `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;main.c: 76: void PathTo(char x_target, char y_target){
+[; ;main.c: 65: void PathTo(char x_target, char y_target){
 [e :U _PathTo ]
 [v _x_target `uc ~T0 @X0 1 r1 ]
 [v _y_target `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;main.c: 80: for (r = 0; r <= 3; r++){
-"80
+[; ;main.c: 69: for (r = 0; r <= 3; r++){
+"69
 {
 [e = _r -> -> 0 `i `uc ]
 [e $ <= -> _r `i -> 3 `i 120  ]
 [e $U 121  ]
 [e :U 120 ]
 {
-[; ;main.c: 81: for (c = 0; c <= 4; c++){
-"81
+[; ;main.c: 70: for (c = 0; c <= 4; c++){
+"70
 {
 [e = _c -> -> 0 `i `uc ]
 [e $ <= -> _c `i -> 4 `i 123  ]
 [e $U 124  ]
 [e :U 123 ]
 {
-[; ;main.c: 82: mazeGrid[r][c] = mazeGridDefault[r][c];
-"82
+[; ;main.c: 71: mazeGrid[r][c] = mazeGridDefault[r][c];
+"71
 [e = *U + &U *U + &U _mazeGrid * -> _r `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _mazeGrid * -> _r `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux *U + &U *U + &U _mazeGridDefault * -> _r `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _r `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux ]
-"83
+"72
 }
-"81
+"70
 [e ++ _c -> -> 1 `i `uc ]
 [e $ <= -> _c `i -> 4 `i 123  ]
 [e :U 124 ]
-"83
+"72
 }
-"84
+"73
 }
-"80
+"69
 [e ++ _r -> -> 1 `i `uc ]
 [e $ <= -> _r `i -> 3 `i 120  ]
 [e :U 121 ]
-"84
+"73
 }
-[; ;main.c: 83: }
-[; ;main.c: 84: }
-[; ;main.c: 86: x_origin = x;
-"86
+[; ;main.c: 72: }
+[; ;main.c: 73: }
+[; ;main.c: 75: x_origin = x;
+"75
 [e = _x_origin _x ]
-[; ;main.c: 87: y_origin = y;
-"87
+[; ;main.c: 76: y_origin = y;
+"76
 [e = _y_origin _y ]
-[; ;main.c: 88: x_path = x;
-"88
+[; ;main.c: 77: x_path = x;
+"77
 [e = _x_path _x ]
-[; ;main.c: 89: y_path = y;
-"89
+[; ;main.c: 78: y_path = y;
+"78
 [e = _y_path _y ]
-[; ;main.c: 90: orientation_path = orientation;
-"90
+[; ;main.c: 79: orientation_path = orientation;
+"79
 [e = _orientation_path _orientation ]
-[; ;main.c: 91: pathCount = 0;
-"91
+[; ;main.c: 80: pathCount = 0;
+"80
 [e = _pathCount -> -> 0 `i `uc ]
-[; ;main.c: 93: for (int loop = 0; loop <= 1000; loop++){
-"93
+[; ;main.c: 82: lcdSetCursor(0b10000000);
+"82
+[e ( _lcdSetCursor (1 -> -> 128 `i `uc ]
+[; ;main.c: 83: lcdWriteString("Working...");
+"83
+[e ( _lcdWriteString (1 -> :s 1C `*uc ]
+[; ;main.c: 85: for (int loop = 0; loop <= 1000; loop++){
+"85
 {
 [v _loop `i ~T0 @X0 1 a ]
 [e = _loop -> 0 `i ]
@@ -1919,634 +1861,622 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 127  ]
 [e :U 126 ]
 {
-[; ;main.c: 95: reset_flag = 0;
+[; ;main.c: 87: reset_flag = 0;
+"87
+[e = _reset_flag -> -> 0 `i `b ]
+[; ;main.c: 89: path[0][pathCount] = x_path;
+"89
+[e = *U + &U *U + &U _path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _x_path ]
+[; ;main.c: 90: path[1][pathCount] = y_path;
+"90
+[e = *U + &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _y_path ]
+[; ;main.c: 94: left = squareWalls[1][(mazeGrid[y_path][x_path])];
+"94
+[e = _left -> *U + &U *U + &U _squareWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _squareWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
+[; ;main.c: 95: up = squareWalls[2][(mazeGrid[y_path][x_path])];
 "95
-[e = _reset_flag -> -> 0 `i `uc ]
-[; ;main.c: 97: path[1][pathCount] = x_path;
+[e = _up -> *U + &U *U + &U _squareWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _squareWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
+[; ;main.c: 96: right = squareWalls[3][(mazeGrid[y_path][x_path])];
+"96
+[e = _right -> *U + &U *U + &U _squareWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _squareWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
+[; ;main.c: 97: down = squareWalls[4][(mazeGrid[y_path][x_path])];
 "97
-[e = *U + &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _x_path ]
-[; ;main.c: 98: path[2][pathCount] = y_path;
-"98
-[e = *U + &U *U + &U _path * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _y_path ]
-[; ;main.c: 102: lcdWriteControl(0b00000001);
-"102
-[e ( _lcdWriteControl (1 -> -> 1 `i `uc ]
-[; ;main.c: 103: lcdSetCursor(0b10001110);
-"103
-[e ( _lcdSetCursor (1 -> -> 142 `i `uc ]
-[; ;main.c: 104: lcdWriteToDigitBCD(loop);
-"104
-[e ( _lcdWriteToDigitBCD (1 -> _loop `ui ]
-[; ;main.c: 128: left = squareWalls[1][(mazeGrid[y_path][x_path])];
-"128
-[e = _left *U + &U *U + &U _squareWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _squareWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux `ui `ux ]
-[; ;main.c: 129: up = squareWalls[2][(mazeGrid[y_path][x_path])];
-"129
-[e = _up *U + &U *U + &U _squareWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _squareWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux `ui `ux ]
-[; ;main.c: 130: right = squareWalls[3][(mazeGrid[y_path][x_path])];
-"130
-[e = _right *U + &U *U + &U _squareWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _squareWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux `ui `ux ]
-[; ;main.c: 131: down = squareWalls[4][(mazeGrid[y_path][x_path])];
-"131
-[e = _down *U + &U *U + &U _squareWalls * -> -> -> 4 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _squareWalls * -> -> -> 4 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux `ui `ux ]
-[; ;main.c: 134: switch(orientation_path){
-"134
+[e = _down -> *U + &U *U + &U _squareWalls * -> -> -> 4 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _squareWalls * -> -> -> 4 `i `ui `ux -> * -> # *U &U *U &U _squareWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
+[; ;main.c: 100: switch(orientation_path){
+"100
 [e $U 130  ]
 {
-[; ;main.c: 135: case 0: down = 1;
-"135
+[; ;main.c: 101: case 0: down = 1;
+"101
 [e :U 131 ]
-[e = _down -> -> 1 `i `uc ]
-[; ;main.c: 136: break;
-"136
+[e = _down -> -> 1 `i `b ]
+[; ;main.c: 102: break;
+"102
 [e $U 129  ]
-[; ;main.c: 137: case 1: left = 1;
-"137
+[; ;main.c: 103: case 1: left = 1;
+"103
 [e :U 132 ]
-[e = _left -> -> 1 `i `uc ]
-[; ;main.c: 138: break;
-"138
+[e = _left -> -> 1 `i `b ]
+[; ;main.c: 104: break;
+"104
 [e $U 129  ]
-[; ;main.c: 139: case 2: up = 1;
-"139
+[; ;main.c: 105: case 2: up = 1;
+"105
 [e :U 133 ]
-[e = _up -> -> 1 `i `uc ]
-[; ;main.c: 140: break;
-"140
+[e = _up -> -> 1 `i `b ]
+[; ;main.c: 106: break;
+"106
 [e $U 129  ]
-[; ;main.c: 141: case 3: right = 1;
-"141
+[; ;main.c: 107: case 3: right = 1;
+"107
 [e :U 134 ]
-[e = _right -> -> 1 `i `uc ]
-[; ;main.c: 142: break;
-"142
+[e = _right -> -> 1 `i `b ]
+[; ;main.c: 108: break;
+"108
 [e $U 129  ]
-"143
+"109
 }
-[; ;main.c: 143: }
+[; ;main.c: 109: }
 [e $U 129  ]
-"134
+"100
 [e :U 130 ]
 [e [\ _orientation_path , $ -> -> 0 `i `uc 131
  , $ -> -> 1 `i `uc 132
  , $ -> -> 2 `i `uc 133
  , $ -> -> 3 `i `uc 134
  129 ]
-"143
+"109
 [e :U 129 ]
-"146
+"112
 [v _sum `uc ~T0 @X0 1 a ]
-[; ;main.c: 146: char sum = (left + up + down + right);
+[; ;main.c: 112: char sum = (left + up + down + right);
 [e = _sum -> + + + -> _left `i -> _up `i -> _down `i -> _right `i `uc ]
-[; ;main.c: 147: if(sum <= 2){
-"147
+[; ;main.c: 113: if(sum <= 2){
+"113
 [e $ ! <= -> _sum `i -> 2 `i 135  ]
 {
-[; ;main.c: 148: x_int = x_path;
-"148
+[; ;main.c: 114: x_int = x_path;
+"114
 [e = _x_int _x_path ]
-[; ;main.c: 149: y_int = y_path;
-"149
+[; ;main.c: 115: y_int = y_path;
+"115
 [e = _y_int _y_path ]
-[; ;main.c: 151: if (left == 0)
-"151
+[; ;main.c: 117: if (left == 0)
+"117
 [e $ ! == -> _left `i -> 0 `i 136  ]
-[; ;main.c: 152: intersection_Orientation = 3;
-"152
+[; ;main.c: 118: intersection_Orientation = 3;
+"118
 [e = _intersection_Orientation -> -> 3 `i `uc ]
 [e $U 137  ]
-"153
+"119
 [e :U 136 ]
-[; ;main.c: 153: else if (up == 0)
+[; ;main.c: 119: else if (up == 0)
 [e $ ! == -> _up `i -> 0 `i 138  ]
-[; ;main.c: 154: intersection_Orientation = 0;
-"154
+[; ;main.c: 120: intersection_Orientation = 0;
+"120
 [e = _intersection_Orientation -> -> 0 `i `uc ]
 [e $U 139  ]
-"155
+"121
 [e :U 138 ]
-[; ;main.c: 155: else if (right == 0)
+[; ;main.c: 121: else if (right == 0)
 [e $ ! == -> _right `i -> 0 `i 140  ]
-[; ;main.c: 156: intersection_Orientation = 1;
-"156
+[; ;main.c: 122: intersection_Orientation = 1;
+"122
 [e = _intersection_Orientation -> -> 1 `i `uc ]
 [e $U 141  ]
-"157
+"123
 [e :U 140 ]
-[; ;main.c: 157: else if (down == 0)
+[; ;main.c: 123: else if (down == 0)
 [e $ ! == -> _down `i -> 0 `i 142  ]
-[; ;main.c: 158: intersection_Orientation = 2;
-"158
+[; ;main.c: 124: intersection_Orientation = 2;
+"124
 [e = _intersection_Orientation -> -> 2 `i `uc ]
 [e :U 142 ]
-"159
+"125
 [e :U 141 ]
 [e :U 139 ]
 [e :U 137 ]
 }
 [e :U 135 ]
-[; ;main.c: 159: }
-[; ;main.c: 166: if ((x_path == x_target) && (y_path == y_target)){
-"166
+[; ;main.c: 125: }
+[; ;main.c: 132: if ((x_path == x_target) && (y_path == y_target)){
+"132
 [e $ ! && == -> _x_path `i -> _x_target `i == -> _y_path `i -> _y_target `i 143  ]
 {
-[; ;main.c: 176: if(pathCount < pathCountShortest){
-"176
+[; ;main.c: 134: if(pathCount < pathCountShortest){
+"134
 [e $ ! < -> _pathCount `i -> _pathCountShortest `i 144  ]
 {
-[; ;main.c: 177: pathCountShortest = pathCount;
-"177
+[; ;main.c: 135: pathCountShortest = pathCount;
+"135
 [e = _pathCountShortest _pathCount ]
-[; ;main.c: 178: for (r = 1; r <= 2; r++){
-"178
+[; ;main.c: 136: for (r = 0; r <= 1; r++){
+"136
 {
-[e = _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 2 `i 145  ]
+[e = _r -> -> 0 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 145  ]
 [e $U 146  ]
 [e :U 145 ]
 {
-[; ;main.c: 179: for (c = 0; c <= 15; c++){
-"179
+[; ;main.c: 137: for (c = 0; c <= 15; c++){
+"137
 {
 [e = _c -> -> 0 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 148  ]
 [e $U 149  ]
 [e :U 148 ]
 {
-[; ;main.c: 180: shortest_path[r][c] = path[r][c];
-"180
+[; ;main.c: 138: shortest_path[r][c] = path[r][c];
+"138
 [e = *U + &U *U + &U _shortest_path * -> _r `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _shortest_path * -> _r `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux `ui `ux *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux ]
-"181
+"139
 }
-"179
+"137
 [e ++ _c -> -> 1 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 148  ]
 [e :U 149 ]
-"181
+"139
 }
-"182
+"140
 }
-"178
+"136
 [e ++ _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 2 `i 145  ]
+[e $ <= -> _r `i -> 1 `i 145  ]
 [e :U 146 ]
-"182
+"140
 }
-"183
+"141
 }
 [e :U 144 ]
-[; ;main.c: 181: }
-[; ;main.c: 182: }
-[; ;main.c: 183: }
-[; ;main.c: 187: switch(intersection_Orientation){
-"187
+[; ;main.c: 139: }
+[; ;main.c: 140: }
+[; ;main.c: 141: }
+[; ;main.c: 145: switch(intersection_Orientation){
+"145
 [e $U 152  ]
 {
-[; ;main.c: 188: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
-"188
+[; ;main.c: 146: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
+"146
 [e :U 153 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
-[; ;main.c: 189: break;
-"189
+[; ;main.c: 147: break;
+"147
 [e $U 151  ]
-[; ;main.c: 190: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
-"190
+[; ;main.c: 148: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
+"148
 [e :U 154 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
-[; ;main.c: 191: break;
-"191
+[; ;main.c: 149: break;
+"149
 [e $U 151  ]
-[; ;main.c: 192: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
-"192
+[; ;main.c: 150: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
+"150
 [e :U 155 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
-[; ;main.c: 193: break;
-"193
+[; ;main.c: 151: break;
+"151
 [e $U 151  ]
-[; ;main.c: 194: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
-"194
+[; ;main.c: 152: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
+"152
 [e :U 156 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
-[; ;main.c: 195: break;
-"195
+[; ;main.c: 153: break;
+"153
 [e $U 151  ]
-"196
+"154
 }
-[; ;main.c: 196: }
+[; ;main.c: 154: }
 [e $U 151  ]
-"187
+"145
 [e :U 152 ]
 [e [\ _intersection_Orientation , $ -> -> 0 `i `uc 153
  , $ -> -> 1 `i `uc 154
  , $ -> -> 2 `i `uc 155
  , $ -> -> 3 `i `uc 156
  151 ]
-"196
+"154
 [e :U 151 ]
-[; ;main.c: 199: x_path = x_origin;
-"199
+[; ;main.c: 157: x_path = x_origin;
+"157
 [e = _x_path _x_origin ]
-[; ;main.c: 200: y_path = y_origin;
-"200
+[; ;main.c: 158: y_path = y_origin;
+"158
 [e = _y_path _y_origin ]
-[; ;main.c: 201: orientation_path = orientation;
-"201
+[; ;main.c: 159: orientation_path = orientation;
+"159
 [e = _orientation_path _orientation ]
-[; ;main.c: 202: pathCount = 0;
-"202
+[; ;main.c: 160: pathCount = 0;
+"160
 [e = _pathCount -> -> 0 `i `uc ]
-[; ;main.c: 203: reset_flag = 1;
-"203
-[e = _reset_flag -> -> 1 `i `uc ]
-[; ;main.c: 205: for (r = 1; r <= 2; r++){
-"205
+[; ;main.c: 161: reset_flag = 1;
+"161
+[e = _reset_flag -> -> 1 `i `b ]
+[; ;main.c: 163: for (r = 0; r <= 1; r++){
+"163
 {
-[e = _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 2 `i 157  ]
+[e = _r -> -> 0 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 157  ]
 [e $U 158  ]
 [e :U 157 ]
 {
-[; ;main.c: 206: for (c = 0; c <= 15; c++){
-"206
+[; ;main.c: 164: for (c = 0; c <= 15; c++){
+"164
 {
 [e = _c -> -> 0 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 160  ]
 [e $U 161  ]
 [e :U 160 ]
 {
-[; ;main.c: 207: path[r][c] = 0;
-"207
+[; ;main.c: 165: path[r][c] = 0;
+"165
 [e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
-"208
+"166
 }
-"206
+"164
 [e ++ _c -> -> 1 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 160  ]
 [e :U 161 ]
-"208
+"166
 }
-"209
+"167
 }
-"205
+"163
 [e ++ _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 2 `i 157  ]
+[e $ <= -> _r `i -> 1 `i 157  ]
 [e :U 158 ]
-"209
+"167
 }
-"210
+"168
 }
 [e :U 143 ]
-[; ;main.c: 208: }
-[; ;main.c: 209: }
-[; ;main.c: 210: }
-[; ;main.c: 215: if((sum == 4) || (pathCount >= 15)){
-"215
+[; ;main.c: 166: }
+[; ;main.c: 167: }
+[; ;main.c: 168: }
+[; ;main.c: 174: if((sum == 4) || (pathCount >= 15)){
+"174
 [e $ ! || == -> _sum `i -> 4 `i >= -> _pathCount `i -> 15 `i 163  ]
 {
-[; ;main.c: 218: switch(intersection_Orientation){
-"218
+[; ;main.c: 177: switch(intersection_Orientation){
+"177
 [e $U 165  ]
 {
-[; ;main.c: 219: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
-"219
+[; ;main.c: 178: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
+"178
 [e :U 166 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
-[; ;main.c: 220: break;
-"220
+[; ;main.c: 179: break;
+"179
 [e $U 164  ]
-[; ;main.c: 221: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
-"221
+[; ;main.c: 180: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
+"180
 [e :U 167 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
-[; ;main.c: 222: break;
-"222
+[; ;main.c: 181: break;
+"181
 [e $U 164  ]
-[; ;main.c: 223: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
-"223
+[; ;main.c: 182: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
+"182
 [e :U 168 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
-[; ;main.c: 224: break;
-"224
+[; ;main.c: 183: break;
+"183
 [e $U 164  ]
-[; ;main.c: 225: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
-"225
+[; ;main.c: 184: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
+"184
 [e :U 169 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
-[; ;main.c: 226: break;
-"226
+[; ;main.c: 185: break;
+"185
 [e $U 164  ]
-"227
+"186
 }
-[; ;main.c: 227: }
+[; ;main.c: 186: }
 [e $U 164  ]
-"218
+"177
 [e :U 165 ]
 [e [\ _intersection_Orientation , $ -> -> 0 `i `uc 166
  , $ -> -> 1 `i `uc 167
  , $ -> -> 2 `i `uc 168
  , $ -> -> 3 `i `uc 169
  164 ]
-"227
+"186
 [e :U 164 ]
-[; ;main.c: 230: x_path = x_origin;
-"230
+[; ;main.c: 189: x_path = x_origin;
+"189
 [e = _x_path _x_origin ]
-[; ;main.c: 231: y_path = y_origin;
-"231
+[; ;main.c: 190: y_path = y_origin;
+"190
 [e = _y_path _y_origin ]
-[; ;main.c: 232: orientation_path = orientation;
-"232
+[; ;main.c: 191: orientation_path = orientation;
+"191
 [e = _orientation_path _orientation ]
-[; ;main.c: 233: pathCount = 0;
-"233
+[; ;main.c: 192: pathCount = 0;
+"192
 [e = _pathCount -> -> 0 `i `uc ]
-[; ;main.c: 234: reset_flag = 1;
-"234
-[e = _reset_flag -> -> 1 `i `uc ]
-[; ;main.c: 236: for (r = 1; r <= 2; r++){
-"236
+[; ;main.c: 193: reset_flag = 1;
+"193
+[e = _reset_flag -> -> 1 `i `b ]
+[; ;main.c: 195: for (r = 0; r <= 1; r++){
+"195
 {
-[e = _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 2 `i 170  ]
+[e = _r -> -> 0 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 170  ]
 [e $U 171  ]
 [e :U 170 ]
 {
-[; ;main.c: 237: for (c = 0; c <= 15; c++){
-"237
+[; ;main.c: 196: for (c = 0; c <= 15; c++){
+"196
 {
 [e = _c -> -> 0 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 173  ]
 [e $U 174  ]
 [e :U 173 ]
 {
-[; ;main.c: 238: path[r][c] = 0;
-"238
+[; ;main.c: 197: path[r][c] = 0;
+"197
 [e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
-"239
+"198
 }
-"237
+"196
 [e ++ _c -> -> 1 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 173  ]
 [e :U 174 ]
-"239
+"198
 }
-"240
+"199
 }
-"236
+"195
 [e ++ _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 2 `i 170  ]
+[e $ <= -> _r `i -> 1 `i 170  ]
 [e :U 171 ]
-"240
+"199
 }
-"241
+"200
 }
 [e :U 163 ]
-[; ;main.c: 239: }
-[; ;main.c: 240: }
-[; ;main.c: 241: }
-[; ;main.c: 246: if (reset_flag != 1){
-"246
+[; ;main.c: 198: }
+[; ;main.c: 199: }
+[; ;main.c: 200: }
+[; ;main.c: 208: if (reset_flag != 1){
+"208
 [e $ ! != -> _reset_flag `i -> 1 `i 176  ]
 {
-[; ;main.c: 248: if(left == 0){
-"248
+[; ;main.c: 210: if(left == 0){
+"210
 [e $ ! == -> _left `i -> 0 `i 177  ]
 {
-[; ;main.c: 249: x_path--;
-"249
+[; ;main.c: 211: x_path--;
+"211
 [e -- _x_path -> -> 1 `i `uc ]
-[; ;main.c: 250: orientation_path = 3;
-"250
+[; ;main.c: 212: orientation_path = 3;
+"212
 [e = _orientation_path -> -> 3 `i `uc ]
-[; ;main.c: 251: pathCount++;
-"251
+[; ;main.c: 213: pathCount++;
+"213
 [e ++ _pathCount -> -> 1 `i `uc ]
-"252
+"214
 }
-[; ;main.c: 252: }
+[; ;main.c: 214: }
 [e $U 178  ]
-"253
+"215
 [e :U 177 ]
-[; ;main.c: 253: else if(up == 0){
+[; ;main.c: 215: else if(up == 0){
 [e $ ! == -> _up `i -> 0 `i 179  ]
 {
-[; ;main.c: 254: y_path--;
-"254
+[; ;main.c: 216: y_path--;
+"216
 [e -- _y_path -> -> 1 `i `uc ]
-[; ;main.c: 255: orientation_path = 0;
-"255
+[; ;main.c: 217: orientation_path = 0;
+"217
 [e = _orientation_path -> -> 0 `i `uc ]
-[; ;main.c: 256: pathCount++;
-"256
+[; ;main.c: 218: pathCount++;
+"218
 [e ++ _pathCount -> -> 1 `i `uc ]
-"257
+"219
 }
-[; ;main.c: 257: }
+[; ;main.c: 219: }
 [e $U 180  ]
-"258
+"220
 [e :U 179 ]
-[; ;main.c: 258: else if(right == 0){
+[; ;main.c: 220: else if(right == 0){
 [e $ ! == -> _right `i -> 0 `i 181  ]
 {
-[; ;main.c: 259: x_path++;
-"259
+[; ;main.c: 221: x_path++;
+"221
 [e ++ _x_path -> -> 1 `i `uc ]
-[; ;main.c: 260: orientation_path = 1;
-"260
+[; ;main.c: 222: orientation_path = 1;
+"222
 [e = _orientation_path -> -> 1 `i `uc ]
-[; ;main.c: 261: pathCount++;
-"261
+[; ;main.c: 223: pathCount++;
+"223
 [e ++ _pathCount -> -> 1 `i `uc ]
-"262
+"224
 }
-[; ;main.c: 262: }
+[; ;main.c: 224: }
 [e $U 182  ]
-"263
+"225
 [e :U 181 ]
-[; ;main.c: 263: else if(down == 0){
+[; ;main.c: 225: else if(down == 0){
 [e $ ! == -> _down `i -> 0 `i 183  ]
 {
-[; ;main.c: 264: y_path++;
-"264
+[; ;main.c: 226: y_path++;
+"226
 [e ++ _y_path -> -> 1 `i `uc ]
-[; ;main.c: 265: orientation_path = 2;
-"265
+[; ;main.c: 227: orientation_path = 2;
+"227
 [e = _orientation_path -> -> 2 `i `uc ]
-[; ;main.c: 266: pathCount++;
-"266
+[; ;main.c: 228: pathCount++;
+"228
 [e ++ _pathCount -> -> 1 `i `uc ]
-"267
+"229
 }
 [e :U 183 ]
-"268
+"230
 [e :U 182 ]
 [e :U 180 ]
 [e :U 178 ]
 }
 [e :U 176 ]
-"269
+"231
 }
-"93
+"85
 [e ++ _loop -> 1 `i ]
 [e $ <= _loop -> 1000 `i 126  ]
 [e :U 127 ]
-"269
+"231
 }
-[; ;main.c: 267: }
-[; ;main.c: 268: }
-[; ;main.c: 269: }
-[; ;main.c: 270: }
-"270
+[; ;main.c: 229: }
+[; ;main.c: 230: }
+[; ;main.c: 231: }
+[; ;main.c: 232: }
+"232
 [e :UE 119 ]
 }
-[v F1207 `(v ~T0 @X0 1 tf ]
-"276
-[v _isr `IF1207 ~T0 @X0 1 e ]
+[v F1203 `(v ~T0 @X0 1 tf ]
+"238
+[v _isr `IF1203 ~T0 @X0 1 e ]
 {
-[; ;main.c: 276: void interrupt isr(void){
+[; ;main.c: 238: void interrupt isr(void){
 [e :U _isr ]
 [f ]
-[; ;main.c: 277: if(TMR0IF){
-"277
+[; ;main.c: 239: if(TMR0IF){
+"239
 [e $ ! _TMR0IF 185  ]
 {
-[; ;main.c: 278: TMR0IF = 0;
-"278
+[; ;main.c: 240: TMR0IF = 0;
+"240
 [e = _TMR0IF -> -> 0 `i `b ]
-[; ;main.c: 279: TMR0 = 100;
-"279
+[; ;main.c: 241: TMR0 = 100;
+"241
 [e = _TMR0 -> -> 100 `i `uc ]
-[; ;main.c: 280: time_count++;
-"280
+[; ;main.c: 242: time_count++;
+"242
 [e ++ _time_count -> -> 1 `i `ui ]
-[; ;main.c: 282: if (!RB0 == 1)
-"282
-[e $ ! == -> ! _RB0 `i -> 1 `i 186  ]
-[; ;main.c: 283: PB8Counter++;
-"283
-[e ++ _PB8Counter -> -> 1 `i `uc ]
-[e :U 186 ]
-"288
+"249
 }
 [e :U 185 ]
-[; ;main.c: 288: }
-[; ;main.c: 289: }
-"289
+[; ;main.c: 249: }
+[; ;main.c: 250: }
+"250
 [e :UE 184 ]
 }
-"292
+"253
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 292: void main(void){
+[; ;main.c: 253: void main(void){
 [e :U _main ]
 [f ]
-[; ;main.c: 294: ser_init();
-"294
+[; ;main.c: 255: ser_init();
+"255
 [e ( _ser_init ..  ]
-[; ;main.c: 295: setupSPI();
-"295
+[; ;main.c: 256: setupSPI();
+"256
 [e ( _setupSPI ..  ]
-[; ;main.c: 296: setupLCD();
-"296
+[; ;main.c: 257: setupLCD();
+"257
 [e ( _setupLCD ..  ]
-[; ;main.c: 297: setupADC();
-"297
+[; ;main.c: 258: setupADC();
+"258
 [e ( _setupADC ..  ]
-[; ;main.c: 298: TRISB = 0b00000000;
-"298
+[; ;main.c: 259: TRISB = 0b00000000;
+"259
 [e = _TRISB -> -> 0 `i `uc ]
-[; ;main.c: 301: x = 1;
-"301
-[e = _x -> -> 1 `i `uc ]
-[; ;main.c: 302: y = 0;
-"302
-[e = _y -> -> 0 `i `uc ]
-[; ;main.c: 303: orientation = 3;
-"303
-[e = _orientation -> -> 3 `i `uc ]
-[; ;main.c: 310: PathTo(0,3);
-"310
-[e ( _PathTo (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 311: _delay((unsigned long)((3000)*(20000000/4000.0)));
-"311
+[; ;main.c: 260: RB0 = 0;
+"260
+[e = _RB0 -> -> 0 `i `b ]
+[; ;main.c: 262: x = 0;
+"262
+[e = _x -> -> 0 `i `uc ]
+[; ;main.c: 263: y = 3;
+"263
+[e = _y -> -> 3 `i `uc ]
+[; ;main.c: 264: orientation = 0;
+"264
+[e = _orientation -> -> 0 `i `uc ]
+[; ;main.c: 271: PathTo(2,0);
+"271
+[e ( _PathTo (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 272: _delay((unsigned long)((3000)*(20000000/4000.0)));
+"272
 [e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 312: lcdWriteControl(0b00000001);
-"312
+[; ;main.c: 274: lcdWriteControl(0b00000001);
+"274
 [e ( _lcdWriteControl (1 -> -> 1 `i `uc ]
-[; ;main.c: 314: lcdSetCursor(0b10000000);
-"314
+[; ;main.c: 275: lcdSetCursor(0b10000000);
+"275
 [e ( _lcdSetCursor (1 -> -> 128 `i `uc ]
-[; ;main.c: 315: lcdWriteString("X:");
-"315
-[e ( _lcdWriteString (1 -> :s 1C `*uc ]
-[; ;main.c: 316: lcdSetCursor(0b11000000);
-"316
-[e ( _lcdSetCursor (1 -> -> 192 `i `uc ]
-[; ;main.c: 317: lcdWriteString("Y:");
-"317
+[; ;main.c: 276: lcdWriteString("X:");
+"276
 [e ( _lcdWriteString (1 -> :s 2C `*uc ]
-[; ;main.c: 319: for (char n = 0; n <= pathCountShortest; n++){
-"319
+[; ;main.c: 277: lcdSetCursor(0b11000000);
+"277
+[e ( _lcdSetCursor (1 -> -> 192 `i `uc ]
+[; ;main.c: 278: lcdWriteString("Y:");
+"278
+[e ( _lcdWriteString (1 -> :s 3C `*uc ]
+[; ;main.c: 280: for (char n = 0; n <= pathCountShortest; n++){
+"280
 {
 [v _n `uc ~T0 @X0 1 a ]
 [e = _n -> -> 0 `i `uc ]
-[e $U 191  ]
-[e :U 188 ]
+[e $U 190  ]
+[e :U 187 ]
 {
-[; ;main.c: 320: lcdSetCursor(0b10000000 + n + 2);
-"320
+[; ;main.c: 281: lcdSetCursor(0b10000000 + n + 2);
+"281
 [e ( _lcdSetCursor (1 -> + + -> 128 `i -> _n `i -> 2 `i `uc ]
-[; ;main.c: 321: lcdWriteData(shortest_path[1][n] + 48);
-"321
-[e ( _lcdWriteData (1 -> + -> *U + &U *U + &U _shortest_path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _shortest_path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux `ui `ux `i -> 48 `i `uc ]
-[; ;main.c: 322: lcdSetCursor(0b11000000 + n + 2);
-"322
+[; ;main.c: 282: lcdWriteData(shortest_path[0][n] + 48);
+"282
+[e ( _lcdWriteData (1 -> + -> *U + &U *U + &U _shortest_path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _shortest_path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux `ui `ux `i -> 48 `i `uc ]
+[; ;main.c: 283: lcdSetCursor(0b11000000 + n + 2);
+"283
 [e ( _lcdSetCursor (1 -> + + -> 192 `i -> _n `i -> 2 `i `uc ]
-[; ;main.c: 323: lcdWriteData(shortest_path[2][n] + 48);
-"323
-[e ( _lcdWriteData (1 -> + -> *U + &U *U + &U _shortest_path * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _shortest_path * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux `ui `ux `i -> 48 `i `uc ]
-"324
+[; ;main.c: 284: lcdWriteData(shortest_path[1][n] + 48);
+"284
+[e ( _lcdWriteData (1 -> + -> *U + &U *U + &U _shortest_path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _shortest_path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _shortest_path `ui -> -> 16 `i `ui `ux `ui `ux `i -> 48 `i `uc ]
+"285
 }
-"319
+"280
 [e ++ _n -> -> 1 `i `uc ]
-[e :U 191 ]
-[e $ <= -> _n `i -> _pathCountShortest `i 188  ]
-[e :U 189 ]
-"324
+[e :U 190 ]
+[e $ <= -> _n `i -> _pathCountShortest `i 187  ]
+[e :U 188 ]
+"285
 }
-[; ;main.c: 324: }
-[; ;main.c: 325: lcdSetCursor(0b10001110);
-"325
+[; ;main.c: 285: }
+[; ;main.c: 286: lcdSetCursor(0b10001110);
+"286
 [e ( _lcdSetCursor (1 -> -> 142 `i `uc ]
-[; ;main.c: 326: lcdWriteToDigitBCD(pathCountShortest);
-"326
+[; ;main.c: 287: lcdWriteToDigitBCD(pathCountShortest);
+"287
 [e ( _lcdWriteToDigitBCD (1 -> _pathCountShortest `ui ]
-[; ;main.c: 328: while(1){
-"328
-[e :U 193 ]
-{
-[; ;main.c: 329: RB0 = 1;
-"329
-[e = _RB0 -> -> 1 `i `b ]
-[; ;main.c: 330: _delay((unsigned long)((500)*(20000000/4000.0)));
-"330
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 331: RB0 = 0;
-"331
-[e = _RB0 -> -> 0 `i `b ]
-[; ;main.c: 332: _delay((unsigned long)((500)*(20000000/4000.0)));
-"332
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"333
-}
+[; ;main.c: 289: while(1){
+"289
 [e :U 192 ]
-"328
-[e $U 193  ]
-[e :U 194 ]
-[; ;main.c: 333: }
-[; ;main.c: 341: }
-"341
-[e :UE 187 ]
+{
+[; ;main.c: 290: RB0 = 1;
+"290
+[e = _RB0 -> -> 1 `i `b ]
+[; ;main.c: 291: _delay((unsigned long)((500)*(20000000/4000.0)));
+"291
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 292: RB0 = 0;
+"292
+[e = _RB0 -> -> 0 `i `b ]
+[; ;main.c: 293: _delay((unsigned long)((500)*(20000000/4000.0)));
+"293
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"294
 }
-[a 2C 89 58 0 ]
-[a 1C 88 58 0 ]
+[e :U 191 ]
+"289
+[e $U 192  ]
+[e :U 193 ]
+[; ;main.c: 294: }
+[; ;main.c: 295: }
+"295
+[e :UE 186 ]
+}
+[a 3C 89 58 0 ]
+[a 2C 88 58 0 ]
+[a 1C 87 111 114 107 105 110 103 46 46 46 0 ]

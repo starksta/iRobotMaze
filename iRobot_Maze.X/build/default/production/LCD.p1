@@ -1066,154 +1066,159 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;main.h: 29: unsigned char lowByte = 0;
-"30
-[v _left `uc ~T0 @X0 1 e ]
-[i _left
--> -> 0 `i `uc
-]
-[; ;main.h: 30: unsigned char left = 0;
 "31
-[v _right `uc ~T0 @X0 1 e ]
-[i _right
--> -> 0 `i `uc
+[v _left `b ~T0 @X0 1 e ]
+[i _left
+-> 0 `i
 ]
-[; ;main.h: 31: unsigned char right = 0;
+[; ;main.h: 31: bit left = 0;
 "32
-[v _up `uc ~T0 @X0 1 e ]
-[i _up
--> -> 0 `i `uc
+[v _right `b ~T0 @X0 1 e ]
+[i _right
+-> 0 `i
 ]
-[; ;main.h: 32: unsigned char up = 0;
+[; ;main.h: 32: bit right = 0;
 "33
-[v _down `uc ~T0 @X0 1 e ]
+[v _up `b ~T0 @X0 1 e ]
+[i _up
+-> 0 `i
+]
+[; ;main.h: 33: bit up = 0;
+"34
+[v _down `b ~T0 @X0 1 e ]
 [i _down
+-> 0 `i
+]
+[; ;main.h: 34: bit down = 0;
+"35
+[v _reset_flag `b ~T0 @X0 1 e ]
+[i _reset_flag
+-> 0 `i
+]
+[; ;main.h: 35: bit reset_flag = 0;
+"37
+[v _orientation `uc ~T0 @X0 1 e ]
+[i _orientation
+-> -> 3 `i `uc
+]
+[; ;main.h: 37: char orientation = 3;
+"38
+[v _r `uc ~T0 @X0 1 e ]
+[i _r
 -> -> 0 `i `uc
 ]
-[; ;main.h: 33: unsigned char down = 0;
-"34
+[; ;main.h: 38: char r = 0;
+"39
+[v _c `uc ~T0 @X0 1 e ]
+[i _c
+-> -> 0 `i `uc
+]
+[; ;main.h: 39: char c = 0;
+"41
+[v _x `uc ~T0 @X0 1 e ]
+[i _x
+-> -> 1 `i `uc
+]
+[; ;main.h: 41: unsigned char x = 1;
+"42
+[v _y `uc ~T0 @X0 1 e ]
+[i _y
+-> -> 0 `i `uc
+]
+[; ;main.h: 42: unsigned char y = 0;
+"43
 [v _x_origin `uc ~T0 @X0 1 e ]
 [i _x_origin
 -> -> 0 `i `uc
 ]
-[; ;main.h: 34: unsigned char x_origin = 0;
-"35
+[; ;main.h: 43: unsigned char x_origin = 0;
+"44
 [v _y_origin `uc ~T0 @X0 1 e ]
 [i _y_origin
 -> -> 0 `i `uc
 ]
-[; ;main.h: 35: unsigned char y_origin = 0;
-"36
+[; ;main.h: 44: unsigned char y_origin = 0;
+"45
 [v _x_path `uc ~T0 @X0 1 e ]
 [i _x_path
 -> -> 0 `i `uc
 ]
-[; ;main.h: 36: unsigned char x_path = 0;
-"37
+[; ;main.h: 45: unsigned char x_path = 0;
+"46
 [v _y_path `uc ~T0 @X0 1 e ]
 [i _y_path
 -> -> 0 `i `uc
 ]
-[; ;main.h: 37: unsigned char y_path = 0;
-"38
+[; ;main.h: 46: unsigned char y_path = 0;
+"47
 [v _x_target `uc ~T0 @X0 1 e ]
 [i _x_target
 -> -> 0 `i `uc
 ]
-[; ;main.h: 38: unsigned char x_target = 0;
-"39
+[; ;main.h: 47: unsigned char x_target = 0;
+"48
 [v _y_target `uc ~T0 @X0 1 e ]
 [i _y_target
 -> -> 0 `i `uc
 ]
-[; ;main.h: 39: unsigned char y_target = 0;
-"40
+[; ;main.h: 48: unsigned char y_target = 0;
+"49
 [v _x_int `uc ~T0 @X0 1 e ]
 [i _x_int
 -> -> 0 `i `uc
 ]
-[; ;main.h: 40: unsigned char x_int = 0;
-"41
+[; ;main.h: 49: unsigned char x_int = 0;
+"50
 [v _y_int `uc ~T0 @X0 1 e ]
 [i _y_int
 -> -> 0 `i `uc
 ]
-[; ;main.h: 41: unsigned char y_int = 0;
-"43
+[; ;main.h: 50: unsigned char y_int = 0;
+"51
 [v _orientation_path `uc ~T0 @X0 1 e ]
 [i _orientation_path
 -> -> 0 `i `uc
 ]
-[; ;main.h: 43: unsigned char orientation_path = 0;
-"46
+[; ;main.h: 51: unsigned char orientation_path = 0;
+"53
 [v _pathCount `uc ~T0 @X0 1 e ]
 [i _pathCount
 -> -> 0 `i `uc
 ]
-[; ;main.h: 46: unsigned char pathCount = 0;
-"47
+[; ;main.h: 53: unsigned char pathCount = 0;
+"54
 [v _pathCountShortest `uc ~T0 @X0 1 e ]
 [i _pathCountShortest
 -> -> 20 `i `uc
 ]
-[; ;main.h: 47: unsigned char pathCountShortest = 20;
-"49
-[v _x_test `uc ~T0 @X0 1 e ]
-[i _x_test
--> -> 0 `i `uc
-]
-[; ;main.h: 49: unsigned char x_test = 0;
-"50
-[v _y_test `uc ~T0 @X0 1 e ]
-[i _y_test
--> -> 0 `i `uc
-]
-[; ;main.h: 50: unsigned char y_test = 0;
-"51
+[; ;main.h: 54: unsigned char pathCountShortest = 20;
+"56
 [v _intersection_Orientation `uc ~T0 @X0 1 e ]
 [i _intersection_Orientation
 -> -> 0 `i `uc
 ]
-[; ;main.h: 51: unsigned char intersection_Orientation = 0;
-[v F1118 `Vuc ~T0 @X0 -> 16 `i t ]
-"53
-[v _path `F1118 ~T0 @X0 -> 3 `i e ]
-[; ;main.h: 53: volatile char path[3][16];
-[v F1120 `Vuc ~T0 @X0 -> 16 `i t ]
-"54
-[v _shortest_path `F1120 ~T0 @X0 -> 3 `i e ]
-[; ;main.h: 54: volatile char shortest_path[3][16];
-[v F1122 `Vuc ~T0 @X0 -> 5 `i t ]
-"55
-[v _mazeGrid `F1122 ~T0 @X0 -> 4 `i e ]
-[; ;main.h: 55: volatile char mazeGrid[4][5];
-[v F1124 `Vuc ~T0 @X0 -> 5 `i t ]
-"56
-[v _mazeGridDefault `F1124 ~T0 @X0 -> 4 `i e ]
-[; ;main.h: 56: volatile char mazeGridDefault[4][5];
-"53
+[; ;main.h: 56: unsigned char intersection_Orientation = 0;
+[v F1122 `Vuc ~T0 @X0 -> 16 `i t ]
+"58
+[v _path `F1122 ~T0 @X0 -> 2 `i e ]
+[; ;main.h: 58: volatile char path[2][16];
+[v F1124 `Vuc ~T0 @X0 -> 16 `i t ]
+"59
+[v _shortest_path `F1124 ~T0 @X0 -> 2 `i e ]
+[; ;main.h: 59: volatile char shortest_path[2][16];
+[v F1126 `Vuc ~T0 @X0 -> 5 `i t ]
+"60
+[v _mazeGrid `F1126 ~T0 @X0 -> 4 `i e ]
+[; ;main.h: 60: volatile char mazeGrid[4][5];
+[v F1128 `Vuc ~T0 @X0 -> 5 `i t ]
+"61
+[v _mazeGridDefault `F1128 ~T0 @X0 -> 4 `i e ]
+[; ;main.h: 61: volatile char mazeGridDefault[4][5];
+"58
 [i _path
 :U ..
 :U ..
-"60
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 2 `i `uc
--> -> 3 `i `uc
--> -> 4 `i `uc
--> -> 5 `i `uc
--> -> 6 `i `uc
--> -> 7 `i `uc
--> -> 8 `i `uc
--> -> 9 `i `uc
--> -> 10 `i `uc
--> -> 11 `i `uc
--> -> 12 `i `uc
--> -> 13 `i `uc
--> -> 14 `i `uc
--> -> 15 `i `uc
-..
-:U ..
-"61
+"65
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1231,57 +1236,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 ..
-:U ..
-"62
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-..
-]
-[; ;main.h: 59: volatile char path[3][16] = {
-[; ;main.h: 60: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
-[; ;main.h: 61: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-[; ;main.h: 62: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-[; ;main.h: 63: };
-"54
-[i _shortest_path
-:U ..
 :U ..
 "66
 -> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 2 `i `uc
--> -> 3 `i `uc
--> -> 4 `i `uc
--> -> 5 `i `uc
--> -> 6 `i `uc
--> -> 7 `i `uc
--> -> 8 `i `uc
--> -> 9 `i `uc
--> -> 10 `i `uc
--> -> 11 `i `uc
--> -> 12 `i `uc
--> -> 13 `i `uc
--> -> 14 `i `uc
--> -> 15 `i `uc
-..
-:U ..
-"67
--> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1298,8 +1255,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 ..
+..
+]
+[; ;main.h: 64: volatile char path[2][16] = {
+[; ;main.h: 65: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+[; ;main.h: 66: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+[; ;main.h: 67: };
+"59
+[i _shortest_path
 :U ..
-"68
+:U ..
+"70
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"71
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1319,16 +1304,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.h: 65: volatile char shortest_path[3][16] = {
-[; ;main.h: 66: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
-[; ;main.h: 67: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-[; ;main.h: 68: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-[; ;main.h: 69: };
-"55
+[; ;main.h: 69: volatile char shortest_path[2][16] = {
+[; ;main.h: 70: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+[; ;main.h: 71: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+[; ;main.h: 72: };
+"60
 [i _mazeGrid
 :U ..
 :U ..
-"73
+"76
 -> -> 12 `i `uc
 -> -> 7 `i `uc
 -> -> 14 `i `uc
@@ -1336,7 +1320,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 6 `i `uc
 ..
 :U ..
-"74
+"77
 -> -> 9 `i `uc
 -> -> 5 `i `uc
 -> -> 0 `i `uc
@@ -1344,7 +1328,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 2 `i `uc
 ..
 :U ..
-"75
+"78
 -> -> 12 `i `uc
 -> -> 6 `i `uc
 -> -> 10 `i `uc
@@ -1352,7 +1336,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 10 `i `uc
 ..
 :U ..
-"76
+"79
 -> -> 11 `i `uc
 -> -> 9 `i `uc
 -> -> 1 `i `uc
@@ -1361,17 +1345,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.h: 72: volatile char mazeGrid[4][5] = {
-[; ;main.h: 73: {12,7,14,13,6},
-[; ;main.h: 74: {9,5,0,5,2},
-[; ;main.h: 75: {12,6,10,14,10},
-[; ;main.h: 76: {11,9,1,1,3}
-[; ;main.h: 77: };
-"56
+[; ;main.h: 75: volatile char mazeGrid[4][5] = {
+[; ;main.h: 76: {12,7,14,13,6},
+[; ;main.h: 77: {9,5,0,5,2},
+[; ;main.h: 78: {12,6,10,14,10},
+[; ;main.h: 79: {11,9,1,1,3}
+[; ;main.h: 80: };
+"61
 [i _mazeGridDefault
 :U ..
 :U ..
-"80
+"83
 -> -> 12 `i `uc
 -> -> 7 `i `uc
 -> -> 14 `i `uc
@@ -1379,7 +1363,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 6 `i `uc
 ..
 :U ..
-"81
+"84
 -> -> 9 `i `uc
 -> -> 5 `i `uc
 -> -> 0 `i `uc
@@ -1387,7 +1371,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 2 `i `uc
 ..
 :U ..
-"82
+"85
 -> -> 12 `i `uc
 -> -> 6 `i `uc
 -> -> 10 `i `uc
@@ -1395,7 +1379,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 10 `i `uc
 ..
 :U ..
-"83
+"86
 -> -> 11 `i `uc
 -> -> 9 `i `uc
 -> -> 1 `i `uc
@@ -1404,19 +1388,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.h: 79: volatile char mazeGridDefault[4][5] = {
-[; ;main.h: 80: {12,7,14,13,6},
-[; ;main.h: 81: {9,5,0,5,2},
-[; ;main.h: 82: {12,6,10,14,10},
-[; ;main.h: 83: {11,9,1,1,3}
-[; ;main.h: 84: };
-[v F1130 `Vuc ~T0 @X0 -> 16 `i t ]
-"87
-[v _squareWalls `F1130 ~T0 @X0 -> 5 `i e ]
+[; ;main.h: 82: volatile char mazeGridDefault[4][5] = {
+[; ;main.h: 83: {12,7,14,13,6},
+[; ;main.h: 84: {9,5,0,5,2},
+[; ;main.h: 85: {12,6,10,14,10},
+[; ;main.h: 86: {11,9,1,1,3}
+[; ;main.h: 87: };
+[v F1134 `Vuc ~T0 @X0 -> 16 `i t ]
+"90
+[v _squareWalls `F1134 ~T0 @X0 -> 5 `i e ]
 [i _squareWalls
 :U ..
 :U ..
-"88
+"91
 -> -> 0 `i `uc
 -> -> 1 `i `uc
 -> -> 2 `i `uc
@@ -1433,67 +1417,67 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 13 `i `uc
 -> -> 14 `i `uc
 -> -> 15 `i `uc
-..
-:U ..
-"89
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-:U ..
-"90
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
-..
-:U ..
-"91
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
 ..
 :U ..
 "92
 -> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+"93
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+"94
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+"95
+-> -> 0 `i `uc
 -> -> 1 `i `uc
 -> -> 0 `i `uc
 -> -> 1 `i `uc
@@ -1512,13 +1496,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.h: 87: volatile char squareWalls[5][16] = {
-[; ;main.h: 88: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
-[; ;main.h: 89: {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
-[; ;main.h: 90: {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
-[; ;main.h: 91: {0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
-[; ;main.h: 92: {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1}
-[; ;main.h: 93: };
+[; ;main.h: 90: volatile char squareWalls[5][16] = {
+[; ;main.h: 91: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
+[; ;main.h: 92: {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
+[; ;main.h: 93: {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
+[; ;main.h: 94: {0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
+[; ;main.h: 95: {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1}
+[; ;main.h: 96: };
 [; ;LCD.h: 18: void lcdWriteStepCount(unsigned char stepCountLCD);
 [; ;LCD.h: 21: void lcdWriteControl(unsigned char databyte);
 [; ;LCD.h: 24: void lcdWriteData(unsigned char databyte);
