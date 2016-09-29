@@ -5,10 +5,17 @@
 #include "SPI.h"
 #include "ser.h"
 
+char a = 1;
+char reset_flag = 0;
 
-volatile char x = 1;
-volatile char y = 0;
-volatile char orientation = 0;
+char x = 1;
+char y = 0;
+
+char intFound = 0;
+
+
+
+char orientation = 3;
 
 signed int distance = 0;
 signed int angle = 0;
@@ -84,56 +91,45 @@ void PathTo(char x_target, char y_target){
     pathCount = 0;
     
     for (int loop = 0; loop <= 1000; loop++){
-    
-    //Stores the traveled grid squares in an array
+        
+        reset_flag = 0;
+        
         path[1][pathCount] = x_path;
         path[2][pathCount] = y_path;
-          
-        if ((x_path == x_target) && (y_path == y_target)){
         
-            if(pathCount < pathCountShortest){
-                pathCountShortest = pathCount;
-                for (r = 0; r <= 2; r++){        
-                    for (c = 0; c <= 15; c++){
-                        shortest_path[r][c] = path[r][c];
-                    }
-                }                       
-            }    
-            //Sets fake wall at last intersection and resets to origin 
-            char n = 15;
-            x_test = path[1][n];
-            y_test = path[2][n];
+
         
-            for (n = 15; mazeGrid[y_test][x_test] < 32; n--){
-                x_test = path[1][n];
-                y_test = path[2][n];           
-            }
+        lcdWriteControl(0b00000001);
+        lcdSetCursor(0b10001110);
+        lcdWriteToDigitBCD(loop);
+/*        
+        lcdSetCursor(0b11001100);
+        char gridWalls = (mazeGrid[1][2]);
+        left    = squareWalls[1][gridWalls];
+        up      = squareWalls[2][gridWalls];
+        right   = squareWalls[3][gridWalls];
+        down    = squareWalls[4][gridWalls];
         
-        //Sets a fake wall to block off the path at the intersection
-            switch(intersection_Orientation){
-                case 0: mazeGrid[y_test][x_test] = 0b00000100 || mazeGrid[y_test][x_test];
-                    break;
-                case 1: mazeGrid[y_test][x_test] = 0b00000010 || mazeGrid[y_test][x_test];
-                    break;
-                case 2: mazeGrid[y_test][x_test] = 0b00000001 || mazeGrid[y_test][x_test];
-                    break;
-                case 3: mazeGrid[y_test][x_test] = 0b00001000 || mazeGrid[y_test][x_test];
-                    break;
-            }    
-            
-            //Rest back to origin
-            x_path = x_origin;
-            y_path = y_origin;
-            orientation_path = orientation;
-            pathCount = 0;                       
-            }
-    
+        lcdWriteData(left + 48);
+        lcdWriteData(up + 48);
+        lcdWriteData(right + 48);
+        lcdWriteData(down + 48);
+        
+       
+        for (char n = 0; n <= pathCount; n++){       
+            lcdSetCursor(0b10000000 + n);
+            lcdWriteData(path[1][n] + 48);      
+            lcdSetCursor(0b11000000 + n);
+            lcdWriteData(path[2][n] + 48);          
+        }
+*/               
     //Gets wall details about current grid
-        left    = squareWalls[1][((mazeGrid[y_path][x_path]) + 1)];
-        right   = squareWalls[2][((mazeGrid[y_path][x_path]) + 1)];
-        up      = squareWalls[3][((mazeGrid[y_path][x_path]) + 1)];
-        down    = squareWalls[4][((mazeGrid[y_path][x_path]) + 1)];
-    
+       
+        left    = squareWalls[1][(mazeGrid[y_path][x_path])];
+        up      = squareWalls[2][(mazeGrid[y_path][x_path])];
+        right   = squareWalls[3][(mazeGrid[y_path][x_path])];
+        down    = squareWalls[4][(mazeGrid[y_path][x_path])];
+         
     //Ignores the direction the robot came from using a fake wall
         switch(orientation_path){
             case 0: down = 1;
@@ -145,76 +141,134 @@ void PathTo(char x_target, char y_target){
             case 3: right = 1;
                 break;       
         }
-    
-    //Sets bit 5 as intersection
+        
+        //Check if intersection
         char sum = (left + up + down + right);
-        if(sum <= 2)
-            (mazeGrid[y_path][x_path]) = ((0b00100000) || (mazeGrid[y_path][x_path]));
-    
-    
-    //Adjusts path coordinates to next adjacent grid
-        if(left == 0){
-            if(mazeGrid[y_path][x_path] >= 32)
+        if(sum <= 2){
+            x_int = x_path;
+            y_int = y_path;
+            
+            if (left == 0)
                 intersection_Orientation = 3;
-            x_path--;
-            orientation_path = 3;
-            pathCount++;          
-        }
-        else if(up == 0){
-            if(mazeGrid[y_path][x_path] >= 32)
+            else if (up == 0)
                 intersection_Orientation = 0;
-            y_path--;
-            orientation_path = 0;
-            pathCount++;           
-        }
-        else if(right == 0){
-            if(mazeGrid[y_path][x_path] >= 32)
+            else if (right == 0)
                 intersection_Orientation = 1;
-            x_path++;
-            orientation_path = 1;
-            pathCount++;           
-        }
-        else if(down == 0){
-            if(mazeGrid[y_path][x_path] >= 32)
+            else if (down == 0)
                 intersection_Orientation = 2;
-            y_path++;
-            orientation_path = 2;
-            pathCount++;           
         }
+            
+            
+        
+        
+        
+    //Target Found      
+        if ((x_path == x_target) && (y_path == y_target)){
+        
+/*            for (char n = 0; n <= pathCount; n++){       
+                lcdSetCursor(0b10000000 + n);
+                lcdWriteData(path[1][n] + 48);      
+                lcdSetCursor(0b11000000 + n);
+                lcdWriteData(path[2][n] + 48);
+            }
+*/   
+                      
+            if(pathCount < pathCountShortest){
+                pathCountShortest = pathCount;
+                for (r = 1; r <= 2; r++){        
+                    for (c = 0; c <= 15; c++){
+                        shortest_path[r][c] = path[r][c];
+                    }
+                }                       
+            }    
+     
+        //Sets a fake wall to block off the path at the intersection
+
+            switch(intersection_Orientation){
+                case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);                     
+                    break;
+                case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
+                    break;
+                case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1); 
+                    break;
+                case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);                            
+                    break;
+            }
+                             
+            //Reset back to origin
+            x_path = x_origin;
+            y_path = y_origin;
+            orientation_path = orientation;
+            pathCount = 0;
+            reset_flag = 1;
+            
+            for (r = 1; r <= 2; r++){        
+                for (c = 0; c <= 15; c++){
+                    path[r][c] = 0;
+                }
+            }         
+        }
+       
+
     
     //If dead end or too many steps then find most recent intersection and fake wall it
-        if((left == up == right == down == 1) || (pathCount > 50)){
-        
-            char n = 15;
-            x_test = path[1][n];
-            y_test = path[2][n];
-        
-            for (n = 15; mazeGrid[y_test][x_test] < 32; n--){
-                x_test = path[1][n];
-                y_test = path[2][n];           
-            }
-        
-        //Sets a fake wall to block off the path at the intersection
-            switch(intersection_Orientation){
-                case 0: mazeGrid[y_test][x_test] = 0b00000100 || mazeGrid[y_test][x_test];
-                    break;
-                case 1: mazeGrid[y_test][x_test] = 0b00000010 || mazeGrid[y_test][x_test];
-                    break;
-                case 2: mazeGrid[y_test][x_test] = 0b00000001 || mazeGrid[y_test][x_test];
-                    break;
-                case 3: mazeGrid[y_test][x_test] = 0b00001000 || mazeGrid[y_test][x_test];
-                    break;
-            }    
+        if((sum == 4) || (pathCount >= 15)){      
             
+            //Sets a fake wall to block off the path at the intersection
+            switch(intersection_Orientation){
+                case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);                             
+                    break;
+                case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
+                    break;
+                case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
+                    break;
+                case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
+                    break;
+            }
+                                
             //Rest back to origin
             x_path = x_origin;
             y_path = y_origin;
             orientation_path = orientation;
             pathCount = 0;
+            reset_flag = 1; 
             
+            for (r = 1; r <= 2; r++){        
+                for (c = 0; c <= 15; c++){
+                    path[r][c] = 0;
+                }
+            }                    
         }
-    }
+        
+        
+    //Adjusts path coordinates to next adjacent grid
+        
+        if (reset_flag != 1){
+            
+            if(left == 0){
+                x_path--;
+                orientation_path = 3;
+                pathCount++;          
+            }
+            else if(up == 0){
+                y_path--;
+                orientation_path = 0;
+                pathCount++;           
+            }
+            else if(right == 0){
+                x_path++;
+                orientation_path = 1;
+                pathCount++;           
+            }
+            else if(down == 0){
+                y_path++;
+                orientation_path = 2;
+                pathCount++;           
+            }           
+        }
+    }   
 }
+
 
 
 
@@ -241,37 +295,42 @@ void main(void){
     setupSPI();
     setupLCD();
     setupADC();
+    TRISB = 0b00000000;
+   
     
     x = 1;
     y = 0;
+    orientation = 3;
     
-    //while(1){
-    char a = 1;
-    while (a == 1){
-        //if(PB8Counter == 10 && PB8 == 0){
-        PathTo(3,2);
+    
+    
+        
+    
+       
+        PathTo(0,3);
+        __delay_ms(3000);
+        lcdWriteControl(0b00000001);
         
         lcdSetCursor(0b10000000);
-        for (char n = 0; n < 10; n++){       
-            lcdWriteData((shortest_path[1][n]) + 48);
-            __delay_ms(15);
-        }
-        lcdWriteString(" ");
-        lcdWriteToDigitBCD(pathCount);
-        
+        lcdWriteString("X:");
         lcdSetCursor(0b11000000);
-        for (char n = 0; n < 10; n++){           
-            lcdWriteData((shortest_path[2][n]) + 48);
-            __delay_ms(15);
+        lcdWriteString("Y:");
+        
+        for (char n = 0; n <= pathCountShortest; n++){       
+                lcdSetCursor(0b10000000 + n + 2);
+                lcdWriteData(shortest_path[1][n] + 48);      
+                lcdSetCursor(0b11000000 + n + 2);
+                lcdWriteData(shortest_path[2][n] + 48);                
         }
-        lcdWriteString(" ");
+        lcdSetCursor(0b10001110);
         lcdWriteToDigitBCD(pathCountShortest);
         
-        //PB8Counter = 0;
-        //}
-        a = 0;
-    }
-        
-    //}
-    
+        while(1){
+            RB0 = 1;
+            __delay_ms(500);
+            RB0 = 0;
+            __delay_ms(500);
+        }        
 }
+    
+

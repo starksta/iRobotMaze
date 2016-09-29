@@ -1455,7 +1455,11 @@ unsigned char x_path = 0;
 unsigned char y_path = 0;
 unsigned char x_target = 0;
 unsigned char y_target = 0;
+unsigned char x_int = 0;
+unsigned char y_int = 0;
+
 unsigned char orientation_path = 0;
+
 
 unsigned char pathCount = 0;
 unsigned char pathCountShortest = 20;
@@ -1484,22 +1488,22 @@ volatile char shortest_path[3][16] = {
 
 
 volatile char mazeGrid[4][5] = {
-{0b00001100,0b00000111,0b00001110,0b00001101,0b00000110},
-{0b00000111,0b00000101,0b00000000,0b00000101,0b00000010},
-{0b00001100,0b00000110,0b00001010,0b00001110,0b00001010},
-{0b00001011,0b00001001,0b00000001,0b00000001,0b00000011}
+{12,7,14,13,6},
+{9,5,0,5,2},
+{12,6,10,14,10},
+{11,9,1,1,3}
 };
 
 volatile char mazeGridDefault[4][5] = {
-{0b00001100,0b00000111,0b00001110,0b00001101,0b00000110},
-{0b00000111,0b00000101,0b00000000,0b00000101,0b00000010},
-{0b00001100,0b00000110,0b00001010,0b00001110,0b00001010},
-{0b00001011,0b00001001,0b00000001,0b00000001,0b00000011}
+{12,7,14,13,6},
+{9,5,0,5,2},
+{12,6,10,14,10},
+{11,9,1,1,3}
 };
 
 
 volatile char squareWalls[5][16] = {
-{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16},
+{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
 {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
 {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
 {0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
@@ -1598,8 +1602,12 @@ lcdWriteData((unsigned int)TenThouDigit + 48);
 if (ThouDigit > 0)
 lcdWriteData((unsigned int)ThouDigit + 48);
 
+if (HunsDigit > 0)
 lcdWriteData((unsigned int)HunsDigit + 48);
+
+
 lcdWriteData((unsigned int)TensDigit + 48);
+
 lcdWriteData((unsigned int)OnesDigit + 48);
 
 }

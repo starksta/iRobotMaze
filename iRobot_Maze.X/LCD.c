@@ -72,8 +72,12 @@ void lcdWriteToDigitBCD(unsigned int data){
     if (ThouDigit > 0)
         lcdWriteData((unsigned int)ThouDigit + 48);
     
-    lcdWriteData((unsigned int)HunsDigit + 48);
+    if (HunsDigit > 0)
+        lcdWriteData((unsigned int)HunsDigit + 48);
+    
+   
     lcdWriteData((unsigned int)TensDigit + 48);
+    
     lcdWriteData((unsigned int)OnesDigit + 48);
 
 }

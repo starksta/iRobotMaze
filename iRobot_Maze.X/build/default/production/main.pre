@@ -1455,7 +1455,11 @@ unsigned char x_path = 0;
 unsigned char y_path = 0;
 unsigned char x_target = 0;
 unsigned char y_target = 0;
+unsigned char x_int = 0;
+unsigned char y_int = 0;
+
 unsigned char orientation_path = 0;
+
 
 unsigned char pathCount = 0;
 unsigned char pathCountShortest = 20;
@@ -1484,22 +1488,22 @@ volatile char shortest_path[3][16] = {
 
 
 volatile char mazeGrid[4][5] = {
-{0b00001100,0b00000111,0b00001110,0b00001101,0b00000110},
-{0b00000111,0b00000101,0b00000000,0b00000101,0b00000010},
-{0b00001100,0b00000110,0b00001010,0b00001110,0b00001010},
-{0b00001011,0b00001001,0b00000001,0b00000001,0b00000011}
+{12,7,14,13,6},
+{9,5,0,5,2},
+{12,6,10,14,10},
+{11,9,1,1,3}
 };
 
 volatile char mazeGridDefault[4][5] = {
-{0b00001100,0b00000111,0b00001110,0b00001101,0b00000110},
-{0b00000111,0b00000101,0b00000000,0b00000101,0b00000010},
-{0b00001100,0b00000110,0b00001010,0b00001110,0b00001010},
-{0b00001011,0b00001001,0b00000001,0b00000001,0b00000011}
+{12,7,14,13,6},
+{9,5,0,5,2},
+{12,6,10,14,10},
+{11,9,1,1,3}
 };
 
 
 volatile char squareWalls[5][16] = {
-{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16},
+{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
 {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
 {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
 {0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
@@ -1573,10 +1577,18 @@ void DriveDirect(signed int VelocityRight, signed int VelocityLeft);
 
 signed int getSensorData(unsigned char packetID, unsigned char bytes);
 
-# 9 "main.c"
-volatile char x = 1;
-volatile char y = 0;
-volatile char orientation = 0;
+# 8 "main.c"
+char a = 1;
+char reset_flag = 0;
+
+char x = 1;
+char y = 0;
+
+char intFound = 0;
+
+
+
+char orientation = 3;
 
 signed int distance = 0;
 signed int angle = 0;
@@ -1653,54 +1665,22 @@ pathCount = 0;
 
 for (int loop = 0; loop <= 1000; loop++){
 
+reset_flag = 0;
 
 path[1][pathCount] = x_path;
 path[2][pathCount] = y_path;
 
-if ((x_path == x_target) && (y_path == y_target)){
-
-if(pathCount < pathCountShortest){
-pathCountShortest = pathCount;
-for (r = 0; r <= 2; r++){
-for (c = 0; c <= 15; c++){
-shortest_path[r][c] = path[r][c];
-}
-}
-}
-
-char n = 15;
-x_test = path[1][n];
-y_test = path[2][n];
-
-for (n = 15; mazeGrid[y_test][x_test] < 32; n--){
-x_test = path[1][n];
-y_test = path[2][n];
-}
 
 
-switch(intersection_Orientation){
-case 0: mazeGrid[y_test][x_test] = 0b00000100 || mazeGrid[y_test][x_test];
-break;
-case 1: mazeGrid[y_test][x_test] = 0b00000010 || mazeGrid[y_test][x_test];
-break;
-case 2: mazeGrid[y_test][x_test] = 0b00000001 || mazeGrid[y_test][x_test];
-break;
-case 3: mazeGrid[y_test][x_test] = 0b00001000 || mazeGrid[y_test][x_test];
-break;
-}
+lcdWriteControl(0b00000001);
+lcdSetCursor(0b10001110);
+lcdWriteToDigitBCD(loop);
 
-
-x_path = x_origin;
-y_path = y_origin;
-orientation_path = orientation;
-pathCount = 0;
-}
-
-
-left = squareWalls[1][((mazeGrid[y_path][x_path]) + 1)];
-right = squareWalls[2][((mazeGrid[y_path][x_path]) + 1)];
-up = squareWalls[3][((mazeGrid[y_path][x_path]) + 1)];
-down = squareWalls[4][((mazeGrid[y_path][x_path]) + 1)];
+# 128
+left = squareWalls[1][(mazeGrid[y_path][x_path])];
+up = squareWalls[2][(mazeGrid[y_path][x_path])];
+right = squareWalls[3][(mazeGrid[y_path][x_path])];
+down = squareWalls[4][(mazeGrid[y_path][x_path])];
 
 
 switch(orientation_path){
@@ -1716,61 +1696,43 @@ break;
 
 
 char sum = (left + up + down + right);
-if(sum <= 2)
-(mazeGrid[y_path][x_path]) = ((0b00100000) || (mazeGrid[y_path][x_path]));
+if(sum <= 2){
+x_int = x_path;
+y_int = y_path;
 
-
-
-if(left == 0){
-if(mazeGrid[y_path][x_path] >= 32)
+if (left == 0)
 intersection_Orientation = 3;
-x_path--;
-orientation_path = 3;
-pathCount++;
-}
-else if(up == 0){
-if(mazeGrid[y_path][x_path] >= 32)
+else if (up == 0)
 intersection_Orientation = 0;
-y_path--;
-orientation_path = 0;
-pathCount++;
-}
-else if(right == 0){
-if(mazeGrid[y_path][x_path] >= 32)
+else if (right == 0)
 intersection_Orientation = 1;
-x_path++;
-orientation_path = 1;
-pathCount++;
-}
-else if(down == 0){
-if(mazeGrid[y_path][x_path] >= 32)
+else if (down == 0)
 intersection_Orientation = 2;
-y_path++;
-orientation_path = 2;
-pathCount++;
 }
 
+# 166
+if ((x_path == x_target) && (y_path == y_target)){
 
-if((left == up == right == down == 1) || (pathCount > 50)){
-
-char n = 15;
-x_test = path[1][n];
-y_test = path[2][n];
-
-for (n = 15; mazeGrid[y_test][x_test] < 32; n--){
-x_test = path[1][n];
-y_test = path[2][n];
+# 176
+if(pathCount < pathCountShortest){
+pathCountShortest = pathCount;
+for (r = 1; r <= 2; r++){
+for (c = 0; c <= 15; c++){
+shortest_path[r][c] = path[r][c];
 }
+}
+}
+
 
 
 switch(intersection_Orientation){
-case 0: mazeGrid[y_test][x_test] = 0b00000100 || mazeGrid[y_test][x_test];
+case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
 break;
-case 1: mazeGrid[y_test][x_test] = 0b00000010 || mazeGrid[y_test][x_test];
+case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
 break;
-case 2: mazeGrid[y_test][x_test] = 0b00000001 || mazeGrid[y_test][x_test];
+case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
 break;
-case 3: mazeGrid[y_test][x_test] = 0b00001000 || mazeGrid[y_test][x_test];
+case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
 break;
 }
 
@@ -1779,7 +1741,11 @@ x_path = x_origin;
 y_path = y_origin;
 orientation_path = orientation;
 pathCount = 0;
+reset_flag = 1;
 
+for (r = 1; r <= 2; r++){
+for (c = 0; c <= 15; c++){
+path[r][c] = 0;
 }
 }
 }
@@ -1787,6 +1753,64 @@ pathCount = 0;
 
 
 
+if((sum == 4) || (pathCount >= 15)){
+
+
+switch(intersection_Orientation){
+case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
+break;
+case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
+break;
+case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
+break;
+case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
+break;
+}
+
+
+x_path = x_origin;
+y_path = y_origin;
+orientation_path = orientation;
+pathCount = 0;
+reset_flag = 1;
+
+for (r = 1; r <= 2; r++){
+for (c = 0; c <= 15; c++){
+path[r][c] = 0;
+}
+}
+}
+
+
+
+
+if (reset_flag != 1){
+
+if(left == 0){
+x_path--;
+orientation_path = 3;
+pathCount++;
+}
+else if(up == 0){
+y_path--;
+orientation_path = 0;
+pathCount++;
+}
+else if(right == 0){
+x_path++;
+orientation_path = 1;
+pathCount++;
+}
+else if(down == 0){
+y_path++;
+orientation_path = 2;
+pathCount++;
+}
+}
+}
+}
+
+# 276
 void interrupt isr(void){
 if(TMR0IF){
 TMR0IF = 0;
@@ -1809,37 +1833,39 @@ ser_init();
 setupSPI();
 setupLCD();
 setupADC();
+TRISB = 0b00000000;
+
 
 x = 1;
 y = 0;
+orientation = 3;
 
-
-char a = 1;
-while (a == 1){
-
-PathTo(3,2);
+# 310
+PathTo(0,3);
+_delay((unsigned long)((3000)*(20000000/4000.0)));
+lcdWriteControl(0b00000001);
 
 lcdSetCursor(0b10000000);
-for (char n = 0; n < 10; n++){
-lcdWriteData((shortest_path[1][n]) + 48);
-_delay((unsigned long)((15)*(20000000/4000.0)));
-}
-lcdWriteString(" ");
-lcdWriteToDigitBCD(pathCount);
-
+lcdWriteString("X:");
 lcdSetCursor(0b11000000);
-for (char n = 0; n < 10; n++){
-lcdWriteData((shortest_path[2][n]) + 48);
-_delay((unsigned long)((15)*(20000000/4000.0)));
+lcdWriteString("Y:");
+
+for (char n = 0; n <= pathCountShortest; n++){
+lcdSetCursor(0b10000000 + n + 2);
+lcdWriteData(shortest_path[1][n] + 48);
+lcdSetCursor(0b11000000 + n + 2);
+lcdWriteData(shortest_path[2][n] + 48);
 }
-lcdWriteString(" ");
+lcdSetCursor(0b10001110);
 lcdWriteToDigitBCD(pathCountShortest);
 
-
-
-a = 0;
+while(1){
+RB0 = 1;
+_delay((unsigned long)((500)*(20000000/4000.0)));
+RB0 = 0;
+_delay((unsigned long)((500)*(20000000/4000.0)));
 }
 
-
-
+# 341
 }
+
