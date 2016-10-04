@@ -1438,13 +1438,37 @@ extern __bit __timeout;
 # 12 "main.h"
 #pragma config BOREN = OFF, CPD = OFF, WRT = OFF, FOSC = HS, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
 
-# 24
+# 25
 volatile unsigned int time_count;
 
 unsigned char PB8Counter = 0;
+unsigned char PB7Counter = 0;
 
 unsigned char highByte = 0;
 unsigned char lowByte = 0;
+
+unsigned char r = 0;
+unsigned char c = 0;
+
+unsigned char x = 1;
+unsigned char y = 0;
+unsigned char orientation = 3;
+
+unsigned char x_target = 0;
+unsigned char y_target = 0;
+
+unsigned char x_path = 0;
+unsigned char y_path = 0;
+unsigned char orientation_path = 0;
+
+unsigned char x_int = 0;
+unsigned char y_int = 0;
+unsigned char intersection_orientation = 0;
+
+unsigned char pathCount = 0;
+unsigned char pathCountShortest = 20;
+
+bit IR_Wall = 0;
 
 bit left = 0;
 bit right = 0;
@@ -1452,52 +1476,21 @@ bit up = 0;
 bit down = 0;
 bit reset_flag = 0;
 
-char orientation = 3;
-char r = 0;
-char c = 0;
-
-unsigned char x = 1;
-unsigned char y = 0;
-unsigned char x_origin = 0;
-unsigned char y_origin = 0;
-unsigned char x_path = 0;
-unsigned char y_path = 0;
-unsigned char x_target = 0;
-unsigned char y_target = 0;
-unsigned char x_int = 0;
-unsigned char y_int = 0;
-unsigned char orientation_path = 0;
-
-unsigned char pathCount = 0;
-unsigned char pathCountShortest = 20;
-
-unsigned char intersection_Orientation = 0;
-
-volatile char path[2][16];
-volatile char shortest_path[2][16];
-volatile char mazeGrid[4][5];
-volatile char mazeGridDefault[4][5];
-
-
-volatile char path[2][16] = {
-{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-};
-
-volatile char shortest_path[2][16] = {
+# 66
+char path[2][16] = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 };
 
 
-volatile char mazeGrid[4][5] = {
-{12,7,14,13,6},
-{9,5,0,5,2},
-{12,6,10,14,10},
-{11,9,1,1,3}
+char pathShortest[2][16] = {
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 };
 
-volatile char mazeGridDefault[4][5] = {
+
+
+char mazeGrid[4][5] = {
 {12,7,14,13,6},
 {9,5,0,5,2},
 {12,6,10,14,10},
@@ -1505,8 +1498,15 @@ volatile char mazeGridDefault[4][5] = {
 };
 
 
-volatile char squareWalls[5][16] = {
-{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},
+char mazeGridDefault[4][5] = {
+{12,7,14,13,6},
+{9,5,0,5,2},
+{12,6,10,14,10},
+{11,9,1,1,3}
+};
+
+
+char gridWalls[4][16] = {
 {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
 {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
 {0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
@@ -1606,6 +1606,7 @@ DriveDirect(250,250);
 while (distance < 1000){
 distance = distance + getSensorData(19,2);
 }
+DriveDirect(0,0);
 }
 
 
@@ -1617,10 +1618,11 @@ if (orientation == 0)
 orientation = 3;
 else orientation--;
 
-DriveDirect(150,0);
+Drive(0,150,0x00,0x01);
 while (angle < 90){
 angle = angle + getSensorData(20,2);
 }
+DriveDirect(0,0);
 }
 
 if (direction == 0){
@@ -1629,10 +1631,11 @@ if (orientation == 3)
 orientation = 0;
 else orientation++;
 
-DriveDirect(0,150);
+Drive(0,150,0xFF,0xFF);
 while (angle > -90){
 angle = angle + getSensorData(20,2);
 }
+DriveDirect(0,0);
 }
 }
 
@@ -1646,12 +1649,25 @@ mazeGrid[r][c] = mazeGridDefault[r][c];
 }
 }
 
-x_origin = x;
-y_origin = y;
+
+
 x_path = x;
 y_path = y;
 orientation_path = orientation;
 pathCount = 0;
+
+if(IR_Wall == 1){
+switch (orientation){
+case 0: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 4);
+break;
+case 1: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 2);
+break;
+case 2: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 1);
+break;
+case 3: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 8);
+break;
+}
+}
 
 lcdSetCursor(0b10000000);
 lcdWriteString("Working...");
@@ -1665,10 +1681,12 @@ path[1][pathCount] = y_path;
 
 
 
-left = squareWalls[1][(mazeGrid[y_path][x_path])];
-up = squareWalls[2][(mazeGrid[y_path][x_path])];
-right = squareWalls[3][(mazeGrid[y_path][x_path])];
-down = squareWalls[4][(mazeGrid[y_path][x_path])];
+
+left = gridWalls[0][(mazeGrid[y_path][x_path])];
+up = gridWalls[1][(mazeGrid[y_path][x_path])];
+right = gridWalls[2][(mazeGrid[y_path][x_path])];
+down = gridWalls[3][(mazeGrid[y_path][x_path])];
+
 
 
 switch(orientation_path){
@@ -1683,36 +1701,40 @@ break;
 }
 
 
+
 char sum = (left + up + down + right);
 if(sum <= 2){
 x_int = x_path;
 y_int = y_path;
 
+# 140
 if (left == 0)
-intersection_Orientation = 3;
+intersection_orientation = 3;
 else if (up == 0)
-intersection_Orientation = 0;
+intersection_orientation = 0;
 else if (right == 0)
-intersection_Orientation = 1;
+intersection_orientation = 1;
 else if (down == 0)
-intersection_Orientation = 2;
+intersection_orientation = 2;
 }
 
-# 132
+# 155
 if ((x_path == x_target) && (y_path == y_target)){
+
+
+
 
 if(pathCount < pathCountShortest){
 pathCountShortest = pathCount;
 for (r = 0; r <= 1; r++){
 for (c = 0; c <= 15; c++){
-shortest_path[r][c] = path[r][c];
+pathShortest[r][c] = path[r][c];
 }
 }
 }
 
-
-
-switch(intersection_Orientation){
+# 173
+switch(intersection_orientation){
 case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
 break;
 case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
@@ -1724,11 +1746,12 @@ break;
 }
 
 
-x_path = x_origin;
-y_path = y_origin;
+x_path = x;
+y_path = y;
 orientation_path = orientation;
 pathCount = 0;
 reset_flag = 1;
+
 
 for (r = 0; r <= 1; r++){
 for (c = 0; c <= 15; c++){
@@ -1737,11 +1760,11 @@ path[r][c] = 0;
 }
 }
 
-# 174
+# 203
 if((sum == 4) || (pathCount >= 15)){
 
 
-switch(intersection_Orientation){
+switch(intersection_orientation){
 case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
 break;
 case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
@@ -1753,8 +1776,8 @@ break;
 }
 
 
-x_path = x_origin;
-y_path = y_origin;
+x_path = x;
+y_path = y;
 orientation_path = orientation;
 pathCount = 0;
 reset_flag = 1;
@@ -1766,8 +1789,9 @@ path[r][c] = 0;
 }
 }
 
-# 208
+# 238
 if (reset_flag != 1){
+
 
 if(left == 0){
 x_path--;
@@ -1793,55 +1817,143 @@ pathCount++;
 }
 }
 
-# 238
+void TravelPath(void){
+
+for (char n = 1; n <= pathCountShortest; n++){
+
+if (pathShortest[0][n] > x){
+switch (orientation){
+
+case 0: Turn90(0);
+break;
+
+case 2: Turn90(1);
+break;
+
+case 3: Turn90(1);
+_delay((unsigned long)((5)*(20000000/4000.0)));
+Turn90(1);
+break;
+}
+Drive1m();
+}
+
+
+else if (pathShortest[0][n] < x){
+switch (orientation){
+
+case 0: Turn90(1);
+break;
+
+case 2: Turn90(0);
+break;
+
+case 1: Turn90(1);
+_delay((unsigned long)((5)*(20000000/4000.0)));
+Turn90(1);
+break;
+}
+Drive1m();
+}
+
+else if(pathShortest[1][n] > y){
+switch(orientation){
+
+case 1: Turn90(0);
+break;
+
+case 3: Turn90(1);
+break;
+
+case 0: Turn90(1);
+_delay((unsigned long)((5)*(20000000/4000.0)));
+Turn90(1);
+break;
+}
+Drive1m;
+}
+
+
+else if (path[1][n] < y){
+switch (orientation){
+
+case 1: Turn90(1);
+break;
+
+case 3: Turn90(0);
+break;
+
+case 2: Turn90(1);
+_delay((unsigned long)((5)*(20000000/4000.0)));
+Turn90(1);
+break;
+}
+Drive1m;
+}
+}
+}
+
+# 345
 void interrupt isr(void){
 if(TMR0IF){
 TMR0IF = 0;
 TMR0 = 100;
 time_count++;
 
-# 249
+if(!RB0)
+PB8Counter++;
+if(!RB1)
+PB7Counter++;
+
+
+
+
 }
 }
 
 
 void main(void){
 
+_delay((unsigned long)((5000)*(20000000/4000.0)));
+
 ser_init();
 setupSPI();
 setupLCD();
 setupADC();
-TRISB = 0b00000000;
-RB0 = 0;
 
-x = 0;
-y = 3;
-orientation = 0;
+TRISB = 0b00000011;
+PORTB = 0;
 
-# 271
-PathTo(2,0);
-_delay((unsigned long)((3000)*(20000000/4000.0)));
+unsigned char controlByte = 0b00001101;
+spi_transfer(controlByte);
 
-lcdWriteControl(0b00000001);
-lcdSetCursor(0b10000000);
-lcdWriteString("X:");
-lcdSetCursor(0b11000000);
-lcdWriteString("Y:");
+_delay((unsigned long)((1000)*(20000000/4000.0)));
+ser_putch(128);
+_delay((unsigned long)((1000)*(20000000/4000.0)));
+ser_putch(132);
+_delay((unsigned long)((1000)*(20000000/4000.0)));
 
-for (char n = 0; n <= pathCountShortest; n++){
-lcdSetCursor(0b10000000 + n + 2);
-lcdWriteData(shortest_path[0][n] + 48);
-lcdSetCursor(0b11000000 + n + 2);
-lcdWriteData(shortest_path[1][n] + 48);
-}
-lcdSetCursor(0b10001110);
-lcdWriteToDigitBCD(pathCountShortest);
+
+x = 1;
+y = 0;
+orientation = 3;
+
 
 while(1){
-RB0 = 1;
-_delay((unsigned long)((500)*(20000000/4000.0)));
-RB0 = 0;
-_delay((unsigned long)((500)*(20000000/4000.0)));
+
+if(PB8Counter >= 10 && !RB0 == 0){
+
+
+RB4 = 1;
+PathTo(2,1);
+_delay((unsigned long)((5000)*(20000000/4000.0)));
+TravelPath();
+RB4 = 0;
+
+# 416
+}
+
+# 422
 }
 }
 
