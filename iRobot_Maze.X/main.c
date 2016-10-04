@@ -12,58 +12,6 @@ signed int angle = 0;
 
 
 
-void Drive1m(void){   
-   
-    //Add virtual wall check
-
-    switch(orientation){
-        case 0: y--;
-        break;
-        case 1: x++;
-        break;
-        case 2: y++;
-        break;
-        case 3: x--;
-        break;
-    }
-    
-    distance = 0;
-    DriveDirect(250,250);
-    while (distance < 1000){
-        distance = distance + getSensorData(19,2);
-    }
-    DriveDirect(0,0);
-}
-
-//Turns 90 degrees, direction( 1 = CCW, 0 = CW)
-void Turn90(char direction){
-    angle = 0;
-    if (direction == 1){
-        
-        if (orientation == 0)
-                orientation = 3;
-        else orientation--;
-        
-        Drive(0,150,0x00,0x01);
-        while (angle < 90){
-            angle = angle + getSensorData(20,2);
-        }
-        DriveDirect(0,0);
-    }
-    
-    if (direction == 0){
-        
-        if (orientation == 3)
-            orientation = 0;
-        else orientation++;
-        
-        Drive(0,150,0xFF,0xFF);
-        while (angle > -90){
-            angle = angle + getSensorData(20,2);
-        }
-        DriveDirect(0,0);
-    }
-}
 
 void PathTo(char x_target, char y_target){
     
@@ -262,11 +210,67 @@ void PathTo(char x_target, char y_target){
     }   
 }
 
+
+
+void Drive1m(void){   
+   
+    //Add virtual wall check
+
+    switch(orientation){
+        case 0: y--;
+        break;
+        case 1: x++;
+        break;
+        case 2: y++;
+        break;
+        case 3: x--;
+        break;
+    }
+    
+    distance = 0;
+    DriveDirect(250,250);
+    while (distance < 1000){
+        distance = distance + getSensorData(19,2);
+    }
+    DriveDirect(0,0);
+    __delay_ms(100);
+}
+
+//Turns 90 degrees, direction( 1 = CCW, 0 = CW)
+void Turn90(char direction){
+    angle = 0;
+    if (direction == 1){
+        
+        if (orientation == 0)
+                orientation = 3;
+        else orientation--;
+        
+        Drive(0,150,0x00,0x01);
+        while (angle < 86){
+            angle = angle + getSensorData(20,2);
+        }
+    }
+    
+    if (direction == 0){
+        
+        if (orientation == 3)
+            orientation = 0;
+        else orientation++;
+        
+        Drive(0,150,0xFF,0xFF);
+        while (angle > -86){
+            angle = angle + getSensorData(20,2);
+        }    
+    }
+    DriveDirect(0,0);
+    __delay_ms(100);   
+}
+
 void TravelPath(void){
                     
-for (char n = 1; n <= pathCountShortest; n++){
+for (char n = 1; n <= (pathCountShortest + 1); n++){
         
-    __delay_ms(1000);
+    __delay_ms(500);
     
         if (pathShortest[0][n] > x){
             switch (orientation){
@@ -278,11 +282,13 @@ for (char n = 1; n <= pathCountShortest; n++){
                 break;
                 
                 case 3: Turn90(1);
-                __delay_ms(5);
-                Turn90(1);
+                        __delay_ms(5);
+                        Turn90(1);
                 break;
             }
+            
             Drive1m();
+            
         }
            
         
@@ -296,11 +302,15 @@ for (char n = 1; n <= pathCountShortest; n++){
                 break;
                 
                 case 1: Turn90(1);
-                __delay_ms(5);
-                Turn90(1);
+                        __delay_ms(5);
+                        Turn90(1);
                 break;
+                
+               
             }
+           
             Drive1m();
+           
         }
         
         else if(pathShortest[1][n] > y){
@@ -313,11 +323,13 @@ for (char n = 1; n <= pathCountShortest; n++){
                 break;
                 
                 case 0: Turn90(1);
-                __delay_ms(5);
-                Turn90(1);
+                        __delay_ms(5);
+                        Turn90(1);
                 break;
             }
-            Drive1m;
+           
+            Drive1m();
+            
         }
         
         
@@ -331,11 +343,13 @@ for (char n = 1; n <= pathCountShortest; n++){
                 break;
                 
                 case 2: Turn90(1);
-                __delay_ms(5);
-                Turn90(1);
+                        __delay_ms(5);
+                        Turn90(1);
                 break;
             }
-            Drive1m;
+               
+            Drive1m();
+         
         }       
     }    
 }
@@ -354,10 +368,7 @@ void interrupt isr(void){
             PB8Counter++;
         if(PB7)
             PB7Counter++;
-        
-            
-        
-        
+         
     }
 }
 
@@ -372,7 +383,7 @@ void main(void){
     setupADC();
     
     TRISB = 0b00000011;
-    PORTB = 0;
+    PORTB = 0b00000000;
     
     unsigned char controlByte = 0b00001101;
     spi_transfer(controlByte);
@@ -394,11 +405,11 @@ void main(void){
         if(PB8Counter >= 10 && PB8 == 0){
             
             
-            RB4 = 1;
-            PathTo(2,1);
-            __delay_ms(5000);
+            
+            PathTo(2,0);
+            __delay_ms(1000);
             TravelPath();
-            RB4 = 0;
+            
 /*    
             lcdWriteControl(0b00000001);       
             lcdSetCursor(0b10000000);
@@ -414,7 +425,7 @@ void main(void){
             }
             lcdSetCursor(0b10001110);
             lcdWriteToDigitBCD(pathCountShortest);
-*/
+*/      PB8Counter = 0;
         }
         
         

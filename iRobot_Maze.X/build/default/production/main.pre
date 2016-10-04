@@ -1586,58 +1586,6 @@ signed int angle = 0;
 
 
 
-void Drive1m(void){
-
-
-
-switch(orientation){
-case 0: y--;
-break;
-case 1: x++;
-break;
-case 2: y++;
-break;
-case 3: x--;
-break;
-}
-
-distance = 0;
-DriveDirect(250,250);
-while (distance < 1000){
-distance = distance + getSensorData(19,2);
-}
-DriveDirect(0,0);
-}
-
-
-void Turn90(char direction){
-angle = 0;
-if (direction == 1){
-
-if (orientation == 0)
-orientation = 3;
-else orientation--;
-
-Drive(0,150,0x00,0x01);
-while (angle < 90){
-angle = angle + getSensorData(20,2);
-}
-DriveDirect(0,0);
-}
-
-if (direction == 0){
-
-if (orientation == 3)
-orientation = 0;
-else orientation++;
-
-Drive(0,150,0xFF,0xFF);
-while (angle > -90){
-angle = angle + getSensorData(20,2);
-}
-DriveDirect(0,0);
-}
-}
 
 void PathTo(char x_target, char y_target){
 
@@ -1707,7 +1655,7 @@ if(sum <= 2){
 x_int = x_path;
 y_int = y_path;
 
-# 140
+# 88
 if (left == 0)
 intersection_orientation = 3;
 else if (up == 0)
@@ -1718,7 +1666,7 @@ else if (down == 0)
 intersection_orientation = 2;
 }
 
-# 155
+# 103
 if ((x_path == x_target) && (y_path == y_target)){
 
 
@@ -1733,7 +1681,7 @@ pathShortest[r][c] = path[r][c];
 }
 }
 
-# 173
+# 121
 switch(intersection_orientation){
 case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
 break;
@@ -1760,7 +1708,7 @@ path[r][c] = 0;
 }
 }
 
-# 203
+# 151
 if((sum == 4) || (pathCount >= 15)){
 
 
@@ -1789,7 +1737,7 @@ path[r][c] = 0;
 }
 }
 
-# 238
+# 186
 if (reset_flag != 1){
 
 
@@ -1817,9 +1765,67 @@ pathCount++;
 }
 }
 
+
+
+void Drive1m(void){
+
+
+
+switch(orientation){
+case 0: y--;
+break;
+case 1: x++;
+break;
+case 2: y++;
+break;
+case 3: x--;
+break;
+}
+
+distance = 0;
+DriveDirect(250,250);
+while (distance < 1000){
+distance = distance + getSensorData(19,2);
+}
+DriveDirect(0,0);
+_delay((unsigned long)((100)*(20000000/4000.0)));
+}
+
+
+void Turn90(char direction){
+angle = 0;
+if (direction == 1){
+
+if (orientation == 0)
+orientation = 3;
+else orientation--;
+
+Drive(0,150,0x00,0x01);
+while (angle < 86){
+angle = angle + getSensorData(20,2);
+}
+}
+
+if (direction == 0){
+
+if (orientation == 3)
+orientation = 0;
+else orientation++;
+
+Drive(0,150,0xFF,0xFF);
+while (angle > -86){
+angle = angle + getSensorData(20,2);
+}
+}
+DriveDirect(0,0);
+_delay((unsigned long)((100)*(20000000/4000.0)));
+}
+
 void TravelPath(void){
 
-for (char n = 1; n <= pathCountShortest; n++){
+for (char n = 1; n <= (pathCountShortest + 1); n++){
+
+_delay((unsigned long)((500)*(20000000/4000.0)));
 
 if (pathShortest[0][n] > x){
 switch (orientation){
@@ -1835,7 +1841,9 @@ _delay((unsigned long)((5)*(20000000/4000.0)));
 Turn90(1);
 break;
 }
+
 Drive1m();
+
 }
 
 
@@ -1852,8 +1860,12 @@ case 1: Turn90(1);
 _delay((unsigned long)((5)*(20000000/4000.0)));
 Turn90(1);
 break;
+
+
 }
+
 Drive1m();
+
 }
 
 else if(pathShortest[1][n] > y){
@@ -1870,7 +1882,9 @@ _delay((unsigned long)((5)*(20000000/4000.0)));
 Turn90(1);
 break;
 }
-Drive1m;
+
+Drive1m();
+
 }
 
 
@@ -1888,12 +1902,14 @@ _delay((unsigned long)((5)*(20000000/4000.0)));
 Turn90(1);
 break;
 }
-Drive1m;
+
+Drive1m();
+
 }
 }
 }
 
-# 345
+# 361
 void interrupt isr(void){
 if(TMR0IF){
 TMR0IF = 0;
@@ -1904,9 +1920,6 @@ if(!RB0)
 PB8Counter++;
 if(!RB1)
 PB7Counter++;
-
-
-
 
 }
 }
@@ -1922,7 +1935,7 @@ setupLCD();
 setupADC();
 
 TRISB = 0b00000011;
-PORTB = 0;
+PORTB = 0b00000000;
 
 unsigned char controlByte = 0b00001101;
 spi_transfer(controlByte);
@@ -1944,16 +1957,16 @@ while(1){
 if(PB8Counter >= 10 && !RB0 == 0){
 
 
-RB4 = 1;
-PathTo(2,1);
-_delay((unsigned long)((5000)*(20000000/4000.0)));
-TravelPath();
-RB4 = 0;
 
-# 416
+PathTo(2,0);
+_delay((unsigned long)((1000)*(20000000/4000.0)));
+TravelPath();
+
+# 428
+PB8Counter = 0;
 }
 
-# 422
+# 435
 }
 }
 
