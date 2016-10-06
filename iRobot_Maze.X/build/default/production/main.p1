@@ -1,17 +1,25 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"27 LCD.h
-[v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
-"30
-[v _lcdWriteString `(v ~T0 @X0 0 ef1`*uc ]
+"11 ADC.h
+[v _ADCMain `(v ~T0 @X0 0 ef ]
 "35 ser.h
 [v _DriveDirect `(v ~T0 @X0 0 ef2`i`i ]
-"38
-[v _getSensorData `(i ~T0 @X0 0 ef2`uc`uc ]
 [v F1091 `(v ~T0 @X0 1 tf1`ul ]
 "152 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic.h
 [v __delay `JF1091 ~T0 @X0 0 e ]
 [p i __delay ]
-"33 ser.h
+"27 LCD.h
+[v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
+"30
+[v _lcdWriteString `(v ~T0 @X0 0 ef1`*uc ]
+"2517 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f877a.h
+[v _RB2 `Vb ~T0 @X0 0 e@50 ]
+"2519
+[v _RB3 `Vb ~T0 @X0 0 e@51 ]
+"38 ser.h
+[v _getSensorData `(i ~T0 @X0 0 ef2`uc`uc ]
+"27
+[v _ser_putch `(v ~T0 @X0 0 ef1`uc ]
+"33
 [v _Drive `(v ~T0 @X0 0 ef4`uc`uc`uc`uc ]
 "2651 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f877a.h
 [v _TMR0IF `Vb ~T0 @X0 0 e@90 ]
@@ -36,8 +44,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
 "13 SPI.h
 [v _spi_transfer `(uc ~T0 @X0 0 ef1`uc ]
-"27 ser.h
-[v _ser_putch `(v ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1064,352 +1070,303 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x CP=OFF ]
 [p x LVP=OFF ]
 [p x PWRTE=OFF ]
-"25
+[; ;main.h: 25: void Turn90(char direction);
+[; ;main.h: 26: void Drive1m(void);
+[; ;main.h: 27: void wallFollow(void);
+[; ;main.h: 28: void TravelPath(void);
+[; ;main.h: 29: void re_route(void);
+"32
 [v _time_count `Vui ~T0 @X0 1 e ]
-[; ;main.h: 25: volatile unsigned int time_count;
-"27
+[; ;main.h: 32: volatile unsigned int time_count;
+"34
 [v _PB8Counter `uc ~T0 @X0 1 e ]
 [i _PB8Counter
 -> -> 0 `i `uc
 ]
-[; ;main.h: 27: unsigned char PB8Counter = 0;
-"28
+[; ;main.h: 34: unsigned char PB8Counter = 0;
+"35
 [v _PB7Counter `uc ~T0 @X0 1 e ]
 [i _PB7Counter
 -> -> 0 `i `uc
 ]
-[; ;main.h: 28: unsigned char PB7Counter = 0;
-"30
+[; ;main.h: 35: unsigned char PB7Counter = 0;
+"37
 [v _highByte `uc ~T0 @X0 1 e ]
 [i _highByte
 -> -> 0 `i `uc
 ]
-[; ;main.h: 30: unsigned char highByte = 0;
-"31
+[; ;main.h: 37: unsigned char highByte = 0;
+"38
 [v _lowByte `uc ~T0 @X0 1 e ]
 [i _lowByte
 -> -> 0 `i `uc
 ]
-[; ;main.h: 31: unsigned char lowByte = 0;
-"33
+[; ;main.h: 38: unsigned char lowByte = 0;
+"40
 [v _r `uc ~T0 @X0 1 e ]
 [i _r
 -> -> 0 `i `uc
 ]
-[; ;main.h: 33: unsigned char r = 0;
-"34
+[; ;main.h: 40: unsigned char r = 0;
+"41
 [v _c `uc ~T0 @X0 1 e ]
 [i _c
 -> -> 0 `i `uc
 ]
-[; ;main.h: 34: unsigned char c = 0;
-"36
+[; ;main.h: 41: unsigned char c = 0;
+"43
 [v _x `uc ~T0 @X0 1 e ]
 [i _x
 -> -> 1 `i `uc
 ]
-[; ;main.h: 36: unsigned char x = 1;
-"37
+[; ;main.h: 43: unsigned char x = 1;
+"44
 [v _y `uc ~T0 @X0 1 e ]
 [i _y
 -> -> 0 `i `uc
 ]
-[; ;main.h: 37: unsigned char y = 0;
-"38
+[; ;main.h: 44: unsigned char y = 0;
+"45
 [v _orientation `uc ~T0 @X0 1 e ]
 [i _orientation
 -> -> 3 `i `uc
 ]
-[; ;main.h: 38: unsigned char orientation = 3;
-"40
-[v _x_target `uc ~T0 @X0 1 e ]
+[; ;main.h: 45: unsigned char orientation = 3;
+"47
+[v _x_target `Vuc ~T0 @X0 1 e ]
 [i _x_target
 -> -> 0 `i `uc
 ]
-[; ;main.h: 40: unsigned char x_target = 0;
-"41
-[v _y_target `uc ~T0 @X0 1 e ]
+[; ;main.h: 47: volatile unsigned char x_target = 0;
+"48
+[v _y_target `Vuc ~T0 @X0 1 e ]
 [i _y_target
 -> -> 0 `i `uc
 ]
-[; ;main.h: 41: unsigned char y_target = 0;
-"43
+[; ;main.h: 48: volatile unsigned char y_target = 0;
+"50
 [v _x_path `uc ~T0 @X0 1 e ]
 [i _x_path
 -> -> 0 `i `uc
 ]
-[; ;main.h: 43: unsigned char x_path = 0;
-"44
+[; ;main.h: 50: unsigned char x_path = 0;
+"51
 [v _y_path `uc ~T0 @X0 1 e ]
 [i _y_path
 -> -> 0 `i `uc
 ]
-[; ;main.h: 44: unsigned char y_path = 0;
-"45
+[; ;main.h: 51: unsigned char y_path = 0;
+"52
 [v _orientation_path `uc ~T0 @X0 1 e ]
 [i _orientation_path
 -> -> 0 `i `uc
 ]
-[; ;main.h: 45: unsigned char orientation_path = 0;
-"47
+[; ;main.h: 52: unsigned char orientation_path = 0;
+"54
 [v _x_int `uc ~T0 @X0 1 e ]
 [i _x_int
 -> -> 0 `i `uc
 ]
-[; ;main.h: 47: unsigned char x_int = 0;
-"48
+[; ;main.h: 54: unsigned char x_int = 0;
+"55
 [v _y_int `uc ~T0 @X0 1 e ]
 [i _y_int
 -> -> 0 `i `uc
 ]
-[; ;main.h: 48: unsigned char y_int = 0;
-"49
+[; ;main.h: 55: unsigned char y_int = 0;
+"56
 [v _intersection_orientation `uc ~T0 @X0 1 e ]
 [i _intersection_orientation
 -> -> 0 `i `uc
 ]
-[; ;main.h: 49: unsigned char intersection_orientation = 0;
-"51
+[; ;main.h: 56: unsigned char intersection_orientation = 0;
+"58
 [v _pathCount `uc ~T0 @X0 1 e ]
 [i _pathCount
 -> -> 0 `i `uc
 ]
-[; ;main.h: 51: unsigned char pathCount = 0;
-"52
+[; ;main.h: 58: unsigned char pathCount = 0;
+"59
 [v _pathCountShortest `uc ~T0 @X0 1 e ]
 [i _pathCountShortest
 -> -> 20 `i `uc
 ]
-[; ;main.h: 52: unsigned char pathCountShortest = 20;
-"54
+[; ;main.h: 59: unsigned char pathCountShortest = 20;
+"61
 [v _IR_Wall `b ~T0 @X0 1 e ]
 [i _IR_Wall
 -> 0 `i
 ]
-[; ;main.h: 54: bit IR_Wall = 0;
-"56
+[; ;main.h: 61: bit IR_Wall = 0;
+"62
+[v _targets `uc ~T0 @X0 1 e ]
+[i _targets
+-> -> 0 `i `uc
+]
+[; ;main.h: 62: unsigned char targets = 0;
+"64
+[v _x_goto `uc ~T0 @X0 1 e ]
+[i _x_goto
+-> -> 0 `i `uc
+]
+[; ;main.h: 64: char x_goto = 0;
+"65
+[v _y_goto `uc ~T0 @X0 1 e ]
+[i _y_goto
+-> -> 0 `i `uc
+]
+[; ;main.h: 65: char y_goto = 0;
+"67
 [v _left `b ~T0 @X0 1 e ]
 [i _left
 -> 0 `i
 ]
-[; ;main.h: 56: bit left = 0;
-"57
+[; ;main.h: 67: bit left = 0;
+"68
 [v _right `b ~T0 @X0 1 e ]
 [i _right
 -> 0 `i
 ]
-[; ;main.h: 57: bit right = 0;
-"58
+[; ;main.h: 68: bit right = 0;
+"69
 [v _up `b ~T0 @X0 1 e ]
 [i _up
 -> 0 `i
 ]
-[; ;main.h: 58: bit up = 0;
-"59
+[; ;main.h: 69: bit up = 0;
+"70
 [v _down `b ~T0 @X0 1 e ]
 [i _down
 -> 0 `i
 ]
-[; ;main.h: 59: bit down = 0;
-"60
+[; ;main.h: 70: bit down = 0;
+"71
 [v _reset_flag `b ~T0 @X0 1 e ]
 [i _reset_flag
 -> 0 `i
 ]
-[; ;main.h: 60: bit reset_flag = 0;
-[v F1122 `uc ~T0 @X0 -> 16 `i t ]
-"66
-[v _path `F1122 ~T0 @X0 -> 2 `i e ]
+[; ;main.h: 71: bit reset_flag = 0;
+"73
+[v _targets_found `b ~T0 @X0 1 e ]
+[i _targets_found
+-> 0 `i
+]
+[; ;main.h: 73: bit targets_found = 0;
+"76
+[v _ADC_ADJUST `ui ~T0 @X0 1 e ]
+[i _ADC_ADJUST
+-> -> 0 `i `ui
+]
+[; ;main.h: 76: unsigned int ADC_ADJUST = 0;
+"77
+[v _CURRENT_SPEED_L `ui ~T0 @X0 1 e ]
+[i _CURRENT_SPEED_L
+-> -> 150 `i `ui
+]
+[; ;main.h: 77: unsigned int CURRENT_SPEED_L = 150;
+"78
+[v _ADJUSTED_SPEED_L `ui ~T0 @X0 1 e ]
+[i _ADJUSTED_SPEED_L
+-> -> 0 `i `ui
+]
+[; ;main.h: 78: unsigned int ADJUSTED_SPEED_L = 0;
+"79
+[v _CURRENT_SPEED_R `ui ~T0 @X0 1 e ]
+[i _CURRENT_SPEED_R
+-> -> 150 `i `ui
+]
+[; ;main.h: 79: unsigned int CURRENT_SPEED_R = 150;
+"80
+[v _ADJUSTED_SPEED_R `ui ~T0 @X0 1 e ]
+[i _ADJUSTED_SPEED_R
+-> -> 0 `i `ui
+]
+[; ;main.h: 80: unsigned int ADJUSTED_SPEED_R = 0;
+"81
+[v _timerLoop `ui ~T0 @X0 1 e ]
+[i _timerLoop
+-> -> 0 `i `ui
+]
+[; ;main.h: 81: unsigned int timerLoop = 0;
+"82
+[v _Distance `ui ~T0 @X0 1 e ]
+[i _Distance
+-> -> 0 `i `ui
+]
+[; ;main.h: 82: unsigned int Distance = 0;
+[v F1143 `uc ~T0 @X0 -> 16 `i t ]
+"88
+[v _path `F1143 ~T0 @X0 -> 2 `i e ]
 [i _path
 :U ..
 :U ..
-"67
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-:U ..
-"68
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-..
-]
-[; ;main.h: 66: char path[2][16] = {
-[; ;main.h: 67: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-[; ;main.h: 68: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-[; ;main.h: 69: };
-[v F1124 `uc ~T0 @X0 -> 16 `i t ]
-"72
-[v _pathShortest `F1124 ~T0 @X0 -> 2 `i e ]
-[i _pathShortest
-:U ..
-:U ..
-"73
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-:U ..
-"74
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-..
-]
-[; ;main.h: 72: char pathShortest[2][16] = {
-[; ;main.h: 73: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-[; ;main.h: 74: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-[; ;main.h: 75: };
-[v F1126 `uc ~T0 @X0 -> 5 `i t ]
-"79
-[v _mazeGrid `F1126 ~T0 @X0 -> 4 `i e ]
-[i _mazeGrid
-:U ..
-:U ..
-"80
--> -> 12 `i `uc
--> -> 7 `i `uc
--> -> 14 `i `uc
--> -> 13 `i `uc
--> -> 6 `i `uc
-..
-:U ..
-"81
--> -> 9 `i `uc
--> -> 5 `i `uc
--> -> 0 `i `uc
--> -> 5 `i `uc
--> -> 2 `i `uc
-..
-:U ..
-"82
--> -> 12 `i `uc
--> -> 6 `i `uc
--> -> 10 `i `uc
--> -> 14 `i `uc
--> -> 10 `i `uc
-..
-:U ..
-"83
--> -> 11 `i `uc
--> -> 9 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 3 `i `uc
-..
-..
-]
-[; ;main.h: 79: char mazeGrid[4][5] = {
-[; ;main.h: 80: {12,7,14,13,6},
-[; ;main.h: 81: {9,5,0,5,2},
-[; ;main.h: 82: {12,6,10,14,10},
-[; ;main.h: 83: {11,9,1,1,3}
-[; ;main.h: 84: };
-[v F1128 `uc ~T0 @X0 -> 5 `i t ]
-"87
-[v _mazeGridDefault `F1128 ~T0 @X0 -> 4 `i e ]
-[i _mazeGridDefault
-:U ..
-:U ..
-"88
--> -> 12 `i `uc
--> -> 7 `i `uc
--> -> 14 `i `uc
--> -> 13 `i `uc
--> -> 6 `i `uc
-..
-:U ..
 "89
--> -> 9 `i `uc
--> -> 5 `i `uc
 -> -> 0 `i `uc
--> -> 5 `i `uc
--> -> 2 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
 ..
 :U ..
 "90
--> -> 12 `i `uc
--> -> 6 `i `uc
--> -> 10 `i `uc
--> -> 14 `i `uc
--> -> 10 `i `uc
-..
-:U ..
-"91
--> -> 11 `i `uc
--> -> 9 `i `uc
--> -> 1 `i `uc
--> -> 1 `i `uc
--> -> 3 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
 ..
 ..
 ]
-[; ;main.h: 87: char mazeGridDefault[4][5] = {
-[; ;main.h: 88: {12,7,14,13,6},
-[; ;main.h: 89: {9,5,0,5,2},
-[; ;main.h: 90: {12,6,10,14,10},
-[; ;main.h: 91: {11,9,1,1,3}
-[; ;main.h: 92: };
-[v F1130 `uc ~T0 @X0 -> 16 `i t ]
-"95
-[v _gridWalls `F1130 ~T0 @X0 -> 4 `i e ]
-[i _gridWalls
+[; ;main.h: 88: char path[2][16] = {
+[; ;main.h: 89: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+[; ;main.h: 90: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+[; ;main.h: 91: };
+[v F1145 `uc ~T0 @X0 -> 16 `i t ]
+"94
+[v _pathShortest `F1145 ~T0 @X0 -> 2 `i e ]
+[i _pathShortest
 :U ..
+:U ..
+"95
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
 :U ..
 "96
 -> -> 0 `i `uc
@@ -1420,6 +1377,126 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[; ;main.h: 94: char pathShortest[2][16] = {
+[; ;main.h: 95: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+[; ;main.h: 96: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+[; ;main.h: 97: };
+[v F1147 `uc ~T0 @X0 -> 5 `i t ]
+"101
+[v _mazeGrid `F1147 ~T0 @X0 -> 4 `i e ]
+[i _mazeGrid
+:U ..
+:U ..
+"102
+-> -> 12 `i `uc
+-> -> 7 `i `uc
+-> -> 14 `i `uc
+-> -> 13 `i `uc
+-> -> 6 `i `uc
+..
+:U ..
+"103
+-> -> 9 `i `uc
+-> -> 5 `i `uc
+-> -> 0 `i `uc
+-> -> 5 `i `uc
+-> -> 2 `i `uc
+..
+:U ..
+"104
+-> -> 12 `i `uc
+-> -> 6 `i `uc
+-> -> 10 `i `uc
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+..
+:U ..
+"105
+-> -> 11 `i `uc
+-> -> 9 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+..
+..
+]
+[; ;main.h: 101: char mazeGrid[4][5] = {
+[; ;main.h: 102: {12,7,14,13,6},
+[; ;main.h: 103: {9,5,0,5,2},
+[; ;main.h: 104: {12,6,10,14,10},
+[; ;main.h: 105: {11,9,1,1,3}
+[; ;main.h: 106: };
+[v F1149 `uc ~T0 @X0 -> 5 `i t ]
+"109
+[v _mazeGridDefault `F1149 ~T0 @X0 -> 4 `i e ]
+[i _mazeGridDefault
+:U ..
+:U ..
+"110
+-> -> 12 `i `uc
+-> -> 7 `i `uc
+-> -> 14 `i `uc
+-> -> 13 `i `uc
+-> -> 6 `i `uc
+..
+:U ..
+"111
+-> -> 9 `i `uc
+-> -> 5 `i `uc
+-> -> 0 `i `uc
+-> -> 5 `i `uc
+-> -> 2 `i `uc
+..
+:U ..
+"112
+-> -> 12 `i `uc
+-> -> 6 `i `uc
+-> -> 10 `i `uc
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+..
+:U ..
+"113
+-> -> 11 `i `uc
+-> -> 9 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+..
+..
+]
+[; ;main.h: 109: char mazeGridDefault[4][5] = {
+[; ;main.h: 110: {12,7,14,13,6},
+[; ;main.h: 111: {9,5,0,5,2},
+[; ;main.h: 112: {12,6,10,14,10},
+[; ;main.h: 113: {11,9,1,1,3}
+[; ;main.h: 114: };
+[v F1151 `uc ~T0 @X0 -> 16 `i t ]
+"117
+[v _gridWalls `F1151 ~T0 @X0 -> 4 `i e ]
+[i _gridWalls
+:U ..
+:U ..
+"118
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
 -> -> 1 `i `uc
 -> -> 1 `i `uc
 -> -> 1 `i `uc
@@ -1430,7 +1507,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 1 `i `uc
 ..
 :U ..
-"97
+"119
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1449,7 +1526,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 1 `i `uc
 ..
 :U ..
-"98
+"120
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 1 `i `uc
@@ -1468,7 +1545,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 1 `i `uc
 ..
 :U ..
-"99
+"121
 -> -> 0 `i `uc
 -> -> 1 `i `uc
 -> -> 0 `i `uc
@@ -1488,14 +1565,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;main.h: 95: char gridWalls[4][16] = {
-[; ;main.h: 96: {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
-[; ;main.h: 97: {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
-[; ;main.h: 98: {0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
-[; ;main.h: 99: {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1}
-[; ;main.h: 100: };
-[; ;motor.h: 11: void setCW();
-[; ;motor.h: 12: void setCCW();
+[; ;main.h: 117: char gridWalls[4][16] = {
+[; ;main.h: 118: {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
+[; ;main.h: 119: {0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1},
+[; ;main.h: 120: {0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1},
+[; ;main.h: 121: {0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1}
+[; ;main.h: 122: };
+[; ;motor.h: 11: void stepCW(int steps);
+[; ;motor.h: 12: void stepCCW(int steps);
+"14 motor.h
+[v _loop `i ~T0 @X0 1 e ]
+[i _loop
+-> 0 `i
+]
+[; ;motor.h: 14: int loop = 0;
 [; ;LCD.h: 18: void lcdWriteStepCount(unsigned char stepCountLCD);
 [; ;LCD.h: 21: void lcdWriteControl(unsigned char databyte);
 [; ;LCD.h: 24: void lcdWriteData(unsigned char databyte);
@@ -1593,361 +1676,362 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;main.c: 11: signed int angle = 0;
-"16
+"14
+[v _wallFollow `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 14: void wallFollow(void){
+[e :U _wallFollow ]
+[f ]
+"17
+[v _setADCdist `ui ~T0 @X0 1 a ]
+[; ;main.c: 17: unsigned int setADCdist = 150;
+[e = _setADCdist -> -> 150 `i `ui ]
+[; ;main.c: 20: ADCMain();
+"20
+[e ( _ADCMain ..  ]
+[; ;main.c: 21: if(adcRAW < (setADCdist - 40)) {
+"21
+[e $ ! < _adcRAW - _setADCdist -> -> 40 `i `ui 97  ]
+{
+[; ;main.c: 22: DriveDirect(CURRENT_SPEED_R,CURRENT_SPEED_L);
+"22
+[e ( _DriveDirect (2 , -> _CURRENT_SPEED_R `i -> _CURRENT_SPEED_L `i ]
+"23
+}
+[e :U 97 ]
+[; ;main.c: 23: }
+[; ;main.c: 24: if(adcRAW > setADCdist){
+"24
+[e $ ! > _adcRAW _setADCdist 98  ]
+{
+[; ;main.c: 25: while(adcRAW > setADCdist){
+"25
+[e $U 99  ]
+[e :U 100 ]
+{
+[; ;main.c: 26: ADCMain();
+"26
+[e ( _ADCMain ..  ]
+[; ;main.c: 27: ADC_ADJUST = adcRAW - setADCdist;
+"27
+[e = _ADC_ADJUST - _adcRAW _setADCdist ]
+[; ;main.c: 28: ADJUSTED_SPEED_L = CURRENT_SPEED_L + (7/10)*ADC_ADJUST + (CURRENT_SPEED_L)/(ADC_ADJUST+10);
+"28
+[e = _ADJUSTED_SPEED_L + + _CURRENT_SPEED_L * -> / -> 7 `i -> 10 `i `ui _ADC_ADJUST / _CURRENT_SPEED_L + _ADC_ADJUST -> -> 10 `i `ui ]
+[; ;main.c: 29: DriveDirect(CURRENT_SPEED_R,ADJUSTED_SPEED_L);
+"29
+[e ( _DriveDirect (2 , -> _CURRENT_SPEED_R `i -> _ADJUSTED_SPEED_L `i ]
+"30
+}
+[e :U 99 ]
+"25
+[e $ > _adcRAW _setADCdist 100  ]
+[e :U 101 ]
+"31
+}
+[; ;main.c: 30: }
+[; ;main.c: 31: }
+[e $U 102  ]
+"32
+[e :U 98 ]
+[; ;main.c: 32: else if (adcRAW < setADCdist){
+[e $ ! < _adcRAW _setADCdist 103  ]
+{
+[; ;main.c: 33: while(adcRAW < setADCdist){
+"33
+[e $U 104  ]
+[e :U 105 ]
+{
+[; ;main.c: 34: ADCMain();
+"34
+[e ( _ADCMain ..  ]
+[; ;main.c: 35: ADC_ADJUST = setADCdist - adcRAW;
+"35
+[e = _ADC_ADJUST - _setADCdist _adcRAW ]
+[; ;main.c: 36: ADJUSTED_SPEED_R = CURRENT_SPEED_R + (7/10)*ADC_ADJUST + (CURRENT_SPEED_R)/(ADC_ADJUST+10);
+"36
+[e = _ADJUSTED_SPEED_R + + _CURRENT_SPEED_R * -> / -> 7 `i -> 10 `i `ui _ADC_ADJUST / _CURRENT_SPEED_R + _ADC_ADJUST -> -> 10 `i `ui ]
+[; ;main.c: 37: DriveDirect(ADJUSTED_SPEED_R,CURRENT_SPEED_L);
+"37
+[e ( _DriveDirect (2 , -> _ADJUSTED_SPEED_R `i -> _CURRENT_SPEED_L `i ]
+[; ;main.c: 38: _delay((unsigned long)((100)*(20000000/4000.0)));
+"38
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"39
+}
+[e :U 104 ]
+"33
+[e $ < _adcRAW _setADCdist 105  ]
+[e :U 106 ]
+"40
+}
+[e :U 103 ]
+"42
+[e :U 102 ]
+[; ;main.c: 39: }
+[; ;main.c: 40: }
+[; ;main.c: 42: }
+[e :UE 96 ]
+}
+"46
 [v _PathTo `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;main.c: 16: void PathTo(char x_target, char y_target){
+[; ;main.c: 46: void PathTo(char x_target, char y_target){
 [e :U _PathTo ]
 [v _x_target `uc ~T0 @X0 1 r1 ]
 [v _y_target `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;main.c: 20: for (r = 0; r <= 3; r++){
-"20
+[; ;main.c: 50: for (r = 0; r <= 3; r++){
+"50
 {
 [e = _r -> -> 0 `i `uc ]
-[e $ <= -> _r `i -> 3 `i 97  ]
-[e $U 98  ]
-[e :U 97 ]
+[e $ <= -> _r `i -> 3 `i 108  ]
+[e $U 109  ]
+[e :U 108 ]
 {
-[; ;main.c: 21: for (c = 0; c <= 4; c++){
-"21
+[; ;main.c: 51: for (c = 0; c <= 4; c++){
+"51
 {
 [e = _c -> -> 0 `i `uc ]
-[e $ <= -> _c `i -> 4 `i 100  ]
-[e $U 101  ]
-[e :U 100 ]
+[e $ <= -> _c `i -> 4 `i 111  ]
+[e $U 112  ]
+[e :U 111 ]
 {
-[; ;main.c: 22: mazeGrid[r][c] = mazeGridDefault[r][c];
-"22
+[; ;main.c: 52: mazeGrid[r][c] = mazeGridDefault[r][c];
+"52
 [e = *U + &U *U + &U _mazeGrid * -> _r `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _mazeGrid * -> _r `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux *U + &U *U + &U _mazeGridDefault * -> _r `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _r `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux ]
-"23
+"53
 }
-"21
+"51
 [e ++ _c -> -> 1 `i `uc ]
-[e $ <= -> _c `i -> 4 `i 100  ]
-[e :U 101 ]
-"23
+[e $ <= -> _c `i -> 4 `i 111  ]
+[e :U 112 ]
+"53
 }
-"24
+"54
 }
-"20
+"50
 [e ++ _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 3 `i 97  ]
-[e :U 98 ]
-"24
-}
-[; ;main.c: 23: }
-[; ;main.c: 24: }
-[; ;main.c: 28: x_path = x;
-"28
-[e = _x_path _x ]
-[; ;main.c: 29: y_path = y;
-"29
-[e = _y_path _y ]
-[; ;main.c: 30: orientation_path = orientation;
-"30
-[e = _orientation_path _orientation ]
-[; ;main.c: 31: pathCount = 0;
-"31
-[e = _pathCount -> -> 0 `i `uc ]
-[; ;main.c: 33: if(IR_Wall == 1){
-"33
-[e $ ! == -> _IR_Wall `i -> 1 `i 103  ]
-{
-[; ;main.c: 34: switch (orientation){
-"34
-[e $U 105  ]
-{
-[; ;main.c: 35: case 0: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 4);
-"35
-[e :U 106 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
-[; ;main.c: 36: break;
-"36
-[e $U 104  ]
-[; ;main.c: 37: case 1: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 2);
-"37
-[e :U 107 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
-[; ;main.c: 38: break;
-"38
-[e $U 104  ]
-[; ;main.c: 39: case 2: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 1);
-"39
-[e :U 108 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
-[; ;main.c: 40: break;
-"40
-[e $U 104  ]
-[; ;main.c: 41: case 3: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 8);
-"41
+[e $ <= -> _r `i -> 3 `i 108  ]
 [e :U 109 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGrid * -> _y `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
-[; ;main.c: 42: break;
-"42
-[e $U 104  ]
-"43
+"54
 }
-[; ;main.c: 43: }
-[e $U 104  ]
-"34
-[e :U 105 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 106
- , $ -> -> 1 `i `uc 107
- , $ -> -> 2 `i `uc 108
- , $ -> -> 3 `i `uc 109
- 104 ]
-"43
-[e :U 104 ]
-"44
+[; ;main.c: 53: }
+[; ;main.c: 54: }
+[; ;main.c: 56: pathCountShortest = 20;
+"56
+[e = _pathCountShortest -> -> 20 `i `uc ]
+[; ;main.c: 57: for (r = 0; r <= 1; r++){
+"57
+{
+[e = _r -> -> 0 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 114  ]
+[e $U 115  ]
+[e :U 114 ]
+{
+[; ;main.c: 58: for (c = 0; c <= 15; c++){
+"58
+{
+[e = _c -> -> 0 `i `uc ]
+[e $ <= -> _c `i -> 15 `i 117  ]
+[e $U 118  ]
+[e :U 117 ]
+{
+[; ;main.c: 59: pathShortest[r][c] = 0;
+"59
+[e = *U + &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
+"60
 }
-[e :U 103 ]
-[; ;main.c: 44: }
-[; ;main.c: 46: lcdSetCursor(0b10000000);
-"46
+"58
+[e ++ _c -> -> 1 `i `uc ]
+[e $ <= -> _c `i -> 15 `i 117  ]
+[e :U 118 ]
+"60
+}
+"61
+}
+"57
+[e ++ _r -> -> 1 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 114  ]
+[e :U 115 ]
+"61
+}
+[; ;main.c: 60: }
+[; ;main.c: 61: }
+[; ;main.c: 64: x_goto = x_target;
+"64
+[e = _x_goto _x_target ]
+[; ;main.c: 65: y_goto = y_target;
+"65
+[e = _y_goto _y_target ]
+[; ;main.c: 67: x_path = x;
+"67
+[e = _x_path _x ]
+[; ;main.c: 68: y_path = y;
+"68
+[e = _y_path _y ]
+[; ;main.c: 69: orientation_path = orientation;
+"69
+[e = _orientation_path _orientation ]
+[; ;main.c: 71: pathCount = 0;
+"71
+[e = _pathCount -> -> 0 `i `uc ]
+[; ;main.c: 74: lcdSetCursor(0b10000000);
+"74
 [e ( _lcdSetCursor (1 -> -> 128 `i `uc ]
-[; ;main.c: 47: lcdWriteString("Working...");
-"47
+[; ;main.c: 75: lcdWriteString("Working...");
+"75
 [e ( _lcdWriteString (1 -> :s 1C `*uc ]
-[; ;main.c: 49: for (int loop = 0; loop <= 1000; loop++){
-"49
+[; ;main.c: 77: for (int loop = 0; loop <= 2000; loop++){
+"77
 {
 [v _loop `i ~T0 @X0 1 a ]
 [e = _loop -> 0 `i ]
-[e $ <= _loop -> 1000 `i 110  ]
-[e $U 111  ]
-[e :U 110 ]
-{
-[; ;main.c: 51: reset_flag = 0;
-"51
-[e = _reset_flag -> -> 0 `i `b ]
-[; ;main.c: 53: path[0][pathCount] = x_path;
-"53
-[e = *U + &U *U + &U _path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _x_path ]
-[; ;main.c: 54: path[1][pathCount] = y_path;
-"54
-[e = *U + &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _y_path ]
-[; ;main.c: 59: left = gridWalls[0][(mazeGrid[y_path][x_path])];
-"59
-[e = _left -> *U + &U *U + &U _gridWalls * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
-[; ;main.c: 60: up = gridWalls[1][(mazeGrid[y_path][x_path])];
-"60
-[e = _up -> *U + &U *U + &U _gridWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
-[; ;main.c: 61: right = gridWalls[2][(mazeGrid[y_path][x_path])];
-"61
-[e = _right -> *U + &U *U + &U _gridWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
-[; ;main.c: 62: down = gridWalls[3][(mazeGrid[y_path][x_path])];
-"62
-[e = _down -> *U + &U *U + &U _gridWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
-[; ;main.c: 66: switch(orientation_path){
-"66
-[e $U 114  ]
-{
-[; ;main.c: 67: case 0: down = 1;
-"67
-[e :U 115 ]
-[e = _down -> -> 1 `i `b ]
-[; ;main.c: 68: break;
-"68
-[e $U 113  ]
-[; ;main.c: 69: case 1: left = 1;
-"69
-[e :U 116 ]
-[e = _left -> -> 1 `i `b ]
-[; ;main.c: 70: break;
-"70
-[e $U 113  ]
-[; ;main.c: 71: case 2: up = 1;
-"71
-[e :U 117 ]
-[e = _up -> -> 1 `i `b ]
-[; ;main.c: 72: break;
-"72
-[e $U 113  ]
-[; ;main.c: 73: case 3: right = 1;
-"73
-[e :U 118 ]
-[e = _right -> -> 1 `i `b ]
-[; ;main.c: 74: break;
-"74
-[e $U 113  ]
-"75
-}
-[; ;main.c: 75: }
-[e $U 113  ]
-"66
-[e :U 114 ]
-[e [\ _orientation_path , $ -> -> 0 `i `uc 115
- , $ -> -> 1 `i `uc 116
- , $ -> -> 2 `i `uc 117
- , $ -> -> 3 `i `uc 118
- 113 ]
-"75
-[e :U 113 ]
-"79
-[v _sum `uc ~T0 @X0 1 a ]
-[; ;main.c: 79: char sum = (left + up + down + right);
-[e = _sum -> + + + -> _left `i -> _up `i -> _down `i -> _right `i `uc ]
-[; ;main.c: 80: if(sum <= 2){
-"80
-[e $ ! <= -> _sum `i -> 2 `i 119  ]
-{
-[; ;main.c: 81: x_int = x_path;
-"81
-[e = _x_int _x_path ]
-[; ;main.c: 82: y_int = y_path;
-"82
-[e = _y_int _y_path ]
-[; ;main.c: 88: if (left == 0)
-"88
-[e $ ! == -> _left `i -> 0 `i 120  ]
-[; ;main.c: 89: intersection_orientation = 3;
-"89
-[e = _intersection_orientation -> -> 3 `i `uc ]
+[e $ <= _loop -> 2000 `i 120  ]
 [e $U 121  ]
-"90
 [e :U 120 ]
-[; ;main.c: 90: else if (up == 0)
-[e $ ! == -> _up `i -> 0 `i 122  ]
-[; ;main.c: 91: intersection_orientation = 0;
-"91
-[e = _intersection_orientation -> -> 0 `i `uc ]
-[e $U 123  ]
-"92
-[e :U 122 ]
-[; ;main.c: 92: else if (right == 0)
-[e $ ! == -> _right `i -> 0 `i 124  ]
-[; ;main.c: 93: intersection_orientation = 1;
-"93
-[e = _intersection_orientation -> -> 1 `i `uc ]
-[e $U 125  ]
+{
+[; ;main.c: 79: reset_flag = 0;
+"79
+[e = _reset_flag -> -> 0 `i `b ]
+[; ;main.c: 81: path[0][pathCount] = x_path;
+"81
+[e = *U + &U *U + &U _path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _x_path ]
+[; ;main.c: 82: path[1][pathCount] = y_path;
+"82
+[e = *U + &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _y_path ]
+[; ;main.c: 87: left = gridWalls[0][(mazeGrid[y_path][x_path])];
+"87
+[e = _left -> *U + &U *U + &U _gridWalls * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
+[; ;main.c: 88: up = gridWalls[1][(mazeGrid[y_path][x_path])];
+"88
+[e = _up -> *U + &U *U + &U _gridWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
+[; ;main.c: 89: right = gridWalls[2][(mazeGrid[y_path][x_path])];
+"89
+[e = _right -> *U + &U *U + &U _gridWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
+[; ;main.c: 90: down = gridWalls[3][(mazeGrid[y_path][x_path])];
+"90
+[e = _down -> *U + &U *U + &U _gridWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
+[; ;main.c: 94: if (pathCount != 0){
 "94
-[e :U 124 ]
-[; ;main.c: 94: else if (down == 0)
-[e $ ! == -> _down `i -> 0 `i 126  ]
-[; ;main.c: 95: intersection_orientation = 2;
+[e $ ! != -> _pathCount `i -> 0 `i 123  ]
+{
+[; ;main.c: 95: switch(orientation_path){
 "95
-[e = _intersection_orientation -> -> 2 `i `uc ]
-[e :U 126 ]
+[e $U 125  ]
+{
+[; ;main.c: 96: case 0: down = 1;
 "96
-[e :U 125 ]
-[e :U 123 ]
-[e :U 121 ]
-}
-[e :U 119 ]
-[; ;main.c: 96: }
-[; ;main.c: 103: if ((x_path == x_target) && (y_path == y_target)){
-"103
-[e $ ! && == -> _x_path `i -> _x_target `i == -> _y_path `i -> _y_target `i 127  ]
-{
-[; ;main.c: 108: if(pathCount < pathCountShortest){
-"108
-[e $ ! < -> _pathCount `i -> _pathCountShortest `i 128  ]
-{
-[; ;main.c: 109: pathCountShortest = pathCount;
-"109
-[e = _pathCountShortest _pathCount ]
-[; ;main.c: 110: for (r = 0; r <= 1; r++){
-"110
-{
-[e = _r -> -> 0 `i `uc ]
-[e $ <= -> _r `i -> 1 `i 129  ]
-[e $U 130  ]
-[e :U 129 ]
-{
-[; ;main.c: 111: for (c = 0; c <= 15; c++){
-"111
-{
-[e = _c -> -> 0 `i `uc ]
-[e $ <= -> _c `i -> 15 `i 132  ]
-[e $U 133  ]
-[e :U 132 ]
-{
-[; ;main.c: 112: pathShortest[r][c] = path[r][c];
-"112
-[e = *U + &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux ]
-"113
-}
-"111
-[e ++ _c -> -> 1 `i `uc ]
-[e $ <= -> _c `i -> 15 `i 132  ]
-[e :U 133 ]
-"113
-}
-"114
-}
-"110
-[e ++ _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 1 `i 129  ]
-[e :U 130 ]
-"114
-}
-"115
-}
+[e :U 126 ]
+[e = _down -> -> 1 `i `b ]
+[; ;main.c: 97: break;
+"97
+[e $U 124  ]
+[; ;main.c: 98: case 1: left = 1;
+"98
+[e :U 127 ]
+[e = _left -> -> 1 `i `b ]
+[; ;main.c: 99: break;
+"99
+[e $U 124  ]
+[; ;main.c: 100: case 2: up = 1;
+"100
 [e :U 128 ]
-[; ;main.c: 113: }
-[; ;main.c: 114: }
-[; ;main.c: 115: }
-[; ;main.c: 121: switch(intersection_orientation){
-"121
-[e $U 136  ]
-{
-[; ;main.c: 122: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
-"122
-[e :U 137 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
-[; ;main.c: 123: break;
-"123
-[e $U 135  ]
-[; ;main.c: 124: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
-"124
-[e :U 138 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
-[; ;main.c: 125: break;
-"125
-[e $U 135  ]
-[; ;main.c: 126: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
-"126
-[e :U 139 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
-[; ;main.c: 127: break;
-"127
-[e $U 135  ]
-[; ;main.c: 128: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
-"128
-[e :U 140 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
-[; ;main.c: 129: break;
-"129
-[e $U 135  ]
-"130
+[e = _up -> -> 1 `i `b ]
+[; ;main.c: 101: break;
+"101
+[e $U 124  ]
+[; ;main.c: 102: case 3: right = 1;
+"102
+[e :U 129 ]
+[e = _right -> -> 1 `i `b ]
+[; ;main.c: 103: break;
+"103
+[e $U 124  ]
+"104
 }
-[; ;main.c: 130: }
-[e $U 135  ]
+[; ;main.c: 104: }
+[e $U 124  ]
+"95
+[e :U 125 ]
+[e [\ _orientation_path , $ -> -> 0 `i `uc 126
+ , $ -> -> 1 `i `uc 127
+ , $ -> -> 2 `i `uc 128
+ , $ -> -> 3 `i `uc 129
+ 124 ]
+"104
+[e :U 124 ]
+"105
+}
+[e :U 123 ]
+"109
+[v _sum `uc ~T0 @X0 1 a ]
+[; ;main.c: 105: }
+[; ;main.c: 109: char sum = (left + up + down + right);
+[e = _sum -> + + + -> _left `i -> _up `i -> _down `i -> _right `i `uc ]
+[; ;main.c: 110: if(sum <= 2){
+"110
+[e $ ! <= -> _sum `i -> 2 `i 130  ]
+{
+[; ;main.c: 111: x_int = x_path;
+"111
+[e = _x_int _x_path ]
+[; ;main.c: 112: y_int = y_path;
+"112
+[e = _y_int _y_path ]
+[; ;main.c: 118: if (left == 0)
+"118
+[e $ ! == -> _left `i -> 0 `i 131  ]
+[; ;main.c: 119: intersection_orientation = 3;
+"119
+[e = _intersection_orientation -> -> 3 `i `uc ]
+[e $U 132  ]
+"120
+[e :U 131 ]
+[; ;main.c: 120: else if (up == 0)
+[e $ ! == -> _up `i -> 0 `i 133  ]
+[; ;main.c: 121: intersection_orientation = 0;
 "121
-[e :U 136 ]
-[e [\ _intersection_orientation , $ -> -> 0 `i `uc 137
- , $ -> -> 1 `i `uc 138
- , $ -> -> 2 `i `uc 139
- , $ -> -> 3 `i `uc 140
- 135 ]
-"130
+[e = _intersection_orientation -> -> 0 `i `uc ]
+[e $U 134  ]
+"122
+[e :U 133 ]
+[; ;main.c: 122: else if (right == 0)
+[e $ ! == -> _right `i -> 0 `i 135  ]
+[; ;main.c: 123: intersection_orientation = 1;
+"123
+[e = _intersection_orientation -> -> 1 `i `uc ]
+[e $U 136  ]
+"124
 [e :U 135 ]
-[; ;main.c: 133: x_path = x;
+[; ;main.c: 124: else if (down == 0)
+[e $ ! == -> _down `i -> 0 `i 137  ]
+[; ;main.c: 125: intersection_orientation = 2;
+"125
+[e = _intersection_orientation -> -> 2 `i `uc ]
+[e :U 137 ]
+"126
+[e :U 136 ]
+[e :U 134 ]
+[e :U 132 ]
+}
+[e :U 130 ]
+[; ;main.c: 126: }
+[; ;main.c: 133: if ((x_path == x_target)){
 "133
-[e = _x_path _x ]
-[; ;main.c: 134: y_path = y;
+[e $ ! == -> _x_path `i -> _x_target `i 138  ]
+{
+[; ;main.c: 134: if (y_path == y_target){
 "134
-[e = _y_path _y ]
-[; ;main.c: 135: orientation_path = orientation;
-"135
-[e = _orientation_path _orientation ]
-[; ;main.c: 136: pathCount = 0;
-"136
-[e = _pathCount -> -> 0 `i `uc ]
-[; ;main.c: 137: reset_flag = 1;
-"137
-[e = _reset_flag -> -> 1 `i `b ]
+[e $ ! == -> _y_path `i -> _y_target `i 139  ]
+{
+[; ;main.c: 138: if(pathCount < pathCountShortest){
+"138
+[e $ ! < -> _pathCount `i -> _pathCountShortest `i 140  ]
+{
+[; ;main.c: 139: pathCountShortest = pathCount;
+"139
+[e = _pathCountShortest _pathCount ]
 [; ;main.c: 140: for (r = 0; r <= 1; r++){
 "140
 {
@@ -1964,9 +2048,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 145  ]
 [e :U 144 ]
 {
-[; ;main.c: 142: path[r][c] = 0;
+[; ;main.c: 142: pathShortest[r][c] = path[r][c];
 "142
-[e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
+[e = *U + &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux ]
 "143
 }
 "141
@@ -1985,775 +2069,1624 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "145
 }
-[e :U 127 ]
+[e :U 140 ]
 [; ;main.c: 143: }
 [; ;main.c: 144: }
 [; ;main.c: 145: }
-[; ;main.c: 151: if((sum == 4) || (pathCount >= 15)){
+[; ;main.c: 151: switch(intersection_orientation){
 "151
-[e $ ! || == -> _sum `i -> 4 `i >= -> _pathCount `i -> 15 `i 147  ]
+[e $U 148  ]
 {
-[; ;main.c: 154: switch(intersection_orientation){
-"154
-[e $U 149  ]
-{
-[; ;main.c: 155: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
-"155
-[e :U 150 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
-[; ;main.c: 156: break;
-"156
-[e $U 148  ]
-[; ;main.c: 157: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
-"157
-[e :U 151 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
-[; ;main.c: 158: break;
-"158
-[e $U 148  ]
-[; ;main.c: 159: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
-"159
-[e :U 152 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
-[; ;main.c: 160: break;
-"160
-[e $U 148  ]
-[; ;main.c: 161: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
-"161
-[e :U 153 ]
-[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
-[; ;main.c: 162: break;
-"162
-[e $U 148  ]
-"163
-}
-[; ;main.c: 163: }
-[e $U 148  ]
-"154
+[; ;main.c: 152: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
+"152
 [e :U 149 ]
-[e [\ _intersection_orientation , $ -> -> 0 `i `uc 150
- , $ -> -> 1 `i `uc 151
- , $ -> -> 2 `i `uc 152
- , $ -> -> 3 `i `uc 153
- 148 ]
-"163
+[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
+[; ;main.c: 153: break;
+"153
+[e $U 147  ]
+[; ;main.c: 154: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
+"154
+[e :U 150 ]
+[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
+[; ;main.c: 155: break;
+"155
+[e $U 147  ]
+[; ;main.c: 156: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
+"156
+[e :U 151 ]
+[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
+[; ;main.c: 157: break;
+"157
+[e $U 147  ]
+[; ;main.c: 158: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
+"158
+[e :U 152 ]
+[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
+[; ;main.c: 159: break;
+"159
+[e $U 147  ]
+"160
+}
+[; ;main.c: 160: }
+[e $U 147  ]
+"151
 [e :U 148 ]
-[; ;main.c: 166: x_path = x;
-"166
+[e [\ _intersection_orientation , $ -> -> 0 `i `uc 149
+ , $ -> -> 1 `i `uc 150
+ , $ -> -> 2 `i `uc 151
+ , $ -> -> 3 `i `uc 152
+ 147 ]
+"160
+[e :U 147 ]
+[; ;main.c: 163: x_path = x;
+"163
 [e = _x_path _x ]
-[; ;main.c: 167: y_path = y;
-"167
+[; ;main.c: 164: y_path = y;
+"164
 [e = _y_path _y ]
-[; ;main.c: 168: orientation_path = orientation;
-"168
+[; ;main.c: 165: orientation_path = orientation;
+"165
 [e = _orientation_path _orientation ]
-[; ;main.c: 169: pathCount = 0;
-"169
+[; ;main.c: 166: pathCount = 0;
+"166
 [e = _pathCount -> -> 0 `i `uc ]
-[; ;main.c: 170: reset_flag = 1;
-"170
+[; ;main.c: 167: reset_flag = 1;
+"167
 [e = _reset_flag -> -> 1 `i `b ]
-[; ;main.c: 172: for (r = 0; r <= 1; r++){
-"172
+[; ;main.c: 170: for (r = 0; r <= 1; r++){
+"170
 {
 [e = _r -> -> 0 `i `uc ]
-[e $ <= -> _r `i -> 1 `i 154  ]
-[e $U 155  ]
-[e :U 154 ]
+[e $ <= -> _r `i -> 1 `i 153  ]
+[e $U 154  ]
+[e :U 153 ]
 {
-[; ;main.c: 173: for (c = 0; c <= 15; c++){
-"173
+[; ;main.c: 171: for (c = 0; c <= 15; c++){
+"171
 {
 [e = _c -> -> 0 `i `uc ]
-[e $ <= -> _c `i -> 15 `i 157  ]
-[e $U 158  ]
-[e :U 157 ]
+[e $ <= -> _c `i -> 15 `i 156  ]
+[e $U 157  ]
+[e :U 156 ]
 {
-[; ;main.c: 174: path[r][c] = 0;
-"174
-[e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
-"175
-}
-"173
-[e ++ _c -> -> 1 `i `uc ]
-[e $ <= -> _c `i -> 15 `i 157  ]
-[e :U 158 ]
-"175
-}
-"176
-}
+[; ;main.c: 172: path[r][c] = 0;
 "172
+[e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
+"173
+}
+"171
+[e ++ _c -> -> 1 `i `uc ]
+[e $ <= -> _c `i -> 15 `i 156  ]
+[e :U 157 ]
+"173
+}
+"174
+}
+"170
 [e ++ _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 1 `i 154  ]
-[e :U 155 ]
+[e $ <= -> _r `i -> 1 `i 153  ]
+[e :U 154 ]
+"174
+}
+"175
+}
+[e :U 139 ]
 "176
 }
-"177
-}
-[e :U 147 ]
+[e :U 138 ]
+[; ;main.c: 173: }
+[; ;main.c: 174: }
 [; ;main.c: 175: }
 [; ;main.c: 176: }
-[; ;main.c: 177: }
-[; ;main.c: 186: if (reset_flag != 1){
+[; ;main.c: 182: if((sum == 4) || (pathCount >= 15)){
+"182
+[e $ ! || == -> _sum `i -> 4 `i >= -> _pathCount `i -> 15 `i 159  ]
+{
+[; ;main.c: 185: switch(intersection_orientation){
+"185
+[e $U 161  ]
+{
+[; ;main.c: 186: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
 "186
-[e $ ! != -> _reset_flag `i -> 1 `i 160  ]
-{
-[; ;main.c: 189: if(left == 0){
-"189
-[e $ ! == -> _left `i -> 0 `i 161  ]
-{
-[; ;main.c: 190: x_path--;
-"190
-[e -- _x_path -> -> 1 `i `uc ]
-[; ;main.c: 191: orientation_path = 3;
-"191
-[e = _orientation_path -> -> 3 `i `uc ]
-[; ;main.c: 192: pathCount++;
-"192
-[e ++ _pathCount -> -> 1 `i `uc ]
-"193
-}
-[; ;main.c: 193: }
-[e $U 162  ]
-"194
-[e :U 161 ]
-[; ;main.c: 194: else if(up == 0){
-[e $ ! == -> _up `i -> 0 `i 163  ]
-{
-[; ;main.c: 195: y_path--;
-"195
-[e -- _y_path -> -> 1 `i `uc ]
-[; ;main.c: 196: orientation_path = 0;
-"196
-[e = _orientation_path -> -> 0 `i `uc ]
-[; ;main.c: 197: pathCount++;
-"197
-[e ++ _pathCount -> -> 1 `i `uc ]
-"198
-}
-[; ;main.c: 198: }
-[e $U 164  ]
-"199
+[e :U 162 ]
+[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
+[; ;main.c: 187: break;
+"187
+[e $U 160  ]
+[; ;main.c: 188: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
+"188
 [e :U 163 ]
-[; ;main.c: 199: else if(right == 0){
-[e $ ! == -> _right `i -> 0 `i 165  ]
-{
-[; ;main.c: 200: x_path++;
-"200
-[e ++ _x_path -> -> 1 `i `uc ]
-[; ;main.c: 201: orientation_path = 1;
-"201
-[e = _orientation_path -> -> 1 `i `uc ]
-[; ;main.c: 202: pathCount++;
-"202
-[e ++ _pathCount -> -> 1 `i `uc ]
-"203
-}
-[; ;main.c: 203: }
-[e $U 166  ]
-"204
+[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
+[; ;main.c: 189: break;
+"189
+[e $U 160  ]
+[; ;main.c: 190: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
+"190
+[e :U 164 ]
+[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
+[; ;main.c: 191: break;
+"191
+[e $U 160  ]
+[; ;main.c: 192: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
+"192
 [e :U 165 ]
-[; ;main.c: 204: else if(down == 0){
-[e $ ! == -> _down `i -> 0 `i 167  ]
+[e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
+[; ;main.c: 193: break;
+"193
+[e $U 160  ]
+"194
+}
+[; ;main.c: 194: }
+[e $U 160  ]
+"185
+[e :U 161 ]
+[e [\ _intersection_orientation , $ -> -> 0 `i `uc 162
+ , $ -> -> 1 `i `uc 163
+ , $ -> -> 2 `i `uc 164
+ , $ -> -> 3 `i `uc 165
+ 160 ]
+"194
+[e :U 160 ]
+[; ;main.c: 197: x_path = x;
+"197
+[e = _x_path _x ]
+[; ;main.c: 198: y_path = y;
+"198
+[e = _y_path _y ]
+[; ;main.c: 199: orientation_path = orientation;
+"199
+[e = _orientation_path _orientation ]
+[; ;main.c: 200: pathCount = 0;
+"200
+[e = _pathCount -> -> 0 `i `uc ]
+[; ;main.c: 201: reset_flag = 1;
+"201
+[e = _reset_flag -> -> 1 `i `b ]
+[; ;main.c: 203: for (r = 0; r <= 1; r++){
+"203
 {
-[; ;main.c: 205: y_path++;
+[e = _r -> -> 0 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 166  ]
+[e $U 167  ]
+[e :U 166 ]
+{
+[; ;main.c: 204: for (c = 0; c <= 15; c++){
+"204
+{
+[e = _c -> -> 0 `i `uc ]
+[e $ <= -> _c `i -> 15 `i 169  ]
+[e $U 170  ]
+[e :U 169 ]
+{
+[; ;main.c: 205: path[r][c] = 0;
 "205
-[e ++ _y_path -> -> 1 `i `uc ]
-[; ;main.c: 206: orientation_path = 2;
+[e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
 "206
-[e = _orientation_path -> -> 2 `i `uc ]
-[; ;main.c: 207: pathCount++;
+}
+"204
+[e ++ _c -> -> 1 `i `uc ]
+[e $ <= -> _c `i -> 15 `i 169  ]
+[e :U 170 ]
+"206
+}
 "207
-[e ++ _pathCount -> -> 1 `i `uc ]
+}
+"203
+[e ++ _r -> -> 1 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 166  ]
+[e :U 167 ]
+"207
+}
 "208
 }
-[e :U 167 ]
-"209
-[e :U 166 ]
-[e :U 164 ]
-[e :U 162 ]
-}
-[e :U 160 ]
-"210
-}
-"49
-[e ++ _loop -> 1 `i ]
-[e $ <= _loop -> 1000 `i 110  ]
-[e :U 111 ]
-"210
-}
+[e :U 159 ]
+[; ;main.c: 206: }
+[; ;main.c: 207: }
 [; ;main.c: 208: }
-[; ;main.c: 209: }
-[; ;main.c: 210: }
-[; ;main.c: 211: }
-"211
-[e :UE 96 ]
-}
-"215
-[v _Drive1m `(v ~T0 @X0 1 ef ]
+[; ;main.c: 217: if (reset_flag != 1){
+"217
+[e $ ! != -> _reset_flag `i -> 1 `i 172  ]
 {
-[; ;main.c: 215: void Drive1m(void){
-[e :U _Drive1m ]
-[f ]
-[; ;main.c: 219: switch(orientation){
-"219
-[e $U 170  ]
-{
-[; ;main.c: 220: case 0: y--;
+[; ;main.c: 220: if(left == 0){
 "220
-[e :U 171 ]
-[e -- _y -> -> 1 `i `uc ]
-[; ;main.c: 221: break;
-"221
-[e $U 169  ]
-[; ;main.c: 222: case 1: x++;
-"222
-[e :U 172 ]
-[e ++ _x -> -> 1 `i `uc ]
-[; ;main.c: 223: break;
-"223
-[e $U 169  ]
-[; ;main.c: 224: case 2: y++;
-"224
-[e :U 173 ]
-[e ++ _y -> -> 1 `i `uc ]
-[; ;main.c: 225: break;
-"225
-[e $U 169  ]
-[; ;main.c: 226: case 3: x--;
-"226
-[e :U 174 ]
-[e -- _x -> -> 1 `i `uc ]
-[; ;main.c: 227: break;
-"227
-[e $U 169  ]
-"228
-}
-[; ;main.c: 228: }
-[e $U 169  ]
-"219
-[e :U 170 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 171
- , $ -> -> 1 `i `uc 172
- , $ -> -> 2 `i `uc 173
- , $ -> -> 3 `i `uc 174
- 169 ]
-"228
-[e :U 169 ]
-[; ;main.c: 230: distance = 0;
-"230
-[e = _distance -> 0 `i ]
-[; ;main.c: 231: DriveDirect(250,250);
-"231
-[e ( _DriveDirect (2 , -> 250 `i -> 250 `i ]
-[; ;main.c: 232: while (distance < 1000){
-"232
-[e $U 175  ]
-[e :U 176 ]
+[e $ ! == -> _left `i -> 0 `i 173  ]
 {
-[; ;main.c: 233: distance = distance + getSensorData(19,2);
+[; ;main.c: 221: x_path--;
+"221
+[e -- _x_path -> -> 1 `i `uc ]
+[; ;main.c: 222: orientation_path = 3;
+"222
+[e = _orientation_path -> -> 3 `i `uc ]
+[; ;main.c: 223: pathCount++;
+"223
+[e ++ _pathCount -> -> 1 `i `uc ]
+"224
+}
+[; ;main.c: 224: }
+[e $U 174  ]
+"225
+[e :U 173 ]
+[; ;main.c: 225: else if(up == 0){
+[e $ ! == -> _up `i -> 0 `i 175  ]
+{
+[; ;main.c: 226: y_path--;
+"226
+[e -- _y_path -> -> 1 `i `uc ]
+[; ;main.c: 227: orientation_path = 0;
+"227
+[e = _orientation_path -> -> 0 `i `uc ]
+[; ;main.c: 228: pathCount++;
+"228
+[e ++ _pathCount -> -> 1 `i `uc ]
+"229
+}
+[; ;main.c: 229: }
+[e $U 176  ]
+"230
+[e :U 175 ]
+[; ;main.c: 230: else if(right == 0){
+[e $ ! == -> _right `i -> 0 `i 177  ]
+{
+[; ;main.c: 231: x_path++;
+"231
+[e ++ _x_path -> -> 1 `i `uc ]
+[; ;main.c: 232: orientation_path = 1;
+"232
+[e = _orientation_path -> -> 1 `i `uc ]
+[; ;main.c: 233: pathCount++;
 "233
-[e = _distance + _distance ( _getSensorData (2 , -> -> 19 `i `uc -> -> 2 `i `uc ]
+[e ++ _pathCount -> -> 1 `i `uc ]
 "234
 }
-[e :U 175 ]
-"232
-[e $ < _distance -> 1000 `i 176  ]
-[e :U 177 ]
 [; ;main.c: 234: }
-[; ;main.c: 235: DriveDirect(0,0);
+[e $U 178  ]
 "235
-[e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
-[; ;main.c: 236: _delay((unsigned long)((100)*(20000000/4000.0)));
+[e :U 177 ]
+[; ;main.c: 235: else if(down == 0){
+[e $ ! == -> _down `i -> 0 `i 179  ]
+{
+[; ;main.c: 236: y_path++;
 "236
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 237: }
+[e ++ _y_path -> -> 1 `i `uc ]
+[; ;main.c: 237: orientation_path = 2;
 "237
-[e :UE 168 ]
+[e = _orientation_path -> -> 2 `i `uc ]
+[; ;main.c: 238: pathCount++;
+"238
+[e ++ _pathCount -> -> 1 `i `uc ]
+"239
 }
+[e :U 179 ]
 "240
+[e :U 178 ]
+[e :U 176 ]
+[e :U 174 ]
+}
+[e :U 172 ]
+"241
+}
+"77
+[e ++ _loop -> 1 `i ]
+[e $ <= _loop -> 2000 `i 120  ]
+[e :U 121 ]
+"241
+}
+[; ;main.c: 239: }
+[; ;main.c: 240: }
+[; ;main.c: 241: }
+[; ;main.c: 242: }
+"242
+[e :UE 107 ]
+}
+"246
+[v _Drive1m `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 246: void Drive1m(void){
+[e :U _Drive1m ]
+[f ]
+[; ;main.c: 254: distance = 0;
+"254
+[e = _distance -> 0 `i ]
+[; ;main.c: 255: DriveDirect(250,250);
+"255
+[e ( _DriveDirect (2 , -> 250 `i -> 250 `i ]
+[; ;main.c: 256: RB2 = 1;
+"256
+[e = _RB2 -> -> 1 `i `b ]
+[; ;main.c: 257: RB3 = 1;
+"257
+[e = _RB3 -> -> 1 `i `b ]
+[; ;main.c: 260: while (distance < 1000){
+"260
+[e $U 181  ]
+[e :U 182 ]
+{
+[; ;main.c: 263: distance = distance + getSensorData(19,2);
+"263
+[e = _distance + _distance ( _getSensorData (2 , -> -> 19 `i `uc -> -> 2 `i `uc ]
+[; ;main.c: 265: if ((getSensorData(13,1)) == 1){
+"265
+[e $ ! == ( _getSensorData (2 , -> -> 13 `i `uc -> -> 1 `i `uc -> 1 `i 184  ]
+{
+[; ;main.c: 267: if((getSensorData(17,1)) < 240){
+"267
+[e $ ! < ( _getSensorData (2 , -> -> 17 `i `uc -> -> 1 `i `uc -> 240 `i 185  ]
+{
+[; ;main.c: 268: IR_Wall = 1;
+"268
+[e = _IR_Wall -> -> 1 `i `b ]
+[; ;main.c: 269: distance = 1001;
+"269
+[e = _distance -> 1001 `i ]
+[; ;main.c: 270: RB3 = 0;
+"270
+[e = _RB3 -> -> 0 `i `b ]
+"271
+}
+[e :U 185 ]
+"274
+[v _omni_IR `uc ~T0 @X0 1 a ]
+[; ;main.c: 271: }
+[; ;main.c: 274: unsigned char omni_IR = (getSensorData(17,1));
+[e = _omni_IR -> ( _getSensorData (2 , -> -> 17 `i `uc -> -> 1 `i `uc `uc ]
+[; ;main.c: 275: if (omni_IR == 250 || omni_IR == 246){
+"275
+[e $ ! || == -> _omni_IR `i -> 250 `i == -> _omni_IR `i -> 246 `i 186  ]
+{
+[; ;main.c: 277: targets++;
+"277
+[e ++ _targets -> -> 1 `i `uc ]
+[; ;main.c: 279: switch(targets){
+"279
+[e $U 188  ]
+{
+[; ;main.c: 280: case 1: ser_putch(141);
+"280
+[e :U 189 ]
+[e ( _ser_putch (1 -> -> 141 `i `uc ]
+[; ;main.c: 281: ser_putch(5);
+"281
+[e ( _ser_putch (1 -> -> 5 `i `uc ]
+[; ;main.c: 282: break;
+"282
+[e $U 187  ]
+[; ;main.c: 283: case 2: ser_putch(141);
+"283
+[e :U 190 ]
+[e ( _ser_putch (1 -> -> 141 `i `uc ]
+[; ;main.c: 284: ser_putch(3);
+"284
+[e ( _ser_putch (1 -> -> 3 `i `uc ]
+[; ;main.c: 285: targets_found = 1;
+"285
+[e = _targets_found -> -> 1 `i `b ]
+[; ;main.c: 286: break;
+"286
+[e $U 187  ]
+"287
+}
+[; ;main.c: 287: }
+[e $U 187  ]
+"279
+[e :U 188 ]
+[e [\ _targets , $ -> -> 1 `i `uc 189
+ , $ -> -> 2 `i `uc 190
+ 187 ]
+"287
+[e :U 187 ]
+[; ;main.c: 289: _delay((unsigned long)((2000)*(20000000/4000.0)));
+"289
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"291
+}
+[e :U 186 ]
+"293
+}
+[e :U 184 ]
+"294
+}
+[e :U 181 ]
+"260
+[e $ < _distance -> 1000 `i 182  ]
+[e :U 183 ]
+[; ;main.c: 291: }
+[; ;main.c: 293: }
+[; ;main.c: 294: }
+[; ;main.c: 297: DriveDirect(0,0);
+"297
+[e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
+[; ;main.c: 299: if(IR_Wall == 0){
+"299
+[e $ ! == -> _IR_Wall `i -> 0 `i 191  ]
+{
+[; ;main.c: 300: switch(orientation){
+"300
+[e $U 193  ]
+{
+[; ;main.c: 301: case 0: y--;
+"301
+[e :U 194 ]
+[e -- _y -> -> 1 `i `uc ]
+[; ;main.c: 302: break;
+"302
+[e $U 192  ]
+[; ;main.c: 303: case 1: x++;
+"303
+[e :U 195 ]
+[e ++ _x -> -> 1 `i `uc ]
+[; ;main.c: 304: break;
+"304
+[e $U 192  ]
+[; ;main.c: 305: case 2: y++;
+"305
+[e :U 196 ]
+[e ++ _y -> -> 1 `i `uc ]
+[; ;main.c: 306: break;
+"306
+[e $U 192  ]
+[; ;main.c: 307: case 3: x--;
+"307
+[e :U 197 ]
+[e -- _x -> -> 1 `i `uc ]
+[; ;main.c: 308: break;
+"308
+[e $U 192  ]
+"309
+}
+[; ;main.c: 309: }
+[e $U 192  ]
+"300
+[e :U 193 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 194
+ , $ -> -> 1 `i `uc 195
+ , $ -> -> 2 `i `uc 196
+ , $ -> -> 3 `i `uc 197
+ 192 ]
+"309
+[e :U 192 ]
+[; ;main.c: 310: _delay((unsigned long)((100)*(20000000/4000.0)));
+"310
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"311
+}
+[e :U 191 ]
+[; ;main.c: 311: }
+[; ;main.c: 316: if (targets_found == 1){
+"316
+[e $ ! == -> _targets_found `i -> 1 `i 198  ]
+{
+"317
+[v _n `uc ~T0 @X0 1 a ]
+[; ;main.c: 317: char n = 20;
+[e = _n -> -> 20 `i `uc ]
+"318
+}
+[e :U 198 ]
+[; ;main.c: 318: }
+[; ;main.c: 319: }
+"319
+[e :UE 180 ]
+}
+"323
 [v _Turn90 `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 240: void Turn90(char direction){
+[; ;main.c: 323: void Turn90(char direction){
 [e :U _Turn90 ]
 [v _direction `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;main.c: 241: angle = 0;
-"241
+[; ;main.c: 325: angle = 0;
+"325
 [e = _angle -> 0 `i ]
-[; ;main.c: 242: if (direction == 1){
-"242
-[e $ ! == -> _direction `i -> 1 `i 179  ]
+[; ;main.c: 327: if (direction == 1){
+"327
+[e $ ! == -> _direction `i -> 1 `i 200  ]
 {
-[; ;main.c: 244: if (orientation == 0)
-"244
-[e $ ! == -> _orientation `i -> 0 `i 180  ]
-[; ;main.c: 245: orientation = 3;
-"245
+[; ;main.c: 329: if (orientation == 0)
+"329
+[e $ ! == -> _orientation `i -> 0 `i 201  ]
+[; ;main.c: 330: orientation = 3;
+"330
 [e = _orientation -> -> 3 `i `uc ]
-[e $U 181  ]
-"246
-[e :U 180 ]
-[; ;main.c: 246: else orientation--;
+[e $U 202  ]
+"331
+[e :U 201 ]
+[; ;main.c: 331: else orientation--;
 [e -- _orientation -> -> 1 `i `uc ]
-[e :U 181 ]
-[; ;main.c: 248: Drive(0,150,0x00,0x01);
-"248
+[e :U 202 ]
+[; ;main.c: 333: Drive(0,150,0x00,0x01);
+"333
 [e ( _Drive (4 , , , -> -> 0 `i `uc -> -> 150 `i `uc -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 249: while (angle < 86){
-"249
-[e $U 182  ]
-[e :U 183 ]
+[; ;main.c: 334: while (angle < 86){
+"334
+[e $U 203  ]
+[e :U 204 ]
 {
-[; ;main.c: 250: angle = angle + getSensorData(20,2);
-"250
+[; ;main.c: 335: angle = angle + getSensorData(20,2);
+"335
 [e = _angle + _angle ( _getSensorData (2 , -> -> 20 `i `uc -> -> 2 `i `uc ]
-"251
+"336
 }
-[e :U 182 ]
-"249
-[e $ < _angle -> 86 `i 183  ]
-[e :U 184 ]
-"252
+[e :U 203 ]
+"334
+[e $ < _angle -> 86 `i 204  ]
+[e :U 205 ]
+"337
 }
-[e :U 179 ]
-[; ;main.c: 251: }
-[; ;main.c: 252: }
-[; ;main.c: 254: if (direction == 0){
-"254
-[e $ ! == -> _direction `i -> 0 `i 185  ]
+[e :U 200 ]
+[; ;main.c: 336: }
+[; ;main.c: 337: }
+[; ;main.c: 339: if (direction == 0){
+"339
+[e $ ! == -> _direction `i -> 0 `i 206  ]
 {
-[; ;main.c: 256: if (orientation == 3)
-"256
-[e $ ! == -> _orientation `i -> 3 `i 186  ]
-[; ;main.c: 257: orientation = 0;
-"257
+[; ;main.c: 341: if (orientation == 3)
+"341
+[e $ ! == -> _orientation `i -> 3 `i 207  ]
+[; ;main.c: 342: orientation = 0;
+"342
 [e = _orientation -> -> 0 `i `uc ]
-[e $U 187  ]
-"258
-[e :U 186 ]
-[; ;main.c: 258: else orientation++;
+[e $U 208  ]
+"343
+[e :U 207 ]
+[; ;main.c: 343: else orientation++;
 [e ++ _orientation -> -> 1 `i `uc ]
-[e :U 187 ]
-[; ;main.c: 260: Drive(0,150,0xFF,0xFF);
-"260
+[e :U 208 ]
+[; ;main.c: 345: Drive(0,150,0xFF,0xFF);
+"345
 [e ( _Drive (4 , , , -> -> 0 `i `uc -> -> 150 `i `uc -> -> 255 `i `uc -> -> 255 `i `uc ]
-[; ;main.c: 261: while (angle > -86){
-"261
-[e $U 188  ]
-[e :U 189 ]
+[; ;main.c: 346: while (angle > -86){
+"346
+[e $U 209  ]
+[e :U 210 ]
 {
-[; ;main.c: 262: angle = angle + getSensorData(20,2);
-"262
+[; ;main.c: 347: angle = angle + getSensorData(20,2);
+"347
 [e = _angle + _angle ( _getSensorData (2 , -> -> 20 `i `uc -> -> 2 `i `uc ]
-"263
+"348
 }
-[e :U 188 ]
-"261
-[e $ > _angle -U -> 86 `i 189  ]
-[e :U 190 ]
-"264
+[e :U 209 ]
+"346
+[e $ > _angle -U -> 86 `i 210  ]
+[e :U 211 ]
+"349
 }
-[e :U 185 ]
-[; ;main.c: 263: }
-[; ;main.c: 264: }
-[; ;main.c: 265: DriveDirect(0,0);
-"265
+[e :U 206 ]
+[; ;main.c: 348: }
+[; ;main.c: 349: }
+[; ;main.c: 350: DriveDirect(0,0);
+"350
 [e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
-[; ;main.c: 266: _delay((unsigned long)((100)*(20000000/4000.0)));
-"266
+[; ;main.c: 351: _delay((unsigned long)((100)*(20000000/4000.0)));
+"351
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 267: }
-"267
-[e :UE 178 ]
+[; ;main.c: 352: }
+"352
+[e :UE 199 ]
 }
-"269
+"354
 [v _TravelPath `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 269: void TravelPath(void){
+[; ;main.c: 354: void TravelPath(void){
 [e :U _TravelPath ]
 [f ]
-[; ;main.c: 271: for (char n = 1; n <= (pathCountShortest + 1); n++){
-"271
+[; ;main.c: 356: for (char n = 1; n <= (pathCountShortest); n++){
+"356
 {
 [v _n `uc ~T0 @X0 1 a ]
 [e = _n -> -> 1 `i `uc ]
-[e $U 195  ]
-[e :U 192 ]
-{
-[; ;main.c: 273: _delay((unsigned long)((500)*(20000000/4000.0)));
-"273
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 275: if (pathShortest[0][n] > x){
-"275
-[e $ ! > -> *U + &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _x `i 196  ]
-{
-[; ;main.c: 276: switch (orientation){
-"276
-[e $U 198  ]
-{
-[; ;main.c: 278: case 0: Turn90(0);
-"278
-[e :U 199 ]
-[e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 279: break;
-"279
-[e $U 197  ]
-[; ;main.c: 281: case 2: Turn90(1);
-"281
-[e :U 200 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 282: break;
-"282
-[e $U 197  ]
-[; ;main.c: 284: case 3: Turn90(1);
-"284
-[e :U 201 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 285: _delay((unsigned long)((5)*(20000000/4000.0)));
-"285
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 286: Turn90(1);
-"286
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 287: break;
-"287
-[e $U 197  ]
-"288
-}
-[; ;main.c: 288: }
-[e $U 197  ]
-"276
-[e :U 198 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 199
- , $ -> -> 2 `i `uc 200
- , $ -> -> 3 `i `uc 201
- 197 ]
-"288
-[e :U 197 ]
-[; ;main.c: 290: Drive1m();
-"290
-[e ( _Drive1m ..  ]
-"292
-}
-[; ;main.c: 292: }
-[e $U 202  ]
-"295
-[e :U 196 ]
-[; ;main.c: 295: else if (pathShortest[0][n] < x){
-[e $ ! < -> *U + &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _x `i 203  ]
-{
-[; ;main.c: 296: switch (orientation){
-"296
-[e $U 205  ]
-{
-[; ;main.c: 298: case 0: Turn90(1);
-"298
-[e :U 206 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 299: break;
-"299
-[e $U 204  ]
-[; ;main.c: 301: case 2: Turn90(0);
-"301
-[e :U 207 ]
-[e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 302: break;
-"302
-[e $U 204  ]
-[; ;main.c: 304: case 1: Turn90(1);
-"304
-[e :U 208 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 305: _delay((unsigned long)((5)*(20000000/4000.0)));
-"305
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 306: Turn90(1);
-"306
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 307: break;
-"307
-[e $U 204  ]
-"310
-}
-[; ;main.c: 310: }
-[e $U 204  ]
-"296
-[e :U 205 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 206
- , $ -> -> 2 `i `uc 207
- , $ -> -> 1 `i `uc 208
- 204 ]
-"310
-[e :U 204 ]
-[; ;main.c: 312: Drive1m();
-"312
-[e ( _Drive1m ..  ]
-"314
-}
-[; ;main.c: 314: }
-[e $U 209  ]
-"316
-[e :U 203 ]
-[; ;main.c: 316: else if(pathShortest[1][n] > y){
-[e $ ! > -> *U + &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _y `i 210  ]
-{
-[; ;main.c: 317: switch(orientation){
-"317
-[e $U 212  ]
-{
-[; ;main.c: 319: case 1: Turn90(0);
-"319
-[e :U 213 ]
-[e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 320: break;
-"320
-[e $U 211  ]
-[; ;main.c: 322: case 3: Turn90(1);
-"322
-[e :U 214 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 323: break;
-"323
-[e $U 211  ]
-[; ;main.c: 325: case 0: Turn90(1);
-"325
-[e :U 215 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 326: _delay((unsigned long)((5)*(20000000/4000.0)));
-"326
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 327: Turn90(1);
-"327
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 328: break;
-"328
-[e $U 211  ]
-"329
-}
-[; ;main.c: 329: }
-[e $U 211  ]
-"317
-[e :U 212 ]
-[e [\ _orientation , $ -> -> 1 `i `uc 213
- , $ -> -> 3 `i `uc 214
- , $ -> -> 0 `i `uc 215
- 211 ]
-"329
-[e :U 211 ]
-[; ;main.c: 331: Drive1m();
-"331
-[e ( _Drive1m ..  ]
-"333
-}
-[; ;main.c: 333: }
 [e $U 216  ]
-"336
-[e :U 210 ]
-[; ;main.c: 336: else if (path[1][n] < y){
-[e $ ! < -> *U + &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux `i -> _y `i 217  ]
+[e :U 213 ]
 {
-[; ;main.c: 337: switch (orientation){
-"337
+[; ;main.c: 358: if (pathShortest[0][n] > x){
+"358
+[e $ ! > -> *U + &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _x `i 217  ]
+{
+[; ;main.c: 359: switch (orientation){
+"359
 [e $U 219  ]
 {
-[; ;main.c: 339: case 1: Turn90(1);
-"339
+[; ;main.c: 360: case 0: Turn90(0);
+"360
 [e :U 220 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 340: break;
-"340
-[e $U 218  ]
-[; ;main.c: 342: case 3: Turn90(0);
-"342
-[e :U 221 ]
 [e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 343: break;
-"343
+[; ;main.c: 361: break;
+"361
 [e $U 218  ]
-[; ;main.c: 345: case 2: Turn90(1);
-"345
+[; ;main.c: 362: case 2: Turn90(1);
+"362
+[e :U 221 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 363: break;
+"363
+[e $U 218  ]
+[; ;main.c: 364: case 3: Turn90(1);
+"364
 [e :U 222 ]
 [e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 346: _delay((unsigned long)((5)*(20000000/4000.0)));
-"346
+[; ;main.c: 365: _delay((unsigned long)((5)*(20000000/4000.0)));
+"365
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 347: Turn90(1);
-"347
+[; ;main.c: 366: Turn90(1);
+"366
 [e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 348: break;
-"348
+[; ;main.c: 367: break;
+"367
 [e $U 218  ]
-"349
+"368
 }
-[; ;main.c: 349: }
+[; ;main.c: 368: }
 [e $U 218  ]
-"337
+"359
 [e :U 219 ]
-[e [\ _orientation , $ -> -> 1 `i `uc 220
- , $ -> -> 3 `i `uc 221
- , $ -> -> 2 `i `uc 222
+[e [\ _orientation , $ -> -> 0 `i `uc 220
+ , $ -> -> 2 `i `uc 221
+ , $ -> -> 3 `i `uc 222
  218 ]
-"349
+"368
 [e :U 218 ]
-[; ;main.c: 351: Drive1m();
-"351
+[; ;main.c: 369: Drive1m();
+"369
 [e ( _Drive1m ..  ]
-"353
+"370
 }
+[; ;main.c: 370: }
+[e $U 223  ]
+"372
 [e :U 217 ]
-"354
-[e :U 216 ]
-[e :U 209 ]
-[e :U 202 ]
-}
-"271
-[e ++ _n -> -> 1 `i `uc ]
-[e :U 195 ]
-[e $ <= -> _n `i + -> _pathCountShortest `i -> 1 `i 192  ]
-[e :U 193 ]
-"354
-}
-[; ;main.c: 353: }
-[; ;main.c: 354: }
-[; ;main.c: 355: }
-"355
-[e :UE 191 ]
-}
-[v F1209 `(v ~T0 @X0 1 tf ]
-"361
-[v _isr `IF1209 ~T0 @X0 1 e ]
+[; ;main.c: 372: else if (pathShortest[0][n] < x){
+[e $ ! < -> *U + &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _x `i 224  ]
 {
-[; ;main.c: 361: void interrupt isr(void){
+[; ;main.c: 373: switch (orientation){
+"373
+[e $U 226  ]
+{
+[; ;main.c: 374: case 0: Turn90(1);
+"374
+[e :U 227 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 375: break;
+"375
+[e $U 225  ]
+[; ;main.c: 376: case 2: Turn90(0);
+"376
+[e :U 228 ]
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 377: break;
+"377
+[e $U 225  ]
+[; ;main.c: 378: case 1: Turn90(1);
+"378
+[e :U 229 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 379: _delay((unsigned long)((5)*(20000000/4000.0)));
+"379
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 380: Turn90(1);
+"380
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 381: break;
+"381
+[e $U 225  ]
+"382
+}
+[; ;main.c: 382: }
+[e $U 225  ]
+"373
+[e :U 226 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 227
+ , $ -> -> 2 `i `uc 228
+ , $ -> -> 1 `i `uc 229
+ 225 ]
+"382
+[e :U 225 ]
+[; ;main.c: 383: Drive1m();
+"383
+[e ( _Drive1m ..  ]
+"384
+}
+[; ;main.c: 384: }
+[e $U 230  ]
+"386
+[e :U 224 ]
+[; ;main.c: 386: else if(pathShortest[1][n] > y){
+[e $ ! > -> *U + &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _y `i 231  ]
+{
+[; ;main.c: 387: switch(orientation){
+"387
+[e $U 233  ]
+{
+[; ;main.c: 388: case 1: Turn90(0);
+"388
+[e :U 234 ]
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 389: break;
+"389
+[e $U 232  ]
+[; ;main.c: 390: case 3: Turn90(1);
+"390
+[e :U 235 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 391: break;
+"391
+[e $U 232  ]
+[; ;main.c: 392: case 0: Turn90(1);
+"392
+[e :U 236 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 393: _delay((unsigned long)((5)*(20000000/4000.0)));
+"393
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 394: Turn90(1);
+"394
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 395: break;
+"395
+[e $U 232  ]
+"396
+}
+[; ;main.c: 396: }
+[e $U 232  ]
+"387
+[e :U 233 ]
+[e [\ _orientation , $ -> -> 1 `i `uc 234
+ , $ -> -> 3 `i `uc 235
+ , $ -> -> 0 `i `uc 236
+ 232 ]
+"396
+[e :U 232 ]
+[; ;main.c: 397: Drive1m();
+"397
+[e ( _Drive1m ..  ]
+"398
+}
+[; ;main.c: 398: }
+[e $U 237  ]
+"400
+[e :U 231 ]
+[; ;main.c: 400: else if (pathShortest[1][n] < y){
+[e $ ! < -> *U + &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _y `i 238  ]
+{
+[; ;main.c: 401: switch (orientation){
+"401
+[e $U 240  ]
+{
+[; ;main.c: 402: case 1: Turn90(1);
+"402
+[e :U 241 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 403: break;
+"403
+[e $U 239  ]
+[; ;main.c: 404: case 3: Turn90(0);
+"404
+[e :U 242 ]
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 405: break;
+"405
+[e $U 239  ]
+[; ;main.c: 406: case 2: Turn90(1);
+"406
+[e :U 243 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 407: _delay((unsigned long)((5)*(20000000/4000.0)));
+"407
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 408: Turn90(1);
+"408
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 409: break;
+"409
+[e $U 239  ]
+"410
+}
+[; ;main.c: 410: }
+[e $U 239  ]
+"401
+[e :U 240 ]
+[e [\ _orientation , $ -> -> 1 `i `uc 241
+ , $ -> -> 3 `i `uc 242
+ , $ -> -> 2 `i `uc 243
+ 239 ]
+"410
+[e :U 239 ]
+[; ;main.c: 411: Drive1m();
+"411
+[e ( _Drive1m ..  ]
+"412
+}
+[e :U 238 ]
+"415
+[e :U 237 ]
+[e :U 230 ]
+[e :U 223 ]
+[; ;main.c: 412: }
+[; ;main.c: 415: if (IR_Wall == 1){
+[e $ ! == -> _IR_Wall `i -> 1 `i 244  ]
+{
+[; ;main.c: 416: n = 20;
+"416
+[e = _n -> -> 20 `i `uc ]
+"417
+}
+[e :U 244 ]
+"418
+}
+"356
+[e ++ _n -> -> 1 `i `uc ]
+[e :U 216 ]
+[e $ <= -> _n `i -> _pathCountShortest `i 213  ]
+[e :U 214 ]
+"418
+}
+[; ;main.c: 417: }
+[; ;main.c: 418: }
+[; ;main.c: 419: }
+"419
+[e :UE 212 ]
+}
+"421
+[v _re_route `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 421: void re_route(void){
+[e :U _re_route ]
+[f ]
+[; ;main.c: 422: switch(orientation){
+"422
+[e $U 247  ]
+{
+[; ;main.c: 423: case 0: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 4);
+"423
+[e :U 248 ]
+[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
+[; ;main.c: 424: break;
+"424
+[e $U 246  ]
+[; ;main.c: 425: case 1: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 2);
+"425
+[e :U 249 ]
+[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
+[; ;main.c: 426: break;
+"426
+[e $U 246  ]
+[; ;main.c: 427: case 2: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 1);
+"427
+[e :U 250 ]
+[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
+[; ;main.c: 428: break;
+"428
+[e $U 246  ]
+[; ;main.c: 429: case 3: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 8);
+"429
+[e :U 251 ]
+[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
+[; ;main.c: 430: break;
+"430
+[e $U 246  ]
+"431
+}
+[; ;main.c: 431: }
+[e $U 246  ]
+"422
+[e :U 247 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 248
+ , $ -> -> 1 `i `uc 249
+ , $ -> -> 2 `i `uc 250
+ , $ -> -> 3 `i `uc 251
+ 246 ]
+"431
+[e :U 246 ]
+[; ;main.c: 433: Turn90(0);
+"433
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 434: Turn90(0);
+"434
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 435: distance = 0;
+"435
+[e = _distance -> 0 `i ]
+[; ;main.c: 436: DriveDirect(250,250);
+"436
+[e ( _DriveDirect (2 , -> 250 `i -> 250 `i ]
+[; ;main.c: 437: while (distance < 500){
+"437
+[e $U 252  ]
+[e :U 253 ]
+{
+[; ;main.c: 438: distance = distance + getSensorData(19,2);
+"438
+[e = _distance + _distance ( _getSensorData (2 , -> -> 19 `i `uc -> -> 2 `i `uc ]
+"439
+}
+[e :U 252 ]
+"437
+[e $ < _distance -> 500 `i 253  ]
+[e :U 254 ]
+[; ;main.c: 439: }
+[; ;main.c: 440: DriveDirect(0,0);
+"440
+[e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
+[; ;main.c: 441: IR_Wall = 0;
+"441
+[e = _IR_Wall -> -> 0 `i `b ]
+[; ;main.c: 443: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"443
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 444: PathTo(x_goto,y_goto);
+"444
+[e ( _PathTo (2 , _x_goto _y_goto ]
+[; ;main.c: 445: TravelPath();
+"445
+[e ( _TravelPath ..  ]
+[; ;main.c: 446: }
+"446
+[e :UE 245 ]
+}
+[v F1237 `(v ~T0 @X0 1 tf ]
+"450
+[v _isr `IF1237 ~T0 @X0 1 e ]
+{
+[; ;main.c: 450: void interrupt isr(void){
 [e :U _isr ]
 [f ]
-[; ;main.c: 362: if(TMR0IF){
-"362
-[e $ ! _TMR0IF 224  ]
+[; ;main.c: 451: if(TMR0IF){
+"451
+[e $ ! _TMR0IF 256  ]
 {
-[; ;main.c: 363: TMR0IF = 0;
-"363
+[; ;main.c: 452: TMR0IF = 0;
+"452
 [e = _TMR0IF -> -> 0 `i `b ]
-[; ;main.c: 364: TMR0 = 100;
-"364
+[; ;main.c: 453: TMR0 = 100;
+"453
 [e = _TMR0 -> -> 100 `i `uc ]
-[; ;main.c: 365: time_count++;
-"365
+[; ;main.c: 454: time_count++;
+"454
 [e ++ _time_count -> -> 1 `i `ui ]
-[; ;main.c: 367: if(!RB0)
-"367
-[e $ ! ! _RB0 225  ]
-[; ;main.c: 368: PB8Counter++;
-"368
+[; ;main.c: 456: if(!RB0)
+"456
+[e $ ! ! _RB0 257  ]
+[; ;main.c: 457: PB8Counter++;
+"457
 [e ++ _PB8Counter -> -> 1 `i `uc ]
-[e :U 225 ]
-[; ;main.c: 369: if(!RB1)
-"369
-[e $ ! ! _RB1 226  ]
-[; ;main.c: 370: PB7Counter++;
-"370
+[e :U 257 ]
+[; ;main.c: 458: if(!RB1)
+"458
+[e $ ! ! _RB1 258  ]
+[; ;main.c: 459: PB7Counter++;
+"459
 [e ++ _PB7Counter -> -> 1 `i `uc ]
-[e :U 226 ]
-"372
+[e :U 258 ]
+"460
 }
-[e :U 224 ]
-[; ;main.c: 372: }
-[; ;main.c: 373: }
-"373
-[e :UE 223 ]
+[e :U 256 ]
+[; ;main.c: 460: }
+[; ;main.c: 461: }
+"461
+[e :UE 255 ]
 }
-"376
+"463
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 376: void main(void){
+[; ;main.c: 463: void main(void){
 [e :U _main ]
 [f ]
-[; ;main.c: 378: _delay((unsigned long)((5000)*(20000000/4000.0)));
-"378
+[; ;main.c: 465: _delay((unsigned long)((5000)*(20000000/4000.0)));
+"465
 [e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 380: ser_init();
-"380
+[; ;main.c: 467: ser_init();
+"467
 [e ( _ser_init ..  ]
-[; ;main.c: 381: setupSPI();
-"381
+[; ;main.c: 468: setupSPI();
+"468
 [e ( _setupSPI ..  ]
-[; ;main.c: 382: setupLCD();
-"382
+[; ;main.c: 469: setupLCD();
+"469
 [e ( _setupLCD ..  ]
-[; ;main.c: 383: setupADC();
-"383
+[; ;main.c: 470: setupADC();
+"470
 [e ( _setupADC ..  ]
-[; ;main.c: 385: TRISB = 0b00000011;
-"385
+[; ;main.c: 472: TRISB = 0b00000011;
+"472
 [e = _TRISB -> -> 3 `i `uc ]
-[; ;main.c: 386: PORTB = 0b00000000;
-"386
-[e = _PORTB -> -> 0 `i `uc ]
-"388
+[; ;main.c: 473: PORTB = 0b11111100;
+"473
+[e = _PORTB -> -> 252 `i `uc ]
+"475
 [v _controlByte `uc ~T0 @X0 1 a ]
-[; ;main.c: 388: unsigned char controlByte = 0b00001101;
+[; ;main.c: 475: unsigned char controlByte = 0b00001101;
 [e = _controlByte -> -> 13 `i `uc ]
-[; ;main.c: 389: spi_transfer(controlByte);
-"389
+[; ;main.c: 476: spi_transfer(controlByte);
+"476
 [e ( _spi_transfer (1 _controlByte ]
-[; ;main.c: 391: _delay((unsigned long)((1000)*(20000000/4000.0)));
-"391
+[; ;main.c: 478: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"478
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 392: ser_putch(128);
-"392
+[; ;main.c: 479: ser_putch(128);
+"479
 [e ( _ser_putch (1 -> -> 128 `i `uc ]
-[; ;main.c: 393: _delay((unsigned long)((1000)*(20000000/4000.0)));
-"393
+[; ;main.c: 480: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"480
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 394: ser_putch(132);
-"394
+[; ;main.c: 481: ser_putch(132);
+"481
 [e ( _ser_putch (1 -> -> 132 `i `uc ]
-[; ;main.c: 395: _delay((unsigned long)((1000)*(20000000/4000.0)));
-"395
+[; ;main.c: 482: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"482
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 398: x = 1;
-"398
+[; ;main.c: 485: x = 1;
+"485
 [e = _x -> -> 1 `i `uc ]
-[; ;main.c: 399: y = 0;
-"399
+[; ;main.c: 486: y = 0;
+"486
 [e = _y -> -> 0 `i `uc ]
-[; ;main.c: 400: orientation = 3;
-"400
+[; ;main.c: 487: orientation = 3;
+"487
 [e = _orientation -> -> 3 `i `uc ]
-[; ;main.c: 403: while(1){
-"403
-[e :U 229 ]
+[; ;main.c: 491: ser_putch(140);
+"491
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 492: ser_putch(2);
+"492
+[e ( _ser_putch (1 -> -> 2 `i `uc ]
+[; ;main.c: 493: ser_putch(10);
+"493
+[e ( _ser_putch (1 -> -> 10 `i `uc ]
+[; ;main.c: 494: ser_putch(67);
+"494
+[e ( _ser_putch (1 -> -> 67 `i `uc ]
+[; ;main.c: 495: ser_putch(32);
+"495
+[e ( _ser_putch (1 -> -> 32 `i `uc ]
+[; ;main.c: 496: ser_putch(77);
+"496
+[e ( _ser_putch (1 -> -> 77 `i `uc ]
+[; ;main.c: 497: ser_putch(16);
+"497
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 498: ser_putch(77);
+"498
+[e ( _ser_putch (1 -> -> 77 `i `uc ]
+[; ;main.c: 499: ser_putch(16);
+"499
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 500: ser_putch(77);
+"500
+[e ( _ser_putch (1 -> -> 77 `i `uc ]
+[; ;main.c: 501: ser_putch(16);
+"501
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 502: ser_putch(77);
+"502
+[e ( _ser_putch (1 -> -> 77 `i `uc ]
+[; ;main.c: 503: ser_putch(16);
+"503
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 504: ser_putch(76);
+"504
+[e ( _ser_putch (1 -> -> 76 `i `uc ]
+[; ;main.c: 505: ser_putch(16);
+"505
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 506: ser_putch(74);
+"506
+[e ( _ser_putch (1 -> -> 74 `i `uc ]
+[; ;main.c: 507: ser_putch(16);
+"507
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 508: ser_putch(72);
+"508
+[e ( _ser_putch (1 -> -> 72 `i `uc ]
+[; ;main.c: 509: ser_putch(32);
+"509
+[e ( _ser_putch (1 -> -> 32 `i `uc ]
+[; ;main.c: 510: ser_putch(79);
+"510
+[e ( _ser_putch (1 -> -> 79 `i `uc ]
+[; ;main.c: 511: ser_putch(16);
+"511
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 512: ser_putch(84);
+"512
+[e ( _ser_putch (1 -> -> 84 `i `uc ]
+[; ;main.c: 513: ser_putch(48);
+"513
+[e ( _ser_putch (1 -> -> 48 `i `uc ]
+"516
+[v _first `uc ~T0 @X0 1 a ]
+[; ;main.c: 516: char first = 16;
+[e = _first -> -> 16 `i `uc ]
+"517
+[v _second `uc ~T0 @X0 1 a ]
+[; ;main.c: 517: char second = 8;
+[e = _second -> -> 8 `i `uc ]
+"518
+[v _third `uc ~T0 @X0 1 a ]
+[; ;main.c: 518: char third = 12;
+[e = _third -> -> 12 `i `uc ]
+"519
+[v _fourth `uc ~T0 @X0 1 a ]
+[; ;main.c: 519: char fourth = 36;
+[e = _fourth -> -> 36 `i `uc ]
+"520
+[v _fifth `uc ~T0 @X0 1 a ]
+[; ;main.c: 520: char fifth = 32;
+[e = _fifth -> -> 32 `i `uc ]
+[; ;main.c: 524: ser_putch(140);
+"524
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 525: ser_putch(3);
+"525
+[e ( _ser_putch (1 -> -> 3 `i `uc ]
+[; ;main.c: 526: ser_putch(16);
+"526
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 527: ser_putch(62);
+"527
+[e ( _ser_putch (1 -> -> 62 `i `uc ]
+[; ;main.c: 528: ser_putch(first);
+"528
+[e ( _ser_putch (1 _first ]
+[; ;main.c: 529: ser_putch(69);
+"529
+[e ( _ser_putch (1 -> -> 69 `i `uc ]
+[; ;main.c: 530: ser_putch(second);
+"530
+[e ( _ser_putch (1 _second ]
+[; ;main.c: 531: ser_putch(62);
+"531
+[e ( _ser_putch (1 -> -> 62 `i `uc ]
+[; ;main.c: 532: ser_putch(third);
+"532
+[e ( _ser_putch (1 _third ]
+[; ;main.c: 533: ser_putch(65);
+"533
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 534: ser_putch(fourth);
+"534
+[e ( _ser_putch (1 _fourth ]
+[; ;main.c: 535: ser_putch(62);
+"535
+[e ( _ser_putch (1 -> -> 62 `i `uc ]
+[; ;main.c: 536: ser_putch(fifth);
+"536
+[e ( _ser_putch (1 _fifth ]
+[; ;main.c: 538: ser_putch(65);
+"538
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 539: ser_putch(first);
+"539
+[e ( _ser_putch (1 _first ]
+[; ;main.c: 540: ser_putch(62);
+"540
+[e ( _ser_putch (1 -> -> 62 `i `uc ]
+[; ;main.c: 541: ser_putch(second);
+"541
+[e ( _ser_putch (1 _second ]
+[; ;main.c: 542: ser_putch(65);
+"542
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 543: ser_putch(third);
+"543
+[e ( _ser_putch (1 _third ]
+[; ;main.c: 544: ser_putch(69);
+"544
+[e ( _ser_putch (1 -> -> 69 `i `uc ]
+[; ;main.c: 545: ser_putch(fourth);
+"545
+[e ( _ser_putch (1 _fourth ]
+[; ;main.c: 546: ser_putch(65);
+"546
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 547: ser_putch(fifth);
+"547
+[e ( _ser_putch (1 _fifth ]
+[; ;main.c: 549: ser_putch(69);
+"549
+[e ( _ser_putch (1 -> -> 69 `i `uc ]
+[; ;main.c: 550: ser_putch(first);
+"550
+[e ( _ser_putch (1 _first ]
+[; ;main.c: 551: ser_putch(65);
+"551
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 552: ser_putch(second);
+"552
+[e ( _ser_putch (1 _second ]
+[; ;main.c: 553: ser_putch(69);
+"553
+[e ( _ser_putch (1 -> -> 69 `i `uc ]
+[; ;main.c: 554: ser_putch(third);
+"554
+[e ( _ser_putch (1 _third ]
+[; ;main.c: 555: ser_putch(60);
+"555
+[e ( _ser_putch (1 -> -> 60 `i `uc ]
+[; ;main.c: 556: ser_putch(fourth);
+"556
+[e ( _ser_putch (1 _fourth ]
+[; ;main.c: 557: ser_putch(48);
+"557
+[e ( _ser_putch (1 -> -> 48 `i `uc ]
+[; ;main.c: 558: ser_putch(fifth);
+"558
+[e ( _ser_putch (1 _fifth ]
+[; ;main.c: 560: ser_putch(65);
+"560
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 561: ser_putch(16);
+"561
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 564: ser_putch(140);
+"564
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 565: ser_putch(4);
+"565
+[e ( _ser_putch (1 -> -> 4 `i `uc ]
+[; ;main.c: 566: ser_putch(3);
+"566
+[e ( _ser_putch (1 -> -> 3 `i `uc ]
+[; ;main.c: 567: ser_putch(60);
+"567
+[e ( _ser_putch (1 -> -> 60 `i `uc ]
+[; ;main.c: 568: ser_putch(12);
+"568
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 569: ser_putch(65);
+"569
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 570: ser_putch(12);
+"570
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 571: ser_putch(69);
+"571
+[e ( _ser_putch (1 -> -> 69 `i `uc ]
+[; ;main.c: 572: ser_putch(96);
+"572
+[e ( _ser_putch (1 -> -> 96 `i `uc ]
+[; ;main.c: 576: ser_putch(140);
+"576
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 577: ser_putch(5);
+"577
+[e ( _ser_putch (1 -> -> 5 `i `uc ]
+[; ;main.c: 578: ser_putch(11);
+"578
+[e ( _ser_putch (1 -> -> 11 `i `uc ]
+[; ;main.c: 579: ser_putch(70);
+"579
+[e ( _ser_putch (1 -> -> 70 `i `uc ]
+[; ;main.c: 580: ser_putch(12);
+"580
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 581: ser_putch(67);
+"581
+[e ( _ser_putch (1 -> -> 67 `i `uc ]
+[; ;main.c: 582: ser_putch(12);
+"582
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 583: ser_putch(62);
+"583
+[e ( _ser_putch (1 -> -> 62 `i `uc ]
+[; ;main.c: 584: ser_putch(96);
+"584
+[e ( _ser_putch (1 -> -> 96 `i `uc ]
+[; ;main.c: 585: ser_putch(70);
+"585
+[e ( _ser_putch (1 -> -> 70 `i `uc ]
+[; ;main.c: 586: ser_putch(12);
+"586
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 587: ser_putch(67);
+"587
+[e ( _ser_putch (1 -> -> 67 `i `uc ]
+[; ;main.c: 588: ser_putch(12);
+"588
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 589: ser_putch(61);
+"589
+[e ( _ser_putch (1 -> -> 61 `i `uc ]
+[; ;main.c: 590: ser_putch(96);
+"590
+[e ( _ser_putch (1 -> -> 96 `i `uc ]
+[; ;main.c: 591: ser_putch(70);
+"591
+[e ( _ser_putch (1 -> -> 70 `i `uc ]
+[; ;main.c: 592: ser_putch(12);
+"592
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 593: ser_putch(67);
+"593
+[e ( _ser_putch (1 -> -> 67 `i `uc ]
+[; ;main.c: 594: ser_putch(12);
+"594
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 595: ser_putch(60);
+"595
+[e ( _ser_putch (1 -> -> 60 `i `uc ]
+[; ;main.c: 596: ser_putch(96);
+"596
+[e ( _ser_putch (1 -> -> 96 `i `uc ]
+[; ;main.c: 597: ser_putch(70);
+"597
+[e ( _ser_putch (1 -> -> 70 `i `uc ]
+[; ;main.c: 598: ser_putch(12);
+"598
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 599: ser_putch(60);
+"599
+[e ( _ser_putch (1 -> -> 60 `i `uc ]
+[; ;main.c: 600: ser_putch(20);
+"600
+[e ( _ser_putch (1 -> -> 20 `i `uc ]
+[; ;main.c: 603: ser_putch(140);
+"603
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 604: ser_putch(6);
+"604
+[e ( _ser_putch (1 -> -> 6 `i `uc ]
+[; ;main.c: 605: ser_putch(11);
+"605
+[e ( _ser_putch (1 -> -> 11 `i `uc ]
+[; ;main.c: 606: ser_putch(55);
+"606
+[e ( _ser_putch (1 -> -> 55 `i `uc ]
+[; ;main.c: 607: ser_putch(22);
+"607
+[e ( _ser_putch (1 -> -> 22 `i `uc ]
+[; ;main.c: 608: ser_putch(55);
+"608
+[e ( _ser_putch (1 -> -> 55 `i `uc ]
+[; ;main.c: 609: ser_putch(22);
+"609
+[e ( _ser_putch (1 -> -> 22 `i `uc ]
+[; ;main.c: 610: ser_putch(0);
+"610
+[e ( _ser_putch (1 -> -> 0 `i `uc ]
+[; ;main.c: 611: ser_putch(2);
+"611
+[e ( _ser_putch (1 -> -> 2 `i `uc ]
+[; ;main.c: 612: ser_putch(58);
+"612
+[e ( _ser_putch (1 -> -> 58 `i `uc ]
+[; ;main.c: 613: ser_putch(18);
+"613
+[e ( _ser_putch (1 -> -> 18 `i `uc ]
+[; ;main.c: 614: ser_putch(48);
+"614
+[e ( _ser_putch (1 -> -> 48 `i `uc ]
+[; ;main.c: 615: ser_putch(24);
+"615
+[e ( _ser_putch (1 -> -> 24 `i `uc ]
+[; ;main.c: 616: ser_putch(0);
+"616
+[e ( _ser_putch (1 -> -> 0 `i `uc ]
+[; ;main.c: 617: ser_putch(10);
+"617
+[e ( _ser_putch (1 -> -> 10 `i `uc ]
+[; ;main.c: 618: ser_putch(55);
+"618
+[e ( _ser_putch (1 -> -> 55 `i `uc ]
+[; ;main.c: 619: ser_putch(22);
+"619
+[e ( _ser_putch (1 -> -> 22 `i `uc ]
+[; ;main.c: 620: ser_putch(55);
+"620
+[e ( _ser_putch (1 -> -> 55 `i `uc ]
+[; ;main.c: 621: ser_putch(22);
+"621
+[e ( _ser_putch (1 -> -> 22 `i `uc ]
+[; ;main.c: 622: ser_putch(0);
+"622
+[e ( _ser_putch (1 -> -> 0 `i `uc ]
+[; ;main.c: 623: ser_putch(2);
+"623
+[e ( _ser_putch (1 -> -> 2 `i `uc ]
+[; ;main.c: 624: ser_putch(53);
+"624
+[e ( _ser_putch (1 -> -> 53 `i `uc ]
+[; ;main.c: 625: ser_putch(18);
+"625
+[e ( _ser_putch (1 -> -> 18 `i `uc ]
+[; ;main.c: 626: ser_putch(54);
+"626
+[e ( _ser_putch (1 -> -> 54 `i `uc ]
+[; ;main.c: 627: ser_putch(24);
+"627
+[e ( _ser_putch (1 -> -> 24 `i `uc ]
+[; ;main.c: 635: while(1){
+"635
+[e :U 261 ]
 {
-[; ;main.c: 405: if(PB8Counter >= 10 && !RB0 == 0){
-"405
-[e $ ! && >= -> _PB8Counter `i -> 10 `i == -> ! _RB0 `i -> 0 `i 231  ]
+[; ;main.c: 637: if(PB7Counter >= 10 && !RB1== 0){
+"637
+[e $ ! && >= -> _PB7Counter `i -> 10 `i == -> ! _RB1 `i -> 0 `i 263  ]
 {
-[; ;main.c: 409: PathTo(2,0);
-"409
+[; ;main.c: 640: ser_putch(141);
+"640
+[e ( _ser_putch (1 -> -> 141 `i `uc ]
+[; ;main.c: 641: ser_putch(6);
+"641
+[e ( _ser_putch (1 -> -> 6 `i `uc ]
+[; ;main.c: 642: _delay((unsigned long)((3000)*(20000000/4000.0)));
+"642
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 643: ser_putch(141);
+"643
+[e ( _ser_putch (1 -> -> 141 `i `uc ]
+[; ;main.c: 644: ser_putch(6);
+"644
+[e ( _ser_putch (1 -> -> 6 `i `uc ]
+[; ;main.c: 645: _delay((unsigned long)((3000)*(20000000/4000.0)));
+"645
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 646: ser_putch(141);
+"646
+[e ( _ser_putch (1 -> -> 141 `i `uc ]
+[; ;main.c: 647: ser_putch(5);
+"647
+[e ( _ser_putch (1 -> -> 5 `i `uc ]
+[; ;main.c: 652: PB7Counter=0;
+"652
+[e = _PB7Counter -> -> 0 `i `uc ]
+"656
+}
+[e :U 263 ]
+[; ;main.c: 656: }
+[; ;main.c: 661: if(PB8Counter >= 10 && !RB0 == 0){
+"661
+[e $ ! && >= -> _PB8Counter `i -> 10 `i == -> ! _RB0 `i -> 0 `i 264  ]
+{
+[; ;main.c: 664: PathTo(2,0);
+"664
 [e ( _PathTo (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 410: _delay((unsigned long)((1000)*(20000000/4000.0)));
-"410
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 411: TravelPath();
-"411
+[; ;main.c: 666: TravelPath();
+"666
 [e ( _TravelPath ..  ]
-[; ;main.c: 428: PB8Counter = 0;
-"428
+[; ;main.c: 667: if (IR_Wall == 1)
+"667
+[e $ ! == -> _IR_Wall `i -> 1 `i 265  ]
+[; ;main.c: 668: re_route();
+"668
+[e ( _re_route ..  ]
+[e :U 265 ]
+[; ;main.c: 669: if (targets_found == 1){
+"669
+[e $ ! == -> _targets_found `i -> 1 `i 266  ]
+{
+[; ;main.c: 670: PathTo(1,0);
+"670
+[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 671: TravelPath();
+"671
+[e ( _TravelPath ..  ]
+"672
+}
+[e :U 266 ]
+[; ;main.c: 672: }
+[; ;main.c: 677: PathTo(3,0);
+"677
+[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 679: TravelPath();
+"679
+[e ( _TravelPath ..  ]
+[; ;main.c: 680: if (IR_Wall == 1)
+"680
+[e $ ! == -> _IR_Wall `i -> 1 `i 267  ]
+[; ;main.c: 681: re_route();
+"681
+[e ( _re_route ..  ]
+[e :U 267 ]
+[; ;main.c: 682: if (targets_found == 1){
+"682
+[e $ ! == -> _targets_found `i -> 1 `i 268  ]
+{
+[; ;main.c: 683: PathTo(1,0);
+"683
+[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 684: TravelPath();
+"684
+[e ( _TravelPath ..  ]
+"685
+}
+[e :U 268 ]
+[; ;main.c: 685: }
+[; ;main.c: 687: PathTo(4,3);
+"687
+[e ( _PathTo (2 , -> -> 4 `i `uc -> -> 3 `i `uc ]
+[; ;main.c: 688: TravelPath();
+"688
+[e ( _TravelPath ..  ]
+[; ;main.c: 689: if (IR_Wall == 1)
+"689
+[e $ ! == -> _IR_Wall `i -> 1 `i 269  ]
+[; ;main.c: 690: re_route();
+"690
+[e ( _re_route ..  ]
+[e :U 269 ]
+[; ;main.c: 691: if (targets_found == 1){
+"691
+[e $ ! == -> _targets_found `i -> 1 `i 270  ]
+{
+[; ;main.c: 692: PathTo(1,0);
+"692
+[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 693: TravelPath();
+"693
+[e ( _TravelPath ..  ]
+"694
+}
+[e :U 270 ]
+[; ;main.c: 694: }
+[; ;main.c: 696: PathTo(3,2);
+"696
+[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 2 `i `uc ]
+[; ;main.c: 697: TravelPath();
+"697
+[e ( _TravelPath ..  ]
+[; ;main.c: 698: if (IR_Wall == 1)
+"698
+[e $ ! == -> _IR_Wall `i -> 1 `i 271  ]
+[; ;main.c: 699: re_route();
+"699
+[e ( _re_route ..  ]
+[e :U 271 ]
+[; ;main.c: 700: if (targets_found == 1){
+"700
+[e $ ! == -> _targets_found `i -> 1 `i 272  ]
+{
+[; ;main.c: 701: PathTo(1,0);
+"701
+[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 702: TravelPath();
+"702
+[e ( _TravelPath ..  ]
+"703
+}
+[e :U 272 ]
+[; ;main.c: 703: }
+[; ;main.c: 705: PathTo(0,3);
+"705
+[e ( _PathTo (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;main.c: 707: TravelPath();
+"707
+[e ( _TravelPath ..  ]
+[; ;main.c: 708: if (IR_Wall == 1)
+"708
+[e $ ! == -> _IR_Wall `i -> 1 `i 273  ]
+[; ;main.c: 709: re_route();
+"709
+[e ( _re_route ..  ]
+[e :U 273 ]
+[; ;main.c: 710: if (targets_found == 1){
+"710
+[e $ ! == -> _targets_found `i -> 1 `i 274  ]
+{
+[; ;main.c: 711: PathTo(1,0);
+"711
+[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 712: TravelPath();
+"712
+[e ( _TravelPath ..  ]
+"713
+}
+[e :U 274 ]
+[; ;main.c: 713: }
+[; ;main.c: 721: PB8Counter = 0;
+"721
 [e = _PB8Counter -> -> 0 `i `uc ]
-"429
+"722
 }
-[e :U 231 ]
-"435
+[e :U 264 ]
+"728
 }
-[e :U 228 ]
-"403
-[e $U 229  ]
-[e :U 230 ]
-[; ;main.c: 429: }
-[; ;main.c: 435: }
-[; ;main.c: 436: }
-"436
-[e :UE 227 ]
+[e :U 260 ]
+"635
+[e $U 261  ]
+[e :U 262 ]
+[; ;main.c: 722: }
+[; ;main.c: 728: }
+[; ;main.c: 729: }
+"729
+[e :UE 259 ]
 }
 [a 1C 87 111 114 107 105 110 103 46 46 46 0 ]
 

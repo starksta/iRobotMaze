@@ -11,72 +11,74 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
+$dist/default/production\iRobot_Maze.X.production.obj
+cinit CODE 0 15 15 4A 2
+text1 CODE 0 9D4 9D4 F 2
+text2 CODE 0 A30 A30 19 2
+text3 CODE 0 ADB ADB 29 2
+text4 CODE 0 A1A A1A 16 2
+text5 CODE 0 9C5 9C5 F 2
+text6 CODE 0 702 702 EA 2
+text7 CODE 0 4F1 4F1 115 2
+text8 CODE 0 C0F C0F A5 2
+text9 CODE 0 A8B A8B 28 2
+text10 CODE 0 606 606 FC 2
+text11 CODE 0 B04 B04 3E 2
+text12 CODE 0 9AF 9AF A 2
+text13 CODE 0 B82 B82 8D 2
+text14 CODE 0 9B9 9B9 C 2
+text15 CODE 0 CB4 CB4 34C 2
+text16 CODE 0 A49 A49 20 2
+text17 CODE 0 A07 A07 13 2
+text18 CODE 0 9A6 9A6 9 2
+text19 CODE 0 7EC 7EC 14 2
+text20 CODE 0 9F4 9F4 13 2
+text21 CODE 0 A69 A69 22 2
+maintext CODE 0 5F 5F 492 2
+cstackCOMMON COMMON 1 71 71 5 1
+cstackBANK0 BANK0 1 4B 4B 1A 1
+cstackBANK2 BANK2 1 110 110 6 1
+inittext CODE 0 9E3 9E3 11 2
+intentry CODE 0 4 4 E 2
+bitbssCOMMON COMMON 1 380 70 7 1
+bssBANK0 BANK0 1 20 20 2B 1
+bssBANK1 BANK1 1 C8 C8 24 1
+bssBANK3 BANK3 1 1D0 1D0 20 1
+idataBANK0 CODE 0 997 997 7 2
+idataBANK1 CODE 0 AB3 AB3 28 2
+idataBANK3 CODE 0 B42 B42 40 2
+strings STRING 0 800 800 11 2
+dataBANK0 BANK0 1 65 65 7 1
+dataBANK1 BANK1 1 A0 A0 28 1
+dataBANK3 BANK3 1 190 190 40 1
+clrtext CODE 0 99E 99E 8 2
+bssCOMMON COMMON 1 76 76 4 1
+$C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 12 12 3 2
 config CONFIG 0 2007 2007 1 2
-$dist/default/production\iRobot_Maze.X.production.obj
-cinit CODE 0 15 15 4A 2
-text1 CODE 0 EE2 EE2 F 2
-text2 CODE 0 F7D F7D 19 2
-text3 CODE 0 7CF 7CF 29 2
-text4 CODE 0 F50 F50 16 2
-text5 CODE 0 ED3 ED3 F 2
-text6 CODE 0 3EA 3EA 12C 2
-text7 CODE 0 516 516 A1 2
-text8 CODE 0 FD8 FD8 28 2
-text9 CODE 0 6DE 6DE 73 2
-text10 CODE 0 791 791 3E 2
-text11 CODE 0 EBD EBD A 2
-text12 CODE 0 651 651 8D 2
-text13 CODE 0 EC7 EC7 C 2
-text14 CODE 0 5F 5F 38B 2
-text15 CODE 0 F96 F96 20 2
-text16 CODE 0 F15 F15 13 2
-text17 CODE 0 EB4 EB4 9 2
-text18 CODE 0 F28 F28 14 2
-text19 CODE 0 F02 F02 13 2
-text20 CODE 0 FB6 FB6 22 2
-maintext CODE 0 5B7 5B7 9A 2
-cstackCOMMON COMMON 1 71 71 5 1
-cstackBANK0 BANK0 1 57 57 16 1
-inittext CODE 0 EF1 EF1 11 2
-intentry CODE 0 4 4 E 2
-bitbssCOMMON COMMON 1 380 70 6 1
-bssBANK0 BANK0 1 20 20 20 1
-bssBANK1 BANK1 1 A0 A0 20 1
-bssBANK3 BANK3 1 1D0 1D0 20 1
-idataBANK0 CODE 0 F66 F66 17 2
-idataBANK1 CODE 0 F3C F3C 14 2
-idataBANK3 CODE 0 751 751 40 2
-strings STRING 0 800 800 11 2
-dataBANK0 BANK0 1 40 40 17 1
-dataBANK1 BANK1 1 C0 C0 14 1
-dataBANK3 BANK3 1 190 190 40 1
-clrtext CODE 0 7F8 7F8 8 2
-bssCOMMON COMMON 1 76 76 4 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 6D-6F 1
-RAM D4-EF 1
-RAM 110-16F 1
-BANK0 6D-6F 1
-BANK1 D4-EF 1
-BANK2 110-16F 1
+RAM 6C-6F 1
+RAM EC-EF 1
+RAM 116-16F 1
+BANK0 6C-6F 1
+BANK1 EC-EF 1
+BANK2 116-16F 1
 CONST 3-3 2
-CONST 811-EB3 2
+CONST 811-996 2
 CONST 1000-1FFF 2
 ENTRY 3-3 2
-ENTRY 811-EB3 2
+ENTRY 811-996 2
 ENTRY 1000-1FFF 2
 IDLOC 2000-2003 2
-STACK 110-16F 1
+STACK 116-16F 1
 CODE 3-3 2
-CODE 811-EB3 2
+CODE 811-996 2
 CODE 1000-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
@@ -85,10 +87,10 @@ SFR3 180-18F 1
 COMMON 7A-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 811-EB3 2
+STRCODE 811-996 2
 STRCODE 1000-1FFF 2
 STRING 3-3 2
-STRING 811-EB3 2
+STRING 811-996 2
 STRING 1000-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -104,438 +106,651 @@ STRING 1000-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\iRobot_Maze.X.production.obj
-15 cinit CODE >1090:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-15 cinit CODE >1093:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-15 cinit CODE >1297:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-16 cinit CODE >1298:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-17 cinit CODE >1299:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-18 cinit CODE >1300:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-19 cinit CODE >1301:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-1A cinit CODE >1302:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-1B cinit CODE >1303:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-1C cinit CODE >1304:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-1D cinit CODE >1305:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-1E cinit CODE >1306:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-23 cinit CODE >1310:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-24 cinit CODE >1311:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-25 cinit CODE >1312:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-26 cinit CODE >1313:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-27 cinit CODE >1314:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-28 cinit CODE >1315:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-29 cinit CODE >1316:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-2A cinit CODE >1317:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-2B cinit CODE >1318:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-2C cinit CODE >1319:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-31 cinit CODE >1323:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-32 cinit CODE >1324:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-33 cinit CODE >1325:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-34 cinit CODE >1326:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-35 cinit CODE >1327:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-36 cinit CODE >1328:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-37 cinit CODE >1329:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-38 cinit CODE >1330:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-39 cinit CODE >1331:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-3E cinit CODE >1350:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-3F cinit CODE >1351:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-40 cinit CODE >1352:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-41 cinit CODE >1353:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-42 cinit CODE >1354:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-47 cinit CODE >1357:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-48 cinit CODE >1358:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-49 cinit CODE >1359:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-4A cinit CODE >1360:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-4B cinit CODE >1361:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-50 cinit CODE >1364:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-51 cinit CODE >1365:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-52 cinit CODE >1366:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-53 cinit CODE >1367:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-56 cinit CODE >1370:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-57 cinit CODE >1371:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-58 cinit CODE >1372:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-59 cinit CODE >1373:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-5A cinit CODE >1376:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-5B cinit CODE >1382:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-5B cinit CODE >1384:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-5C cinit CODE >1385:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-4 intentry CODE >361:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FB6 text20 CODE >361:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FB6 text20 CODE >362:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FB8 text20 CODE >363:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FB9 text20 CODE >364:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FBB text20 CODE >365:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FC1 text20 CODE >367:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FC3 text20 CODE >368:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FC7 text20 CODE >369:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FC9 text20 CODE >370:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FCD text20 CODE >373:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-F02 text19 CODE >4:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
-F05 text19 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
-F06 text19 CODE >43:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
-F08 text19 CODE >44:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
-F0C text19 CODE >45:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
-F0E text19 CODE >46:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
-F10 text19 CODE >47:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
-F13 text19 CODE >50:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
-F28 text18 CODE >5:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F2B text18 CODE >6:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F2C text18 CODE >7:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F2D text18 CODE >8:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F2E text18 CODE >9:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F30 text18 CODE >10:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F31 text18 CODE >11:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F32 text18 CODE >12:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F3B text18 CODE >13:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-EB4 text17 CODE >27:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-EB7 text17 CODE >28:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-EB8 text17 CODE >29:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-EBC text17 CODE >30:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F15 text16 CODE >16:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F18 text16 CODE >17:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F19 text16 CODE >18:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F1A text16 CODE >19:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F1B text16 CODE >20:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F1D text16 CODE >21:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F1E text16 CODE >22:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F1F text16 CODE >23:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F27 text16 CODE >24:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F96 text15 CODE >32:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F99 text15 CODE >34:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-5F text14 CODE >16:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-62 text14 CODE >20:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-67 text14 CODE >21:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6C text14 CODE >22:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-94 text14 CODE >21:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-9C text14 CODE >20:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-A4 text14 CODE >28:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-A8 text14 CODE >29:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-AC text14 CODE >30:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-B0 text14 CODE >31:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-B1 text14 CODE >33:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-B4 text14 CODE >35:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-C9 text14 CODE >37:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-DE text14 CODE >39:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-F3 text14 CODE >41:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-11C text14 CODE >43:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-11D text14 CODE >34:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-12B text14 CODE >46:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-131 text14 CODE >47:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-137 text14 CODE >49:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-146 text14 CODE >51:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-147 text14 CODE >53:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-151 text14 CODE >54:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-158 text14 CODE >59:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-171 text14 CODE >60:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-18C text14 CODE >61:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1A7 text14 CODE >62:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1C2 text14 CODE >66:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1C3 text14 CODE >67:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1C4 text14 CODE >68:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1C5 text14 CODE >69:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1C6 text14 CODE >70:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1C7 text14 CODE >71:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1C8 text14 CODE >72:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1C9 text14 CODE >73:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1CA text14 CODE >75:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1CB text14 CODE >66:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1DB text14 CODE >79:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1E7 text14 CODE >80:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1EB text14 CODE >81:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1EF text14 CODE >82:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1F3 text14 CODE >88:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1F5 text14 CODE >89:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1F7 text14 CODE >90:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1F9 text14 CODE >91:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1FB text14 CODE >92:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-1FD text14 CODE >93:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-200 text14 CODE >94:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-202 text14 CODE >95:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-206 text14 CODE >96:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-206 text14 CODE >103:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-20E text14 CODE >108:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-212 text14 CODE >109:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-216 text14 CODE >110:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-21B text14 CODE >111:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-220 text14 CODE >112:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-246 text14 CODE >111:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-24E text14 CODE >110:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-253 text14 CODE >122:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-268 text14 CODE >124:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-27D text14 CODE >126:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-292 text14 CODE >128:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2BB text14 CODE >130:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2BC text14 CODE >121:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2CA text14 CODE >133:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2CE text14 CODE >134:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2D2 text14 CODE >135:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2D6 text14 CODE >136:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2D7 text14 CODE >137:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2D8 text14 CODE >140:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2DD text14 CODE >141:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2E2 text14 CODE >142:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2F4 text14 CODE >141:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-2FC text14 CODE >140:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-304 text14 CODE >151:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-30D text14 CODE >155:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-322 text14 CODE >157:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-337 text14 CODE >159:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-34C text14 CODE >161:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-375 text14 CODE >163:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-376 text14 CODE >154:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-384 text14 CODE >166:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-388 text14 CODE >167:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-38C text14 CODE >168:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-390 text14 CODE >169:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-391 text14 CODE >170:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-392 text14 CODE >172:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-397 text14 CODE >173:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-39C text14 CODE >174:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3AE text14 CODE >173:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3B6 text14 CODE >172:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3BE text14 CODE >177:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3BE text14 CODE >186:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3C0 text14 CODE >189:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3C2 text14 CODE >190:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3C4 text14 CODE >191:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3C6 text14 CODE >194:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3C8 text14 CODE >195:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3CA text14 CODE >196:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3CB text14 CODE >197:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3CC text14 CODE >199:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3CE text14 CODE >200:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3D2 text14 CODE >201:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3D5 text14 CODE >204:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3D7 text14 CODE >205:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3DB text14 CODE >206:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3DF text14 CODE >207:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3E3 text14 CODE >49:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3E3 text14 CODE >209:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-EC7 text13 CODE >30:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-ECA text13 CODE >31:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-ECE text13 CODE >32:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-ED2 text13 CODE >33:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-651 text12 CODE >54:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-651 text12 CODE >55:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-654 text12 CODE >56:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-655 text12 CODE >58:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-660 text12 CODE >59:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-666 text12 CODE >60:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-66E text12 CODE >61:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-676 text12 CODE >60:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-681 text12 CODE >64:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-687 text12 CODE >67:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-692 text12 CODE >68:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-698 text12 CODE >69:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6A0 text12 CODE >70:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6A8 text12 CODE >69:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6B3 text12 CODE >73:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6B9 text12 CODE >76:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6BF text12 CODE >77:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6C7 text12 CODE >78:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6CF text12 CODE >79:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6D7 text12 CODE >80:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6DD text12 CODE >81:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-EBD text11 CODE >35:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-EBD text11 CODE >36:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-EC1 text11 CODE >37:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-EC5 text11 CODE >38:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-791 text10 CODE >85:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-794 text10 CODE >86:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-79A text10 CODE >87:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-7A2 text10 CODE >89:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-7A8 text10 CODE >90:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-7B3 text10 CODE >92:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-7B4 text10 CODE >94:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-7BC text10 CODE >96:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-7CA text10 CODE >98:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-6DE text9 CODE >215:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6DE text9 CODE >219:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6DF text9 CODE >220:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6E3 text9 CODE >221:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6E4 text9 CODE >222:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6E8 text9 CODE >223:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6E9 text9 CODE >224:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6ED text9 CODE >225:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6EE text9 CODE >226:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6F0 text9 CODE >228:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-6F1 text9 CODE >219:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-701 text9 CODE >230:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-703 text9 CODE >231:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-710 text9 CODE >232:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-71D text9 CODE >233:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-733 text9 CODE >232:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-734 text9 CODE >235:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-741 text9 CODE >236:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-750 text9 CODE >237:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-FD8 text8 CODE >45:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-FDB text8 CODE >46:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-FE1 text8 CODE >47:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-FE9 text8 CODE >48:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-FF1 text8 CODE >49:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-FF9 text8 CODE >50:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-FFF text8 CODE >51:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-516 text7 CODE >240:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-519 text7 CODE >241:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-51B text7 CODE >242:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-51E text7 CODE >244:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-521 text7 CODE >245:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-526 text7 CODE >246:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-528 text7 CODE >248:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-535 text7 CODE >249:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-540 text7 CODE >250:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-556 text7 CODE >249:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-557 text7 CODE >254:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-55C text7 CODE >256:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-560 text7 CODE >257:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-562 text7 CODE >258:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-566 text7 CODE >260:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-578 text7 CODE >261:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-583 text7 CODE >262:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-599 text7 CODE >261:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-59A text7 CODE >265:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5A7 text7 CODE >266:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5B6 text7 CODE >267:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3EA text6 CODE >269:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-3EA text6 CODE >271:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-400 text6 CODE >273:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-40F text6 CODE >275:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-41A text6 CODE >278:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-420 text6 CODE >279:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-421 text6 CODE >281:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-427 text6 CODE >282:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-428 text6 CODE >284:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-42E text6 CODE >285:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-439 text6 CODE >286:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-43F text6 CODE >288:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-440 text6 CODE >276:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-44D text6 CODE >290:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-44E text6 CODE >295:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-459 text6 CODE >298:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-45F text6 CODE >299:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-460 text6 CODE >301:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-466 text6 CODE >302:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-467 text6 CODE >304:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-46D text6 CODE >305:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-478 text6 CODE >306:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-47E text6 CODE >310:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-47F text6 CODE >296:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-48C text6 CODE >312:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-48D text6 CODE >316:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-498 text6 CODE >319:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-49E text6 CODE >320:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-49F text6 CODE >322:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4A5 text6 CODE >323:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4A6 text6 CODE >325:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4AC text6 CODE >326:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4B7 text6 CODE >327:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4BD text6 CODE >329:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4BE text6 CODE >317:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4CB text6 CODE >331:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4CC text6 CODE >336:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4D7 text6 CODE >339:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4DD text6 CODE >340:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4DE text6 CODE >342:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4E4 text6 CODE >343:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4E5 text6 CODE >345:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4EB text6 CODE >346:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4F6 text6 CODE >347:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4FC text6 CODE >349:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-4FD text6 CODE >337:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-50A text6 CODE >351:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-50F text6 CODE >271:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-ED3 text5 CODE >5:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-ED3 text5 CODE >7:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-ED7 text5 CODE >8:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-EDB text5 CODE >24:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-EDF text5 CODE >26:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-EE0 text5 CODE >27:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-EE1 text5 CODE >28:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
-F50 text4 CODE >5:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
-F50 text4 CODE >6:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
-F53 text4 CODE >7:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
-F57 text4 CODE >10:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
-F5B text4 CODE >11:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
-F5F text4 CODE >13:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
-F65 text4 CODE >14:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
-7CF text3 CODE >86:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7CF text3 CODE >88:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7D3 text3 CODE >90:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7D6 text3 CODE >91:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7D7 text3 CODE >93:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7DA text3 CODE >94:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7DB text3 CODE >97:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7E1 text3 CODE >98:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7E7 text3 CODE >99:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7ED text3 CODE >100:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7F3 text3 CODE >101:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-7F7 text3 CODE >103:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
-F7D text2 CODE >4:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-F7D text2 CODE >6:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-F81 text2 CODE >8:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-F83 text2 CODE >9:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-F87 text2 CODE >10:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-F8B text2 CODE >11:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-F8F text2 CODE >14:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-F93 text2 CODE >16:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-F94 text2 CODE >18:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-F95 text2 CODE >19:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-EE2 text1 CODE >22:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-EE5 text1 CODE >23:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-EE6 text1 CODE >25:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-EE7 text1 CODE >26:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-EE9 text1 CODE >28:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-EEB text1 CODE >29:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-EEF text1 CODE >30:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
-5B7 maintext CODE >376:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5B7 maintext CODE >378:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5C6 maintext CODE >380:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5CB maintext CODE >381:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5D0 maintext CODE >382:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5D5 maintext CODE >383:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5DA maintext CODE >385:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5DE maintext CODE >386:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5E1 maintext CODE >388:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5E5 maintext CODE >389:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5EB maintext CODE >391:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-5FA maintext CODE >392:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-600 maintext CODE >393:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-60F maintext CODE >394:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-615 maintext CODE >395:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-624 maintext CODE >398:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-628 maintext CODE >399:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-629 maintext CODE >400:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-62D maintext CODE >405:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-632 maintext CODE >409:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-639 maintext CODE >410:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-648 maintext CODE >411:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-64D maintext CODE >428:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-650 maintext CODE >403:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
-7F8 clrtext CODE >1337:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-7F8 clrtext CODE >1338:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-7F9 clrtext CODE >1339:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-7F9 clrtext CODE >1340:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-7FA clrtext CODE >1341:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-7FB clrtext CODE >1342:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-7FC clrtext CODE >1343:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-7FD clrtext CODE >1344:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-7FE clrtext CODE >1345:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-7FF clrtext CODE >1346:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EF1 inittext CODE >1271:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EF1 inittext CODE >1272:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EF2 inittext CODE >1273:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EF3 inittext CODE >1274:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EF4 inittext CODE >1275:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EF5 inittext CODE >1282:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EF5 inittext CODE >1283:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EF8 inittext CODE >1284:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EF9 inittext CODE >1285:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EFA inittext CODE >1286:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EFB inittext CODE >1287:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EFC inittext CODE >1288:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EFD inittext CODE >1289:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EFE inittext CODE >1290:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-EFF inittext CODE >1291:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-F00 inittext CODE >1292:C:\Users\Brendan\AppData\Local\Temp\s13fg.
-F01 inittext CODE >1293:C:\Users\Brendan\AppData\Local\Temp\s13fg.
+15 cinit CODE >1128:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+15 cinit CODE >1131:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+15 cinit CODE >1377:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+16 cinit CODE >1378:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+17 cinit CODE >1379:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+18 cinit CODE >1380:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+19 cinit CODE >1381:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+1A cinit CODE >1382:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+1B cinit CODE >1383:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+1C cinit CODE >1384:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+1D cinit CODE >1385:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+1E cinit CODE >1386:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+23 cinit CODE >1390:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+24 cinit CODE >1391:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+25 cinit CODE >1392:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+26 cinit CODE >1393:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+27 cinit CODE >1394:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+28 cinit CODE >1395:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+29 cinit CODE >1396:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+2A cinit CODE >1397:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+2B cinit CODE >1398:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+2C cinit CODE >1399:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+31 cinit CODE >1403:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+32 cinit CODE >1404:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+33 cinit CODE >1405:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+34 cinit CODE >1406:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+35 cinit CODE >1407:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+36 cinit CODE >1408:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+37 cinit CODE >1409:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+38 cinit CODE >1410:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+39 cinit CODE >1411:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+3E cinit CODE >1430:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+3F cinit CODE >1431:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+40 cinit CODE >1432:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+41 cinit CODE >1433:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+42 cinit CODE >1434:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+47 cinit CODE >1437:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+48 cinit CODE >1438:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+49 cinit CODE >1439:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+4A cinit CODE >1440:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+4B cinit CODE >1441:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+50 cinit CODE >1444:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+51 cinit CODE >1445:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+52 cinit CODE >1446:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+53 cinit CODE >1447:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+56 cinit CODE >1450:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+57 cinit CODE >1451:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+58 cinit CODE >1452:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+59 cinit CODE >1453:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+5A cinit CODE >1456:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+5B cinit CODE >1462:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+5B cinit CODE >1464:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+5C cinit CODE >1465:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+4 intentry CODE >450:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A69 text21 CODE >450:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A69 text21 CODE >451:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A6B text21 CODE >452:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A6C text21 CODE >453:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A6E text21 CODE >454:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A74 text21 CODE >456:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A76 text21 CODE >457:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A7A text21 CODE >458:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A7C text21 CODE >459:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A80 text21 CODE >461:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+9F4 text20 CODE >4:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+9F7 text20 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+9F8 text20 CODE >43:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+9FA text20 CODE >44:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+9FE text20 CODE >45:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+A00 text20 CODE >46:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+A02 text20 CODE >47:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+A05 text20 CODE >50:C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul8.c
+7EC text19 CODE >5:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+7EF text19 CODE >6:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+7F0 text19 CODE >7:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+7F1 text19 CODE >8:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+7F2 text19 CODE >9:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+7F4 text19 CODE >10:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+7F5 text19 CODE >11:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+7F6 text19 CODE >12:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+7FF text19 CODE >13:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+9A6 text18 CODE >27:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+9A9 text18 CODE >28:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+9AA text18 CODE >29:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+9AE text18 CODE >30:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A07 text17 CODE >16:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A0A text17 CODE >17:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A0B text17 CODE >18:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A0C text17 CODE >19:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A0D text17 CODE >20:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A0F text17 CODE >21:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A10 text17 CODE >22:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A11 text17 CODE >23:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A19 text17 CODE >24:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A49 text16 CODE >32:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A4C text16 CODE >34:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+CB4 text15 CODE >46:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CB7 text15 CODE >50:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CBC text15 CODE >51:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CC1 text15 CODE >52:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CE9 text15 CODE >51:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CF1 text15 CODE >50:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CF9 text15 CODE >56:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CFD text15 CODE >57:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D02 text15 CODE >58:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D07 text15 CODE >59:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D19 text15 CODE >58:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D21 text15 CODE >57:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D29 text15 CODE >64:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D2D text15 CODE >65:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D31 text15 CODE >67:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D35 text15 CODE >68:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D39 text15 CODE >69:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D3D text15 CODE >71:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D3E text15 CODE >74:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D44 text15 CODE >75:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D4A text15 CODE >77:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D59 text15 CODE >79:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D5A text15 CODE >81:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D64 text15 CODE >82:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D6B text15 CODE >87:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D84 text15 CODE >88:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D9F text15 CODE >89:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DBA text15 CODE >90:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DD5 text15 CODE >94:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DDB text15 CODE >96:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DDC text15 CODE >97:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DDD text15 CODE >98:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DDE text15 CODE >99:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DDF text15 CODE >100:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DE0 text15 CODE >101:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DE1 text15 CODE >102:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DE2 text15 CODE >104:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DE3 text15 CODE >95:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DF1 text15 CODE >109:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DFD text15 CODE >110:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E01 text15 CODE >111:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E05 text15 CODE >112:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E09 text15 CODE >118:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E0B text15 CODE >119:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E0D text15 CODE >120:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E0F text15 CODE >121:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E11 text15 CODE >122:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E13 text15 CODE >123:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E16 text15 CODE >124:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E18 text15 CODE >125:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E1C text15 CODE >126:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E1C text15 CODE >133:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E20 text15 CODE >134:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E24 text15 CODE >138:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E28 text15 CODE >139:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E2C text15 CODE >140:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E31 text15 CODE >141:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E36 text15 CODE >142:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E5C text15 CODE >141:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E64 text15 CODE >140:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E69 text15 CODE >152:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E7E text15 CODE >154:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E93 text15 CODE >156:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EA8 text15 CODE >158:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+ED1 text15 CODE >160:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+ED2 text15 CODE >151:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EE0 text15 CODE >163:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EE4 text15 CODE >164:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EE8 text15 CODE >165:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EEC text15 CODE >166:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EED text15 CODE >167:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EEE text15 CODE >170:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EF3 text15 CODE >171:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EF8 text15 CODE >172:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F0A text15 CODE >171:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F12 text15 CODE >170:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F1A text15 CODE >182:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F23 text15 CODE >186:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F38 text15 CODE >188:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F4D text15 CODE >190:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F62 text15 CODE >192:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F8B text15 CODE >194:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F8C text15 CODE >185:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F9A text15 CODE >197:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F9E text15 CODE >198:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FA2 text15 CODE >199:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FA6 text15 CODE >200:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FA7 text15 CODE >201:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FA8 text15 CODE >203:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FAD text15 CODE >204:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FB2 text15 CODE >205:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FC4 text15 CODE >204:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FCC text15 CODE >203:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FD4 text15 CODE >208:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FD4 text15 CODE >217:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FD6 text15 CODE >220:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FD8 text15 CODE >221:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FDA text15 CODE >222:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FDC text15 CODE >225:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FDE text15 CODE >226:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FE0 text15 CODE >227:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FE1 text15 CODE >228:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FE2 text15 CODE >230:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FE4 text15 CODE >231:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FE8 text15 CODE >232:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FEB text15 CODE >235:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FED text15 CODE >236:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FF1 text15 CODE >237:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FF5 text15 CODE >238:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FF9 text15 CODE >77:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FF9 text15 CODE >240:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+9B9 text14 CODE >30:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9BC text14 CODE >31:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9C0 text14 CODE >32:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9C4 text14 CODE >33:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B82 text13 CODE >54:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B82 text13 CODE >55:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B85 text13 CODE >56:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B86 text13 CODE >58:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B91 text13 CODE >59:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B97 text13 CODE >60:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B9F text13 CODE >61:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BA7 text13 CODE >60:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BB2 text13 CODE >64:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BB8 text13 CODE >67:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BC3 text13 CODE >68:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BC9 text13 CODE >69:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BD1 text13 CODE >70:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BD9 text13 CODE >69:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BE4 text13 CODE >73:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BEA text13 CODE >76:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BF0 text13 CODE >77:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+BF8 text13 CODE >78:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+C00 text13 CODE >79:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+C08 text13 CODE >80:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+C0E text13 CODE >81:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9AF text12 CODE >35:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9AF text12 CODE >36:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9B3 text12 CODE >37:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9B7 text12 CODE >38:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B04 text11 CODE >85:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B07 text11 CODE >86:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B0D text11 CODE >87:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B15 text11 CODE >89:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B1B text11 CODE >90:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B26 text11 CODE >92:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B27 text11 CODE >94:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B2F text11 CODE >96:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+B3D text11 CODE >98:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+606 text10 CODE >246:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+606 text10 CODE >254:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+60A text10 CODE >255:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+617 text10 CODE >256:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+61A text10 CODE >257:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+61B text10 CODE >260:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+628 text10 CODE >263:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+63E text10 CODE >265:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+64C text10 CODE >267:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+661 text10 CODE >268:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+662 text10 CODE >269:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+668 text10 CODE >270:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+669 text10 CODE >274:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+679 text10 CODE >275:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+681 text10 CODE >277:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+685 text10 CODE >279:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+686 text10 CODE >280:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+68C text10 CODE >281:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+692 text10 CODE >282:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+693 text10 CODE >283:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+699 text10 CODE >284:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+69F text10 CODE >285:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6A0 text10 CODE >287:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6A1 text10 CODE >279:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6AB text10 CODE >289:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6B9 text10 CODE >260:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6BA text10 CODE >297:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6C7 text10 CODE >299:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6CA text10 CODE >301:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6CE text10 CODE >302:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6CF text10 CODE >303:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6D3 text10 CODE >304:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6D4 text10 CODE >305:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6D8 text10 CODE >306:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6D9 text10 CODE >307:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6DB text10 CODE >309:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6DC text10 CODE >300:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6EC text10 CODE >310:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6F9 text10 CODE >316:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6FB text10 CODE >317:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A8B text9 CODE >45:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+A8E text9 CODE >46:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+A94 text9 CODE >47:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+A9C text9 CODE >48:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+AA4 text9 CODE >49:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+AAC text9 CODE >50:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+AB2 text9 CODE >51:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+C0F text8 CODE >323:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C12 text8 CODE >325:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C14 text8 CODE >327:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C17 text8 CODE >329:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C1A text8 CODE >330:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C1F text8 CODE >331:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C21 text8 CODE >333:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C2E text8 CODE >334:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C3B text8 CODE >335:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C51 text8 CODE >334:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C52 text8 CODE >339:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C57 text8 CODE >341:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C5B text8 CODE >342:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C5D text8 CODE >343:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C61 text8 CODE >345:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C73 text8 CODE >346:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C80 text8 CODE >347:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C96 text8 CODE >346:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C97 text8 CODE >350:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CA4 text8 CODE >351:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CB3 text8 CODE >352:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4F1 text7 CODE >354:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4F1 text7 CODE >356:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4F9 text7 CODE >358:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+502 text7 CODE >360:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+508 text7 CODE >361:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+509 text7 CODE >362:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+50F text7 CODE >363:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+510 text7 CODE >364:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+516 text7 CODE >365:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+521 text7 CODE >366:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+527 text7 CODE >368:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+528 text7 CODE >359:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+535 text7 CODE >369:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+536 text7 CODE >372:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+541 text7 CODE >374:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+547 text7 CODE >375:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+548 text7 CODE >376:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+54E text7 CODE >377:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+54F text7 CODE >378:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+555 text7 CODE >379:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+560 text7 CODE >380:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+566 text7 CODE >382:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+567 text7 CODE >373:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+574 text7 CODE >383:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+575 text7 CODE >386:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+580 text7 CODE >388:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+586 text7 CODE >389:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+587 text7 CODE >390:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+58D text7 CODE >391:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+58E text7 CODE >392:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+594 text7 CODE >393:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+59F text7 CODE >394:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5A5 text7 CODE >396:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5A6 text7 CODE >387:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5B3 text7 CODE >397:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5B4 text7 CODE >400:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5BF text7 CODE >402:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5C5 text7 CODE >403:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5C6 text7 CODE >404:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5CC text7 CODE >405:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5CD text7 CODE >406:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5D3 text7 CODE >407:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5DE text7 CODE >408:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5E4 text7 CODE >410:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5E5 text7 CODE >401:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5F2 text7 CODE >411:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5F7 text7 CODE >415:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5F9 text7 CODE >416:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5FF text7 CODE >356:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+702 text6 CODE >421:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+702 text6 CODE >422:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+703 text6 CODE >423:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+71A text6 CODE >425:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+72F text6 CODE >427:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+744 text6 CODE >429:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+76D text6 CODE >431:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+76E text6 CODE >422:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+77E text6 CODE >433:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+784 text6 CODE >434:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+78A text6 CODE >435:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+78E text6 CODE >436:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+79B text6 CODE >437:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+7A8 text6 CODE >438:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+7BE text6 CODE >437:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+7BF text6 CODE >440:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+7CC text6 CODE >441:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+7CD text6 CODE >443:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+7DC text6 CODE >444:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+7E8 text6 CODE >445:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+7EB text6 CODE >446:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+9C5 text5 CODE >5:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9C5 text5 CODE >7:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9C9 text5 CODE >8:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9CD text5 CODE >24:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9D1 text5 CODE >26:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9D2 text5 CODE >27:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+9D3 text5 CODE >28:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ser.c
+A1A text4 CODE >5:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
+A1A text4 CODE >6:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
+A1D text4 CODE >7:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
+A21 text4 CODE >10:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
+A25 text4 CODE >11:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
+A29 text4 CODE >13:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
+A2F text4 CODE >14:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\ADC.c
+ADB text3 CODE >86:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+ADB text3 CODE >88:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+ADF text3 CODE >90:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+AE2 text3 CODE >91:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+AE3 text3 CODE >93:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+AE6 text3 CODE >94:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+AE7 text3 CODE >97:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+AED text3 CODE >98:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+AF3 text3 CODE >99:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+AF9 text3 CODE >100:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+AFF text3 CODE >101:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+B03 text3 CODE >103:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\LCD.c
+A30 text2 CODE >4:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+A30 text2 CODE >6:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+A34 text2 CODE >8:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+A36 text2 CODE >9:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+A3A text2 CODE >10:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+A3E text2 CODE >11:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+A42 text2 CODE >14:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+A46 text2 CODE >16:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+A47 text2 CODE >18:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+A48 text2 CODE >19:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+9D4 text1 CODE >22:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+9D7 text1 CODE >23:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+9D8 text1 CODE >25:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+9D9 text1 CODE >26:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+9DB text1 CODE >28:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+9DD text1 CODE >29:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+9E1 text1 CODE >30:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\SPI.c
+5F maintext CODE >463:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+5F maintext CODE >465:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+6E maintext CODE >467:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+73 maintext CODE >468:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+78 maintext CODE >469:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+7D maintext CODE >470:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+82 maintext CODE >472:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+86 maintext CODE >473:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+8A maintext CODE >475:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+90 maintext CODE >476:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+96 maintext CODE >478:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+A5 maintext CODE >479:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+AB maintext CODE >480:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+BA maintext CODE >481:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+C0 maintext CODE >482:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+CF maintext CODE >485:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D3 maintext CODE >486:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D4 maintext CODE >487:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+D8 maintext CODE >491:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+DE maintext CODE >492:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+E4 maintext CODE >493:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+EA maintext CODE >494:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F0 maintext CODE >495:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+F6 maintext CODE >496:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+FC maintext CODE >497:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+102 maintext CODE >498:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+108 maintext CODE >499:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+10E maintext CODE >500:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+114 maintext CODE >501:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+11A maintext CODE >502:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+120 maintext CODE >503:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+126 maintext CODE >504:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+12C maintext CODE >505:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+132 maintext CODE >506:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+138 maintext CODE >507:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+13E maintext CODE >508:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+144 maintext CODE >509:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+14A maintext CODE >510:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+150 maintext CODE >511:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+156 maintext CODE >512:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+15C maintext CODE >513:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+162 maintext CODE >516:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+16A maintext CODE >517:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+172 maintext CODE >518:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+17A maintext CODE >519:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+182 maintext CODE >520:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+18A maintext CODE >524:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+190 maintext CODE >525:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+196 maintext CODE >526:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+19C maintext CODE >527:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1A2 maintext CODE >528:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1AA maintext CODE >529:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1B0 maintext CODE >530:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1B8 maintext CODE >531:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1BE maintext CODE >532:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1C6 maintext CODE >533:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1CC maintext CODE >534:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1D4 maintext CODE >535:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1DA maintext CODE >536:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1E2 maintext CODE >538:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1E8 maintext CODE >539:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1F0 maintext CODE >540:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1F6 maintext CODE >541:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+1FE maintext CODE >542:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+204 maintext CODE >543:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+20C maintext CODE >544:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+212 maintext CODE >545:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+21A maintext CODE >546:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+220 maintext CODE >547:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+228 maintext CODE >549:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+22E maintext CODE >550:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+236 maintext CODE >551:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+23C maintext CODE >552:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+244 maintext CODE >553:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+24A maintext CODE >554:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+252 maintext CODE >555:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+258 maintext CODE >556:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+260 maintext CODE >557:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+266 maintext CODE >558:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+26E maintext CODE >560:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+274 maintext CODE >561:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+27A maintext CODE >564:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+280 maintext CODE >565:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+286 maintext CODE >566:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+28C maintext CODE >567:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+292 maintext CODE >568:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+298 maintext CODE >569:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+29E maintext CODE >570:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2A4 maintext CODE >571:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2AA maintext CODE >572:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2B0 maintext CODE >576:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2B6 maintext CODE >577:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2BC maintext CODE >578:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2C2 maintext CODE >579:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2C8 maintext CODE >580:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2CE maintext CODE >581:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2D4 maintext CODE >582:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2DA maintext CODE >583:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2E0 maintext CODE >584:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2E6 maintext CODE >585:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2EC maintext CODE >586:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2F2 maintext CODE >587:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2F8 maintext CODE >588:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+2FE maintext CODE >589:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+304 maintext CODE >590:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+30A maintext CODE >591:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+310 maintext CODE >592:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+316 maintext CODE >593:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+31C maintext CODE >594:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+322 maintext CODE >595:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+328 maintext CODE >596:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+32E maintext CODE >597:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+334 maintext CODE >598:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+33A maintext CODE >599:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+340 maintext CODE >600:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+346 maintext CODE >603:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+34C maintext CODE >604:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+352 maintext CODE >605:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+358 maintext CODE >606:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+35E maintext CODE >607:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+364 maintext CODE >608:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+36A maintext CODE >609:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+370 maintext CODE >610:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+376 maintext CODE >611:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+37C maintext CODE >612:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+382 maintext CODE >613:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+388 maintext CODE >614:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+38E maintext CODE >615:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+394 maintext CODE >616:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+39A maintext CODE >617:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3A0 maintext CODE >618:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3A6 maintext CODE >619:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3AC maintext CODE >620:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3B2 maintext CODE >621:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3B8 maintext CODE >622:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3BE maintext CODE >623:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3C4 maintext CODE >624:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3CA maintext CODE >625:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3D0 maintext CODE >626:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3D6 maintext CODE >627:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3DC maintext CODE >637:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3E3 maintext CODE >640:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3E9 maintext CODE >641:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3EF maintext CODE >642:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+3FE maintext CODE >643:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+404 maintext CODE >644:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+40A maintext CODE >645:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+419 maintext CODE >646:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+41F maintext CODE >647:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+425 maintext CODE >652:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+428 maintext CODE >661:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+42D maintext CODE >664:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+434 maintext CODE >666:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+439 maintext CODE >667:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+43B maintext CODE >668:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+440 maintext CODE >669:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+442 maintext CODE >670:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+44B maintext CODE >671:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+450 maintext CODE >672:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+450 maintext CODE >677:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+459 maintext CODE >679:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+45E maintext CODE >680:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+460 maintext CODE >681:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+465 maintext CODE >682:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+467 maintext CODE >683:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+470 maintext CODE >684:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+475 maintext CODE >685:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+475 maintext CODE >687:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+481 maintext CODE >688:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+486 maintext CODE >689:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+488 maintext CODE >690:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+48D maintext CODE >691:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+48F maintext CODE >692:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+498 maintext CODE >693:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+49D maintext CODE >694:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+49D maintext CODE >696:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4A9 maintext CODE >697:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4AE maintext CODE >698:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4B0 maintext CODE >699:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4B5 maintext CODE >700:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4B7 maintext CODE >701:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4C0 maintext CODE >702:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4C5 maintext CODE >703:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4C5 maintext CODE >705:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4D1 maintext CODE >707:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4D6 maintext CODE >708:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4D8 maintext CODE >709:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4DD maintext CODE >710:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4DF maintext CODE >711:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4E8 maintext CODE >712:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4ED maintext CODE >721:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+4F0 maintext CODE >635:C:\Users\Brendan\Documents\GitHub\iRobotMaze\iRobot_Maze.X\main.c
+99E clrtext CODE >1417:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+99E clrtext CODE >1418:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+99F clrtext CODE >1419:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+99F clrtext CODE >1420:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9A0 clrtext CODE >1421:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9A1 clrtext CODE >1422:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9A2 clrtext CODE >1423:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9A3 clrtext CODE >1424:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9A4 clrtext CODE >1425:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9A5 clrtext CODE >1426:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9E3 inittext CODE >1351:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9E3 inittext CODE >1352:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9E4 inittext CODE >1353:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9E5 inittext CODE >1354:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9E6 inittext CODE >1355:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9E7 inittext CODE >1362:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9E7 inittext CODE >1363:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9EA inittext CODE >1364:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9EB inittext CODE >1365:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9EC inittext CODE >1366:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9ED inittext CODE >1367:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9EE inittext CODE >1368:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9EF inittext CODE >1369:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9F0 inittext CODE >1370:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9F1 inittext CODE >1371:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9F2 inittext CODE >1372:C:\Users\Brendan\AppData\Local\Temp\s1do0.
+9F3 inittext CODE >1373:C:\Users\Brendan\AppData\Local\Temp\s1do0.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -548,61 +763,63 @@ F01 inittext CODE >1293:C:\Users\Brendan\AppData\Local\Temp\s13fg.
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-_c 2E 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_r 33 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_x 56 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_y 3B 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_c 36 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_r 3B 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_x 6B 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_y 45 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
 ___latbits 2 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __size_of_TravelPath 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __LdataBANK0 0 0 ABS 0 dataBANK0 -
 __LdataBANK1 0 0 ABS 0 dataBANK1 -
 __LdataBANK3 0 0 ABS 0 dataBANK3 -
 __Hspace_0 2008 0 ABS 0 - -
-__Hspace_1 386 0 ABS 0 - -
+__Hspace_1 387 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __HidataBANK0 0 0 ABS 0 idataBANK0 -
 __HidataBANK1 0 0 ABS 0 idataBANK1 -
 __HidataBANK3 0 0 ABS 0 idataBANK3 -
-_pathCountShortest 55 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_pathCountShortest 6A 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
-_pathCount 32 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_pathCount 3A 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
 _GO FA 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-_up 385 -310 COMMON 1 bitbssCOMMON dist/default/production\iRobot_Maze.X.production.obj
+_up 386 -310 COMMON 1 bitbssCOMMON dist/default/production\iRobot_Maze.X.production.obj
 ltemp0 7E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 ltemp1 82 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 ltemp2 86 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 ltemp3 80 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
+_targets_found 385 -310 COMMON 1 bitbssCOMMON dist/default/production\iRobot_Maze.X.production.obj
 __Hstrings 0 0 ABS 0 strings -
 _PEIE 5E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _RCIF 65 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _TMR0 1 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _TRMT 4C1 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
+___sp 0 0 STACK 2 stack C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
 _down 381 -310 COMMON 1 bitbssCOMMON dist/default/production\iRobot_Maze.X.production.obj
 _left 382 -310 COMMON 1 bitbssCOMMON dist/default/production\iRobot_Maze.X.production.obj
-_main B6E 0 CODE 0 maintext dist/default/production\iRobot_Maze.X.production.obj
-_path A0 0 BANK1 1 bssBANK1 dist/default/production\iRobot_Maze.X.production.obj
+_loop 2A 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_main BE 0 CODE 0 maintext dist/default/production\iRobot_Maze.X.production.obj
+_path 1D0 0 BANK3 1 bssBANK3 dist/default/production\iRobot_Maze.X.production.obj
 btemp 7E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 ltemp 7E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-start 24 0 CODE 0 init C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
+start 24 0 CODE 0 init C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
 ttemp 7E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 wtemp 7E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
-_mazeGrid 40 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_PathTo 7D4 0 CODE 0 text14 dist/default/production\iRobot_Maze.X.production.obj
-lcdWriteControl@databyte 59 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_mazeGrid A0 0 BANK1 1 dataBANK1 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_PathTo 2000 0 CODE 0 text15 dist/default/production\iRobot_Maze.X.production.obj
+lcdWriteControl@databyte 4D 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __LidataBANK1 0 0 ABS 0 idataBANK1 -
 __LidataBANK3 0 0 ABS 0 idataBANK3 -
 __size_of_DriveDirect 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
 __pbitbssCOMMON 380 -310 COMMON 1 bitbssCOMMON dist/default/production\iRobot_Maze.X.production.obj
-_distance 24 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_lcdWriteString 1F2C 0 CODE 0 text15 dist/default/production\iRobot_Maze.X.production.obj
-_getSensorData F22 0 CODE 0 text10 dist/default/production\iRobot_Maze.X.production.obj
+_distance 28 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_lcdWriteString 1492 0 CODE 0 text16 dist/default/production\iRobot_Maze.X.production.obj
+_getSensorData 1608 0 CODE 0 text11 dist/default/production\iRobot_Maze.X.production.obj
 ttemp0 7E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 ttemp1 81 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 ttemp2 84 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
@@ -610,17 +827,17 @@ ttemp3 87 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 ttemp4 7F 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __size_of_Drive1m 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __size_of_lcdWriteControl 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-__end_of_Turn90 B6E 0 CODE 0 text7 dist/default/production\iRobot_Maze.X.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
-intlevel1 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
-intlevel2 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
-intlevel3 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
-intlevel4 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
-intlevel5 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
-_lcdWriteData 1E2A 0 CODE 0 text16 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_Turn90 1968 0 CODE 0 text8 dist/default/production\iRobot_Maze.X.production.obj
+intlevel0 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
+intlevel1 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
+intlevel2 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
+intlevel3 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
+intlevel4 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
+intlevel5 0 0 CODE 0 functab C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
+_lcdWriteData 140E 0 CODE 0 text17 dist/default/production\iRobot_Maze.X.production.obj
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
-___bmul@multiplicand 57 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-getSensorData@packetID 5D 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+___bmul@multiplicand 4B 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+getSensorData@packetID 51 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 wtemp0 7E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 wtemp1 80 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 wtemp2 82 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
@@ -630,65 +847,67 @@ wtemp5 88 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 wtemp6 7F 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __Hfunctab 0 0 CODE 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
-PathTo@loop 66 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_lcdSetCursor 1D68 0 CODE 0 text17 dist/default/production\iRobot_Maze.X.production.obj
-DriveDirect@data_387 5F 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+PathTo@loop 5A 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_lcdSetCursor 134C 0 CODE 0 text18 dist/default/production\iRobot_Maze.X.production.obj
+DriveDirect@data_463 53 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 _ADCON0 1F 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _ADCON1 9F 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _ADRESH 1E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _ADRESL 9E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-main@controlByte 6C 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__end_of___bmul 1E2A 0 CODE 0 text19 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_lcdWriteString 1F6C 0 CODE 0 text15 dist/default/production\iRobot_Maze.X.production.obj
+main@controlByte 110 0 BANK2 1 cstackBANK2 dist/default/production\iRobot_Maze.X.production.obj
+__end_of___bmul 140E 0 CODE 0 text20 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_lcdWriteString 14D2 0 CODE 0 text16 dist/default/production\iRobot_Maze.X.production.obj
 __size_of_lcdWriteData 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __Lmaintext 0 0 ABS 0 maintext -
-___bmul@multiplier 5A 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+___bmul@multiplier 4E 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 _OPTION_REG 81 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __size_of_lcdSetCursor 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __size_of_Drive 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-_orientation 54 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_orientation 69 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
 _gridWalls 190 0 BANK3 1 dataBANK3 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_lcdWriteData 1E50 0 CODE 0 text16 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_Drive1m EA2 0 CODE 0 text9 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_lcdWriteData 1434 0 CODE 0 text17 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_Drive1m E04 0 CODE 0 text10 dist/default/production\iRobot_Maze.X.production.obj
 start_initialization 2A 0 CODE 0 cinit dist/default/production\iRobot_Maze.X.production.obj
 __size_of_getSensorData 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-_PathTo BE 0 CODE 0 text14 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_lcdSetCursor 1D7A 0 CODE 0 text17 dist/default/production\iRobot_Maze.X.production.obj
-_spi_transfer 1DC4 0 CODE 0 text1 dist/default/production\iRobot_Maze.X.production.obj
-clear_ram0 FF0 0 CODE 0 clrtext dist/default/production\iRobot_Maze.X.production.obj
-__pcstackBANK0 57 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_PathTo 1968 0 CODE 0 text15 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_lcdSetCursor 135E 0 CODE 0 text18 dist/default/production\iRobot_Maze.X.production.obj
+_spi_transfer 13A8 0 CODE 0 text1 dist/default/production\iRobot_Maze.X.production.obj
+clear_ram0 133C 0 CODE 0 clrtext dist/default/production\iRobot_Maze.X.production.obj
+__pcstackBANK0 4B 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__pcstackBANK2 110 0 BANK2 1 cstackBANK2 dist/default/production\iRobot_Maze.X.production.obj
 _SSPBUF 13 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _SSPCON 14 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-__end_of_ser_getch 1D8E 0 CODE 0 text11 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_ser_getch 1372 0 CODE 0 text12 dist/default/production\iRobot_Maze.X.production.obj
 _TMR0IE 5D 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _TMR0IF 5A 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-__end_of_ser_putch 1DA6 0 CODE 0 text13 dist/default/production\iRobot_Maze.X.production.obj
-_LeftSpeedH 28 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_LeftSpeedL 29 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_ser_putch 138A 0 CODE 0 text14 dist/default/production\iRobot_Maze.X.production.obj
+_LeftSpeedH 30 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_LeftSpeedL 31 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __size_of_ser_getch 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __size_of_ser_putch 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-_Turn90 A2C 0 CODE 0 text7 dist/default/production\iRobot_Maze.X.production.obj
-DriveDirect@VelocityLeft 5A 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_getSensorData F9E 0 CODE 0 text10 dist/default/production\iRobot_Maze.X.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
-_RightSpeedH 2C 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_RightSpeedL 2D 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_Turn90 181E 0 CODE 0 text8 dist/default/production\iRobot_Maze.X.production.obj
+DriveDirect@VelocityLeft 4E 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_ADC_ADJUST 78 0 COMMON 1 bssCOMMON dist/default/production\iRobot_Maze.X.production.obj
+__end_of_getSensorData 1684 0 CODE 0 text11 dist/default/production\iRobot_Maze.X.production.obj
+___int_sp 0 0 STACK 2 stack C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
+_RightSpeedH 34 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_RightSpeedL 35 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
 __Hbank3 0 0 ABS 0 bank3 -
 __Hcinit BE 0 CODE 0 cinit -
-Turn90@direction 64 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+Turn90@direction 58 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __Hidloc 0 0 IDLOC 0 idloc -
 __Hstack 0 0 STACK 2 stack -
 __stringbase 100A 0 STRING 0 strings dist/default/production\iRobot_Maze.X.production.obj
 __Hmaintext 0 0 ABS 0 maintext -
-_ser_getch 1D7A 0 CODE 0 text11 dist/default/production\iRobot_Maze.X.production.obj
-_ser_putch 1D8E 0 CODE 0 text13 dist/default/production\iRobot_Maze.X.production.obj
+_ser_getch 135E 0 CODE 0 text12 dist/default/production\iRobot_Maze.X.production.obj
+_ser_putch 1372 0 CODE 0 text14 dist/default/production\iRobot_Maze.X.production.obj
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 4010 0 CONFIG 0 config -
-_DriveDirect CA2 0 CODE 0 text12 dist/default/production\iRobot_Maze.X.production.obj
-getSensorData@sensor 5E 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_DriveDirect 1704 0 CODE 0 text13 dist/default/production\iRobot_Maze.X.production.obj
+getSensorData@sensor 52 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __size_of_PathTo 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
@@ -699,7 +918,7 @@ __Lidloc 0 0 IDLOC 0 idloc -
 __size_of_spi_transfer 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __Lstack 0 0 STACK 2 stack -
 __Linittext 0 0 ABS 0 inittext -
-TravelPath@n 68 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+TravelPath@n 5C 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
 __Hinit 24 0 CODE 0 init -
@@ -716,15 +935,19 @@ __Lsfr1 0 0 ABS 0 sfr1 -
 __Lsfr2 0 0 ABS 0 sfr2 -
 __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
-___bmul 1E04 0 CODE 0 text19 dist/default/production\iRobot_Maze.X.production.obj
+___bmul 13E8 0 CODE 0 text20 dist/default/production\iRobot_Maze.X.production.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
-Drive@radH 59 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-Drive@radL 5A 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__LcstackBANK2 0 0 ABS 0 cstackBANK2 -
+Drive@radH 4D 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+Drive@radL 4E 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __size_of_Turn90 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _GIE 5F 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _RB0 30 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _RB1 31 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
+_RB2 32 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
+_RB3 33 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
+_RC2 3A 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _RE0 48 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _RE1 49 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _RE2 4A 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
@@ -732,40 +955,46 @@ __S0 2008 0 ABS 0 - -
 __S1 1F0 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_isr 1F6C 0 CODE 0 text20 dist/default/production\iRobot_Maze.X.production.obj
+_isr 14D2 0 CODE 0 text21 dist/default/production\iRobot_Maze.X.production.obj
+_y_target 49 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
 _adcRAW 76 0 COMMON 1 bssCOMMON dist/default/production\iRobot_Maze.X.production.obj
-__end_of_spi_transfer 1DE2 0 CODE 0 text1 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_spi_transfer 13C6 0 CODE 0 text1 dist/default/production\iRobot_Maze.X.production.obj
 saved_w 7E 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-lcdWriteData@databyte 59 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_isr 1FB0 0 CODE 0 text20 dist/default/production\iRobot_Maze.X.production.obj
+__size_of_re_route 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
+lcdWriteData@databyte 4D 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_isr 1516 0 CODE 0 text21 dist/default/production\iRobot_Maze.X.production.obj
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 1000 0 STRING 0 strings dist/default/production\iRobot_Maze.X.production.obj
-_TravelPath 7D4 0 CODE 0 text6 dist/default/production\iRobot_Maze.X.production.obj
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
-__pdataBANK0 40 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__pdataBANK1 C0 0 BANK1 1 dataBANK1 dist/default/production\iRobot_Maze.X.production.obj
+_CURRENT_SPEED_L 65 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_CURRENT_SPEED_R 67 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_TravelPath 9E2 0 CODE 0 text7 dist/default/production\iRobot_Maze.X.production.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
+_x_target 44 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__pdataBANK0 65 0 BANK0 1 dataBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__pdataBANK1 A0 0 BANK1 1 dataBANK1 dist/default/production\iRobot_Maze.X.production.obj
 __pdataBANK3 190 0 BANK3 1 dataBANK3 dist/default/production\iRobot_Maze.X.production.obj
-_PB8Counter 2B 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_PB8Counter 33 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __size_of___bmul 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __LbssBANK1 0 0 ABS 0 bssBANK1 -
 __LbssBANK3 0 0 ABS 0 bssBANK3 -
-__ptext10 F22 0 CODE 0 text10 dist/default/production\iRobot_Maze.X.production.obj
-__ptext11 1D7A 0 CODE 0 text11 dist/default/production\iRobot_Maze.X.production.obj
-__ptext12 CA2 0 CODE 0 text12 dist/default/production\iRobot_Maze.X.production.obj
-__ptext13 1D8E 0 CODE 0 text13 dist/default/production\iRobot_Maze.X.production.obj
-__ptext14 BE 0 CODE 0 text14 dist/default/production\iRobot_Maze.X.production.obj
-__ptext15 1F2C 0 CODE 0 text15 dist/default/production\iRobot_Maze.X.production.obj
-__ptext16 1E2A 0 CODE 0 text16 dist/default/production\iRobot_Maze.X.production.obj
-__ptext17 1D68 0 CODE 0 text17 dist/default/production\iRobot_Maze.X.production.obj
-__ptext18 1E50 0 CODE 0 text18 dist/default/production\iRobot_Maze.X.production.obj
-__ptext19 1E04 0 CODE 0 text19 dist/default/production\iRobot_Maze.X.production.obj
-__ptext20 1F6C 0 CODE 0 text20 dist/default/production\iRobot_Maze.X.production.obj
+__ptext10 C0C 0 CODE 0 text10 dist/default/production\iRobot_Maze.X.production.obj
+__ptext11 1608 0 CODE 0 text11 dist/default/production\iRobot_Maze.X.production.obj
+__ptext12 135E 0 CODE 0 text12 dist/default/production\iRobot_Maze.X.production.obj
+__ptext13 1704 0 CODE 0 text13 dist/default/production\iRobot_Maze.X.production.obj
+__ptext14 1372 0 CODE 0 text14 dist/default/production\iRobot_Maze.X.production.obj
+__ptext15 1968 0 CODE 0 text15 dist/default/production\iRobot_Maze.X.production.obj
+__ptext16 1492 0 CODE 0 text16 dist/default/production\iRobot_Maze.X.production.obj
+__ptext17 140E 0 CODE 0 text17 dist/default/production\iRobot_Maze.X.production.obj
+__ptext18 134C 0 CODE 0 text18 dist/default/production\iRobot_Maze.X.production.obj
+__ptext19 FD8 0 CODE 0 text19 dist/default/production\iRobot_Maze.X.production.obj
+__ptext20 13E8 0 CODE 0 text20 dist/default/production\iRobot_Maze.X.production.obj
+__ptext21 14D2 0 CODE 0 text21 dist/default/production\iRobot_Maze.X.production.obj
 __size_of_ser_init 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-__pmaintext B6E 0 CODE 0 maintext dist/default/production\iRobot_Maze.X.production.obj
-Drive@speedH 5B 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-Drive@speedL 58 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_mazeGridDefault C0 0 BANK1 1 dataBANK1 dist/default/production\iRobot_Maze.X.production.obj
+__pmaintext BE 0 CODE 0 maintext dist/default/production\iRobot_Maze.X.production.obj
+Drive@speedH 4F 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+Drive@speedL 4C 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_mazeGridDefault B4 0 BANK1 1 dataBANK1 dist/default/production\iRobot_Maze.X.production.obj
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 400E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
@@ -774,86 +1003,97 @@ __Hinittext 0 0 ABS 0 inittext -
 __size_of_setupADC 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __size_of_setupLCD 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __size_of_setupSPI 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-spi_transfer@data 59 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-spi_transfer@temp 58 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_PB7Counter 2A 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_re_route E04 0 CODE 0 text6 dist/default/production\iRobot_Maze.X.production.obj
+spi_transfer@data 4D 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+spi_transfer@temp 4C 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_PB7Counter 32 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+main@fifth 115 0 BANK2 1 cstackBANK2 dist/default/production\iRobot_Maze.X.production.obj
+main@first 111 0 BANK2 1 cstackBANK2 dist/default/production\iRobot_Maze.X.production.obj
+main@third 113 0 BANK2 1 cstackBANK2 dist/default/production\iRobot_Maze.X.production.obj
 __size_of_lcdWriteString 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-_orientation_path 31 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_Drive1m DBC 0 CODE 0 text9 dist/default/production\iRobot_Maze.X.production.obj
-_lowByte 30 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-stackhi 0 0 ABS 0 - C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
-stacklo 0 0 ABS 0 - C:\Users\Brendan\AppData\Local\Temp\s13fg.obj
+_orientation_path 39 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_Drive1m C0C 0 CODE 0 text10 dist/default/production\iRobot_Maze.X.production.obj
+_lowByte 38 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_re_route FD8 0 CODE 0 text6 dist/default/production\iRobot_Maze.X.production.obj
+stackhi 0 0 ABS 0 - C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
+stacklo 0 0 ABS 0 - C:\Users\Brendan\AppData\Local\Temp\s1do0.obj
 __end_of__stringtab 100C 0 STRING 0 strings dist/default/production\iRobot_Maze.X.production.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-_highByte 3F 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_TravelPath A2C 0 CODE 0 text6 dist/default/production\iRobot_Maze.X.production.obj
-_x_path 39 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_highByte 4A 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_TravelPath C0C 0 CODE 0 text7 dist/default/production\iRobot_Maze.X.production.obj
+_x_goto 41 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_x_path 43 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __pbssCOMMON 76 0 COMMON 1 bssCOMMON dist/default/production\iRobot_Maze.X.production.obj
 __HbitbssCOMMON 0 0 ABS 0 bitbssCOMMON -
-_y_path 3D 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-init_fetch0 1DE2 0 CODE 0 inittext dist/default/production\iRobot_Maze.X.production.obj
+_y_goto 46 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_y_path 48 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+init_fetch0 13C6 0 CODE 0 inittext dist/default/production\iRobot_Maze.X.production.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__HcstackBANK2 0 0 ABS 0 cstackBANK2 -
 __Lend_init 24 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 end_of_initialization B6 0 CODE 0 cinit dist/default/production\iRobot_Maze.X.production.obj
-PathTo@sum 65 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+PathTo@sum 59 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+main@fourth 114 0 BANK2 1 cstackBANK2 dist/default/production\iRobot_Maze.X.production.obj
 __Hintentry 24 0 CODE 0 intentry -
-_ser_init 1DA6 0 CODE 0 text5 dist/default/production\iRobot_Maze.X.production.obj
+_ser_init 138A 0 CODE 0 text5 dist/default/production\iRobot_Maze.X.production.obj
 __Lstrings 0 0 ABS 0 strings -
-ser_putch@c 57 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+ser_putch@c 4B 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 _reset_flag 383 -310 COMMON 1 bitbssCOMMON dist/default/production\iRobot_Maze.X.production.obj
 __Hreset_vec 6 0 CODE 0 reset_vec -
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __HbssBANK1 0 0 ABS 0 bssBANK1 -
 __HbssBANK3 0 0 ABS 0 bssBANK3 -
-DriveDirect@VelocityRight 58 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_setupADC 1EA0 0 CODE 0 text4 dist/default/production\iRobot_Maze.X.production.obj
-_setupLCD F9E 0 CODE 0 text3 dist/default/production\iRobot_Maze.X.production.obj
-_setupSPI 1EFA 0 CODE 0 text2 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_ser_init 1DC4 0 CODE 0 text5 dist/default/production\iRobot_Maze.X.production.obj
-__ptext1 1DC4 0 CODE 0 text1 dist/default/production\iRobot_Maze.X.production.obj
-__ptext2 1EFA 0 CODE 0 text2 dist/default/production\iRobot_Maze.X.production.obj
-__ptext3 F9E 0 CODE 0 text3 dist/default/production\iRobot_Maze.X.production.obj
-__ptext4 1EA0 0 CODE 0 text4 dist/default/production\iRobot_Maze.X.production.obj
-__ptext5 1DA6 0 CODE 0 text5 dist/default/production\iRobot_Maze.X.production.obj
-__ptext6 7D4 0 CODE 0 text6 dist/default/production\iRobot_Maze.X.production.obj
-__ptext7 A2C 0 CODE 0 text7 dist/default/production\iRobot_Maze.X.production.obj
-__ptext8 1FB0 0 CODE 0 text8 dist/default/production\iRobot_Maze.X.production.obj
-__ptext9 DBC 0 CODE 0 text9 dist/default/production\iRobot_Maze.X.production.obj
-_intersection_orientation 2F 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_setupADC 1ECC 0 CODE 0 text4 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_setupLCD FF0 0 CODE 0 text3 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_setupSPI 1F2C 0 CODE 0 text2 dist/default/production\iRobot_Maze.X.production.obj
+DriveDirect@VelocityRight 4C 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_setupADC 1434 0 CODE 0 text4 dist/default/production\iRobot_Maze.X.production.obj
+_setupLCD 15B6 0 CODE 0 text3 dist/default/production\iRobot_Maze.X.production.obj
+_setupSPI 1460 0 CODE 0 text2 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_ser_init 13A8 0 CODE 0 text5 dist/default/production\iRobot_Maze.X.production.obj
+Drive1m@n 58 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__ptext1 13A8 0 CODE 0 text1 dist/default/production\iRobot_Maze.X.production.obj
+__ptext2 1460 0 CODE 0 text2 dist/default/production\iRobot_Maze.X.production.obj
+__ptext3 15B6 0 CODE 0 text3 dist/default/production\iRobot_Maze.X.production.obj
+__ptext4 1434 0 CODE 0 text4 dist/default/production\iRobot_Maze.X.production.obj
+__ptext5 138A 0 CODE 0 text5 dist/default/production\iRobot_Maze.X.production.obj
+__ptext6 E04 0 CODE 0 text6 dist/default/production\iRobot_Maze.X.production.obj
+__ptext7 9E2 0 CODE 0 text7 dist/default/production\iRobot_Maze.X.production.obj
+__ptext8 181E 0 CODE 0 text8 dist/default/production\iRobot_Maze.X.production.obj
+__ptext9 1516 0 CODE 0 text9 dist/default/production\iRobot_Maze.X.production.obj
+_intersection_orientation 37 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_setupADC 1460 0 CODE 0 text4 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_setupLCD 1608 0 CODE 0 text3 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_setupSPI 1492 0 CODE 0 text2 dist/default/production\iRobot_Maze.X.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __Lreset_vec 0 0 CODE 0 reset_vec -
-__end_of_lcdWriteControl 1E78 0 CODE 0 text18 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_lcdWriteControl 1000 0 CODE 0 text19 dist/default/production\iRobot_Maze.X.production.obj
 __CFG_FOSC$HS 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-__end_of_DriveDirect DBC 0 CODE 0 text12 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_DriveDirect 181E 0 CODE 0 text13 dist/default/production\iRobot_Maze.X.production.obj
 __end_of__initialization B6 0 CODE 0 cinit dist/default/production\iRobot_Maze.X.production.obj
 __Lfunctab 0 0 CODE 0 functab -
-?_getSensorData 59 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__pidataBANK0 1ECC 0 CODE 0 idataBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__pidataBANK1 1E78 0 CODE 0 idataBANK1 dist/default/production\iRobot_Maze.X.production.obj
-__pidataBANK3 EA2 0 CODE 0 idataBANK3 dist/default/production\iRobot_Maze.X.production.obj
+main@second 112 0 BANK2 1 cstackBANK2 dist/default/production\iRobot_Maze.X.production.obj
+?_getSensorData 4D 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__pidataBANK0 132E 0 CODE 0 idataBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__pidataBANK1 1566 0 CODE 0 idataBANK1 dist/default/production\iRobot_Maze.X.production.obj
+__pidataBANK3 1684 0 CODE 0 idataBANK3 dist/default/production\iRobot_Maze.X.production.obj
 __Lclrtext 0 0 ABS 0 clrtext -
-lcdSetCursor@address 5A 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_time_count 26 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-PathTo@y_target 5C 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+lcdSetCursor@address 4E 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_time_count 2C 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+PathTo@y_target 50 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 _IR_Wall 380 -310 COMMON 1 bitbssCOMMON dist/default/production\iRobot_Maze.X.production.obj
 __pcstackCOMMON 71 0 COMMON 1 cstackCOMMON dist/default/production\iRobot_Maze.X.production.obj
 _SSPSTAT 94 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
-_pathShortest 1D0 0 BANK3 1 bssBANK3 dist/default/production\iRobot_Maze.X.production.obj
+_pathShortest C8 0 BANK1 1 bssBANK1 dist/default/production\iRobot_Maze.X.production.obj
 __Hend_init 2A 0 CODE 0 end_init -
-init_ram0 1DEA 0 CODE 0 inittext dist/default/production\iRobot_Maze.X.production.obj
-DriveDirect@data 5D 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__end_of_main CA2 0 CODE 0 maintext dist/default/production\iRobot_Maze.X.production.obj
-__end_of_Drive 2000 0 CODE 0 text8 dist/default/production\iRobot_Maze.X.production.obj
-_Drive 1FB0 0 CODE 0 text8 dist/default/production\iRobot_Maze.X.production.obj
+init_ram0 13CE 0 CODE 0 inittext dist/default/production\iRobot_Maze.X.production.obj
+DriveDirect@data 51 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+__end_of_main 9E2 0 CODE 0 maintext dist/default/production\iRobot_Maze.X.production.obj
+__end_of_Drive 1566 0 CODE 0 text9 dist/default/production\iRobot_Maze.X.production.obj
+_Drive 1516 0 CODE 0 text9 dist/default/production\iRobot_Maze.X.production.obj
 _PORTA 5 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _PORTB 6 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _PORTC 7 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
@@ -872,31 +1112,35 @@ _TXREG 19 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _TXSTA 98 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-_angle 78 0 COMMON 1 bssCOMMON dist/default/production\iRobot_Maze.X.production.obj
+_angle 26 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+Drive1m@omni_IR 59 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 interrupt_function 8 0 CODE 0 intentry dist/default/production\iRobot_Maze.X.production.obj
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 _right 384 -310 COMMON 1 bitbssCOMMON dist/default/production\iRobot_Maze.X.production.obj
-_x_int 38 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-_y_int 3C 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_x_int 42 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_y_int 47 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __pintentry 8 0 CODE 0 intentry dist/default/production\iRobot_Maze.X.production.obj
-_lcdWriteControl 1E50 0 CODE 0 text18 dist/default/production\iRobot_Maze.X.production.obj
+_lcdWriteControl FD8 0 CODE 0 text19 dist/default/production\iRobot_Maze.X.production.obj
 __size_of_isr 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
 __HdataBANK1 0 0 ABS 0 dataBANK1 -
 __HdataBANK3 0 0 ABS 0 dataBANK3 -
 __LbitbssCOMMON 0 0 ABS 0 bitbssCOMMON -
-PathTo@x_target 64 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_targets 40 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_ADJUSTED_SPEED_L 20 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+_ADJUSTED_SPEED_R 22 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
+PathTo@x_target 58 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __initialization 2A 0 CODE 0 cinit dist/default/production\iRobot_Maze.X.production.obj
-___bmul@product 59 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+___bmul@product 4D 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\iRobot_Maze.X.production.obj
-__pbssBANK1 A0 0 BANK1 1 bssBANK1 dist/default/production\iRobot_Maze.X.production.obj
+__pbssBANK1 C8 0 BANK1 1 bssBANK1 dist/default/production\iRobot_Maze.X.production.obj
 __pbssBANK3 1D0 0 BANK3 1 bssBANK3 dist/default/production\iRobot_Maze.X.production.obj
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\iRobot_Maze.X.production.obj
 __pstrings 1000 0 STRING 0 strings dist/default/production\iRobot_Maze.X.production.obj
-ser_getch@rxbyte 58 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-getSensorData@bytes 59 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
-lcdWriteString@s 5B 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+ser_getch@rxbyte 4C 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+getSensorData@bytes 4D 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
+lcdWriteString@s 4F 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -922,27 +1166,34 @@ lcdWriteString@s 5B 0 BANK0 1 cstackBANK0 dist/default/production\iRobot_Maze.X.
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text1 0 EE2 1DC4 F 2
-text2 0 F7D 1EFA 19 2
-text4 0 F50 1EA0 16 2
-text5 0 ED3 1DA6 F 2
-text8 0 FD8 1FB0 28 2
-text11 0 EBD 1D7A A 2
-text13 0 EC7 1D8E C 2
-text15 0 F96 1F2C 20 2
-text16 0 F15 1E2A 13 2
-text17 0 EB4 1D68 9 2
-text18 0 F28 1E50 14 2
-text19 0 F02 1E04 13 2
-text20 0 FB6 1F6C 22 2
-inittext 0 EF1 1DE2 11 2
+text1 0 9D4 13A8 F 2
+text2 0 A30 1460 19 2
+text3 0 ADB 15B6 29 2
+text4 0 A1A 1434 16 2
+text5 0 9C5 138A F 2
+text8 0 C0F 181E A5 2
+text9 0 A8B 1516 28 2
+text11 0 B04 1608 3E 2
+text12 0 9AF 135E A 2
+text13 0 B82 1704 8D 2
+text14 0 9B9 1372 C 2
+text15 0 CB4 1968 34C 2
+text16 0 A49 1492 20 2
+text17 0 A07 140E 13 2
+text18 0 9A6 134C 9 2
+text20 0 9F4 13E8 13 2
+text21 0 A69 14D2 22 2
+cstackBANK2 1 110 110 6 1
+inittext 0 9E3 13C6 11 2
 intentry 0 4 8 7FC 2
 bitbssCOMMON 1 380 70 A 1
 reset_vec 0 0 0 3 2
-bssBANK0 1 20 20 4D 1
-bssBANK1 1 A0 A0 34 1
-idataBANK0 0 F66 1ECC 17 2
-idataBANK1 0 F3C 1E78 14 2
+bssBANK0 1 20 20 4C 1
+idataBANK0 0 997 132E 7 2
+idataBANK1 0 AB3 1566 28 2
+idataBANK3 0 B42 1684 40 2
 strings 0 800 1000 11 2
+dataBANK1 1 A0 A0 4C 1
 dataBANK3 1 190 190 60 1
+clrtext 0 99E 133C 8 2
 config 0 2007 400E 1 2

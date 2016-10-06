@@ -22,6 +22,13 @@
 #define PB8 !RB0
 #define PB7 !RB1
 
+void Turn90(char direction);
+void Drive1m(void);
+void wallFollow(void);
+void TravelPath(void);
+void re_route(void);
+
+
 volatile unsigned int time_count;
 
 unsigned char PB8Counter = 0;
@@ -37,8 +44,8 @@ unsigned char x = 1;    //Bots actual coordinates
 unsigned char y = 0;
 unsigned char orientation = 3;
 
-unsigned char x_target = 0; //Target coordinates for PathTo()
-unsigned char y_target = 0;
+volatile unsigned char x_target = 0; //Target coordinates for PathTo()
+volatile unsigned char y_target = 0;
 
 unsigned char x_path = 0;   //Tracking coordinates for the PathTo()
 unsigned char y_path = 0;
@@ -52,12 +59,27 @@ unsigned char pathCount = 0;
 unsigned char pathCountShortest = 20;
 
 bit IR_Wall = 0;
+unsigned char targets = 0;
+
+char x_goto = 0;
+char y_goto = 0;
 
 bit left = 0;
 bit right = 0;
 bit up = 0;
 bit down = 0;
 bit reset_flag = 0;
+
+bit targets_found = 0;
+
+
+unsigned int ADC_ADJUST = 0;
+unsigned int CURRENT_SPEED_L = 150;
+unsigned int ADJUSTED_SPEED_L = 0;
+unsigned int CURRENT_SPEED_R = 150;
+unsigned int ADJUSTED_SPEED_R = 0;
+unsigned int timerLoop = 0;
+unsigned int Distance = 0;
 
 
    

@@ -8,8 +8,10 @@
 #ifndef MOTOR_H
 #define	MOTOR_H
 
-void setCW();
-void setCCW();
+void stepCW(int steps);
+void stepCCW(int steps);
+
+int loop = 0;
 
 #endif	/* MOTOR_H */
 

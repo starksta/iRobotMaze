@@ -1439,6 +1439,13 @@ extern __bit __timeout;
 #pragma config BOREN = OFF, CPD = OFF, WRT = OFF, FOSC = HS, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
 
 # 25
+void Turn90(char direction);
+void Drive1m(void);
+void wallFollow(void);
+void TravelPath(void);
+void re_route(void);
+
+
 volatile unsigned int time_count;
 
 unsigned char PB8Counter = 0;
@@ -1454,8 +1461,8 @@ unsigned char x = 1;
 unsigned char y = 0;
 unsigned char orientation = 3;
 
-unsigned char x_target = 0;
-unsigned char y_target = 0;
+volatile unsigned char x_target = 0;
+volatile unsigned char y_target = 0;
 
 unsigned char x_path = 0;
 unsigned char y_path = 0;
@@ -1469,6 +1476,10 @@ unsigned char pathCount = 0;
 unsigned char pathCountShortest = 20;
 
 bit IR_Wall = 0;
+unsigned char targets = 0;
+
+char x_goto = 0;
+char y_goto = 0;
 
 bit left = 0;
 bit right = 0;
@@ -1476,7 +1487,18 @@ bit up = 0;
 bit down = 0;
 bit reset_flag = 0;
 
-# 66
+bit targets_found = 0;
+
+
+unsigned int ADC_ADJUST = 0;
+unsigned int CURRENT_SPEED_L = 150;
+unsigned int ADJUSTED_SPEED_L = 0;
+unsigned int CURRENT_SPEED_R = 150;
+unsigned int ADJUSTED_SPEED_R = 0;
+unsigned int timerLoop = 0;
+unsigned int Distance = 0;
+
+# 88
 char path[2][16] = {
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
@@ -1514,8 +1536,10 @@ char gridWalls[4][16] = {
 };
 
 # 11 "motor.h"
-void setCW();
-void setCCW();
+void stepCW(int steps);
+void stepCCW(int steps);
+
+int loop = 0;
 
 # 18 "LCD.h"
 void lcdWriteStepCount(unsigned char stepCountLCD);
@@ -1585,6 +1609,36 @@ signed int distance = 0;
 signed int angle = 0;
 
 
+void wallFollow(void){
+
+
+unsigned int setADCdist = 150;
+
+
+ADCMain();
+if(adcRAW < (setADCdist - 40)) {
+DriveDirect(CURRENT_SPEED_R,CURRENT_SPEED_L);
+}
+if(adcRAW > setADCdist){
+while(adcRAW > setADCdist){
+ADCMain();
+ADC_ADJUST = adcRAW - setADCdist;
+ADJUSTED_SPEED_L = CURRENT_SPEED_L + (7/10)*ADC_ADJUST + (CURRENT_SPEED_L)/(ADC_ADJUST+10);
+DriveDirect(CURRENT_SPEED_R,ADJUSTED_SPEED_L);
+}
+}
+else if (adcRAW < setADCdist){
+while(adcRAW < setADCdist){
+ADCMain();
+ADC_ADJUST = setADCdist - adcRAW;
+ADJUSTED_SPEED_R = CURRENT_SPEED_R + (7/10)*ADC_ADJUST + (CURRENT_SPEED_R)/(ADC_ADJUST+10);
+DriveDirect(ADJUSTED_SPEED_R,CURRENT_SPEED_L);
+_delay((unsigned long)((100)*(20000000/4000.0)));
+}
+}
+
+}
+
 
 
 void PathTo(char x_target, char y_target){
@@ -1597,30 +1651,28 @@ mazeGrid[r][c] = mazeGridDefault[r][c];
 }
 }
 
+pathCountShortest = 20;
+for (r = 0; r <= 1; r++){
+for (c = 0; c <= 15; c++){
+pathShortest[r][c] = 0;
+}
+}
 
+
+x_goto = x_target;
+y_goto = y_target;
 
 x_path = x;
 y_path = y;
 orientation_path = orientation;
+
 pathCount = 0;
 
-if(IR_Wall == 1){
-switch (orientation){
-case 0: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 4);
-break;
-case 1: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 2);
-break;
-case 2: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 1);
-break;
-case 3: (mazeGrid[y][x]) = ((mazeGrid[y][x]) + 8);
-break;
-}
-}
 
 lcdSetCursor(0b10000000);
 lcdWriteString("Working...");
 
-for (int loop = 0; loop <= 1000; loop++){
+for (int loop = 0; loop <= 2000; loop++){
 
 reset_flag = 0;
 
@@ -1637,6 +1689,7 @@ down = gridWalls[3][(mazeGrid[y_path][x_path])];
 
 
 
+if (pathCount != 0){
 switch(orientation_path){
 case 0: down = 1;
 break;
@@ -1647,6 +1700,7 @@ break;
 case 3: right = 1;
 break;
 }
+}
 
 
 
@@ -1655,7 +1709,7 @@ if(sum <= 2){
 x_int = x_path;
 y_int = y_path;
 
-# 88
+# 118
 if (left == 0)
 intersection_orientation = 3;
 else if (up == 0)
@@ -1666,9 +1720,9 @@ else if (down == 0)
 intersection_orientation = 2;
 }
 
-# 103
-if ((x_path == x_target) && (y_path == y_target)){
-
+# 133
+if ((x_path == x_target)){
+if (y_path == y_target){
 
 
 
@@ -1681,7 +1735,7 @@ pathShortest[r][c] = path[r][c];
 }
 }
 
-# 121
+# 151
 switch(intersection_orientation){
 case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
 break;
@@ -1707,8 +1761,9 @@ path[r][c] = 0;
 }
 }
 }
+}
 
-# 151
+# 182
 if((sum == 4) || (pathCount >= 15)){
 
 
@@ -1737,7 +1792,7 @@ path[r][c] = 0;
 }
 }
 
-# 186
+# 217
 if (reset_flag != 1){
 
 
@@ -1769,8 +1824,53 @@ pathCount++;
 
 void Drive1m(void){
 
+# 254
+distance = 0;
+DriveDirect(250,250);
+RB2 = 1;
+RB3 = 1;
 
 
+while (distance < 1000){
+
+
+distance = distance + getSensorData(19,2);
+
+if ((getSensorData(13,1)) == 1){
+
+if((getSensorData(17,1)) < 240){
+IR_Wall = 1;
+distance = 1001;
+RB3 = 0;
+}
+
+
+unsigned char omni_IR = (getSensorData(17,1));
+if (omni_IR == 250 || omni_IR == 246){
+
+targets++;
+
+switch(targets){
+case 1: ser_putch(141);
+ser_putch(5);
+break;
+case 2: ser_putch(141);
+ser_putch(3);
+targets_found = 1;
+break;
+}
+
+_delay((unsigned long)((2000)*(20000000/4000.0)));
+
+}
+
+}
+}
+
+
+DriveDirect(0,0);
+
+if(IR_Wall == 0){
 switch(orientation){
 case 0: y--;
 break;
@@ -1781,19 +1881,23 @@ break;
 case 3: x--;
 break;
 }
-
-distance = 0;
-DriveDirect(250,250);
-while (distance < 1000){
-distance = distance + getSensorData(19,2);
-}
-DriveDirect(0,0);
 _delay((unsigned long)((100)*(20000000/4000.0)));
 }
 
 
+
+
+if (targets_found == 1){
+char n = 20;
+}
+}
+
+
+
 void Turn90(char direction){
+
 angle = 0;
+
 if (direction == 1){
 
 if (orientation == 0)
@@ -1823,93 +1927,100 @@ _delay((unsigned long)((100)*(20000000/4000.0)));
 
 void TravelPath(void){
 
-for (char n = 1; n <= (pathCountShortest + 1); n++){
-
-_delay((unsigned long)((500)*(20000000/4000.0)));
+for (char n = 1; n <= (pathCountShortest); n++){
 
 if (pathShortest[0][n] > x){
 switch (orientation){
-
 case 0: Turn90(0);
 break;
-
 case 2: Turn90(1);
 break;
-
 case 3: Turn90(1);
 _delay((unsigned long)((5)*(20000000/4000.0)));
 Turn90(1);
 break;
 }
-
 Drive1m();
-
 }
-
 
 else if (pathShortest[0][n] < x){
 switch (orientation){
-
 case 0: Turn90(1);
 break;
-
 case 2: Turn90(0);
 break;
-
 case 1: Turn90(1);
 _delay((unsigned long)((5)*(20000000/4000.0)));
 Turn90(1);
 break;
-
-
 }
-
 Drive1m();
-
 }
 
 else if(pathShortest[1][n] > y){
 switch(orientation){
-
 case 1: Turn90(0);
 break;
-
 case 3: Turn90(1);
 break;
-
 case 0: Turn90(1);
 _delay((unsigned long)((5)*(20000000/4000.0)));
 Turn90(1);
 break;
 }
-
 Drive1m();
-
 }
 
-
-else if (path[1][n] < y){
+else if (pathShortest[1][n] < y){
 switch (orientation){
-
 case 1: Turn90(1);
 break;
-
 case 3: Turn90(0);
 break;
-
 case 2: Turn90(1);
 _delay((unsigned long)((5)*(20000000/4000.0)));
 Turn90(1);
 break;
 }
-
 Drive1m();
-
-}
-}
 }
 
-# 361
+
+if (IR_Wall == 1){
+n = 20;
+}
+}
+}
+
+void re_route(void){
+switch(orientation){
+case 0: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 4);
+break;
+case 1: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 2);
+break;
+case 2: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 1);
+break;
+case 3: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 8);
+break;
+}
+
+Turn90(0);
+Turn90(0);
+distance = 0;
+DriveDirect(250,250);
+while (distance < 500){
+distance = distance + getSensorData(19,2);
+}
+DriveDirect(0,0);
+IR_Wall = 0;
+
+_delay((unsigned long)((1000)*(20000000/4000.0)));
+PathTo(x_goto,y_goto);
+TravelPath();
+}
+
+
+
 void interrupt isr(void){
 if(TMR0IF){
 TMR0IF = 0;
@@ -1920,10 +2031,8 @@ if(!RB0)
 PB8Counter++;
 if(!RB1)
 PB7Counter++;
-
 }
 }
-
 
 void main(void){
 
@@ -1935,7 +2044,7 @@ setupLCD();
 setupADC();
 
 TRISB = 0b00000011;
-PORTB = 0b00000000;
+PORTB = 0b11111100;
 
 unsigned char controlByte = 0b00001101;
 spi_transfer(controlByte);
@@ -1952,21 +2061,231 @@ y = 0;
 orientation = 3;
 
 
+
+ser_putch(140);
+ser_putch(2);
+ser_putch(10);
+ser_putch(67);
+ser_putch(32);
+ser_putch(77);
+ser_putch(16);
+ser_putch(77);
+ser_putch(16);
+ser_putch(77);
+ser_putch(16);
+ser_putch(77);
+ser_putch(16);
+ser_putch(76);
+ser_putch(16);
+ser_putch(74);
+ser_putch(16);
+ser_putch(72);
+ser_putch(32);
+ser_putch(79);
+ser_putch(16);
+ser_putch(84);
+ser_putch(48);
+
+
+char first = 16;
+char second = 8;
+char third = 12;
+char fourth = 36;
+char fifth = 32;
+
+
+
+ser_putch(140);
+ser_putch(3);
+ser_putch(16);
+ser_putch(62);
+ser_putch(first);
+ser_putch(69);
+ser_putch(second);
+ser_putch(62);
+ser_putch(third);
+ser_putch(65);
+ser_putch(fourth);
+ser_putch(62);
+ser_putch(fifth);
+
+ser_putch(65);
+ser_putch(first);
+ser_putch(62);
+ser_putch(second);
+ser_putch(65);
+ser_putch(third);
+ser_putch(69);
+ser_putch(fourth);
+ser_putch(65);
+ser_putch(fifth);
+
+ser_putch(69);
+ser_putch(first);
+ser_putch(65);
+ser_putch(second);
+ser_putch(69);
+ser_putch(third);
+ser_putch(60);
+ser_putch(fourth);
+ser_putch(48);
+ser_putch(fifth);
+
+ser_putch(65);
+ser_putch(16);
+
+
+ser_putch(140);
+ser_putch(4);
+ser_putch(3);
+ser_putch(60);
+ser_putch(12);
+ser_putch(65);
+ser_putch(12);
+ser_putch(69);
+ser_putch(96);
+
+
+
+ser_putch(140);
+ser_putch(5);
+ser_putch(11);
+ser_putch(70);
+ser_putch(12);
+ser_putch(67);
+ser_putch(12);
+ser_putch(62);
+ser_putch(96);
+ser_putch(70);
+ser_putch(12);
+ser_putch(67);
+ser_putch(12);
+ser_putch(61);
+ser_putch(96);
+ser_putch(70);
+ser_putch(12);
+ser_putch(67);
+ser_putch(12);
+ser_putch(60);
+ser_putch(96);
+ser_putch(70);
+ser_putch(12);
+ser_putch(60);
+ser_putch(20);
+
+
+ser_putch(140);
+ser_putch(6);
+ser_putch(11);
+ser_putch(55);
+ser_putch(22);
+ser_putch(55);
+ser_putch(22);
+ser_putch(0);
+ser_putch(2);
+ser_putch(58);
+ser_putch(18);
+ser_putch(48);
+ser_putch(24);
+ser_putch(0);
+ser_putch(10);
+ser_putch(55);
+ser_putch(22);
+ser_putch(55);
+ser_putch(22);
+ser_putch(0);
+ser_putch(2);
+ser_putch(53);
+ser_putch(18);
+ser_putch(54);
+ser_putch(24);
+
+# 635
 while(1){
+
+if(PB7Counter >= 10 && !RB1== 0){
+
+
+ser_putch(141);
+ser_putch(6);
+_delay((unsigned long)((3000)*(20000000/4000.0)));
+ser_putch(141);
+ser_putch(6);
+_delay((unsigned long)((3000)*(20000000/4000.0)));
+ser_putch(141);
+ser_putch(5);
+
+
+
+
+PB7Counter=0;
+
+
+
+}
+
+
+
 
 if(PB8Counter >= 10 && !RB0 == 0){
 
 
-
 PathTo(2,0);
-_delay((unsigned long)((1000)*(20000000/4000.0)));
-TravelPath();
 
-# 428
+TravelPath();
+if (IR_Wall == 1)
+re_route();
+if (targets_found == 1){
+PathTo(1,0);
+TravelPath();
+}
+
+
+
+
+PathTo(3,0);
+
+TravelPath();
+if (IR_Wall == 1)
+re_route();
+if (targets_found == 1){
+PathTo(1,0);
+TravelPath();
+}
+
+PathTo(4,3);
+TravelPath();
+if (IR_Wall == 1)
+re_route();
+if (targets_found == 1){
+PathTo(1,0);
+TravelPath();
+}
+
+PathTo(3,2);
+TravelPath();
+if (IR_Wall == 1)
+re_route();
+if (targets_found == 1){
+PathTo(1,0);
+TravelPath();
+}
+
+PathTo(0,3);
+
+TravelPath();
+if (IR_Wall == 1)
+re_route();
+if (targets_found == 1){
+PathTo(1,0);
+TravelPath();
+}
+
+# 721
 PB8Counter = 0;
 }
 
-# 435
+# 728
 }
 }
 

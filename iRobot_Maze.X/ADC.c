@@ -16,9 +16,9 @@ void setupADC(void){
 void ADCMain(void){
                
         getADC();                   //Get rawADC value from sensor
-        lcdSetCursor(0b10000000);   //First line, first position
-        lcdWriteToDigitBCD(adcRAW); //Write the raw ADC value
-        adcConvertMM(adcRAW);       //Use Liam's conversion and sensor
+        //lcdSetCursor(0b10000000);   //First line, first position
+        //lcdWriteToDigitBCD(adcRAW); //Write the raw ADC value
+        
 }
 
 //get an adc result from the selected channel
@@ -46,3 +46,4 @@ unsigned int getADC(void){
 
     return(adcRAW); // Return the value of the ADC process
 }
+
