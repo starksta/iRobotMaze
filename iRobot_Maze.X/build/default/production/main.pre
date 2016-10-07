@@ -1658,7 +1658,6 @@ pathShortest[r][c] = 0;
 }
 }
 
-
 x_goto = x_target;
 y_goto = y_target;
 
@@ -1709,7 +1708,7 @@ if(sum <= 2){
 x_int = x_path;
 y_int = y_path;
 
-# 118
+# 117
 if (left == 0)
 intersection_orientation = 3;
 else if (up == 0)
@@ -1720,7 +1719,7 @@ else if (down == 0)
 intersection_orientation = 2;
 }
 
-# 133
+# 132
 if ((x_path == x_target)){
 if (y_path == y_target){
 
@@ -1735,7 +1734,7 @@ pathShortest[r][c] = path[r][c];
 }
 }
 
-# 151
+# 150
 switch(intersection_orientation){
 case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
 break;
@@ -1763,7 +1762,7 @@ path[r][c] = 0;
 }
 }
 
-# 182
+# 181
 if((sum == 4) || (pathCount >= 15)){
 
 
@@ -1792,7 +1791,7 @@ path[r][c] = 0;
 }
 }
 
-# 217
+# 216
 if (reset_flag != 1){
 
 
@@ -1818,13 +1817,22 @@ pathCount++;
 }
 }
 }
+
+lcdSetCursor(0b10000000);
+for (c = 0; c <= 15; c++){
+lcdWriteData(pathShortest[0][c]+48);
+}
+lcdSetCursor(0x40);
+for (c = 0; c<=15; c++){
+lcdWriteData(pathShortest[1][c]+48);
 }
 
+}
 
 
 void Drive1m(void){
 
-# 254
+# 262
 distance = 0;
 DriveDirect(250,250);
 RB2 = 1;
@@ -1838,7 +1846,7 @@ distance = distance + getSensorData(19,2);
 
 if ((getSensorData(13,1)) == 1){
 
-if((getSensorData(17,1)) < 240){
+if((getSensorData(17,1)) != 242){
 IR_Wall = 1;
 distance = 1001;
 RB3 = 0;
@@ -2200,7 +2208,7 @@ ser_putch(18);
 ser_putch(54);
 ser_putch(24);
 
-# 635
+# 643
 while(1){
 
 if(PB7Counter >= 10 && !RB1== 0){
@@ -2271,8 +2279,7 @@ PathTo(1,0);
 TravelPath();
 }
 
-PathTo(0,3);
-
+PathTo(3,3);
 TravelPath();
 if (IR_Wall == 1)
 re_route();
@@ -2281,11 +2288,11 @@ PathTo(1,0);
 TravelPath();
 }
 
-# 721
+# 728
 PB8Counter = 0;
 }
 
-# 728
+# 735
 }
 }
 

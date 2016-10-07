@@ -11,6 +11,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
 "30
 [v _lcdWriteString `(v ~T0 @X0 0 ef1`*uc ]
+"24
+[v _lcdWriteData `(v ~T0 @X0 0 ef1`uc ]
 "2517 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f877a.h
 [v _RB2 `Vb ~T0 @X0 0 e@50 ]
 "2519
@@ -1858,32 +1860,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [; ;main.c: 60: }
 [; ;main.c: 61: }
-[; ;main.c: 64: x_goto = x_target;
-"64
+[; ;main.c: 63: x_goto = x_target;
+"63
 [e = _x_goto _x_target ]
-[; ;main.c: 65: y_goto = y_target;
-"65
+[; ;main.c: 64: y_goto = y_target;
+"64
 [e = _y_goto _y_target ]
-[; ;main.c: 67: x_path = x;
-"67
+[; ;main.c: 66: x_path = x;
+"66
 [e = _x_path _x ]
-[; ;main.c: 68: y_path = y;
-"68
+[; ;main.c: 67: y_path = y;
+"67
 [e = _y_path _y ]
-[; ;main.c: 69: orientation_path = orientation;
-"69
+[; ;main.c: 68: orientation_path = orientation;
+"68
 [e = _orientation_path _orientation ]
-[; ;main.c: 71: pathCount = 0;
-"71
+[; ;main.c: 70: pathCount = 0;
+"70
 [e = _pathCount -> -> 0 `i `uc ]
-[; ;main.c: 74: lcdSetCursor(0b10000000);
-"74
+[; ;main.c: 73: lcdSetCursor(0b10000000);
+"73
 [e ( _lcdSetCursor (1 -> -> 128 `i `uc ]
-[; ;main.c: 75: lcdWriteString("Working...");
-"75
+[; ;main.c: 74: lcdWriteString("Working...");
+"74
 [e ( _lcdWriteString (1 -> :s 1C `*uc ]
-[; ;main.c: 77: for (int loop = 0; loop <= 2000; loop++){
-"77
+[; ;main.c: 76: for (int loop = 0; loop <= 2000; loop++){
+"76
 {
 [v _loop `i ~T0 @X0 1 a ]
 [e = _loop -> 0 `i ]
@@ -1891,1802 +1893,1848 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 121  ]
 [e :U 120 ]
 {
-[; ;main.c: 79: reset_flag = 0;
-"79
+[; ;main.c: 78: reset_flag = 0;
+"78
 [e = _reset_flag -> -> 0 `i `b ]
-[; ;main.c: 81: path[0][pathCount] = x_path;
-"81
+[; ;main.c: 80: path[0][pathCount] = x_path;
+"80
 [e = *U + &U *U + &U _path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _x_path ]
-[; ;main.c: 82: path[1][pathCount] = y_path;
-"82
+[; ;main.c: 81: path[1][pathCount] = y_path;
+"81
 [e = *U + &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _pathCount `ux -> -> # *U &U *U + &U _path * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux _y_path ]
-[; ;main.c: 87: left = gridWalls[0][(mazeGrid[y_path][x_path])];
-"87
+[; ;main.c: 86: left = gridWalls[0][(mazeGrid[y_path][x_path])];
+"86
 [e = _left -> *U + &U *U + &U _gridWalls * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
-[; ;main.c: 88: up = gridWalls[1][(mazeGrid[y_path][x_path])];
-"88
+[; ;main.c: 87: up = gridWalls[1][(mazeGrid[y_path][x_path])];
+"87
 [e = _up -> *U + &U *U + &U _gridWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
-[; ;main.c: 89: right = gridWalls[2][(mazeGrid[y_path][x_path])];
-"89
+[; ;main.c: 88: right = gridWalls[2][(mazeGrid[y_path][x_path])];
+"88
 [e = _right -> *U + &U *U + &U _gridWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
-[; ;main.c: 90: down = gridWalls[3][(mazeGrid[y_path][x_path])];
-"90
+[; ;main.c: 89: down = gridWalls[3][(mazeGrid[y_path][x_path])];
+"89
 [e = _down -> *U + &U *U + &U _gridWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux * -> *U + &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_path `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_path `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `ux -> -> # *U &U *U + &U _gridWalls * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _gridWalls `ui -> -> 16 `i `ui `ux `ui `ux `b ]
-[; ;main.c: 94: if (pathCount != 0){
-"94
+[; ;main.c: 93: if (pathCount != 0){
+"93
 [e $ ! != -> _pathCount `i -> 0 `i 123  ]
 {
-[; ;main.c: 95: switch(orientation_path){
-"95
+[; ;main.c: 94: switch(orientation_path){
+"94
 [e $U 125  ]
 {
-[; ;main.c: 96: case 0: down = 1;
-"96
+[; ;main.c: 95: case 0: down = 1;
+"95
 [e :U 126 ]
 [e = _down -> -> 1 `i `b ]
-[; ;main.c: 97: break;
-"97
+[; ;main.c: 96: break;
+"96
 [e $U 124  ]
-[; ;main.c: 98: case 1: left = 1;
-"98
+[; ;main.c: 97: case 1: left = 1;
+"97
 [e :U 127 ]
 [e = _left -> -> 1 `i `b ]
-[; ;main.c: 99: break;
-"99
+[; ;main.c: 98: break;
+"98
 [e $U 124  ]
-[; ;main.c: 100: case 2: up = 1;
-"100
+[; ;main.c: 99: case 2: up = 1;
+"99
 [e :U 128 ]
 [e = _up -> -> 1 `i `b ]
-[; ;main.c: 101: break;
-"101
+[; ;main.c: 100: break;
+"100
 [e $U 124  ]
-[; ;main.c: 102: case 3: right = 1;
-"102
+[; ;main.c: 101: case 3: right = 1;
+"101
 [e :U 129 ]
 [e = _right -> -> 1 `i `b ]
-[; ;main.c: 103: break;
+[; ;main.c: 102: break;
+"102
+[e $U 124  ]
 "103
-[e $U 124  ]
-"104
 }
-[; ;main.c: 104: }
+[; ;main.c: 103: }
 [e $U 124  ]
-"95
+"94
 [e :U 125 ]
 [e [\ _orientation_path , $ -> -> 0 `i `uc 126
  , $ -> -> 1 `i `uc 127
  , $ -> -> 2 `i `uc 128
  , $ -> -> 3 `i `uc 129
  124 ]
-"104
+"103
 [e :U 124 ]
-"105
+"104
 }
 [e :U 123 ]
-"109
+"108
 [v _sum `uc ~T0 @X0 1 a ]
-[; ;main.c: 105: }
-[; ;main.c: 109: char sum = (left + up + down + right);
+[; ;main.c: 104: }
+[; ;main.c: 108: char sum = (left + up + down + right);
 [e = _sum -> + + + -> _left `i -> _up `i -> _down `i -> _right `i `uc ]
-[; ;main.c: 110: if(sum <= 2){
-"110
+[; ;main.c: 109: if(sum <= 2){
+"109
 [e $ ! <= -> _sum `i -> 2 `i 130  ]
 {
-[; ;main.c: 111: x_int = x_path;
-"111
+[; ;main.c: 110: x_int = x_path;
+"110
 [e = _x_int _x_path ]
-[; ;main.c: 112: y_int = y_path;
-"112
+[; ;main.c: 111: y_int = y_path;
+"111
 [e = _y_int _y_path ]
-[; ;main.c: 118: if (left == 0)
-"118
+[; ;main.c: 117: if (left == 0)
+"117
 [e $ ! == -> _left `i -> 0 `i 131  ]
-[; ;main.c: 119: intersection_orientation = 3;
-"119
+[; ;main.c: 118: intersection_orientation = 3;
+"118
 [e = _intersection_orientation -> -> 3 `i `uc ]
 [e $U 132  ]
-"120
+"119
 [e :U 131 ]
-[; ;main.c: 120: else if (up == 0)
+[; ;main.c: 119: else if (up == 0)
 [e $ ! == -> _up `i -> 0 `i 133  ]
-[; ;main.c: 121: intersection_orientation = 0;
-"121
+[; ;main.c: 120: intersection_orientation = 0;
+"120
 [e = _intersection_orientation -> -> 0 `i `uc ]
 [e $U 134  ]
-"122
+"121
 [e :U 133 ]
-[; ;main.c: 122: else if (right == 0)
+[; ;main.c: 121: else if (right == 0)
 [e $ ! == -> _right `i -> 0 `i 135  ]
-[; ;main.c: 123: intersection_orientation = 1;
-"123
+[; ;main.c: 122: intersection_orientation = 1;
+"122
 [e = _intersection_orientation -> -> 1 `i `uc ]
 [e $U 136  ]
-"124
+"123
 [e :U 135 ]
-[; ;main.c: 124: else if (down == 0)
+[; ;main.c: 123: else if (down == 0)
 [e $ ! == -> _down `i -> 0 `i 137  ]
-[; ;main.c: 125: intersection_orientation = 2;
-"125
+[; ;main.c: 124: intersection_orientation = 2;
+"124
 [e = _intersection_orientation -> -> 2 `i `uc ]
 [e :U 137 ]
-"126
+"125
 [e :U 136 ]
 [e :U 134 ]
 [e :U 132 ]
 }
 [e :U 130 ]
-[; ;main.c: 126: }
-[; ;main.c: 133: if ((x_path == x_target)){
-"133
+[; ;main.c: 125: }
+[; ;main.c: 132: if ((x_path == x_target)){
+"132
 [e $ ! == -> _x_path `i -> _x_target `i 138  ]
 {
-[; ;main.c: 134: if (y_path == y_target){
-"134
+[; ;main.c: 133: if (y_path == y_target){
+"133
 [e $ ! == -> _y_path `i -> _y_target `i 139  ]
 {
-[; ;main.c: 138: if(pathCount < pathCountShortest){
-"138
+[; ;main.c: 137: if(pathCount < pathCountShortest){
+"137
 [e $ ! < -> _pathCount `i -> _pathCountShortest `i 140  ]
 {
-[; ;main.c: 139: pathCountShortest = pathCount;
-"139
+[; ;main.c: 138: pathCountShortest = pathCount;
+"138
 [e = _pathCountShortest _pathCount ]
-[; ;main.c: 140: for (r = 0; r <= 1; r++){
-"140
+[; ;main.c: 139: for (r = 0; r <= 1; r++){
+"139
 {
 [e = _r -> -> 0 `i `uc ]
 [e $ <= -> _r `i -> 1 `i 141  ]
 [e $U 142  ]
 [e :U 141 ]
 {
-[; ;main.c: 141: for (c = 0; c <= 15; c++){
-"141
+[; ;main.c: 140: for (c = 0; c <= 15; c++){
+"140
 {
 [e = _c -> -> 0 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 144  ]
 [e $U 145  ]
 [e :U 144 ]
 {
-[; ;main.c: 142: pathShortest[r][c] = path[r][c];
-"142
-[e = *U + &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux ]
-"143
-}
+[; ;main.c: 141: pathShortest[r][c] = path[r][c];
 "141
+[e = *U + &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _pathShortest * -> _r `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux ]
+"142
+}
+"140
 [e ++ _c -> -> 1 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 144  ]
 [e :U 145 ]
+"142
+}
+"143
+}
+"139
+[e ++ _r -> -> 1 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 141  ]
+[e :U 142 ]
 "143
 }
 "144
 }
-"140
-[e ++ _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 1 `i 141  ]
-[e :U 142 ]
-"144
-}
-"145
-}
 [e :U 140 ]
+[; ;main.c: 142: }
 [; ;main.c: 143: }
 [; ;main.c: 144: }
-[; ;main.c: 145: }
-[; ;main.c: 151: switch(intersection_orientation){
-"151
+[; ;main.c: 150: switch(intersection_orientation){
+"150
 [e $U 148  ]
 {
-[; ;main.c: 152: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
-"152
+[; ;main.c: 151: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
+"151
 [e :U 149 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
-[; ;main.c: 153: break;
-"153
+[; ;main.c: 152: break;
+"152
 [e $U 147  ]
-[; ;main.c: 154: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
-"154
+[; ;main.c: 153: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
+"153
 [e :U 150 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
-[; ;main.c: 155: break;
-"155
+[; ;main.c: 154: break;
+"154
 [e $U 147  ]
-[; ;main.c: 156: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
-"156
+[; ;main.c: 155: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
+"155
 [e :U 151 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
-[; ;main.c: 157: break;
-"157
+[; ;main.c: 156: break;
+"156
 [e $U 147  ]
-[; ;main.c: 158: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
-"158
+[; ;main.c: 157: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
+"157
 [e :U 152 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
-[; ;main.c: 159: break;
+[; ;main.c: 158: break;
+"158
+[e $U 147  ]
 "159
-[e $U 147  ]
-"160
 }
-[; ;main.c: 160: }
+[; ;main.c: 159: }
 [e $U 147  ]
-"151
+"150
 [e :U 148 ]
 [e [\ _intersection_orientation , $ -> -> 0 `i `uc 149
  , $ -> -> 1 `i `uc 150
  , $ -> -> 2 `i `uc 151
  , $ -> -> 3 `i `uc 152
  147 ]
-"160
+"159
 [e :U 147 ]
-[; ;main.c: 163: x_path = x;
-"163
+[; ;main.c: 162: x_path = x;
+"162
 [e = _x_path _x ]
-[; ;main.c: 164: y_path = y;
-"164
+[; ;main.c: 163: y_path = y;
+"163
 [e = _y_path _y ]
-[; ;main.c: 165: orientation_path = orientation;
-"165
+[; ;main.c: 164: orientation_path = orientation;
+"164
 [e = _orientation_path _orientation ]
-[; ;main.c: 166: pathCount = 0;
-"166
+[; ;main.c: 165: pathCount = 0;
+"165
 [e = _pathCount -> -> 0 `i `uc ]
-[; ;main.c: 167: reset_flag = 1;
-"167
+[; ;main.c: 166: reset_flag = 1;
+"166
 [e = _reset_flag -> -> 1 `i `b ]
-[; ;main.c: 170: for (r = 0; r <= 1; r++){
-"170
+[; ;main.c: 169: for (r = 0; r <= 1; r++){
+"169
 {
 [e = _r -> -> 0 `i `uc ]
 [e $ <= -> _r `i -> 1 `i 153  ]
 [e $U 154  ]
 [e :U 153 ]
 {
-[; ;main.c: 171: for (c = 0; c <= 15; c++){
-"171
+[; ;main.c: 170: for (c = 0; c <= 15; c++){
+"170
 {
 [e = _c -> -> 0 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 156  ]
 [e $U 157  ]
 [e :U 156 ]
 {
-[; ;main.c: 172: path[r][c] = 0;
-"172
-[e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
-"173
-}
+[; ;main.c: 171: path[r][c] = 0;
 "171
+[e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
+"172
+}
+"170
 [e ++ _c -> -> 1 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 156  ]
 [e :U 157 ]
+"172
+}
+"173
+}
+"169
+[e ++ _r -> -> 1 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 153  ]
+[e :U 154 ]
 "173
 }
 "174
 }
-"170
-[e ++ _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 1 `i 153  ]
-[e :U 154 ]
-"174
-}
+[e :U 139 ]
 "175
 }
-[e :U 139 ]
-"176
-}
 [e :U 138 ]
+[; ;main.c: 172: }
 [; ;main.c: 173: }
 [; ;main.c: 174: }
 [; ;main.c: 175: }
-[; ;main.c: 176: }
-[; ;main.c: 182: if((sum == 4) || (pathCount >= 15)){
-"182
+[; ;main.c: 181: if((sum == 4) || (pathCount >= 15)){
+"181
 [e $ ! || == -> _sum `i -> 4 `i >= -> _pathCount `i -> 15 `i 159  ]
 {
-[; ;main.c: 185: switch(intersection_orientation){
-"185
+[; ;main.c: 184: switch(intersection_orientation){
+"184
 [e $U 161  ]
 {
-[; ;main.c: 186: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
-"186
+[; ;main.c: 185: case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
+"185
 [e :U 162 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
-[; ;main.c: 187: break;
-"187
+[; ;main.c: 186: break;
+"186
 [e $U 160  ]
-[; ;main.c: 188: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
-"188
+[; ;main.c: 187: case 1: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 2);
+"187
 [e :U 163 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
-[; ;main.c: 189: break;
-"189
+[; ;main.c: 188: break;
+"188
 [e $U 160  ]
-[; ;main.c: 190: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
-"190
+[; ;main.c: 189: case 2: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 1);
+"189
 [e :U 164 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
-[; ;main.c: 191: break;
-"191
+[; ;main.c: 190: break;
+"190
 [e $U 160  ]
-[; ;main.c: 192: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
-"192
+[; ;main.c: 191: case 3: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 8);
+"191
 [e :U 165 ]
 [e = *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux * -> _x_int `ux -> -> # *U &U *U + &U _mazeGrid * -> _y_int `ux -> * -> # *U &U *U &U _mazeGrid `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
-[; ;main.c: 193: break;
+[; ;main.c: 192: break;
+"192
+[e $U 160  ]
 "193
-[e $U 160  ]
-"194
 }
-[; ;main.c: 194: }
+[; ;main.c: 193: }
 [e $U 160  ]
-"185
+"184
 [e :U 161 ]
 [e [\ _intersection_orientation , $ -> -> 0 `i `uc 162
  , $ -> -> 1 `i `uc 163
  , $ -> -> 2 `i `uc 164
  , $ -> -> 3 `i `uc 165
  160 ]
-"194
+"193
 [e :U 160 ]
-[; ;main.c: 197: x_path = x;
-"197
+[; ;main.c: 196: x_path = x;
+"196
 [e = _x_path _x ]
-[; ;main.c: 198: y_path = y;
-"198
+[; ;main.c: 197: y_path = y;
+"197
 [e = _y_path _y ]
-[; ;main.c: 199: orientation_path = orientation;
-"199
+[; ;main.c: 198: orientation_path = orientation;
+"198
 [e = _orientation_path _orientation ]
-[; ;main.c: 200: pathCount = 0;
-"200
+[; ;main.c: 199: pathCount = 0;
+"199
 [e = _pathCount -> -> 0 `i `uc ]
-[; ;main.c: 201: reset_flag = 1;
-"201
+[; ;main.c: 200: reset_flag = 1;
+"200
 [e = _reset_flag -> -> 1 `i `b ]
-[; ;main.c: 203: for (r = 0; r <= 1; r++){
-"203
+[; ;main.c: 202: for (r = 0; r <= 1; r++){
+"202
 {
 [e = _r -> -> 0 `i `uc ]
 [e $ <= -> _r `i -> 1 `i 166  ]
 [e $U 167  ]
 [e :U 166 ]
 {
-[; ;main.c: 204: for (c = 0; c <= 15; c++){
-"204
+[; ;main.c: 203: for (c = 0; c <= 15; c++){
+"203
 {
 [e = _c -> -> 0 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 169  ]
 [e $U 170  ]
 [e :U 169 ]
 {
-[; ;main.c: 205: path[r][c] = 0;
-"205
-[e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
-"206
-}
+[; ;main.c: 204: path[r][c] = 0;
 "204
+[e = *U + &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _path * -> _r `ux -> * -> # *U &U *U &U _path `ui -> -> 16 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
+"205
+}
+"203
 [e ++ _c -> -> 1 `i `uc ]
 [e $ <= -> _c `i -> 15 `i 169  ]
 [e :U 170 ]
+"205
+}
+"206
+}
+"202
+[e ++ _r -> -> 1 `i `uc ]
+[e $ <= -> _r `i -> 1 `i 166  ]
+[e :U 167 ]
 "206
 }
 "207
 }
-"203
-[e ++ _r -> -> 1 `i `uc ]
-[e $ <= -> _r `i -> 1 `i 166  ]
-[e :U 167 ]
-"207
-}
-"208
-}
 [e :U 159 ]
+[; ;main.c: 205: }
 [; ;main.c: 206: }
 [; ;main.c: 207: }
-[; ;main.c: 208: }
-[; ;main.c: 217: if (reset_flag != 1){
-"217
+[; ;main.c: 216: if (reset_flag != 1){
+"216
 [e $ ! != -> _reset_flag `i -> 1 `i 172  ]
 {
-[; ;main.c: 220: if(left == 0){
-"220
+[; ;main.c: 219: if(left == 0){
+"219
 [e $ ! == -> _left `i -> 0 `i 173  ]
 {
-[; ;main.c: 221: x_path--;
-"221
+[; ;main.c: 220: x_path--;
+"220
 [e -- _x_path -> -> 1 `i `uc ]
-[; ;main.c: 222: orientation_path = 3;
-"222
+[; ;main.c: 221: orientation_path = 3;
+"221
 [e = _orientation_path -> -> 3 `i `uc ]
-[; ;main.c: 223: pathCount++;
-"223
+[; ;main.c: 222: pathCount++;
+"222
 [e ++ _pathCount -> -> 1 `i `uc ]
-"224
+"223
 }
-[; ;main.c: 224: }
+[; ;main.c: 223: }
 [e $U 174  ]
-"225
+"224
 [e :U 173 ]
-[; ;main.c: 225: else if(up == 0){
+[; ;main.c: 224: else if(up == 0){
 [e $ ! == -> _up `i -> 0 `i 175  ]
 {
-[; ;main.c: 226: y_path--;
-"226
+[; ;main.c: 225: y_path--;
+"225
 [e -- _y_path -> -> 1 `i `uc ]
-[; ;main.c: 227: orientation_path = 0;
-"227
+[; ;main.c: 226: orientation_path = 0;
+"226
 [e = _orientation_path -> -> 0 `i `uc ]
-[; ;main.c: 228: pathCount++;
-"228
+[; ;main.c: 227: pathCount++;
+"227
 [e ++ _pathCount -> -> 1 `i `uc ]
-"229
+"228
 }
-[; ;main.c: 229: }
+[; ;main.c: 228: }
 [e $U 176  ]
-"230
+"229
 [e :U 175 ]
-[; ;main.c: 230: else if(right == 0){
+[; ;main.c: 229: else if(right == 0){
 [e $ ! == -> _right `i -> 0 `i 177  ]
 {
-[; ;main.c: 231: x_path++;
-"231
+[; ;main.c: 230: x_path++;
+"230
 [e ++ _x_path -> -> 1 `i `uc ]
-[; ;main.c: 232: orientation_path = 1;
-"232
+[; ;main.c: 231: orientation_path = 1;
+"231
 [e = _orientation_path -> -> 1 `i `uc ]
-[; ;main.c: 233: pathCount++;
-"233
+[; ;main.c: 232: pathCount++;
+"232
 [e ++ _pathCount -> -> 1 `i `uc ]
-"234
+"233
 }
-[; ;main.c: 234: }
+[; ;main.c: 233: }
 [e $U 178  ]
-"235
+"234
 [e :U 177 ]
-[; ;main.c: 235: else if(down == 0){
+[; ;main.c: 234: else if(down == 0){
 [e $ ! == -> _down `i -> 0 `i 179  ]
 {
-[; ;main.c: 236: y_path++;
-"236
+[; ;main.c: 235: y_path++;
+"235
 [e ++ _y_path -> -> 1 `i `uc ]
-[; ;main.c: 237: orientation_path = 2;
-"237
+[; ;main.c: 236: orientation_path = 2;
+"236
 [e = _orientation_path -> -> 2 `i `uc ]
-[; ;main.c: 238: pathCount++;
-"238
+[; ;main.c: 237: pathCount++;
+"237
 [e ++ _pathCount -> -> 1 `i `uc ]
-"239
+"238
 }
 [e :U 179 ]
-"240
+"239
 [e :U 178 ]
 [e :U 176 ]
 [e :U 174 ]
 }
 [e :U 172 ]
-"241
+"240
 }
-"77
+"76
 [e ++ _loop -> 1 `i ]
 [e $ <= _loop -> 2000 `i 120  ]
 [e :U 121 ]
-"241
+"240
 }
+[; ;main.c: 238: }
 [; ;main.c: 239: }
 [; ;main.c: 240: }
-[; ;main.c: 241: }
-[; ;main.c: 242: }
+[; ;main.c: 242: lcdSetCursor(0b10000000);
 "242
+[e ( _lcdSetCursor (1 -> -> 128 `i `uc ]
+[; ;main.c: 243: for (c = 0; c <= 15; c++){
+"243
+{
+[e = _c -> -> 0 `i `uc ]
+[e $ <= -> _c `i -> 15 `i 180  ]
+[e $U 181  ]
+[e :U 180 ]
+{
+[; ;main.c: 244: lcdWriteData(pathShortest[0][c]+48);
+"244
+[e ( _lcdWriteData (1 -> + -> *U + &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> 48 `i `uc ]
+"245
+}
+"243
+[e ++ _c -> -> 1 `i `uc ]
+[e $ <= -> _c `i -> 15 `i 180  ]
+[e :U 181 ]
+"245
+}
+[; ;main.c: 245: }
+[; ;main.c: 246: lcdSetCursor(0x40);
+"246
+[e ( _lcdSetCursor (1 -> -> 64 `i `uc ]
+[; ;main.c: 247: for (c = 0; c<=15; c++){
+"247
+{
+[e = _c -> -> 0 `i `uc ]
+[e $ <= -> _c `i -> 15 `i 183  ]
+[e $U 184  ]
+[e :U 183 ]
+{
+[; ;main.c: 248: lcdWriteData(pathShortest[1][c]+48);
+"248
+[e ( _lcdWriteData (1 -> + -> *U + &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _c `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> 48 `i `uc ]
+"249
+}
+"247
+[e ++ _c -> -> 1 `i `uc ]
+[e $ <= -> _c `i -> 15 `i 183  ]
+[e :U 184 ]
+"249
+}
+[; ;main.c: 249: }
+[; ;main.c: 251: }
+"251
 [e :UE 107 ]
 }
-"246
+"254
 [v _Drive1m `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 246: void Drive1m(void){
+[; ;main.c: 254: void Drive1m(void){
 [e :U _Drive1m ]
 [f ]
-[; ;main.c: 254: distance = 0;
-"254
+[; ;main.c: 262: distance = 0;
+"262
 [e = _distance -> 0 `i ]
-[; ;main.c: 255: DriveDirect(250,250);
-"255
-[e ( _DriveDirect (2 , -> 250 `i -> 250 `i ]
-[; ;main.c: 256: RB2 = 1;
-"256
-[e = _RB2 -> -> 1 `i `b ]
-[; ;main.c: 257: RB3 = 1;
-"257
-[e = _RB3 -> -> 1 `i `b ]
-[; ;main.c: 260: while (distance < 1000){
-"260
-[e $U 181  ]
-[e :U 182 ]
-{
-[; ;main.c: 263: distance = distance + getSensorData(19,2);
+[; ;main.c: 263: DriveDirect(250,250);
 "263
-[e = _distance + _distance ( _getSensorData (2 , -> -> 19 `i `uc -> -> 2 `i `uc ]
-[; ;main.c: 265: if ((getSensorData(13,1)) == 1){
+[e ( _DriveDirect (2 , -> 250 `i -> 250 `i ]
+[; ;main.c: 264: RB2 = 1;
+"264
+[e = _RB2 -> -> 1 `i `b ]
+[; ;main.c: 265: RB3 = 1;
 "265
-[e $ ! == ( _getSensorData (2 , -> -> 13 `i `uc -> -> 1 `i `uc -> 1 `i 184  ]
-{
-[; ;main.c: 267: if((getSensorData(17,1)) < 240){
-"267
-[e $ ! < ( _getSensorData (2 , -> -> 17 `i `uc -> -> 1 `i `uc -> 240 `i 185  ]
-{
-[; ;main.c: 268: IR_Wall = 1;
+[e = _RB3 -> -> 1 `i `b ]
+[; ;main.c: 268: while (distance < 1000){
 "268
-[e = _IR_Wall -> -> 1 `i `b ]
-[; ;main.c: 269: distance = 1001;
-"269
-[e = _distance -> 1001 `i ]
-[; ;main.c: 270: RB3 = 0;
-"270
-[e = _RB3 -> -> 0 `i `b ]
-"271
-}
-[e :U 185 ]
-"274
-[v _omni_IR `uc ~T0 @X0 1 a ]
-[; ;main.c: 271: }
-[; ;main.c: 274: unsigned char omni_IR = (getSensorData(17,1));
-[e = _omni_IR -> ( _getSensorData (2 , -> -> 17 `i `uc -> -> 1 `i `uc `uc ]
-[; ;main.c: 275: if (omni_IR == 250 || omni_IR == 246){
-"275
-[e $ ! || == -> _omni_IR `i -> 250 `i == -> _omni_IR `i -> 246 `i 186  ]
-{
-[; ;main.c: 277: targets++;
-"277
-[e ++ _targets -> -> 1 `i `uc ]
-[; ;main.c: 279: switch(targets){
-"279
-[e $U 188  ]
-{
-[; ;main.c: 280: case 1: ser_putch(141);
-"280
-[e :U 189 ]
-[e ( _ser_putch (1 -> -> 141 `i `uc ]
-[; ;main.c: 281: ser_putch(5);
-"281
-[e ( _ser_putch (1 -> -> 5 `i `uc ]
-[; ;main.c: 282: break;
-"282
 [e $U 187  ]
-[; ;main.c: 283: case 2: ser_putch(141);
-"283
-[e :U 190 ]
-[e ( _ser_putch (1 -> -> 141 `i `uc ]
-[; ;main.c: 284: ser_putch(3);
-"284
-[e ( _ser_putch (1 -> -> 3 `i `uc ]
-[; ;main.c: 285: targets_found = 1;
-"285
-[e = _targets_found -> -> 1 `i `b ]
-[; ;main.c: 286: break;
-"286
-[e $U 187  ]
-"287
-}
-[; ;main.c: 287: }
-[e $U 187  ]
-"279
 [e :U 188 ]
-[e [\ _targets , $ -> -> 1 `i `uc 189
- , $ -> -> 2 `i `uc 190
- 187 ]
-"287
-[e :U 187 ]
-[; ;main.c: 289: _delay((unsigned long)((2000)*(20000000/4000.0)));
-"289
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"291
-}
-[e :U 186 ]
-"293
-}
-[e :U 184 ]
-"294
-}
-[e :U 181 ]
-"260
-[e $ < _distance -> 1000 `i 182  ]
-[e :U 183 ]
-[; ;main.c: 291: }
-[; ;main.c: 293: }
-[; ;main.c: 294: }
-[; ;main.c: 297: DriveDirect(0,0);
-"297
-[e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
-[; ;main.c: 299: if(IR_Wall == 0){
-"299
-[e $ ! == -> _IR_Wall `i -> 0 `i 191  ]
 {
-[; ;main.c: 300: switch(orientation){
-"300
-[e $U 193  ]
+[; ;main.c: 271: distance = distance + getSensorData(19,2);
+"271
+[e = _distance + _distance ( _getSensorData (2 , -> -> 19 `i `uc -> -> 2 `i `uc ]
+[; ;main.c: 273: if ((getSensorData(13,1)) == 1){
+"273
+[e $ ! == ( _getSensorData (2 , -> -> 13 `i `uc -> -> 1 `i `uc -> 1 `i 190  ]
 {
-[; ;main.c: 301: case 0: y--;
-"301
-[e :U 194 ]
-[e -- _y -> -> 1 `i `uc ]
-[; ;main.c: 302: break;
-"302
-[e $U 192  ]
-[; ;main.c: 303: case 1: x++;
-"303
-[e :U 195 ]
-[e ++ _x -> -> 1 `i `uc ]
-[; ;main.c: 304: break;
-"304
-[e $U 192  ]
-[; ;main.c: 305: case 2: y++;
-"305
-[e :U 196 ]
-[e ++ _y -> -> 1 `i `uc ]
-[; ;main.c: 306: break;
-"306
-[e $U 192  ]
-[; ;main.c: 307: case 3: x--;
-"307
-[e :U 197 ]
-[e -- _x -> -> 1 `i `uc ]
-[; ;main.c: 308: break;
-"308
-[e $U 192  ]
-"309
-}
-[; ;main.c: 309: }
-[e $U 192  ]
-"300
-[e :U 193 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 194
- , $ -> -> 1 `i `uc 195
- , $ -> -> 2 `i `uc 196
- , $ -> -> 3 `i `uc 197
- 192 ]
-"309
-[e :U 192 ]
-[; ;main.c: 310: _delay((unsigned long)((100)*(20000000/4000.0)));
-"310
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"311
+[; ;main.c: 275: if((getSensorData(17,1)) != 242){
+"275
+[e $ ! != ( _getSensorData (2 , -> -> 17 `i `uc -> -> 1 `i `uc -> 242 `i 191  ]
+{
+[; ;main.c: 276: IR_Wall = 1;
+"276
+[e = _IR_Wall -> -> 1 `i `b ]
+[; ;main.c: 277: distance = 1001;
+"277
+[e = _distance -> 1001 `i ]
+[; ;main.c: 278: RB3 = 0;
+"278
+[e = _RB3 -> -> 0 `i `b ]
+"279
 }
 [e :U 191 ]
-[; ;main.c: 311: }
-[; ;main.c: 316: if (targets_found == 1){
-"316
-[e $ ! == -> _targets_found `i -> 1 `i 198  ]
+"282
+[v _omni_IR `uc ~T0 @X0 1 a ]
+[; ;main.c: 279: }
+[; ;main.c: 282: unsigned char omni_IR = (getSensorData(17,1));
+[e = _omni_IR -> ( _getSensorData (2 , -> -> 17 `i `uc -> -> 1 `i `uc `uc ]
+[; ;main.c: 283: if (omni_IR == 250 || omni_IR == 246){
+"283
+[e $ ! || == -> _omni_IR `i -> 250 `i == -> _omni_IR `i -> 246 `i 192  ]
 {
+[; ;main.c: 285: targets++;
+"285
+[e ++ _targets -> -> 1 `i `uc ]
+[; ;main.c: 287: switch(targets){
+"287
+[e $U 194  ]
+{
+[; ;main.c: 288: case 1: ser_putch(141);
+"288
+[e :U 195 ]
+[e ( _ser_putch (1 -> -> 141 `i `uc ]
+[; ;main.c: 289: ser_putch(5);
+"289
+[e ( _ser_putch (1 -> -> 5 `i `uc ]
+[; ;main.c: 290: break;
+"290
+[e $U 193  ]
+[; ;main.c: 291: case 2: ser_putch(141);
+"291
+[e :U 196 ]
+[e ( _ser_putch (1 -> -> 141 `i `uc ]
+[; ;main.c: 292: ser_putch(3);
+"292
+[e ( _ser_putch (1 -> -> 3 `i `uc ]
+[; ;main.c: 293: targets_found = 1;
+"293
+[e = _targets_found -> -> 1 `i `b ]
+[; ;main.c: 294: break;
+"294
+[e $U 193  ]
+"295
+}
+[; ;main.c: 295: }
+[e $U 193  ]
+"287
+[e :U 194 ]
+[e [\ _targets , $ -> -> 1 `i `uc 195
+ , $ -> -> 2 `i `uc 196
+ 193 ]
+"295
+[e :U 193 ]
+[; ;main.c: 297: _delay((unsigned long)((2000)*(20000000/4000.0)));
+"297
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"299
+}
+[e :U 192 ]
+"301
+}
+[e :U 190 ]
+"302
+}
+[e :U 187 ]
+"268
+[e $ < _distance -> 1000 `i 188  ]
+[e :U 189 ]
+[; ;main.c: 299: }
+[; ;main.c: 301: }
+[; ;main.c: 302: }
+[; ;main.c: 305: DriveDirect(0,0);
+"305
+[e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
+[; ;main.c: 307: if(IR_Wall == 0){
+"307
+[e $ ! == -> _IR_Wall `i -> 0 `i 197  ]
+{
+[; ;main.c: 308: switch(orientation){
+"308
+[e $U 199  ]
+{
+[; ;main.c: 309: case 0: y--;
+"309
+[e :U 200 ]
+[e -- _y -> -> 1 `i `uc ]
+[; ;main.c: 310: break;
+"310
+[e $U 198  ]
+[; ;main.c: 311: case 1: x++;
+"311
+[e :U 201 ]
+[e ++ _x -> -> 1 `i `uc ]
+[; ;main.c: 312: break;
+"312
+[e $U 198  ]
+[; ;main.c: 313: case 2: y++;
+"313
+[e :U 202 ]
+[e ++ _y -> -> 1 `i `uc ]
+[; ;main.c: 314: break;
+"314
+[e $U 198  ]
+[; ;main.c: 315: case 3: x--;
+"315
+[e :U 203 ]
+[e -- _x -> -> 1 `i `uc ]
+[; ;main.c: 316: break;
+"316
+[e $U 198  ]
 "317
-[v _n `uc ~T0 @X0 1 a ]
-[; ;main.c: 317: char n = 20;
-[e = _n -> -> 20 `i `uc ]
-"318
 }
+[; ;main.c: 317: }
+[e $U 198  ]
+"308
+[e :U 199 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 200
+ , $ -> -> 1 `i `uc 201
+ , $ -> -> 2 `i `uc 202
+ , $ -> -> 3 `i `uc 203
+ 198 ]
+"317
 [e :U 198 ]
-[; ;main.c: 318: }
-[; ;main.c: 319: }
+[; ;main.c: 318: _delay((unsigned long)((100)*(20000000/4000.0)));
+"318
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
 "319
-[e :UE 180 ]
 }
-"323
+[e :U 197 ]
+[; ;main.c: 319: }
+[; ;main.c: 324: if (targets_found == 1){
+"324
+[e $ ! == -> _targets_found `i -> 1 `i 204  ]
+{
+"325
+[v _n `uc ~T0 @X0 1 a ]
+[; ;main.c: 325: char n = 20;
+[e = _n -> -> 20 `i `uc ]
+"326
+}
+[e :U 204 ]
+[; ;main.c: 326: }
+[; ;main.c: 327: }
+"327
+[e :UE 186 ]
+}
+"331
 [v _Turn90 `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 323: void Turn90(char direction){
+[; ;main.c: 331: void Turn90(char direction){
 [e :U _Turn90 ]
 [v _direction `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;main.c: 325: angle = 0;
-"325
-[e = _angle -> 0 `i ]
-[; ;main.c: 327: if (direction == 1){
-"327
-[e $ ! == -> _direction `i -> 1 `i 200  ]
-{
-[; ;main.c: 329: if (orientation == 0)
-"329
-[e $ ! == -> _orientation `i -> 0 `i 201  ]
-[; ;main.c: 330: orientation = 3;
-"330
-[e = _orientation -> -> 3 `i `uc ]
-[e $U 202  ]
-"331
-[e :U 201 ]
-[; ;main.c: 331: else orientation--;
-[e -- _orientation -> -> 1 `i `uc ]
-[e :U 202 ]
-[; ;main.c: 333: Drive(0,150,0x00,0x01);
+[; ;main.c: 333: angle = 0;
 "333
-[e ( _Drive (4 , , , -> -> 0 `i `uc -> -> 150 `i `uc -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 334: while (angle < 86){
-"334
-[e $U 203  ]
-[e :U 204 ]
-{
-[; ;main.c: 335: angle = angle + getSensorData(20,2);
+[e = _angle -> 0 `i ]
+[; ;main.c: 335: if (direction == 1){
 "335
-[e = _angle + _angle ( _getSensorData (2 , -> -> 20 `i `uc -> -> 2 `i `uc ]
-"336
-}
-[e :U 203 ]
-"334
-[e $ < _angle -> 86 `i 204  ]
-[e :U 205 ]
-"337
-}
-[e :U 200 ]
-[; ;main.c: 336: }
-[; ;main.c: 337: }
-[; ;main.c: 339: if (direction == 0){
-"339
-[e $ ! == -> _direction `i -> 0 `i 206  ]
+[e $ ! == -> _direction `i -> 1 `i 206  ]
 {
-[; ;main.c: 341: if (orientation == 3)
-"341
-[e $ ! == -> _orientation `i -> 3 `i 207  ]
-[; ;main.c: 342: orientation = 0;
-"342
-[e = _orientation -> -> 0 `i `uc ]
+[; ;main.c: 337: if (orientation == 0)
+"337
+[e $ ! == -> _orientation `i -> 0 `i 207  ]
+[; ;main.c: 338: orientation = 3;
+"338
+[e = _orientation -> -> 3 `i `uc ]
 [e $U 208  ]
-"343
+"339
 [e :U 207 ]
-[; ;main.c: 343: else orientation++;
-[e ++ _orientation -> -> 1 `i `uc ]
+[; ;main.c: 339: else orientation--;
+[e -- _orientation -> -> 1 `i `uc ]
 [e :U 208 ]
-[; ;main.c: 345: Drive(0,150,0xFF,0xFF);
-"345
-[e ( _Drive (4 , , , -> -> 0 `i `uc -> -> 150 `i `uc -> -> 255 `i `uc -> -> 255 `i `uc ]
-[; ;main.c: 346: while (angle > -86){
-"346
+[; ;main.c: 341: Drive(0,150,0x00,0x01);
+"341
+[e ( _Drive (4 , , , -> -> 0 `i `uc -> -> 150 `i `uc -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 342: while (angle < 86){
+"342
 [e $U 209  ]
 [e :U 210 ]
 {
-[; ;main.c: 347: angle = angle + getSensorData(20,2);
-"347
+[; ;main.c: 343: angle = angle + getSensorData(20,2);
+"343
 [e = _angle + _angle ( _getSensorData (2 , -> -> 20 `i `uc -> -> 2 `i `uc ]
-"348
+"344
 }
 [e :U 209 ]
-"346
-[e $ > _angle -U -> 86 `i 210  ]
+"342
+[e $ < _angle -> 86 `i 210  ]
 [e :U 211 ]
-"349
+"345
 }
 [e :U 206 ]
-[; ;main.c: 348: }
-[; ;main.c: 349: }
-[; ;main.c: 350: DriveDirect(0,0);
+[; ;main.c: 344: }
+[; ;main.c: 345: }
+[; ;main.c: 347: if (direction == 0){
+"347
+[e $ ! == -> _direction `i -> 0 `i 212  ]
+{
+[; ;main.c: 349: if (orientation == 3)
+"349
+[e $ ! == -> _orientation `i -> 3 `i 213  ]
+[; ;main.c: 350: orientation = 0;
 "350
-[e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
-[; ;main.c: 351: _delay((unsigned long)((100)*(20000000/4000.0)));
+[e = _orientation -> -> 0 `i `uc ]
+[e $U 214  ]
 "351
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 352: }
-"352
-[e :UE 199 ]
-}
+[e :U 213 ]
+[; ;main.c: 351: else orientation++;
+[e ++ _orientation -> -> 1 `i `uc ]
+[e :U 214 ]
+[; ;main.c: 353: Drive(0,150,0xFF,0xFF);
+"353
+[e ( _Drive (4 , , , -> -> 0 `i `uc -> -> 150 `i `uc -> -> 255 `i `uc -> -> 255 `i `uc ]
+[; ;main.c: 354: while (angle > -86){
 "354
+[e $U 215  ]
+[e :U 216 ]
+{
+[; ;main.c: 355: angle = angle + getSensorData(20,2);
+"355
+[e = _angle + _angle ( _getSensorData (2 , -> -> 20 `i `uc -> -> 2 `i `uc ]
+"356
+}
+[e :U 215 ]
+"354
+[e $ > _angle -U -> 86 `i 216  ]
+[e :U 217 ]
+"357
+}
+[e :U 212 ]
+[; ;main.c: 356: }
+[; ;main.c: 357: }
+[; ;main.c: 358: DriveDirect(0,0);
+"358
+[e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
+[; ;main.c: 359: _delay((unsigned long)((100)*(20000000/4000.0)));
+"359
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 360: }
+"360
+[e :UE 205 ]
+}
+"362
 [v _TravelPath `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 354: void TravelPath(void){
+[; ;main.c: 362: void TravelPath(void){
 [e :U _TravelPath ]
 [f ]
-[; ;main.c: 356: for (char n = 1; n <= (pathCountShortest); n++){
-"356
+[; ;main.c: 364: for (char n = 1; n <= (pathCountShortest); n++){
+"364
 {
 [v _n `uc ~T0 @X0 1 a ]
 [e = _n -> -> 1 `i `uc ]
-[e $U 216  ]
-[e :U 213 ]
-{
-[; ;main.c: 358: if (pathShortest[0][n] > x){
-"358
-[e $ ! > -> *U + &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _x `i 217  ]
-{
-[; ;main.c: 359: switch (orientation){
-"359
-[e $U 219  ]
-{
-[; ;main.c: 360: case 0: Turn90(0);
-"360
-[e :U 220 ]
-[e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 361: break;
-"361
-[e $U 218  ]
-[; ;main.c: 362: case 2: Turn90(1);
-"362
-[e :U 221 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 363: break;
-"363
-[e $U 218  ]
-[; ;main.c: 364: case 3: Turn90(1);
-"364
-[e :U 222 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 365: _delay((unsigned long)((5)*(20000000/4000.0)));
-"365
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 366: Turn90(1);
-"366
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 367: break;
-"367
-[e $U 218  ]
-"368
-}
-[; ;main.c: 368: }
-[e $U 218  ]
-"359
+[e $U 222  ]
 [e :U 219 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 220
- , $ -> -> 2 `i `uc 221
- , $ -> -> 3 `i `uc 222
- 218 ]
+{
+[; ;main.c: 366: if (pathShortest[0][n] > x){
+"366
+[e $ ! > -> *U + &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _x `i 223  ]
+{
+[; ;main.c: 367: switch (orientation){
+"367
+[e $U 225  ]
+{
+[; ;main.c: 368: case 0: Turn90(0);
 "368
-[e :U 218 ]
-[; ;main.c: 369: Drive1m();
+[e :U 226 ]
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 369: break;
 "369
-[e ( _Drive1m ..  ]
+[e $U 224  ]
+[; ;main.c: 370: case 2: Turn90(1);
 "370
-}
-[; ;main.c: 370: }
-[e $U 223  ]
-"372
-[e :U 217 ]
-[; ;main.c: 372: else if (pathShortest[0][n] < x){
-[e $ ! < -> *U + &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _x `i 224  ]
-{
-[; ;main.c: 373: switch (orientation){
-"373
-[e $U 226  ]
-{
-[; ;main.c: 374: case 0: Turn90(1);
-"374
 [e :U 227 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 371: break;
+"371
+[e $U 224  ]
+[; ;main.c: 372: case 3: Turn90(1);
+"372
+[e :U 228 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 373: _delay((unsigned long)((5)*(20000000/4000.0)));
+"373
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 374: Turn90(1);
+"374
 [e ( _Turn90 (1 -> -> 1 `i `uc ]
 [; ;main.c: 375: break;
 "375
-[e $U 225  ]
-[; ;main.c: 376: case 2: Turn90(0);
+[e $U 224  ]
 "376
-[e :U 228 ]
-[e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 377: break;
-"377
-[e $U 225  ]
-[; ;main.c: 378: case 1: Turn90(1);
-"378
-[e :U 229 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 379: _delay((unsigned long)((5)*(20000000/4000.0)));
-"379
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 380: Turn90(1);
-"380
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 381: break;
-"381
-[e $U 225  ]
-"382
 }
-[; ;main.c: 382: }
-[e $U 225  ]
-"373
-[e :U 226 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 227
- , $ -> -> 2 `i `uc 228
- , $ -> -> 1 `i `uc 229
- 225 ]
-"382
+[; ;main.c: 376: }
+[e $U 224  ]
+"367
 [e :U 225 ]
-[; ;main.c: 383: Drive1m();
-"383
-[e ( _Drive1m ..  ]
-"384
-}
-[; ;main.c: 384: }
-[e $U 230  ]
-"386
+[e [\ _orientation , $ -> -> 0 `i `uc 226
+ , $ -> -> 2 `i `uc 227
+ , $ -> -> 3 `i `uc 228
+ 224 ]
+"376
 [e :U 224 ]
-[; ;main.c: 386: else if(pathShortest[1][n] > y){
-[e $ ! > -> *U + &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _y `i 231  ]
+[; ;main.c: 377: Drive1m();
+"377
+[e ( _Drive1m ..  ]
+"378
+}
+[; ;main.c: 378: }
+[e $U 229  ]
+"380
+[e :U 223 ]
+[; ;main.c: 380: else if (pathShortest[0][n] < x){
+[e $ ! < -> *U + &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _x `i 230  ]
 {
-[; ;main.c: 387: switch(orientation){
-"387
-[e $U 233  ]
+[; ;main.c: 381: switch (orientation){
+"381
+[e $U 232  ]
 {
-[; ;main.c: 388: case 1: Turn90(0);
-"388
+[; ;main.c: 382: case 0: Turn90(1);
+"382
+[e :U 233 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 383: break;
+"383
+[e $U 231  ]
+[; ;main.c: 384: case 2: Turn90(0);
+"384
 [e :U 234 ]
 [e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 389: break;
-"389
-[e $U 232  ]
-[; ;main.c: 390: case 3: Turn90(1);
-"390
+[; ;main.c: 385: break;
+"385
+[e $U 231  ]
+[; ;main.c: 386: case 1: Turn90(1);
+"386
 [e :U 235 ]
 [e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 391: break;
-"391
-[e $U 232  ]
-[; ;main.c: 392: case 0: Turn90(1);
-"392
-[e :U 236 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 393: _delay((unsigned long)((5)*(20000000/4000.0)));
-"393
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 394: Turn90(1);
-"394
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 395: break;
-"395
-[e $U 232  ]
-"396
-}
-[; ;main.c: 396: }
-[e $U 232  ]
+[; ;main.c: 387: _delay((unsigned long)((5)*(20000000/4000.0)));
 "387
-[e :U 233 ]
-[e [\ _orientation , $ -> -> 1 `i `uc 234
- , $ -> -> 3 `i `uc 235
- , $ -> -> 0 `i `uc 236
- 232 ]
-"396
-[e :U 232 ]
-[; ;main.c: 397: Drive1m();
-"397
-[e ( _Drive1m ..  ]
-"398
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 388: Turn90(1);
+"388
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 389: break;
+"389
+[e $U 231  ]
+"390
 }
-[; ;main.c: 398: }
-[e $U 237  ]
-"400
+[; ;main.c: 390: }
+[e $U 231  ]
+"381
+[e :U 232 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 233
+ , $ -> -> 2 `i `uc 234
+ , $ -> -> 1 `i `uc 235
+ 231 ]
+"390
 [e :U 231 ]
-[; ;main.c: 400: else if (pathShortest[1][n] < y){
-[e $ ! < -> *U + &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _y `i 238  ]
+[; ;main.c: 391: Drive1m();
+"391
+[e ( _Drive1m ..  ]
+"392
+}
+[; ;main.c: 392: }
+[e $U 236  ]
+"394
+[e :U 230 ]
+[; ;main.c: 394: else if(pathShortest[1][n] > y){
+[e $ ! > -> *U + &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _y `i 237  ]
 {
-[; ;main.c: 401: switch (orientation){
-"401
-[e $U 240  ]
+[; ;main.c: 395: switch(orientation){
+"395
+[e $U 239  ]
 {
-[; ;main.c: 402: case 1: Turn90(1);
-"402
+[; ;main.c: 396: case 1: Turn90(0);
+"396
+[e :U 240 ]
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 397: break;
+"397
+[e $U 238  ]
+[; ;main.c: 398: case 3: Turn90(1);
+"398
 [e :U 241 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 399: break;
+"399
+[e $U 238  ]
+[; ;main.c: 400: case 0: Turn90(1);
+"400
+[e :U 242 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 401: _delay((unsigned long)((5)*(20000000/4000.0)));
+"401
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 402: Turn90(1);
+"402
 [e ( _Turn90 (1 -> -> 1 `i `uc ]
 [; ;main.c: 403: break;
 "403
-[e $U 239  ]
-[; ;main.c: 404: case 3: Turn90(0);
+[e $U 238  ]
 "404
-[e :U 242 ]
-[e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 405: break;
-"405
-[e $U 239  ]
-[; ;main.c: 406: case 2: Turn90(1);
-"406
-[e :U 243 ]
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 407: _delay((unsigned long)((5)*(20000000/4000.0)));
-"407
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 408: Turn90(1);
-"408
-[e ( _Turn90 (1 -> -> 1 `i `uc ]
-[; ;main.c: 409: break;
-"409
-[e $U 239  ]
-"410
 }
-[; ;main.c: 410: }
-[e $U 239  ]
-"401
-[e :U 240 ]
-[e [\ _orientation , $ -> -> 1 `i `uc 241
- , $ -> -> 3 `i `uc 242
- , $ -> -> 2 `i `uc 243
- 239 ]
-"410
+[; ;main.c: 404: }
+[e $U 238  ]
+"395
 [e :U 239 ]
-[; ;main.c: 411: Drive1m();
-"411
-[e ( _Drive1m ..  ]
-"412
-}
+[e [\ _orientation , $ -> -> 1 `i `uc 240
+ , $ -> -> 3 `i `uc 241
+ , $ -> -> 0 `i `uc 242
+ 238 ]
+"404
 [e :U 238 ]
-"415
+[; ;main.c: 405: Drive1m();
+"405
+[e ( _Drive1m ..  ]
+"406
+}
+[; ;main.c: 406: }
+[e $U 243  ]
+"408
 [e :U 237 ]
-[e :U 230 ]
-[e :U 223 ]
-[; ;main.c: 412: }
-[; ;main.c: 415: if (IR_Wall == 1){
-[e $ ! == -> _IR_Wall `i -> 1 `i 244  ]
+[; ;main.c: 408: else if (pathShortest[1][n] < y){
+[e $ ! < -> *U + &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux * -> _n `ux -> -> # *U &U *U + &U _pathShortest * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _pathShortest `ui -> -> 16 `i `ui `ux `ui `ux `i -> _y `i 244  ]
 {
-[; ;main.c: 416: n = 20;
+[; ;main.c: 409: switch (orientation){
+"409
+[e $U 246  ]
+{
+[; ;main.c: 410: case 1: Turn90(1);
+"410
+[e :U 247 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 411: break;
+"411
+[e $U 245  ]
+[; ;main.c: 412: case 3: Turn90(0);
+"412
+[e :U 248 ]
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 413: break;
+"413
+[e $U 245  ]
+[; ;main.c: 414: case 2: Turn90(1);
+"414
+[e :U 249 ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 415: _delay((unsigned long)((5)*(20000000/4000.0)));
+"415
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 416: Turn90(1);
 "416
-[e = _n -> -> 20 `i `uc ]
+[e ( _Turn90 (1 -> -> 1 `i `uc ]
+[; ;main.c: 417: break;
 "417
+[e $U 245  ]
+"418
+}
+[; ;main.c: 418: }
+[e $U 245  ]
+"409
+[e :U 246 ]
+[e [\ _orientation , $ -> -> 1 `i `uc 247
+ , $ -> -> 3 `i `uc 248
+ , $ -> -> 2 `i `uc 249
+ 245 ]
+"418
+[e :U 245 ]
+[; ;main.c: 419: Drive1m();
+"419
+[e ( _Drive1m ..  ]
+"420
 }
 [e :U 244 ]
-"418
+"423
+[e :U 243 ]
+[e :U 236 ]
+[e :U 229 ]
+[; ;main.c: 420: }
+[; ;main.c: 423: if (IR_Wall == 1){
+[e $ ! == -> _IR_Wall `i -> 1 `i 250  ]
+{
+[; ;main.c: 424: n = 20;
+"424
+[e = _n -> -> 20 `i `uc ]
+"425
 }
-"356
+[e :U 250 ]
+"426
+}
+"364
 [e ++ _n -> -> 1 `i `uc ]
-[e :U 216 ]
-[e $ <= -> _n `i -> _pathCountShortest `i 213  ]
-[e :U 214 ]
-"418
+[e :U 222 ]
+[e $ <= -> _n `i -> _pathCountShortest `i 219  ]
+[e :U 220 ]
+"426
 }
-[; ;main.c: 417: }
-[; ;main.c: 418: }
-[; ;main.c: 419: }
-"419
-[e :UE 212 ]
+[; ;main.c: 425: }
+[; ;main.c: 426: }
+[; ;main.c: 427: }
+"427
+[e :UE 218 ]
 }
-"421
+"429
 [v _re_route `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 421: void re_route(void){
+[; ;main.c: 429: void re_route(void){
 [e :U _re_route ]
 [f ]
-[; ;main.c: 422: switch(orientation){
-"422
-[e $U 247  ]
-{
-[; ;main.c: 423: case 0: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 4);
-"423
-[e :U 248 ]
-[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
-[; ;main.c: 424: break;
-"424
-[e $U 246  ]
-[; ;main.c: 425: case 1: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 2);
-"425
-[e :U 249 ]
-[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
-[; ;main.c: 426: break;
-"426
-[e $U 246  ]
-[; ;main.c: 427: case 2: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 1);
-"427
-[e :U 250 ]
-[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
-[; ;main.c: 428: break;
-"428
-[e $U 246  ]
-[; ;main.c: 429: case 3: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 8);
-"429
-[e :U 251 ]
-[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
-[; ;main.c: 430: break;
+[; ;main.c: 430: switch(orientation){
 "430
-[e $U 246  ]
-"431
-}
-[; ;main.c: 431: }
-[e $U 246  ]
-"422
-[e :U 247 ]
-[e [\ _orientation , $ -> -> 0 `i `uc 248
- , $ -> -> 1 `i `uc 249
- , $ -> -> 2 `i `uc 250
- , $ -> -> 3 `i `uc 251
- 246 ]
-"431
-[e :U 246 ]
-[; ;main.c: 433: Turn90(0);
-"433
-[e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 434: Turn90(0);
-"434
-[e ( _Turn90 (1 -> -> 0 `i `uc ]
-[; ;main.c: 435: distance = 0;
-"435
-[e = _distance -> 0 `i ]
-[; ;main.c: 436: DriveDirect(250,250);
-"436
-[e ( _DriveDirect (2 , -> 250 `i -> 250 `i ]
-[; ;main.c: 437: while (distance < 500){
-"437
-[e $U 252  ]
-[e :U 253 ]
+[e $U 253  ]
 {
-[; ;main.c: 438: distance = distance + getSensorData(19,2);
+[; ;main.c: 431: case 0: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 4);
+"431
+[e :U 254 ]
+[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 4 `i `uc ]
+[; ;main.c: 432: break;
+"432
+[e $U 252  ]
+[; ;main.c: 433: case 1: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 2);
+"433
+[e :U 255 ]
+[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 2 `i `uc ]
+[; ;main.c: 434: break;
+"434
+[e $U 252  ]
+[; ;main.c: 435: case 2: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 1);
+"435
+[e :U 256 ]
+[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 1 `i `uc ]
+[; ;main.c: 436: break;
+"436
+[e $U 252  ]
+[; ;main.c: 437: case 3: (mazeGridDefault[y][x]) = ((mazeGridDefault[y][x]) + 8);
+"437
+[e :U 257 ]
+[e = *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux -> + -> *U + &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux * -> _x `ux -> -> # *U &U *U + &U _mazeGridDefault * -> _y `ux -> * -> # *U &U *U &U _mazeGridDefault `ui -> -> 5 `i `ui `ux `ui `ux `i -> 8 `i `uc ]
+[; ;main.c: 438: break;
 "438
-[e = _distance + _distance ( _getSensorData (2 , -> -> 19 `i `uc -> -> 2 `i `uc ]
+[e $U 252  ]
 "439
 }
-[e :U 252 ]
-"437
-[e $ < _distance -> 500 `i 253  ]
-[e :U 254 ]
 [; ;main.c: 439: }
-[; ;main.c: 440: DriveDirect(0,0);
-"440
-[e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
-[; ;main.c: 441: IR_Wall = 0;
+[e $U 252  ]
+"430
+[e :U 253 ]
+[e [\ _orientation , $ -> -> 0 `i `uc 254
+ , $ -> -> 1 `i `uc 255
+ , $ -> -> 2 `i `uc 256
+ , $ -> -> 3 `i `uc 257
+ 252 ]
+"439
+[e :U 252 ]
+[; ;main.c: 441: Turn90(0);
 "441
-[e = _IR_Wall -> -> 0 `i `b ]
-[; ;main.c: 443: _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 442: Turn90(0);
+"442
+[e ( _Turn90 (1 -> -> 0 `i `uc ]
+[; ;main.c: 443: distance = 0;
 "443
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 444: PathTo(x_goto,y_goto);
+[e = _distance -> 0 `i ]
+[; ;main.c: 444: DriveDirect(250,250);
 "444
-[e ( _PathTo (2 , _x_goto _y_goto ]
-[; ;main.c: 445: TravelPath();
+[e ( _DriveDirect (2 , -> 250 `i -> 250 `i ]
+[; ;main.c: 445: while (distance < 500){
 "445
-[e ( _TravelPath ..  ]
-[; ;main.c: 446: }
+[e $U 258  ]
+[e :U 259 ]
+{
+[; ;main.c: 446: distance = distance + getSensorData(19,2);
 "446
-[e :UE 245 ]
+[e = _distance + _distance ( _getSensorData (2 , -> -> 19 `i `uc -> -> 2 `i `uc ]
+"447
+}
+[e :U 258 ]
+"445
+[e $ < _distance -> 500 `i 259  ]
+[e :U 260 ]
+[; ;main.c: 447: }
+[; ;main.c: 448: DriveDirect(0,0);
+"448
+[e ( _DriveDirect (2 , -> 0 `i -> 0 `i ]
+[; ;main.c: 449: IR_Wall = 0;
+"449
+[e = _IR_Wall -> -> 0 `i `b ]
+[; ;main.c: 451: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"451
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 452: PathTo(x_goto,y_goto);
+"452
+[e ( _PathTo (2 , _x_goto _y_goto ]
+[; ;main.c: 453: TravelPath();
+"453
+[e ( _TravelPath ..  ]
+[; ;main.c: 454: }
+"454
+[e :UE 251 ]
 }
 [v F1237 `(v ~T0 @X0 1 tf ]
-"450
+"458
 [v _isr `IF1237 ~T0 @X0 1 e ]
 {
-[; ;main.c: 450: void interrupt isr(void){
+[; ;main.c: 458: void interrupt isr(void){
 [e :U _isr ]
 [f ]
-[; ;main.c: 451: if(TMR0IF){
-"451
-[e $ ! _TMR0IF 256  ]
-{
-[; ;main.c: 452: TMR0IF = 0;
-"452
-[e = _TMR0IF -> -> 0 `i `b ]
-[; ;main.c: 453: TMR0 = 100;
-"453
-[e = _TMR0 -> -> 100 `i `uc ]
-[; ;main.c: 454: time_count++;
-"454
-[e ++ _time_count -> -> 1 `i `ui ]
-[; ;main.c: 456: if(!RB0)
-"456
-[e $ ! ! _RB0 257  ]
-[; ;main.c: 457: PB8Counter++;
-"457
-[e ++ _PB8Counter -> -> 1 `i `uc ]
-[e :U 257 ]
-[; ;main.c: 458: if(!RB1)
-"458
-[e $ ! ! _RB1 258  ]
-[; ;main.c: 459: PB7Counter++;
+[; ;main.c: 459: if(TMR0IF){
 "459
-[e ++ _PB7Counter -> -> 1 `i `uc ]
-[e :U 258 ]
+[e $ ! _TMR0IF 262  ]
+{
+[; ;main.c: 460: TMR0IF = 0;
 "460
-}
-[e :U 256 ]
-[; ;main.c: 460: }
-[; ;main.c: 461: }
+[e = _TMR0IF -> -> 0 `i `b ]
+[; ;main.c: 461: TMR0 = 100;
 "461
-[e :UE 255 ]
+[e = _TMR0 -> -> 100 `i `uc ]
+[; ;main.c: 462: time_count++;
+"462
+[e ++ _time_count -> -> 1 `i `ui ]
+[; ;main.c: 464: if(!RB0)
+"464
+[e $ ! ! _RB0 263  ]
+[; ;main.c: 465: PB8Counter++;
+"465
+[e ++ _PB8Counter -> -> 1 `i `uc ]
+[e :U 263 ]
+[; ;main.c: 466: if(!RB1)
+"466
+[e $ ! ! _RB1 264  ]
+[; ;main.c: 467: PB7Counter++;
+"467
+[e ++ _PB7Counter -> -> 1 `i `uc ]
+[e :U 264 ]
+"468
 }
-"463
+[e :U 262 ]
+[; ;main.c: 468: }
+[; ;main.c: 469: }
+"469
+[e :UE 261 ]
+}
+"471
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 463: void main(void){
+[; ;main.c: 471: void main(void){
 [e :U _main ]
 [f ]
-[; ;main.c: 465: _delay((unsigned long)((5000)*(20000000/4000.0)));
-"465
-[e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 467: ser_init();
-"467
-[e ( _ser_init ..  ]
-[; ;main.c: 468: setupSPI();
-"468
-[e ( _setupSPI ..  ]
-[; ;main.c: 469: setupLCD();
-"469
-[e ( _setupLCD ..  ]
-[; ;main.c: 470: setupADC();
-"470
-[e ( _setupADC ..  ]
-[; ;main.c: 472: TRISB = 0b00000011;
-"472
-[e = _TRISB -> -> 3 `i `uc ]
-[; ;main.c: 473: PORTB = 0b11111100;
+[; ;main.c: 473: _delay((unsigned long)((5000)*(20000000/4000.0)));
 "473
-[e = _PORTB -> -> 252 `i `uc ]
+[e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 475: ser_init();
 "475
-[v _controlByte `uc ~T0 @X0 1 a ]
-[; ;main.c: 475: unsigned char controlByte = 0b00001101;
-[e = _controlByte -> -> 13 `i `uc ]
-[; ;main.c: 476: spi_transfer(controlByte);
+[e ( _ser_init ..  ]
+[; ;main.c: 476: setupSPI();
 "476
-[e ( _spi_transfer (1 _controlByte ]
-[; ;main.c: 478: _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( _setupSPI ..  ]
+[; ;main.c: 477: setupLCD();
+"477
+[e ( _setupLCD ..  ]
+[; ;main.c: 478: setupADC();
 "478
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 479: ser_putch(128);
-"479
-[e ( _ser_putch (1 -> -> 128 `i `uc ]
-[; ;main.c: 480: _delay((unsigned long)((1000)*(20000000/4000.0)));
+[e ( _setupADC ..  ]
+[; ;main.c: 480: TRISB = 0b00000011;
 "480
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 481: ser_putch(132);
+[e = _TRISB -> -> 3 `i `uc ]
+[; ;main.c: 481: PORTB = 0b11111100;
 "481
-[e ( _ser_putch (1 -> -> 132 `i `uc ]
-[; ;main.c: 482: _delay((unsigned long)((1000)*(20000000/4000.0)));
-"482
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 485: x = 1;
-"485
-[e = _x -> -> 1 `i `uc ]
-[; ;main.c: 486: y = 0;
+[e = _PORTB -> -> 252 `i `uc ]
+"483
+[v _controlByte `uc ~T0 @X0 1 a ]
+[; ;main.c: 483: unsigned char controlByte = 0b00001101;
+[e = _controlByte -> -> 13 `i `uc ]
+[; ;main.c: 484: spi_transfer(controlByte);
+"484
+[e ( _spi_transfer (1 _controlByte ]
+[; ;main.c: 486: _delay((unsigned long)((1000)*(20000000/4000.0)));
 "486
-[e = _y -> -> 0 `i `uc ]
-[; ;main.c: 487: orientation = 3;
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 487: ser_putch(128);
 "487
-[e = _orientation -> -> 3 `i `uc ]
-[; ;main.c: 491: ser_putch(140);
-"491
-[e ( _ser_putch (1 -> -> 140 `i `uc ]
-[; ;main.c: 492: ser_putch(2);
-"492
-[e ( _ser_putch (1 -> -> 2 `i `uc ]
-[; ;main.c: 493: ser_putch(10);
+[e ( _ser_putch (1 -> -> 128 `i `uc ]
+[; ;main.c: 488: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"488
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 489: ser_putch(132);
+"489
+[e ( _ser_putch (1 -> -> 132 `i `uc ]
+[; ;main.c: 490: _delay((unsigned long)((1000)*(20000000/4000.0)));
+"490
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 493: x = 1;
 "493
-[e ( _ser_putch (1 -> -> 10 `i `uc ]
-[; ;main.c: 494: ser_putch(67);
+[e = _x -> -> 1 `i `uc ]
+[; ;main.c: 494: y = 0;
 "494
-[e ( _ser_putch (1 -> -> 67 `i `uc ]
-[; ;main.c: 495: ser_putch(32);
+[e = _y -> -> 0 `i `uc ]
+[; ;main.c: 495: orientation = 3;
 "495
-[e ( _ser_putch (1 -> -> 32 `i `uc ]
-[; ;main.c: 496: ser_putch(77);
-"496
-[e ( _ser_putch (1 -> -> 77 `i `uc ]
-[; ;main.c: 497: ser_putch(16);
-"497
-[e ( _ser_putch (1 -> -> 16 `i `uc ]
-[; ;main.c: 498: ser_putch(77);
-"498
-[e ( _ser_putch (1 -> -> 77 `i `uc ]
-[; ;main.c: 499: ser_putch(16);
+[e = _orientation -> -> 3 `i `uc ]
+[; ;main.c: 499: ser_putch(140);
 "499
-[e ( _ser_putch (1 -> -> 16 `i `uc ]
-[; ;main.c: 500: ser_putch(77);
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 500: ser_putch(2);
 "500
-[e ( _ser_putch (1 -> -> 77 `i `uc ]
-[; ;main.c: 501: ser_putch(16);
+[e ( _ser_putch (1 -> -> 2 `i `uc ]
+[; ;main.c: 501: ser_putch(10);
 "501
-[e ( _ser_putch (1 -> -> 16 `i `uc ]
-[; ;main.c: 502: ser_putch(77);
+[e ( _ser_putch (1 -> -> 10 `i `uc ]
+[; ;main.c: 502: ser_putch(67);
 "502
-[e ( _ser_putch (1 -> -> 77 `i `uc ]
-[; ;main.c: 503: ser_putch(16);
+[e ( _ser_putch (1 -> -> 67 `i `uc ]
+[; ;main.c: 503: ser_putch(32);
 "503
-[e ( _ser_putch (1 -> -> 16 `i `uc ]
-[; ;main.c: 504: ser_putch(76);
+[e ( _ser_putch (1 -> -> 32 `i `uc ]
+[; ;main.c: 504: ser_putch(77);
 "504
-[e ( _ser_putch (1 -> -> 76 `i `uc ]
+[e ( _ser_putch (1 -> -> 77 `i `uc ]
 [; ;main.c: 505: ser_putch(16);
 "505
 [e ( _ser_putch (1 -> -> 16 `i `uc ]
-[; ;main.c: 506: ser_putch(74);
+[; ;main.c: 506: ser_putch(77);
 "506
-[e ( _ser_putch (1 -> -> 74 `i `uc ]
+[e ( _ser_putch (1 -> -> 77 `i `uc ]
 [; ;main.c: 507: ser_putch(16);
 "507
 [e ( _ser_putch (1 -> -> 16 `i `uc ]
-[; ;main.c: 508: ser_putch(72);
+[; ;main.c: 508: ser_putch(77);
 "508
-[e ( _ser_putch (1 -> -> 72 `i `uc ]
-[; ;main.c: 509: ser_putch(32);
+[e ( _ser_putch (1 -> -> 77 `i `uc ]
+[; ;main.c: 509: ser_putch(16);
 "509
-[e ( _ser_putch (1 -> -> 32 `i `uc ]
-[; ;main.c: 510: ser_putch(79);
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 510: ser_putch(77);
 "510
-[e ( _ser_putch (1 -> -> 79 `i `uc ]
+[e ( _ser_putch (1 -> -> 77 `i `uc ]
 [; ;main.c: 511: ser_putch(16);
 "511
 [e ( _ser_putch (1 -> -> 16 `i `uc ]
-[; ;main.c: 512: ser_putch(84);
+[; ;main.c: 512: ser_putch(76);
 "512
-[e ( _ser_putch (1 -> -> 84 `i `uc ]
-[; ;main.c: 513: ser_putch(48);
+[e ( _ser_putch (1 -> -> 76 `i `uc ]
+[; ;main.c: 513: ser_putch(16);
 "513
-[e ( _ser_putch (1 -> -> 48 `i `uc ]
-"516
-[v _first `uc ~T0 @X0 1 a ]
-[; ;main.c: 516: char first = 16;
-[e = _first -> -> 16 `i `uc ]
-"517
-[v _second `uc ~T0 @X0 1 a ]
-[; ;main.c: 517: char second = 8;
-[e = _second -> -> 8 `i `uc ]
-"518
-[v _third `uc ~T0 @X0 1 a ]
-[; ;main.c: 518: char third = 12;
-[e = _third -> -> 12 `i `uc ]
-"519
-[v _fourth `uc ~T0 @X0 1 a ]
-[; ;main.c: 519: char fourth = 36;
-[e = _fourth -> -> 36 `i `uc ]
-"520
-[v _fifth `uc ~T0 @X0 1 a ]
-[; ;main.c: 520: char fifth = 32;
-[e = _fifth -> -> 32 `i `uc ]
-[; ;main.c: 524: ser_putch(140);
-"524
-[e ( _ser_putch (1 -> -> 140 `i `uc ]
-[; ;main.c: 525: ser_putch(3);
-"525
-[e ( _ser_putch (1 -> -> 3 `i `uc ]
-[; ;main.c: 526: ser_putch(16);
-"526
 [e ( _ser_putch (1 -> -> 16 `i `uc ]
-[; ;main.c: 527: ser_putch(62);
+[; ;main.c: 514: ser_putch(74);
+"514
+[e ( _ser_putch (1 -> -> 74 `i `uc ]
+[; ;main.c: 515: ser_putch(16);
+"515
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 516: ser_putch(72);
+"516
+[e ( _ser_putch (1 -> -> 72 `i `uc ]
+[; ;main.c: 517: ser_putch(32);
+"517
+[e ( _ser_putch (1 -> -> 32 `i `uc ]
+[; ;main.c: 518: ser_putch(79);
+"518
+[e ( _ser_putch (1 -> -> 79 `i `uc ]
+[; ;main.c: 519: ser_putch(16);
+"519
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 520: ser_putch(84);
+"520
+[e ( _ser_putch (1 -> -> 84 `i `uc ]
+[; ;main.c: 521: ser_putch(48);
+"521
+[e ( _ser_putch (1 -> -> 48 `i `uc ]
+"524
+[v _first `uc ~T0 @X0 1 a ]
+[; ;main.c: 524: char first = 16;
+[e = _first -> -> 16 `i `uc ]
+"525
+[v _second `uc ~T0 @X0 1 a ]
+[; ;main.c: 525: char second = 8;
+[e = _second -> -> 8 `i `uc ]
+"526
+[v _third `uc ~T0 @X0 1 a ]
+[; ;main.c: 526: char third = 12;
+[e = _third -> -> 12 `i `uc ]
 "527
-[e ( _ser_putch (1 -> -> 62 `i `uc ]
-[; ;main.c: 528: ser_putch(first);
+[v _fourth `uc ~T0 @X0 1 a ]
+[; ;main.c: 527: char fourth = 36;
+[e = _fourth -> -> 36 `i `uc ]
 "528
-[e ( _ser_putch (1 _first ]
-[; ;main.c: 529: ser_putch(69);
-"529
-[e ( _ser_putch (1 -> -> 69 `i `uc ]
-[; ;main.c: 530: ser_putch(second);
-"530
-[e ( _ser_putch (1 _second ]
-[; ;main.c: 531: ser_putch(62);
-"531
-[e ( _ser_putch (1 -> -> 62 `i `uc ]
-[; ;main.c: 532: ser_putch(third);
+[v _fifth `uc ~T0 @X0 1 a ]
+[; ;main.c: 528: char fifth = 32;
+[e = _fifth -> -> 32 `i `uc ]
+[; ;main.c: 532: ser_putch(140);
 "532
-[e ( _ser_putch (1 _third ]
-[; ;main.c: 533: ser_putch(65);
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 533: ser_putch(3);
 "533
-[e ( _ser_putch (1 -> -> 65 `i `uc ]
-[; ;main.c: 534: ser_putch(fourth);
+[e ( _ser_putch (1 -> -> 3 `i `uc ]
+[; ;main.c: 534: ser_putch(16);
 "534
-[e ( _ser_putch (1 _fourth ]
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
 [; ;main.c: 535: ser_putch(62);
 "535
 [e ( _ser_putch (1 -> -> 62 `i `uc ]
-[; ;main.c: 536: ser_putch(fifth);
+[; ;main.c: 536: ser_putch(first);
 "536
-[e ( _ser_putch (1 _fifth ]
-[; ;main.c: 538: ser_putch(65);
-"538
-[e ( _ser_putch (1 -> -> 65 `i `uc ]
-[; ;main.c: 539: ser_putch(first);
-"539
 [e ( _ser_putch (1 _first ]
-[; ;main.c: 540: ser_putch(62);
-"540
-[e ( _ser_putch (1 -> -> 62 `i `uc ]
-[; ;main.c: 541: ser_putch(second);
-"541
-[e ( _ser_putch (1 _second ]
-[; ;main.c: 542: ser_putch(65);
-"542
-[e ( _ser_putch (1 -> -> 65 `i `uc ]
-[; ;main.c: 543: ser_putch(third);
-"543
-[e ( _ser_putch (1 _third ]
-[; ;main.c: 544: ser_putch(69);
-"544
+[; ;main.c: 537: ser_putch(69);
+"537
 [e ( _ser_putch (1 -> -> 69 `i `uc ]
-[; ;main.c: 545: ser_putch(fourth);
-"545
+[; ;main.c: 538: ser_putch(second);
+"538
+[e ( _ser_putch (1 _second ]
+[; ;main.c: 539: ser_putch(62);
+"539
+[e ( _ser_putch (1 -> -> 62 `i `uc ]
+[; ;main.c: 540: ser_putch(third);
+"540
+[e ( _ser_putch (1 _third ]
+[; ;main.c: 541: ser_putch(65);
+"541
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 542: ser_putch(fourth);
+"542
 [e ( _ser_putch (1 _fourth ]
+[; ;main.c: 543: ser_putch(62);
+"543
+[e ( _ser_putch (1 -> -> 62 `i `uc ]
+[; ;main.c: 544: ser_putch(fifth);
+"544
+[e ( _ser_putch (1 _fifth ]
 [; ;main.c: 546: ser_putch(65);
 "546
 [e ( _ser_putch (1 -> -> 65 `i `uc ]
-[; ;main.c: 547: ser_putch(fifth);
+[; ;main.c: 547: ser_putch(first);
 "547
-[e ( _ser_putch (1 _fifth ]
-[; ;main.c: 549: ser_putch(69);
-"549
-[e ( _ser_putch (1 -> -> 69 `i `uc ]
-[; ;main.c: 550: ser_putch(first);
-"550
 [e ( _ser_putch (1 _first ]
-[; ;main.c: 551: ser_putch(65);
-"551
-[e ( _ser_putch (1 -> -> 65 `i `uc ]
-[; ;main.c: 552: ser_putch(second);
-"552
-[e ( _ser_putch (1 _second ]
-[; ;main.c: 553: ser_putch(69);
-"553
-[e ( _ser_putch (1 -> -> 69 `i `uc ]
-[; ;main.c: 554: ser_putch(third);
-"554
-[e ( _ser_putch (1 _third ]
-[; ;main.c: 555: ser_putch(60);
-"555
-[e ( _ser_putch (1 -> -> 60 `i `uc ]
-[; ;main.c: 556: ser_putch(fourth);
-"556
-[e ( _ser_putch (1 _fourth ]
-[; ;main.c: 557: ser_putch(48);
-"557
-[e ( _ser_putch (1 -> -> 48 `i `uc ]
-[; ;main.c: 558: ser_putch(fifth);
-"558
-[e ( _ser_putch (1 _fifth ]
-[; ;main.c: 560: ser_putch(65);
-"560
-[e ( _ser_putch (1 -> -> 65 `i `uc ]
-[; ;main.c: 561: ser_putch(16);
-"561
-[e ( _ser_putch (1 -> -> 16 `i `uc ]
-[; ;main.c: 564: ser_putch(140);
-"564
-[e ( _ser_putch (1 -> -> 140 `i `uc ]
-[; ;main.c: 565: ser_putch(4);
-"565
-[e ( _ser_putch (1 -> -> 4 `i `uc ]
-[; ;main.c: 566: ser_putch(3);
-"566
-[e ( _ser_putch (1 -> -> 3 `i `uc ]
-[; ;main.c: 567: ser_putch(60);
-"567
-[e ( _ser_putch (1 -> -> 60 `i `uc ]
-[; ;main.c: 568: ser_putch(12);
-"568
-[e ( _ser_putch (1 -> -> 12 `i `uc ]
-[; ;main.c: 569: ser_putch(65);
-"569
-[e ( _ser_putch (1 -> -> 65 `i `uc ]
-[; ;main.c: 570: ser_putch(12);
-"570
-[e ( _ser_putch (1 -> -> 12 `i `uc ]
-[; ;main.c: 571: ser_putch(69);
-"571
-[e ( _ser_putch (1 -> -> 69 `i `uc ]
-[; ;main.c: 572: ser_putch(96);
-"572
-[e ( _ser_putch (1 -> -> 96 `i `uc ]
-[; ;main.c: 576: ser_putch(140);
-"576
-[e ( _ser_putch (1 -> -> 140 `i `uc ]
-[; ;main.c: 577: ser_putch(5);
-"577
-[e ( _ser_putch (1 -> -> 5 `i `uc ]
-[; ;main.c: 578: ser_putch(11);
-"578
-[e ( _ser_putch (1 -> -> 11 `i `uc ]
-[; ;main.c: 579: ser_putch(70);
-"579
-[e ( _ser_putch (1 -> -> 70 `i `uc ]
-[; ;main.c: 580: ser_putch(12);
-"580
-[e ( _ser_putch (1 -> -> 12 `i `uc ]
-[; ;main.c: 581: ser_putch(67);
-"581
-[e ( _ser_putch (1 -> -> 67 `i `uc ]
-[; ;main.c: 582: ser_putch(12);
-"582
-[e ( _ser_putch (1 -> -> 12 `i `uc ]
-[; ;main.c: 583: ser_putch(62);
-"583
+[; ;main.c: 548: ser_putch(62);
+"548
 [e ( _ser_putch (1 -> -> 62 `i `uc ]
-[; ;main.c: 584: ser_putch(96);
-"584
-[e ( _ser_putch (1 -> -> 96 `i `uc ]
-[; ;main.c: 585: ser_putch(70);
-"585
-[e ( _ser_putch (1 -> -> 70 `i `uc ]
-[; ;main.c: 586: ser_putch(12);
-"586
+[; ;main.c: 549: ser_putch(second);
+"549
+[e ( _ser_putch (1 _second ]
+[; ;main.c: 550: ser_putch(65);
+"550
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 551: ser_putch(third);
+"551
+[e ( _ser_putch (1 _third ]
+[; ;main.c: 552: ser_putch(69);
+"552
+[e ( _ser_putch (1 -> -> 69 `i `uc ]
+[; ;main.c: 553: ser_putch(fourth);
+"553
+[e ( _ser_putch (1 _fourth ]
+[; ;main.c: 554: ser_putch(65);
+"554
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 555: ser_putch(fifth);
+"555
+[e ( _ser_putch (1 _fifth ]
+[; ;main.c: 557: ser_putch(69);
+"557
+[e ( _ser_putch (1 -> -> 69 `i `uc ]
+[; ;main.c: 558: ser_putch(first);
+"558
+[e ( _ser_putch (1 _first ]
+[; ;main.c: 559: ser_putch(65);
+"559
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 560: ser_putch(second);
+"560
+[e ( _ser_putch (1 _second ]
+[; ;main.c: 561: ser_putch(69);
+"561
+[e ( _ser_putch (1 -> -> 69 `i `uc ]
+[; ;main.c: 562: ser_putch(third);
+"562
+[e ( _ser_putch (1 _third ]
+[; ;main.c: 563: ser_putch(60);
+"563
+[e ( _ser_putch (1 -> -> 60 `i `uc ]
+[; ;main.c: 564: ser_putch(fourth);
+"564
+[e ( _ser_putch (1 _fourth ]
+[; ;main.c: 565: ser_putch(48);
+"565
+[e ( _ser_putch (1 -> -> 48 `i `uc ]
+[; ;main.c: 566: ser_putch(fifth);
+"566
+[e ( _ser_putch (1 _fifth ]
+[; ;main.c: 568: ser_putch(65);
+"568
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 569: ser_putch(16);
+"569
+[e ( _ser_putch (1 -> -> 16 `i `uc ]
+[; ;main.c: 572: ser_putch(140);
+"572
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 573: ser_putch(4);
+"573
+[e ( _ser_putch (1 -> -> 4 `i `uc ]
+[; ;main.c: 574: ser_putch(3);
+"574
+[e ( _ser_putch (1 -> -> 3 `i `uc ]
+[; ;main.c: 575: ser_putch(60);
+"575
+[e ( _ser_putch (1 -> -> 60 `i `uc ]
+[; ;main.c: 576: ser_putch(12);
+"576
 [e ( _ser_putch (1 -> -> 12 `i `uc ]
-[; ;main.c: 587: ser_putch(67);
+[; ;main.c: 577: ser_putch(65);
+"577
+[e ( _ser_putch (1 -> -> 65 `i `uc ]
+[; ;main.c: 578: ser_putch(12);
+"578
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 579: ser_putch(69);
+"579
+[e ( _ser_putch (1 -> -> 69 `i `uc ]
+[; ;main.c: 580: ser_putch(96);
+"580
+[e ( _ser_putch (1 -> -> 96 `i `uc ]
+[; ;main.c: 584: ser_putch(140);
+"584
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 585: ser_putch(5);
+"585
+[e ( _ser_putch (1 -> -> 5 `i `uc ]
+[; ;main.c: 586: ser_putch(11);
+"586
+[e ( _ser_putch (1 -> -> 11 `i `uc ]
+[; ;main.c: 587: ser_putch(70);
 "587
-[e ( _ser_putch (1 -> -> 67 `i `uc ]
+[e ( _ser_putch (1 -> -> 70 `i `uc ]
 [; ;main.c: 588: ser_putch(12);
 "588
 [e ( _ser_putch (1 -> -> 12 `i `uc ]
-[; ;main.c: 589: ser_putch(61);
+[; ;main.c: 589: ser_putch(67);
 "589
-[e ( _ser_putch (1 -> -> 61 `i `uc ]
-[; ;main.c: 590: ser_putch(96);
-"590
-[e ( _ser_putch (1 -> -> 96 `i `uc ]
-[; ;main.c: 591: ser_putch(70);
-"591
-[e ( _ser_putch (1 -> -> 70 `i `uc ]
-[; ;main.c: 592: ser_putch(12);
-"592
-[e ( _ser_putch (1 -> -> 12 `i `uc ]
-[; ;main.c: 593: ser_putch(67);
-"593
 [e ( _ser_putch (1 -> -> 67 `i `uc ]
+[; ;main.c: 590: ser_putch(12);
+"590
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 591: ser_putch(62);
+"591
+[e ( _ser_putch (1 -> -> 62 `i `uc ]
+[; ;main.c: 592: ser_putch(96);
+"592
+[e ( _ser_putch (1 -> -> 96 `i `uc ]
+[; ;main.c: 593: ser_putch(70);
+"593
+[e ( _ser_putch (1 -> -> 70 `i `uc ]
 [; ;main.c: 594: ser_putch(12);
 "594
 [e ( _ser_putch (1 -> -> 12 `i `uc ]
-[; ;main.c: 595: ser_putch(60);
+[; ;main.c: 595: ser_putch(67);
 "595
-[e ( _ser_putch (1 -> -> 60 `i `uc ]
-[; ;main.c: 596: ser_putch(96);
+[e ( _ser_putch (1 -> -> 67 `i `uc ]
+[; ;main.c: 596: ser_putch(12);
 "596
-[e ( _ser_putch (1 -> -> 96 `i `uc ]
-[; ;main.c: 597: ser_putch(70);
-"597
-[e ( _ser_putch (1 -> -> 70 `i `uc ]
-[; ;main.c: 598: ser_putch(12);
-"598
 [e ( _ser_putch (1 -> -> 12 `i `uc ]
-[; ;main.c: 599: ser_putch(60);
+[; ;main.c: 597: ser_putch(61);
+"597
+[e ( _ser_putch (1 -> -> 61 `i `uc ]
+[; ;main.c: 598: ser_putch(96);
+"598
+[e ( _ser_putch (1 -> -> 96 `i `uc ]
+[; ;main.c: 599: ser_putch(70);
 "599
-[e ( _ser_putch (1 -> -> 60 `i `uc ]
-[; ;main.c: 600: ser_putch(20);
+[e ( _ser_putch (1 -> -> 70 `i `uc ]
+[; ;main.c: 600: ser_putch(12);
 "600
-[e ( _ser_putch (1 -> -> 20 `i `uc ]
-[; ;main.c: 603: ser_putch(140);
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 601: ser_putch(67);
+"601
+[e ( _ser_putch (1 -> -> 67 `i `uc ]
+[; ;main.c: 602: ser_putch(12);
+"602
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 603: ser_putch(60);
 "603
-[e ( _ser_putch (1 -> -> 140 `i `uc ]
-[; ;main.c: 604: ser_putch(6);
+[e ( _ser_putch (1 -> -> 60 `i `uc ]
+[; ;main.c: 604: ser_putch(96);
 "604
-[e ( _ser_putch (1 -> -> 6 `i `uc ]
-[; ;main.c: 605: ser_putch(11);
+[e ( _ser_putch (1 -> -> 96 `i `uc ]
+[; ;main.c: 605: ser_putch(70);
 "605
-[e ( _ser_putch (1 -> -> 11 `i `uc ]
-[; ;main.c: 606: ser_putch(55);
+[e ( _ser_putch (1 -> -> 70 `i `uc ]
+[; ;main.c: 606: ser_putch(12);
 "606
-[e ( _ser_putch (1 -> -> 55 `i `uc ]
-[; ;main.c: 607: ser_putch(22);
+[e ( _ser_putch (1 -> -> 12 `i `uc ]
+[; ;main.c: 607: ser_putch(60);
 "607
-[e ( _ser_putch (1 -> -> 22 `i `uc ]
-[; ;main.c: 608: ser_putch(55);
+[e ( _ser_putch (1 -> -> 60 `i `uc ]
+[; ;main.c: 608: ser_putch(20);
 "608
-[e ( _ser_putch (1 -> -> 55 `i `uc ]
-[; ;main.c: 609: ser_putch(22);
-"609
-[e ( _ser_putch (1 -> -> 22 `i `uc ]
-[; ;main.c: 610: ser_putch(0);
-"610
-[e ( _ser_putch (1 -> -> 0 `i `uc ]
-[; ;main.c: 611: ser_putch(2);
+[e ( _ser_putch (1 -> -> 20 `i `uc ]
+[; ;main.c: 611: ser_putch(140);
 "611
-[e ( _ser_putch (1 -> -> 2 `i `uc ]
-[; ;main.c: 612: ser_putch(58);
+[e ( _ser_putch (1 -> -> 140 `i `uc ]
+[; ;main.c: 612: ser_putch(6);
 "612
-[e ( _ser_putch (1 -> -> 58 `i `uc ]
-[; ;main.c: 613: ser_putch(18);
+[e ( _ser_putch (1 -> -> 6 `i `uc ]
+[; ;main.c: 613: ser_putch(11);
 "613
-[e ( _ser_putch (1 -> -> 18 `i `uc ]
-[; ;main.c: 614: ser_putch(48);
+[e ( _ser_putch (1 -> -> 11 `i `uc ]
+[; ;main.c: 614: ser_putch(55);
 "614
-[e ( _ser_putch (1 -> -> 48 `i `uc ]
-[; ;main.c: 615: ser_putch(24);
+[e ( _ser_putch (1 -> -> 55 `i `uc ]
+[; ;main.c: 615: ser_putch(22);
 "615
-[e ( _ser_putch (1 -> -> 24 `i `uc ]
-[; ;main.c: 616: ser_putch(0);
+[e ( _ser_putch (1 -> -> 22 `i `uc ]
+[; ;main.c: 616: ser_putch(55);
 "616
-[e ( _ser_putch (1 -> -> 0 `i `uc ]
-[; ;main.c: 617: ser_putch(10);
+[e ( _ser_putch (1 -> -> 55 `i `uc ]
+[; ;main.c: 617: ser_putch(22);
 "617
-[e ( _ser_putch (1 -> -> 10 `i `uc ]
-[; ;main.c: 618: ser_putch(55);
+[e ( _ser_putch (1 -> -> 22 `i `uc ]
+[; ;main.c: 618: ser_putch(0);
 "618
-[e ( _ser_putch (1 -> -> 55 `i `uc ]
-[; ;main.c: 619: ser_putch(22);
-"619
-[e ( _ser_putch (1 -> -> 22 `i `uc ]
-[; ;main.c: 620: ser_putch(55);
-"620
-[e ( _ser_putch (1 -> -> 55 `i `uc ]
-[; ;main.c: 621: ser_putch(22);
-"621
-[e ( _ser_putch (1 -> -> 22 `i `uc ]
-[; ;main.c: 622: ser_putch(0);
-"622
 [e ( _ser_putch (1 -> -> 0 `i `uc ]
-[; ;main.c: 623: ser_putch(2);
-"623
+[; ;main.c: 619: ser_putch(2);
+"619
 [e ( _ser_putch (1 -> -> 2 `i `uc ]
-[; ;main.c: 624: ser_putch(53);
-"624
-[e ( _ser_putch (1 -> -> 53 `i `uc ]
-[; ;main.c: 625: ser_putch(18);
-"625
+[; ;main.c: 620: ser_putch(58);
+"620
+[e ( _ser_putch (1 -> -> 58 `i `uc ]
+[; ;main.c: 621: ser_putch(18);
+"621
 [e ( _ser_putch (1 -> -> 18 `i `uc ]
-[; ;main.c: 626: ser_putch(54);
-"626
-[e ( _ser_putch (1 -> -> 54 `i `uc ]
-[; ;main.c: 627: ser_putch(24);
-"627
+[; ;main.c: 622: ser_putch(48);
+"622
+[e ( _ser_putch (1 -> -> 48 `i `uc ]
+[; ;main.c: 623: ser_putch(24);
+"623
 [e ( _ser_putch (1 -> -> 24 `i `uc ]
-[; ;main.c: 635: while(1){
+[; ;main.c: 624: ser_putch(0);
+"624
+[e ( _ser_putch (1 -> -> 0 `i `uc ]
+[; ;main.c: 625: ser_putch(10);
+"625
+[e ( _ser_putch (1 -> -> 10 `i `uc ]
+[; ;main.c: 626: ser_putch(55);
+"626
+[e ( _ser_putch (1 -> -> 55 `i `uc ]
+[; ;main.c: 627: ser_putch(22);
+"627
+[e ( _ser_putch (1 -> -> 22 `i `uc ]
+[; ;main.c: 628: ser_putch(55);
+"628
+[e ( _ser_putch (1 -> -> 55 `i `uc ]
+[; ;main.c: 629: ser_putch(22);
+"629
+[e ( _ser_putch (1 -> -> 22 `i `uc ]
+[; ;main.c: 630: ser_putch(0);
+"630
+[e ( _ser_putch (1 -> -> 0 `i `uc ]
+[; ;main.c: 631: ser_putch(2);
+"631
+[e ( _ser_putch (1 -> -> 2 `i `uc ]
+[; ;main.c: 632: ser_putch(53);
+"632
+[e ( _ser_putch (1 -> -> 53 `i `uc ]
+[; ;main.c: 633: ser_putch(18);
+"633
+[e ( _ser_putch (1 -> -> 18 `i `uc ]
+[; ;main.c: 634: ser_putch(54);
+"634
+[e ( _ser_putch (1 -> -> 54 `i `uc ]
+[; ;main.c: 635: ser_putch(24);
 "635
-[e :U 261 ]
-{
-[; ;main.c: 637: if(PB7Counter >= 10 && !RB1== 0){
-"637
-[e $ ! && >= -> _PB7Counter `i -> 10 `i == -> ! _RB1 `i -> 0 `i 263  ]
-{
-[; ;main.c: 640: ser_putch(141);
-"640
-[e ( _ser_putch (1 -> -> 141 `i `uc ]
-[; ;main.c: 641: ser_putch(6);
-"641
-[e ( _ser_putch (1 -> -> 6 `i `uc ]
-[; ;main.c: 642: _delay((unsigned long)((3000)*(20000000/4000.0)));
-"642
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 643: ser_putch(141);
+[e ( _ser_putch (1 -> -> 24 `i `uc ]
+[; ;main.c: 643: while(1){
 "643
-[e ( _ser_putch (1 -> -> 141 `i `uc ]
-[; ;main.c: 644: ser_putch(6);
-"644
-[e ( _ser_putch (1 -> -> 6 `i `uc ]
-[; ;main.c: 645: _delay((unsigned long)((3000)*(20000000/4000.0)));
+[e :U 267 ]
+{
+[; ;main.c: 645: if(PB7Counter >= 10 && !RB1== 0){
 "645
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 646: ser_putch(141);
-"646
+[e $ ! && >= -> _PB7Counter `i -> 10 `i == -> ! _RB1 `i -> 0 `i 269  ]
+{
+[; ;main.c: 648: ser_putch(141);
+"648
 [e ( _ser_putch (1 -> -> 141 `i `uc ]
-[; ;main.c: 647: ser_putch(5);
-"647
-[e ( _ser_putch (1 -> -> 5 `i `uc ]
-[; ;main.c: 652: PB7Counter=0;
+[; ;main.c: 649: ser_putch(6);
+"649
+[e ( _ser_putch (1 -> -> 6 `i `uc ]
+[; ;main.c: 650: _delay((unsigned long)((3000)*(20000000/4000.0)));
+"650
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 651: ser_putch(141);
+"651
+[e ( _ser_putch (1 -> -> 141 `i `uc ]
+[; ;main.c: 652: ser_putch(6);
 "652
+[e ( _ser_putch (1 -> -> 6 `i `uc ]
+[; ;main.c: 653: _delay((unsigned long)((3000)*(20000000/4000.0)));
+"653
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 654: ser_putch(141);
+"654
+[e ( _ser_putch (1 -> -> 141 `i `uc ]
+[; ;main.c: 655: ser_putch(5);
+"655
+[e ( _ser_putch (1 -> -> 5 `i `uc ]
+[; ;main.c: 660: PB7Counter=0;
+"660
 [e = _PB7Counter -> -> 0 `i `uc ]
-"656
-}
-[e :U 263 ]
-[; ;main.c: 656: }
-[; ;main.c: 661: if(PB8Counter >= 10 && !RB0 == 0){
-"661
-[e $ ! && >= -> _PB8Counter `i -> 10 `i == -> ! _RB0 `i -> 0 `i 264  ]
-{
-[; ;main.c: 664: PathTo(2,0);
 "664
-[e ( _PathTo (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 666: TravelPath();
-"666
-[e ( _TravelPath ..  ]
-[; ;main.c: 667: if (IR_Wall == 1)
-"667
-[e $ ! == -> _IR_Wall `i -> 1 `i 265  ]
-[; ;main.c: 668: re_route();
-"668
-[e ( _re_route ..  ]
-[e :U 265 ]
-[; ;main.c: 669: if (targets_found == 1){
-"669
-[e $ ! == -> _targets_found `i -> 1 `i 266  ]
-{
-[; ;main.c: 670: PathTo(1,0);
-"670
-[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 671: TravelPath();
-"671
-[e ( _TravelPath ..  ]
-"672
 }
-[e :U 266 ]
-[; ;main.c: 672: }
-[; ;main.c: 677: PathTo(3,0);
+[e :U 269 ]
+[; ;main.c: 664: }
+[; ;main.c: 669: if(PB8Counter >= 10 && !RB0 == 0){
+"669
+[e $ ! && >= -> _PB8Counter `i -> 10 `i == -> ! _RB0 `i -> 0 `i 270  ]
+{
+[; ;main.c: 672: PathTo(2,0);
+"672
+[e ( _PathTo (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 674: TravelPath();
+"674
+[e ( _TravelPath ..  ]
+[; ;main.c: 675: if (IR_Wall == 1)
+"675
+[e $ ! == -> _IR_Wall `i -> 1 `i 271  ]
+[; ;main.c: 676: re_route();
+"676
+[e ( _re_route ..  ]
+[e :U 271 ]
+[; ;main.c: 677: if (targets_found == 1){
 "677
-[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+[e $ ! == -> _targets_found `i -> 1 `i 272  ]
+{
+[; ;main.c: 678: PathTo(1,0);
+"678
+[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
 [; ;main.c: 679: TravelPath();
 "679
 [e ( _TravelPath ..  ]
-[; ;main.c: 680: if (IR_Wall == 1)
 "680
-[e $ ! == -> _IR_Wall `i -> 1 `i 267  ]
-[; ;main.c: 681: re_route();
-"681
-[e ( _re_route ..  ]
-[e :U 267 ]
-[; ;main.c: 682: if (targets_found == 1){
-"682
-[e $ ! == -> _targets_found `i -> 1 `i 268  ]
-{
-[; ;main.c: 683: PathTo(1,0);
-"683
-[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 684: TravelPath();
-"684
-[e ( _TravelPath ..  ]
-"685
-}
-[e :U 268 ]
-[; ;main.c: 685: }
-[; ;main.c: 687: PathTo(4,3);
-"687
-[e ( _PathTo (2 , -> -> 4 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 688: TravelPath();
-"688
-[e ( _TravelPath ..  ]
-[; ;main.c: 689: if (IR_Wall == 1)
-"689
-[e $ ! == -> _IR_Wall `i -> 1 `i 269  ]
-[; ;main.c: 690: re_route();
-"690
-[e ( _re_route ..  ]
-[e :U 269 ]
-[; ;main.c: 691: if (targets_found == 1){
-"691
-[e $ ! == -> _targets_found `i -> 1 `i 270  ]
-{
-[; ;main.c: 692: PathTo(1,0);
-"692
-[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 693: TravelPath();
-"693
-[e ( _TravelPath ..  ]
-"694
-}
-[e :U 270 ]
-[; ;main.c: 694: }
-[; ;main.c: 696: PathTo(3,2);
-"696
-[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 2 `i `uc ]
-[; ;main.c: 697: TravelPath();
-"697
-[e ( _TravelPath ..  ]
-[; ;main.c: 698: if (IR_Wall == 1)
-"698
-[e $ ! == -> _IR_Wall `i -> 1 `i 271  ]
-[; ;main.c: 699: re_route();
-"699
-[e ( _re_route ..  ]
-[e :U 271 ]
-[; ;main.c: 700: if (targets_found == 1){
-"700
-[e $ ! == -> _targets_found `i -> 1 `i 272  ]
-{
-[; ;main.c: 701: PathTo(1,0);
-"701
-[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 702: TravelPath();
-"702
-[e ( _TravelPath ..  ]
-"703
 }
 [e :U 272 ]
-[; ;main.c: 703: }
-[; ;main.c: 705: PathTo(0,3);
-"705
-[e ( _PathTo (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 707: TravelPath();
-"707
+[; ;main.c: 680: }
+[; ;main.c: 685: PathTo(3,0);
+"685
+[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 687: TravelPath();
+"687
 [e ( _TravelPath ..  ]
-[; ;main.c: 708: if (IR_Wall == 1)
-"708
+[; ;main.c: 688: if (IR_Wall == 1)
+"688
 [e $ ! == -> _IR_Wall `i -> 1 `i 273  ]
-[; ;main.c: 709: re_route();
-"709
+[; ;main.c: 689: re_route();
+"689
 [e ( _re_route ..  ]
 [e :U 273 ]
-[; ;main.c: 710: if (targets_found == 1){
-"710
+[; ;main.c: 690: if (targets_found == 1){
+"690
 [e $ ! == -> _targets_found `i -> 1 `i 274  ]
 {
-[; ;main.c: 711: PathTo(1,0);
-"711
+[; ;main.c: 691: PathTo(1,0);
+"691
 [e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 712: TravelPath();
-"712
+[; ;main.c: 692: TravelPath();
+"692
 [e ( _TravelPath ..  ]
-"713
+"693
 }
 [e :U 274 ]
-[; ;main.c: 713: }
-[; ;main.c: 721: PB8Counter = 0;
-"721
-[e = _PB8Counter -> -> 0 `i `uc ]
-"722
+[; ;main.c: 693: }
+[; ;main.c: 695: PathTo(4,3);
+"695
+[e ( _PathTo (2 , -> -> 4 `i `uc -> -> 3 `i `uc ]
+[; ;main.c: 696: TravelPath();
+"696
+[e ( _TravelPath ..  ]
+[; ;main.c: 697: if (IR_Wall == 1)
+"697
+[e $ ! == -> _IR_Wall `i -> 1 `i 275  ]
+[; ;main.c: 698: re_route();
+"698
+[e ( _re_route ..  ]
+[e :U 275 ]
+[; ;main.c: 699: if (targets_found == 1){
+"699
+[e $ ! == -> _targets_found `i -> 1 `i 276  ]
+{
+[; ;main.c: 700: PathTo(1,0);
+"700
+[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 701: TravelPath();
+"701
+[e ( _TravelPath ..  ]
+"702
 }
-[e :U 264 ]
+[e :U 276 ]
+[; ;main.c: 702: }
+[; ;main.c: 704: PathTo(3,2);
+"704
+[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 2 `i `uc ]
+[; ;main.c: 705: TravelPath();
+"705
+[e ( _TravelPath ..  ]
+[; ;main.c: 706: if (IR_Wall == 1)
+"706
+[e $ ! == -> _IR_Wall `i -> 1 `i 277  ]
+[; ;main.c: 707: re_route();
+"707
+[e ( _re_route ..  ]
+[e :U 277 ]
+[; ;main.c: 708: if (targets_found == 1){
+"708
+[e $ ! == -> _targets_found `i -> 1 `i 278  ]
+{
+[; ;main.c: 709: PathTo(1,0);
+"709
+[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 710: TravelPath();
+"710
+[e ( _TravelPath ..  ]
+"711
+}
+[e :U 278 ]
+[; ;main.c: 711: }
+[; ;main.c: 713: PathTo(3,3);
+"713
+[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 3 `i `uc ]
+[; ;main.c: 714: TravelPath();
+"714
+[e ( _TravelPath ..  ]
+[; ;main.c: 715: if (IR_Wall == 1)
+"715
+[e $ ! == -> _IR_Wall `i -> 1 `i 279  ]
+[; ;main.c: 716: re_route();
+"716
+[e ( _re_route ..  ]
+[e :U 279 ]
+[; ;main.c: 717: if (targets_found == 1){
+"717
+[e $ ! == -> _targets_found `i -> 1 `i 280  ]
+{
+[; ;main.c: 718: PathTo(1,0);
+"718
+[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 719: TravelPath();
+"719
+[e ( _TravelPath ..  ]
+"720
+}
+[e :U 280 ]
+[; ;main.c: 720: }
+[; ;main.c: 728: PB8Counter = 0;
 "728
-}
-[e :U 260 ]
-"635
-[e $U 261  ]
-[e :U 262 ]
-[; ;main.c: 722: }
-[; ;main.c: 728: }
-[; ;main.c: 729: }
+[e = _PB8Counter -> -> 0 `i `uc ]
 "729
-[e :UE 259 ]
+}
+[e :U 270 ]
+"735
+}
+[e :U 266 ]
+"643
+[e $U 267  ]
+[e :U 268 ]
+[; ;main.c: 729: }
+[; ;main.c: 735: }
+[; ;main.c: 736: }
+"736
+[e :UE 265 ]
 }
 [a 1C 87 111 114 107 105 110 103 46 46 46 0 ]
 

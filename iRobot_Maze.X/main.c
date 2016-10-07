@@ -60,7 +60,6 @@ void PathTo(char x_target, char y_target){
         }
     }
     
-    
     x_goto = x_target;
     y_goto = y_target;
     
@@ -239,8 +238,17 @@ void PathTo(char x_target, char y_target){
             }           
         }
     }   
+//------------------------------------------------------------------------------    
+    lcdSetCursor(0b10000000);                                                   //Prints the Shortest Path on the LCD        
+        for (c = 0; c <= 15; c++){
+            lcdWriteData(pathShortest[0][c]+48);
+        }
+    lcdSetCursor(0x40);
+        for (c = 0; c<=15; c++){
+            lcdWriteData(pathShortest[1][c]+48);
+    }
+//------------------------------------------------------------------------------    
 }
-
 
 
 void Drive1m(void){   
@@ -262,33 +270,33 @@ void Drive1m(void){
        // wallFollow();
         distance = distance + getSensorData(19,2);
       
-        if ((getSensorData(13,1)) == 1){  //If virtual wall sensor triggered
+        if ((getSensorData(13,1)) == 1){  //If virtual wall or home-base force field sensor triggered. Maybe we could test in turn 90 as well.
                  
-            if((getSensorData(17,1)) < 240){
+            if((getSensorData(17,1)) != 242){                                   //If not the force-field. Used to be <240
                 IR_Wall = 1;   
                 distance = 1001;
                 RB3 = 0;
             }
             
             
-        unsigned char omni_IR = (getSensorData(17,1));
-        if (omni_IR == 250 || omni_IR == 246){   
+            unsigned char omni_IR = (getSensorData(17,1));
+            if (omni_IR == 250 || omni_IR == 246){                              // If forcefield and green or red buoy.   
              
-            targets++;
+                targets++;
             
-            switch(targets){
-                case 1: ser_putch(141);
+                switch(targets){
+                    case 1: ser_putch(141);
                         ser_putch(5);
-                    break;
-                case 2: ser_putch(141);
+                        break;
+                    case 2: ser_putch(141);
                         ser_putch(3);
                         targets_found = 1;
-                    break;                          
-            }
+                        break;                          
+                }
             
             __delay_ms(2000);
                   
-        }
+            }
              
         }
     }
@@ -702,8 +710,7 @@ void main(void){
                 TravelPath();
             }
             
-            PathTo(0,3);
-            
+            PathTo(3,3);
             TravelPath();
             if (IR_Wall == 1)
                 re_route();
