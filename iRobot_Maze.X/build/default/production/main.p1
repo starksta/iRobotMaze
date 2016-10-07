@@ -3586,154 +3586,127 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 672: PathTo(2,0);
 "672
 [e ( _PathTo (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 674: TravelPath();
-"674
+[; ;main.c: 673: TravelPath();
+"673
 [e ( _TravelPath ..  ]
-[; ;main.c: 675: if (IR_Wall == 1)
-"675
+[; ;main.c: 674: if (IR_Wall == 1)
+"674
 [e $ ! == -> _IR_Wall `i -> 1 `i 271  ]
-[; ;main.c: 676: re_route();
-"676
+[; ;main.c: 675: re_route();
+"675
 [e ( _re_route ..  ]
 [e :U 271 ]
-[; ;main.c: 677: if (targets_found == 1){
-"677
+[; ;main.c: 676: if (targets_found == 1){
+"676
 [e $ ! == -> _targets_found `i -> 1 `i 272  ]
 {
-[; ;main.c: 678: PathTo(1,0);
-"678
+[; ;main.c: 677: PathTo(1,0);
+"677
 [e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 679: TravelPath();
-"679
+[; ;main.c: 678: TravelPath();
+"678
 [e ( _TravelPath ..  ]
-"680
+"679
 }
 [e :U 272 ]
-[; ;main.c: 680: }
-[; ;main.c: 685: PathTo(3,0);
-"685
+[; ;main.c: 679: }
+[; ;main.c: 682: PathTo(3,0);
+"682
 [e ( _PathTo (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 687: TravelPath();
-"687
+[; ;main.c: 683: TravelPath();
+"683
 [e ( _TravelPath ..  ]
-[; ;main.c: 688: if (IR_Wall == 1)
-"688
+[; ;main.c: 684: if (IR_Wall == 1)
+"684
 [e $ ! == -> _IR_Wall `i -> 1 `i 273  ]
-[; ;main.c: 689: re_route();
-"689
+[; ;main.c: 685: re_route();
+"685
 [e ( _re_route ..  ]
 [e :U 273 ]
-[; ;main.c: 690: if (targets_found == 1){
-"690
+[; ;main.c: 686: if (targets_found == 1){
+"686
 [e $ ! == -> _targets_found `i -> 1 `i 274  ]
 {
-[; ;main.c: 691: PathTo(1,0);
-"691
+[; ;main.c: 687: PathTo(1,0);
+"687
 [e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 688: TravelPath();
+"688
+[e ( _TravelPath ..  ]
+"689
+}
+[e :U 274 ]
+[; ;main.c: 689: }
+[; ;main.c: 691: PathTo(0,3);
+"691
+[e ( _PathTo (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
 [; ;main.c: 692: TravelPath();
 "692
 [e ( _TravelPath ..  ]
+[; ;main.c: 693: if (IR_Wall == 1)
 "693
-}
-[e :U 274 ]
-[; ;main.c: 693: }
-[; ;main.c: 695: PathTo(4,3);
-"695
-[e ( _PathTo (2 , -> -> 4 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 696: TravelPath();
-"696
-[e ( _TravelPath ..  ]
-[; ;main.c: 697: if (IR_Wall == 1)
-"697
 [e $ ! == -> _IR_Wall `i -> 1 `i 275  ]
-[; ;main.c: 698: re_route();
-"698
+[; ;main.c: 694: re_route();
+"694
 [e ( _re_route ..  ]
 [e :U 275 ]
-[; ;main.c: 699: if (targets_found == 1){
-"699
+[; ;main.c: 695: if (targets_found == 1){
+"695
 [e $ ! == -> _targets_found `i -> 1 `i 276  ]
 {
-[; ;main.c: 700: PathTo(1,0);
-"700
+[; ;main.c: 696: PathTo(1,0);
+"696
 [e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 697: TravelPath();
+"697
+[e ( _TravelPath ..  ]
+"698
+}
+[e :U 276 ]
+[; ;main.c: 698: }
+[; ;main.c: 700: PathTo(3,2);
+"700
+[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 2 `i `uc ]
 [; ;main.c: 701: TravelPath();
 "701
 [e ( _TravelPath ..  ]
+[; ;main.c: 702: if (IR_Wall == 1)
 "702
-}
-[e :U 276 ]
-[; ;main.c: 702: }
-[; ;main.c: 704: PathTo(3,2);
-"704
-[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 2 `i `uc ]
-[; ;main.c: 705: TravelPath();
-"705
-[e ( _TravelPath ..  ]
-[; ;main.c: 706: if (IR_Wall == 1)
-"706
 [e $ ! == -> _IR_Wall `i -> 1 `i 277  ]
-[; ;main.c: 707: re_route();
-"707
+[; ;main.c: 703: re_route();
+"703
 [e ( _re_route ..  ]
 [e :U 277 ]
-[; ;main.c: 708: if (targets_found == 1){
-"708
+[; ;main.c: 704: if (targets_found == 1){
+"704
 [e $ ! == -> _targets_found `i -> 1 `i 278  ]
 {
-[; ;main.c: 709: PathTo(1,0);
-"709
+[; ;main.c: 705: PathTo(1,0);
+"705
 [e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 710: TravelPath();
-"710
+[; ;main.c: 706: TravelPath();
+"706
 [e ( _TravelPath ..  ]
-"711
+"707
 }
 [e :U 278 ]
-[; ;main.c: 711: }
-[; ;main.c: 713: PathTo(3,3);
-"713
-[e ( _PathTo (2 , -> -> 3 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 714: TravelPath();
-"714
-[e ( _TravelPath ..  ]
-[; ;main.c: 715: if (IR_Wall == 1)
-"715
-[e $ ! == -> _IR_Wall `i -> 1 `i 279  ]
-[; ;main.c: 716: re_route();
-"716
-[e ( _re_route ..  ]
-[e :U 279 ]
-[; ;main.c: 717: if (targets_found == 1){
-"717
-[e $ ! == -> _targets_found `i -> 1 `i 280  ]
-{
-[; ;main.c: 718: PathTo(1,0);
-"718
-[e ( _PathTo (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 719: TravelPath();
-"719
-[e ( _TravelPath ..  ]
-"720
-}
-[e :U 280 ]
-[; ;main.c: 720: }
-[; ;main.c: 728: PB8Counter = 0;
-"728
+[; ;main.c: 707: }
+[; ;main.c: 709: PB8Counter = 0;
+"709
 [e = _PB8Counter -> -> 0 `i `uc ]
-"729
+"710
 }
 [e :U 270 ]
-"735
+"712
 }
 [e :U 266 ]
 "643
 [e $U 267  ]
 [e :U 268 ]
-[; ;main.c: 729: }
-[; ;main.c: 735: }
-[; ;main.c: 736: }
-"736
+[; ;main.c: 710: }
+[; ;main.c: 712: }
+[; ;main.c: 713: }
+"713
 [e :UE 265 ]
 }
 [a 1C 87 111 114 107 105 110 103 46 46 46 0 ]

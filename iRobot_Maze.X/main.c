@@ -669,8 +669,7 @@ void main(void){
         if(PB8Counter >= 10 && PB8 == 0){
             
             
-            PathTo(2,0);
-            
+            PathTo(2,0);   
             TravelPath();           
             if (IR_Wall == 1)
                 re_route();
@@ -679,11 +678,8 @@ void main(void){
                 TravelPath();
             }
   
-                
-            
-                  
-            PathTo(3,0);
-            
+        
+            PathTo(3,0);         
             TravelPath();
             if (IR_Wall == 1)
                 re_route();
@@ -692,7 +688,7 @@ void main(void){
                 TravelPath();
             }
             
-            PathTo(4,3);
+            PathTo(0,3);
             TravelPath();
             if (IR_Wall == 1)
                 re_route();
@@ -701,7 +697,7 @@ void main(void){
                 TravelPath();
             }
             
-            PathTo(3,2);         
+            PathTo(3,2);
             TravelPath();
             if (IR_Wall == 1)
                 re_route();
@@ -709,29 +705,10 @@ void main(void){
                 PathTo(1,0);
                 TravelPath();
             }
-            
-            PathTo(3,3);
-            TravelPath();
-            if (IR_Wall == 1)
-                re_route();
-            if (targets_found == 1){
-                PathTo(1,0);
-                TravelPath();
-            }
-            
-            
-            
-            
-/*    
-                 
-            
-*/      PB8Counter = 0;
+
+         PB8Counter = 0;
         }
-        
-        
-        
-        
-        
+             
     }        
 }
     
