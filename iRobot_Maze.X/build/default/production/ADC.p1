@@ -13,6 +13,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p i __delay ]
 "13 ADC.h
 [v _getADC `(ui ~T0 @X0 0 ef ]
+"27 LCD.h
+[v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
+"33
+[v _lcdWriteToDigitBCD `(v ~T0 @X0 0 ef1`ui ]
 "1118 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic16f877a.h
 [v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
 "2169
@@ -1236,9 +1240,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "77
 [v _CURRENT_SPEED_L `ui ~T0 @X0 1 e ]
 [i _CURRENT_SPEED_L
--> -> 150 `i `ui
+-> -> 250 `i `ui
 ]
-[; ;main.h: 77: unsigned int CURRENT_SPEED_L = 150;
+[; ;main.h: 77: unsigned int CURRENT_SPEED_L = 250;
 "78
 [v _ADJUSTED_SPEED_L `ui ~T0 @X0 1 e ]
 [i _ADJUSTED_SPEED_L
@@ -1248,9 +1252,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "79
 [v _CURRENT_SPEED_R `ui ~T0 @X0 1 e ]
 [i _CURRENT_SPEED_R
--> -> 150 `i `ui
+-> -> 250 `i `ui
 ]
-[; ;main.h: 79: unsigned int CURRENT_SPEED_R = 150;
+[; ;main.h: 79: unsigned int CURRENT_SPEED_R = 250;
 "80
 [v _ADJUSTED_SPEED_R `ui ~T0 @X0 1 e ]
 [i _ADJUSTED_SPEED_R
@@ -1597,6 +1601,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 18: getADC();
 "18
 [e ( _getADC ..  ]
+[; ;ADC.c: 19: lcdSetCursor(0b10000000);
+"19
+[e ( _lcdSetCursor (1 -> -> 128 `i `uc ]
+[; ;ADC.c: 20: lcdWriteToDigitBCD(adcRAW);
+"20
+[e ( _lcdWriteToDigitBCD (1 _adcRAW ]
 [; ;ADC.c: 22: }
 "22
 [e :UE 97 ]

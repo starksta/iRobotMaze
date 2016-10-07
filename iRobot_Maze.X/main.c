@@ -12,33 +12,31 @@ signed int angle = 0;
 
 
 void wallFollow(void){
-            
+              
+    unsigned int setADCdist = 250;
+                             
+    ADCMain();  
     
-    unsigned int setADCdist = 150;
-                    
-           
-    ADCMain();                                               
-    if(adcRAW < (setADCdist - 40)) {
-        DriveDirect(CURRENT_SPEED_R,CURRENT_SPEED_L);
-    }
-    if(adcRAW > setADCdist){   
-        while(adcRAW > setADCdist){   
-            ADCMain();
-            ADC_ADJUST = adcRAW - setADCdist;
-            ADJUSTED_SPEED_L = CURRENT_SPEED_L + (7/10)*ADC_ADJUST + (CURRENT_SPEED_L)/(ADC_ADJUST+10);
-            DriveDirect(CURRENT_SPEED_R,ADJUSTED_SPEED_L);       //make left faster  
-        }      
+    if(adcRAW < (setADCdist - 100)) {
+        ADJUSTED_SPEED_L = CURRENT_SPEED_L;
+        ADJUSTED_SPEED_R = CURRENT_SPEED_R;     
     } 
+    
+    else if(adcRAW > setADCdist){   
+
+            ADC_ADJUST = adcRAW - setADCdist;
+            ADJUSTED_SPEED_L = CURRENT_SPEED_L + (9/10)*ADC_ADJUST + ((7/3)*(CURRENT_SPEED_L))/(ADC_ADJUST+10);
+            ADJUSTED_SPEED_R = CURRENT_SPEED_R;        
+    } 
+    
     else if (adcRAW < setADCdist){
-        while(adcRAW < setADCdist){ 
-            ADCMain();
+            
             ADC_ADJUST = setADCdist - adcRAW;
-            ADJUSTED_SPEED_R = CURRENT_SPEED_R + (7/10)*ADC_ADJUST + (CURRENT_SPEED_R)/(ADC_ADJUST+10);
-            DriveDirect(ADJUSTED_SPEED_R,CURRENT_SPEED_L);       //make right faster  
-            __delay_ms(100);   
-        }
+            ADJUSTED_SPEED_R = CURRENT_SPEED_R + (9/10)*ADC_ADJUST + ((7/3)*(CURRENT_SPEED_R))/(ADC_ADJUST+10);
+            ADJUSTED_SPEED_L = CURRENT_SPEED_L;       
     }
-	//DriveDirect(CURRENT_SPEED_R,CURRENT_SPEED_L);
+    
+    DriveDirect(ADJUSTED_SPEED_R,ADJUSTED_SPEED_L);         
 }
     
 
@@ -73,7 +71,7 @@ void PathTo(char x_target, char y_target){
     lcdSetCursor(0b10000000);
     lcdWriteString("Working...");
     
-    for (int loop = 0; loop <= 2000; loop++){
+    for (int loop = 0; loop <= 10000; loop++){
         
         reset_flag = 0;
         
@@ -238,7 +236,7 @@ void PathTo(char x_target, char y_target){
             }           
         }
     }   
-//------------------------------------------------------------------------------    
+/*------------------------------------------------------------------------------    
     lcdSetCursor(0b10000000);                                                   //Prints the Shortest Path on the LCD        
         for (c = 0; c <= 15; c++){
             lcdWriteData(pathShortest[0][c]+48);
@@ -247,7 +245,8 @@ void PathTo(char x_target, char y_target){
         for (c = 0; c<=15; c++){
             lcdWriteData(pathShortest[1][c]+48);
     }
-//------------------------------------------------------------------------------    
+//------------------------------------------------------------------------------
+ */    
 }
 
 
@@ -260,14 +259,14 @@ void Drive1m(void){
 //    ser_putch(4);				//Song 4
     
     distance = 0;
-    DriveDirect(250,250);
+ //   DriveDirect(250,250);
     RB2 = 1;
     RB3 = 1;
    // for (char m = 0; m <= 10; m++){
    
     while (distance < 1000){
         
-       // wallFollow();
+        wallFollow();
         distance = distance + getSensorData(19,2);
       
         if ((getSensorData(13,1)) == 1){  //If virtual wall or home-base force field sensor triggered. Maybe we could test in turn 90 as well.
@@ -663,8 +662,7 @@ void main(void){
             
         }
         
-        
-            
+  
         
         if(PB8Counter >= 10 && PB8 == 0){
             
@@ -678,8 +676,7 @@ void main(void){
                 TravelPath();
             }
   
-        
-            PathTo(3,0);         
+            PathTo(0,3);         
             TravelPath();
             if (IR_Wall == 1)
                 re_route();
@@ -687,24 +684,7 @@ void main(void){
                 PathTo(1,0);
                 TravelPath();
             }
-            
-            PathTo(0,3);
-            TravelPath();
-            if (IR_Wall == 1)
-                re_route();
-            if (targets_found == 1){
-                PathTo(1,0);
-                TravelPath();
-            }
-            
-            PathTo(3,2);
-            TravelPath();
-            if (IR_Wall == 1)
-                re_route();
-            if (targets_found == 1){
-                PathTo(1,0);
-                TravelPath();
-            }
+                     
 
          PB8Counter = 0;
         }

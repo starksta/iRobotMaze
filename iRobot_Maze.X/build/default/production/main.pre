@@ -1491,9 +1491,9 @@ bit targets_found = 0;
 
 
 unsigned int ADC_ADJUST = 0;
-unsigned int CURRENT_SPEED_L = 150;
+unsigned int CURRENT_SPEED_L = 250;
 unsigned int ADJUSTED_SPEED_L = 0;
-unsigned int CURRENT_SPEED_R = 150;
+unsigned int CURRENT_SPEED_R = 250;
 unsigned int ADJUSTED_SPEED_R = 0;
 unsigned int timerLoop = 0;
 unsigned int Distance = 0;
@@ -1611,32 +1611,30 @@ signed int angle = 0;
 
 void wallFollow(void){
 
-
-unsigned int setADCdist = 150;
-
+unsigned int setADCdist = 250;
 
 ADCMain();
-if(adcRAW < (setADCdist - 40)) {
-DriveDirect(CURRENT_SPEED_R,CURRENT_SPEED_L);
+
+if(adcRAW < (setADCdist - 100)) {
+ADJUSTED_SPEED_L = CURRENT_SPEED_L;
+ADJUSTED_SPEED_R = CURRENT_SPEED_R;
 }
-if(adcRAW > setADCdist){
-while(adcRAW > setADCdist){
-ADCMain();
+
+else if(adcRAW > setADCdist){
+
 ADC_ADJUST = adcRAW - setADCdist;
-ADJUSTED_SPEED_L = CURRENT_SPEED_L + (7/10)*ADC_ADJUST + (CURRENT_SPEED_L)/(ADC_ADJUST+10);
-DriveDirect(CURRENT_SPEED_R,ADJUSTED_SPEED_L);
-}
-}
-else if (adcRAW < setADCdist){
-while(adcRAW < setADCdist){
-ADCMain();
-ADC_ADJUST = setADCdist - adcRAW;
-ADJUSTED_SPEED_R = CURRENT_SPEED_R + (7/10)*ADC_ADJUST + (CURRENT_SPEED_R)/(ADC_ADJUST+10);
-DriveDirect(ADJUSTED_SPEED_R,CURRENT_SPEED_L);
-_delay((unsigned long)((100)*(20000000/4000.0)));
-}
+ADJUSTED_SPEED_L = CURRENT_SPEED_L + (9/10)*ADC_ADJUST + ((7/3)*(CURRENT_SPEED_L))/(ADC_ADJUST+10);
+ADJUSTED_SPEED_R = CURRENT_SPEED_R;
 }
 
+else if (adcRAW < setADCdist){
+
+ADC_ADJUST = setADCdist - adcRAW;
+ADJUSTED_SPEED_R = CURRENT_SPEED_R + (9/10)*ADC_ADJUST + ((7/3)*(CURRENT_SPEED_R))/(ADC_ADJUST+10);
+ADJUSTED_SPEED_L = CURRENT_SPEED_L;
+}
+
+DriveDirect(ADJUSTED_SPEED_R,ADJUSTED_SPEED_L);
 }
 
 
@@ -1671,7 +1669,7 @@ pathCount = 0;
 lcdSetCursor(0b10000000);
 lcdWriteString("Working...");
 
-for (int loop = 0; loop <= 2000; loop++){
+for (int loop = 0; loop <= 10000; loop++){
 
 reset_flag = 0;
 
@@ -1708,7 +1706,7 @@ if(sum <= 2){
 x_int = x_path;
 y_int = y_path;
 
-# 117
+# 115
 if (left == 0)
 intersection_orientation = 3;
 else if (up == 0)
@@ -1719,7 +1717,7 @@ else if (down == 0)
 intersection_orientation = 2;
 }
 
-# 132
+# 130
 if ((x_path == x_target)){
 if (y_path == y_target){
 
@@ -1734,7 +1732,7 @@ pathShortest[r][c] = path[r][c];
 }
 }
 
-# 150
+# 148
 switch(intersection_orientation){
 case 0: (mazeGrid[y_int][x_int]) = ((mazeGrid[y_int][x_int]) + 4);
 break;
@@ -1762,7 +1760,7 @@ path[r][c] = 0;
 }
 }
 
-# 181
+# 179
 if((sum == 4) || (pathCount >= 15)){
 
 
@@ -1791,7 +1789,7 @@ path[r][c] = 0;
 }
 }
 
-# 216
+# 214
 if (reset_flag != 1){
 
 
@@ -1818,30 +1816,22 @@ pathCount++;
 }
 }
 
-lcdSetCursor(0b10000000);
-for (c = 0; c <= 15; c++){
-lcdWriteData(pathShortest[0][c]+48);
-}
-lcdSetCursor(0x40);
-for (c = 0; c<=15; c++){
-lcdWriteData(pathShortest[1][c]+48);
-}
-
+# 250
 }
 
 
 void Drive1m(void){
 
-# 262
+# 261
 distance = 0;
-DriveDirect(250,250);
+
 RB2 = 1;
 RB3 = 1;
 
 
 while (distance < 1000){
 
-
+wallFollow();
 distance = distance + getSensorData(19,2);
 
 if ((getSensorData(13,1)) == 1){
@@ -2208,7 +2198,7 @@ ser_putch(18);
 ser_putch(54);
 ser_putch(24);
 
-# 643
+# 642
 while(1){
 
 if(PB7Counter >= 10 && !RB1== 0){
@@ -2234,21 +2224,10 @@ PB7Counter=0;
 
 
 
-
 if(PB8Counter >= 10 && !RB0 == 0){
 
 
 PathTo(2,0);
-TravelPath();
-if (IR_Wall == 1)
-re_route();
-if (targets_found == 1){
-PathTo(1,0);
-TravelPath();
-}
-
-
-PathTo(3,0);
 TravelPath();
 if (IR_Wall == 1)
 re_route();
@@ -2266,14 +2245,6 @@ PathTo(1,0);
 TravelPath();
 }
 
-PathTo(3,2);
-TravelPath();
-if (IR_Wall == 1)
-re_route();
-if (targets_found == 1){
-PathTo(1,0);
-TravelPath();
-}
 
 PB8Counter = 0;
 }

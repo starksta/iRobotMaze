@@ -1491,9 +1491,9 @@ bit targets_found = 0;
 
 
 unsigned int ADC_ADJUST = 0;
-unsigned int CURRENT_SPEED_L = 150;
+unsigned int CURRENT_SPEED_L = 250;
 unsigned int ADJUSTED_SPEED_L = 0;
-unsigned int CURRENT_SPEED_R = 150;
+unsigned int CURRENT_SPEED_R = 250;
 unsigned int ADJUSTED_SPEED_R = 0;
 unsigned int timerLoop = 0;
 unsigned int Distance = 0;

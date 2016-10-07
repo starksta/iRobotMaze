@@ -1236,9 +1236,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "77
 [v _CURRENT_SPEED_L `ui ~T0 @X0 1 e ]
 [i _CURRENT_SPEED_L
--> -> 150 `i `ui
+-> -> 250 `i `ui
 ]
-[; ;main.h: 77: unsigned int CURRENT_SPEED_L = 150;
+[; ;main.h: 77: unsigned int CURRENT_SPEED_L = 250;
 "78
 [v _ADJUSTED_SPEED_L `ui ~T0 @X0 1 e ]
 [i _ADJUSTED_SPEED_L
@@ -1248,9 +1248,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "79
 [v _CURRENT_SPEED_R `ui ~T0 @X0 1 e ]
 [i _CURRENT_SPEED_R
--> -> 150 `i `ui
+-> -> 250 `i `ui
 ]
-[; ;main.h: 79: unsigned int CURRENT_SPEED_R = 150;
+[; ;main.h: 79: unsigned int CURRENT_SPEED_R = 250;
 "80
 [v _ADJUSTED_SPEED_R `ui ~T0 @X0 1 e ]
 [i _ADJUSTED_SPEED_R

@@ -16,8 +16,8 @@ void setupADC(void){
 void ADCMain(void){
                
         getADC();                   //Get rawADC value from sensor
-        //lcdSetCursor(0b10000000);   //First line, first position
-        //lcdWriteToDigitBCD(adcRAW); //Write the raw ADC value
+        lcdSetCursor(0b10000000);   //First line, first position
+        lcdWriteToDigitBCD(adcRAW); //Write the raw ADC value
         
 }
 

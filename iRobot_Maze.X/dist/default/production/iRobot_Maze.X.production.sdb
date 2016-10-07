@@ -31,21 +31,25 @@
 [v _lcdSetCursor lcdSetCursor `(v  1 e 1 0 ]
 "32
 [v _lcdWriteString lcdWriteString `(v  1 e 1 0 ]
+"38
+[v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
 "86
 [v _setupLCD setupLCD `(v  1 e 1 0 ]
-"46 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
+"14 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
+[v _wallFollow wallFollow `(v  1 e 1 0 ]
+"44
 [v _PathTo PathTo `(v  1 e 1 0 ]
-"254
+"253
 [v _Drive1m Drive1m `(v  1 e 1 0 ]
-"331
+"330
 [v _Turn90 Turn90 `(v  1 e 1 0 ]
-"362
+"361
 [v _TravelPath TravelPath `(v  1 e 1 0 ]
-"429
+"428
 [v _re_route re_route `(v  1 e 1 0 ]
-"458
+"457
 [v _isr isr `II(v  1 e 1 0 ]
-"471
+"470
 [v _main main `(v  1 e 1 0 ]
 "5 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\ser.c
 [v _ser_init ser_init `(v  1 e 1 0 ]
@@ -239,22 +243,22 @@
 [v _LeftSpeedH LeftSpeedH `uc  1 e 1 0 ]
 "21
 [v _LeftSpeedL LeftSpeedL `uc  1 e 1 0 ]
-"471 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
+"470 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"528
-[v main@fifth fifth `uc  1 a 1 5 ]
 "527
-[v main@fourth fourth `uc  1 a 1 4 ]
+[v main@fifth fifth `uc  1 a 1 5 ]
 "526
-[v main@third third `uc  1 a 1 3 ]
+[v main@fourth fourth `uc  1 a 1 4 ]
 "525
-[v main@second second `uc  1 a 1 2 ]
+[v main@third third `uc  1 a 1 3 ]
 "524
+[v main@second second `uc  1 a 1 2 ]
+"523
 [v main@first first `uc  1 a 1 1 ]
-"483
+"482
 [v main@controlByte controlByte `uc  1 a 1 0 ]
-"713
+"693
 } 0
 "22 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\SPI.c
 [v _spi_transfer spi_transfer `(uc  1 e 1 0 ]
@@ -287,26 +291,26 @@
 {
 "28
 } 0
-"429 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
+"428 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
 [v _re_route re_route `(v  1 e 1 0 ]
 {
-"454
+"453
 } 0
-"362
+"361
 [v _TravelPath TravelPath `(v  1 e 1 0 ]
 {
-"364
-[v TravelPath@n n `uc  1 a 1 17 ]
-"427
+"363
+[v TravelPath@n n `uc  1 a 1 28 ]
+"426
 } 0
-"331
+"330
 [v _Turn90 Turn90 `(v  1 e 1 0 ]
 {
 [v Turn90@direction direction `uc  1 a 1 wreg ]
 [v Turn90@direction direction `uc  1 a 1 wreg ]
-"333
+"332
 [v Turn90@direction direction `uc  1 a 1 13 ]
-"360
+"359
 } 0
 "45 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\ser.c
 [v _Drive Drive `(v  1 e 1 0 ]
@@ -319,14 +323,78 @@
 [v Drive@speedH speedH `uc  1 a 1 4 ]
 "51
 } 0
-"254 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
+"253 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
 [v _Drive1m Drive1m `(v  1 e 1 0 ]
 {
-"282
-[v Drive1m@omni_IR omni_IR `uc  1 a 1 14 ]
-"325
-[v Drive1m@n n `uc  1 a 1 13 ]
-"327
+"281
+[v Drive1m@omni_IR omni_IR `uc  1 a 1 25 ]
+"324
+[v Drive1m@n n `uc  1 a 1 24 ]
+"326
+} 0
+"14
+[v _wallFollow wallFollow `(v  1 e 1 0 ]
+{
+"16
+[v wallFollow@setADCdist setADCdist `ui  1 a 2 19 ]
+"40
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 6 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 5 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+"31
+} 0
+"54 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\ser.c
+[v _DriveDirect DriveDirect `(v  1 e 1 0 ]
+{
+"68
+[v DriveDirect@data_467 data `ui  1 a 2 8 ]
+"59
+[v DriveDirect@data data `ui  1 a 2 6 ]
+"54
+[v DriveDirect@VelocityRight VelocityRight `i  1 p 2 1 ]
+[v DriveDirect@VelocityLeft VelocityLeft `i  1 p 2 3 ]
+"81
+} 0
+"16 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\ADC.c
+[v _ADCMain ADCMain `(v  1 e 1 0 ]
+{
+"22
+} 0
+"38 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\LCD.c
+[v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
+{
+"39
+[v lcdWriteToDigitBCD@OnesDigit OnesDigit `ui  1 a 2 13 ]
+[v lcdWriteToDigitBCD@TenThouDigit TenThouDigit `ui  1 a 2 11 ]
+[v lcdWriteToDigitBCD@ThouDigit ThouDigit `ui  1 a 2 9 ]
+[v lcdWriteToDigitBCD@HunsDigit HunsDigit `ui  1 a 2 7 ]
+[v lcdWriteToDigitBCD@TensDigit TensDigit `ui  1 a 2 5 ]
+"38
+[v lcdWriteToDigitBCD@data data `ui  1 p 2 3 ]
+"83
+} 0
+"25 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\ADC.c
+[v _getADC getADC `(ui  1 e 2 0 ]
+{
+"48
 } 0
 "85 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\ser.c
 [v _getSensorData getSensorData `(i  1 e 2 0 ]
@@ -340,25 +408,6 @@
 [v getSensorData@packetID packetID `uc  1 a 1 6 ]
 "102
 } 0
-"35
-[v _ser_getch ser_getch `(uc  1 e 1 0 ]
-{
-"37
-[v ser_getch@rxbyte rxbyte `uc  1 a 1 1 ]
-"40
-} 0
-"54
-[v _DriveDirect DriveDirect `(v  1 e 1 0 ]
-{
-"68
-[v DriveDirect@data_467 data `ui  1 a 2 8 ]
-"59
-[v DriveDirect@data data `ui  1 a 2 6 ]
-"54
-[v DriveDirect@VelocityRight VelocityRight `i  1 p 2 1 ]
-[v DriveDirect@VelocityLeft VelocityLeft `i  1 p 2 3 ]
-"81
-} 0
 "30
 [v _ser_putch ser_putch `(v  1 e 1 0 ]
 {
@@ -367,20 +416,27 @@
 [v ser_putch@c c `uc  1 a 1 0 ]
 "33
 } 0
-"46 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
+"35
+[v _ser_getch ser_getch `(uc  1 e 1 0 ]
+{
+"37
+[v ser_getch@rxbyte rxbyte `uc  1 a 1 1 ]
+"40
+} 0
+"44 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
 [v _PathTo PathTo `(v  1 e 1 0 ]
 {
 [v PathTo@x_target x_target `uc  1 a 1 wreg ]
-"108
+"106
 [v PathTo@sum sum `uc  1 a 1 14 ]
-"76
+"74
 [v PathTo@loop loop `i  1 a 2 15 ]
-"46
+"44
 [v PathTo@x_target x_target `uc  1 a 1 wreg ]
 [v PathTo@y_target y_target `uc  1 p 1 5 ]
-"50
+"48
 [v PathTo@x_target x_target `uc  1 a 1 13 ]
-"251
+"250
 } 0
 "32 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\LCD.c
 [v _lcdWriteString lcdWriteString `(v  1 e 1 0 ]
@@ -427,8 +483,8 @@
 [v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
 "51
 } 0
-"458 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
+"457 C:\Users\liamd\MPLABXProjects\iRobotMaze\iRobot_Maze.X\main.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"469
+"468
 } 0
